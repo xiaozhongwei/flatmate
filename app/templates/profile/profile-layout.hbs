@@ -1,0 +1,60 @@
+<section class="parallax-window" style="min-height:270px;" data-parallax="scroll" data-image-src="/images/bg_blog.jpg" data-natural-width="1400" data-natural-height="270">
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+            <h1>Tour Blog</h1>
+            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p></div>
+    </div>
+</section><!-- End section -->
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Category</a></li>
+            <li>Page active</li>
+        </ul>
+    </div>
+</div><!-- End position -->
+
+<div class="container margin_60">
+    <div class="row">
+        <aside class="col-md-3 add_bottom_30">
+
+            <div class="widget">
+                <div id="tour_guide">
+                    <p>
+                        <img src="/images/testimonial_1.jpg" alt="" class="img-circle styled">
+                    </p>
+                </div>
+            </div><!-- End Search -->
+
+            <hr>
+
+            <div class="widget" id="cat_blog">
+                <h4>Profile Management</h4>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">Upload Photo</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Listing</a></li>
+                    <li><a href="#">Credit/Debit Cards</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                </ul>
+            </div><!-- End widget -->
+
+        </aside><!-- End aside -->
+
+        <div class="col-md-9">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="font-size:22px;padding:5px 0;">{{_profileTitle}}</h3>
+                </div>
+                <div class="panel-body">
+                  {{yield}}
+                </div>
+            </div>
+        </div><!-- End col-md-9-->
+    </div><!-- End row-->
+</div><!-- End container -->

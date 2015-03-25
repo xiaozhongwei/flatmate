@@ -10,7 +10,10 @@ Router.map(function() {
     this.route("list", { path: "/list" });
     this.route('detail');
   });
-  this.route('test');
+  this.resource("profile", {path: '/profile'}, function () {
+    this.route("dashboard", { path: "/dashboard" });
+
+  });
 });
 
 export default Router;
