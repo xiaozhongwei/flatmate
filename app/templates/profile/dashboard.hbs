@@ -17,13 +17,18 @@
         <div class="col-md-6 col-sm-6">
             <div class="form-group">
                 <label>First name</label>
-                <input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
+              {{select-2
+              content=pizzas
+              value=favouritePizza
+              placeholder="Choose your pizza"
+              allowClear=true
+              }}
             </div>
         </div>
         <div class="col-md-6 col-sm-6">
             <div class="form-group">
                 <label>Last name</label>
-                <input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
+              {{date-picker date=mydate valueFormat='YYYY-MM-DD'}}
             </div>
         </div>
     </div>
