@@ -1,0 +1,29 @@
+{{#view 'profile/profile-layout'}}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="widget">
+                <div id="tour_guide">
+                    <p>
+                      {{#if model.logo.id}}
+                          <img {{bind-attr src=model.logo.downloadFilePath}} alt="" class="img-circle styled"/>
+                      {{else}}
+                          <img src="images/testimonial_1.jpg" alt="" class="img-circle styled"/>
+                      {{/if}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It's not much fun to host a landscape! Please upload a photo that clearly shows your face.</p>
+            <div class="fileinput">
+                <div class="input-group">
+                    <span class="btn btn-file" style=" padding-left: 0;">
+                      <span><input type="submit" class="btn btn-primary" value="Upload a photo from your computer"></span>
+                      {{em-file-field name="logo" url=uploadUrl document=model.logo}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map-canvas" style="width:100%; height:400px;"></div>
+{{/view}}

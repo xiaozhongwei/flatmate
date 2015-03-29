@@ -1,0 +1,78 @@
+<section class="parallax-window" data-parallax="scroll" data-image-src="/images/home_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+            <h1>Paris tours</h1>
+            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+<div class="container">
+    <h1 class="page-title">List Your Room</h1>
+</div>
+<div class="container publish-room">
+    <form class="form-horizontal bordered-row" {{action 'save' this on="submit"}}>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Rent Type</label>
+            <div class="col-sm-6">
+                <div class="btn-group" data-toggle="buttons">
+                    <a href="javascript:;" class="btn btn-default">
+                      {{radio-field checked=model.rentType value="entire" name="rentTypeRadio"}}
+                        <i class="fa fa-bank"></i> Entire Home/Apt
+                    </a>
+                    <a href="javascript:;" class="btn btn-default">
+                      {{radio-field checked=model.rentType value="shared" name="rentTypeRadio"}}
+                        <i class="fa fa-building"></i> Private Room
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3 col-sm-offset-3">
+                <input class="btn btn-primary btn-lg" type="submit" value="Continue">
+            </div>
+        </div>
+    </form>
+    <hr>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+            <a href="#">
+                <span class="icon-pointer s-icon "></span>
+                <div class="s-content">
+                    <h2 class="s-main osLight">Find places anywhere in the world</h2>
+                    <h3 class="s-sub osLight">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+            <a href="#">
+                <span class="icon-users s-icon "></span>
+                <div class="s-content">
+                    <h2 class="s-main osLight">We have agents with experience</h2>
+                    <h3 class="s-sub osLight">Nulla convallis egestas rhoncus consectetur adipiscing elit</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+            <a href="#">
+                <span class="icon-home s-icon"></span>
+                <div class="s-content">
+                    <h2 class="s-main osLight">Buy or rent beautiful properties</h2>
+                    <h3 class="s-sub osLight">Donec facilisis fermentum sem, ac viverra ante luctus vel</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 s-menu-item">
+            <a href="#">
+                <span class="icon-cloud-upload s-icon"></span>
+                <div class="s-content">
+                    <h2 class="s-main osLight">With agent account you can list properties</h2>
+                    <h3 class="s-sub osLight">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="gap"></div>
