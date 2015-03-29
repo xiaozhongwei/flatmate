@@ -22,7 +22,8 @@ module.exports = function(app) {
         gender: 'male',
         country: 'USA',
         phone: '22345678',
-        //hobby: 'running',
+        occupation:'Student',
+        hobby: 'Running',
         logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
       }
     });
@@ -37,7 +38,9 @@ module.exports = function(app) {
         email: 'John@gmail.com',
         gender: 'male',
         country: 'USA',
-        hobby: 'running'
+        hobby: ["Running", "Football"],
+        occupation: 'Clerk',
+        logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
       }
     });
   });

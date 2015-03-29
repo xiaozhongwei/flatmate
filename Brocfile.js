@@ -59,4 +59,6 @@ var extraAssets = pickFiles('vendor/fontello/font', {
   destDir: '/font'
 });
 
+app.import('bower_components/ember-uploader/dist/ember-uploader.js');
+
 module.exports = app.toTree([bootstrap,html5shiv,respond,sliderPro,extraAssets]);

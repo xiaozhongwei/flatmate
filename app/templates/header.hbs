@@ -7,7 +7,7 @@
                     <ul id="top_links">
                         <li>
                           {{#if session.isAuthenticated}}
-                              Hi, {{session.user.firstName}}  <a {{ action 'invalidateSession' }} >Logout</a>
+                              Hi, {{session.user.firstName}}  <a href="javascript:;" {{ action 'invalidateSession' }} >Logout</a>
                           {{else}}
                               <div class="dropdown dropdown-access">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <nav class="col-md-9 col-sm-9 col-xs-9">
-                <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+                <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:;"><span>Menu mobile</span></a>
                 <div class="main-menu">
                     <div id="header_menu">
                         <img src="/images/logo_sticky.png" width="160" height="34" alt="City tours" data-retina="true">
@@ -67,10 +67,10 @@
                             <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="/#/profile/dashboard">profile</a>
+                          {{#link-to "profile.dashboard"}}profile{{/link-to}}
                         </li>
                         <li>
-                            <a href="/#/listing/list">listing</a>
+                          {{#link-to "listing.list"}}listing{{/link-to}}
                         </li>
                     </ul>
                 </div><!-- End main-menu -->

@@ -1,10 +1,13 @@
-/**
- * Created by Zhou Wen Long on 6/8/2014 0008.
- */
 import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default DS.Model.extend({
-    oldPassword: DS.attr(),
-    password: DS.attr(),
-    confirmPassword: DS.attr()
+export default DS.Model.extend(EmberValidations.Mixin,{
+  validations: {
+    oldPassword: { presence: true },
+    password: { presence: true, length: { minimum: 6, maximum: 16 }, confirmation: true}
+  },
+
+  oldPassword: DS.attr(),
+  password: DS.attr(),
+  passwordConfirmation: DS.attr()
 });

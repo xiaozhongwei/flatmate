@@ -7,6 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     apiRoot: 'api',
     locationType: 'auto',
+    uploadHost: "api/upload",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -35,7 +36,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    host:"http://localhost:4200"
+    host:"http://localhost:4200";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
