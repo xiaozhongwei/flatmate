@@ -1,36 +1,38 @@
 {{#view 'profile/profile-layout'}}
+
     <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <label>First name</label>
-                <input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
+
+        <div class="col-md-4 wow zoomIn animated" data-wow-delay="0.2s" style="visibility: visible; -webkit-animation-delay: 0.2s;">
+            <div class="feature_home">
+                <i class="icon_set_1_icon-41"></i>
+                <h3><span>+120</span> Premium tours</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+                </p>
+                <a href="about.html" class="btn_1 outline">Read more</a>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <label>Last name</label>
-                <input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
+
+        <div class="col-md-4 wow zoomIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+            <div class="feature_home">
+                <i class="icon_set_1_icon-30"></i>
+                <h3><span>+1000</span> Customers</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+                </p>
+                <a href="about.html" class="btn_1 outline">Read more</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 wow zoomIn animated" data-wow-delay="0.6s" style="visibility: visible; -webkit-animation-delay: 0.6s;">
+            <div class="feature_home">
+                <i class="icon_set_1_icon-57"></i>
+                <h3><span>H24 </span> Support</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
+                </p>
+                <a href="about.html" class="btn_1 outline">Read more</a>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <label>First name</label>
-              {{select-2
-              content=pizzas
-              value=favouritePizza
-              placeholder="Choose your pizza"
-              allowClear=true
-              }}
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <label>Last name</label>
-              {{date-picker date=mydate valueFormat='YYYY-MM-DD'}}
-            </div>
-        </div>
-    </div>
-    <a href="#" class=" btn_full">Save</a>
 {{/view}}

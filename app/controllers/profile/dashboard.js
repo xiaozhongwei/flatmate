@@ -4,5 +4,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  _profileTitle:"Dashboard"
+  _profileTitle:"Dashboard",
+  isFull:true
 });

@@ -21,6 +21,15 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-cli-toggle'] = {
+    includedThemes: ['light','ios', 'default', 'flip'],
+    excludedThemes: ['light'],
+    defaultTheme: 'ios',  // defaults to 'default'
+    defaultOff: 'No',    // defaults to 'Off'
+    defaultOn: 'Yes'       // defaults to 'On'
+  };
+
+
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'script-src': "'self' https://cdn.mxpnl.com", // Allow scripts from https://cdn.mxpnl.com

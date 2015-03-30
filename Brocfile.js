@@ -35,6 +35,7 @@ var bootstrap = pickFiles('bower_components/bootstrap/dist/css/', {
   srcDir: '/',files: ['**/bootstrap.min.css'],destDir: '/assets'
 });
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+app.import('bower_components/select2-bootstrap-css/select2-bootstrap.css');
 
 if (app.env === 'development') {
   app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', { destDir: 'assets' });

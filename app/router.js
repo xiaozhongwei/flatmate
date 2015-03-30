@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('detail', { path: "/detail/:listing_id" });
     this.route('add');
     this.route('manage', {path: "/manage/:house_id"});
+    this.route('book');
   });
   this.resource("profile", {path: '/profile'}, function () {
     this.route("dashboard", { path: "/dashboard" });
@@ -20,6 +21,7 @@ Router.map(function() {
     this.route('edit-profile');
     this.route('listing');
   });
+
 });
 
 export default Router;
