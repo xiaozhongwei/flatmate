@@ -7,6 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     apiRoot: 'api',
     locationType: 'auto',
+    host: "http://192.168.0.50:8001",
     uploadHost: "api/upload",
     EmberENV: {
       FEATURES: {
@@ -18,6 +19,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      // host:"http://192.168.0.50:8001"
     }
   };
 
@@ -34,18 +36,26 @@ module.exports = function(environment) {
     'default-src': "'none'",
     'script-src': "'self' https://cdn.mxpnl.com", // Allow scripts from https://cdn.mxpnl.com
     'font-src': "'self' http://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-    'connect-src': "'self' https://api.mixpanel.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+    'connect-src': "'self' http://192.168.0.50:8001 https://api.mixpanel.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
     'img-src': "'self'",
     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
     'media-src': "'self'"
   }
 
   ENV['simple-auth'] = {
+    crossOriginWhitelist: ['*'],
     authorizer: 'simple-auth-authorizer:oauth2-bearer'
   };
 
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: 'http://192.168.0.50:8001/token'
+  };
+
   if (environment === 'development') {
-    host:"http://localhost:4200";
+    ENV.host = "http://localhost:4200";
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://localhost:4200/token'
+    };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
