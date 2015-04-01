@@ -12,9 +12,9 @@ export default DS.Model.extend({
   gender: DS.attr('', {defaultValue: 'male'}),
   phone: DS.attr(),
   occupation: DS.attr(),
-  language: DS.attr(),
+  languages: DS.attr(),
   wechat: DS.attr(),
-  hobby: DS.attr(),
+  hobbies: DS.attr(),
   description: DS.attr(),
   logo: DS.belongsTo("system/document")
 });

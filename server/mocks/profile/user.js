@@ -23,7 +23,7 @@ module.exports = function(app) {
         country: 'USA',
         phone: '22345678',
         occupation:'Student',
-        hobby: 'Running',
+        hobbies: 'Running',
         logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
       }
     });
@@ -38,7 +38,7 @@ module.exports = function(app) {
         email: 'John@gmail.com',
         gender: 'male',
         country: 'USA',
-        hobby: ["Running", "Football"],
+        hobbies: ["Running", "Football"],
         occupation: 'Clerk',
         logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
       }
