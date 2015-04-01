@@ -12,5 +12,8 @@ export default DS.Model.extend({
   wechat: DS.attr(),
   hobby: DS.attr(),
   description: DS.attr(),
-  logo: DS.belongsTo("system/document")
+  photo: DS.attr(),
+
+  listingsCount: DS.attr(),
+  latestListing: DS.hasMany('listing')
 });
