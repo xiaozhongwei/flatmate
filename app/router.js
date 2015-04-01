@@ -15,11 +15,11 @@ Router.map(function() {
   });
   this.resource("profile", {path: '/profile'}, function () {
     this.route("dashboard", { path: "/dashboard" });
-
     this.route('change-password');
     this.route('photo');
     this.route('edit-profile');
     this.route('listing');
+    this.route('view');
   });
 
 });

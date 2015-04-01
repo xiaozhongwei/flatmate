@@ -2033,6 +2033,8 @@ ul.list_order li span {
 
 /* Margin tools */
 .margin_60 {padding-top:60px; padding-bottom:60px;}
+.margin_25 {padding-top:25px; padding-bottom:25px;}
+
 .margin_30 {margin-top:30px; margin-bottom:30px;}
 
 /* Parallax bg */
