@@ -4,6 +4,7 @@
 import Ember from "ember";
 
 export default Ember.View.extend({
+  templateName: 'header',
   didInsertElement: function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() > 1) {
