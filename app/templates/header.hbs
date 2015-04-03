@@ -7,9 +7,11 @@
                     <ul id="top_links">
                         <li>
                           {{#if session.isAuthenticated}}
-                              <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="AMaze">
-                              <strong>Hi, {{session.user.firstName}}</strong>
-                              <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->
+                            {{#link-to 'profile.dashboard'}}
+                                <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="AMaze">
+                                <strong  style="color:black">Hi, {{session.user.firstName}}</strong>
+                                <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->
+                            {{/link-to}}
                           {{else}}
                               <div class="dropdown dropdown-access">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>

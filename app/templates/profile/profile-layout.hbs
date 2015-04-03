@@ -1,15 +1,4 @@
-<div class="navigation">
-    <div class="container ">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">PROFILE</a></li>
-            <li><a href="#">LISTING</a></li>
-            <li><a href="#">INBOX</a></li>
-            <li><a href="#">WISHLIST</a></li>
-            <li><a href="#">ABOUT</a></li>
-        </ul>
-    </div>
-</div><!-- End Position -->
+{{partial 'navigation'}}
 <div class="container margin_30">
     <div class="row">
 
@@ -25,7 +14,8 @@
             </div><!-- End Search -->
             <div class="box_style_cat">
                 <ul id="cat_nav">
-                    <li>{{#link-to 'profile.edit-profile' id="active"}}<i class="icon_set_1_icon-51"></i>Edit Profile{{/link-to}}</li>
+                    <li>{{#link-to 'profile.dashboard'}}<i class="icon_set_1_icon-50"></i>Dashboard{{/link-to}}</li>
+                    <li>{{#link-to 'profile.edit-profile'}}<i class="icon_set_1_icon-51"></i>Edit Profile{{/link-to}}</li>
                     <li>{{#link-to 'profile.photo'}}<i class="icon_set_1_icon-3"></i>Upload Photo{{/link-to}}</li>
                     <li>{{#link-to 'profile.change-password'}}<i class="icon_set_1_icon-4"></i>Security{{/link-to}}</li>
                     <li><a href="#"><i class="icon_set_1_icon-43"></i>Credit/Debit Cards</a></li>
