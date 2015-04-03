@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     //return this.store.find('profile/user', "1234");
   },
   setupController: function(controller, model) {
-    alert(model.get("id"));
+    //alert(model.get("id"));
     if(Ember.isEmpty(model.get('logo'))){
       model.set('logo',this.store.createRecord('system/document'));
     }

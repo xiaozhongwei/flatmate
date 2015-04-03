@@ -31,6 +31,8 @@ Author URI: http://themeforest.net/user/Ansonika/
 /*============================================================================================*/
 /* 1.  SITE STRUCTURE and TYPOGRAPHY */
 /*============================================================================================*/
+@font-face { font-family: 'Graphik Web'; src: url(/fonts/Graphik-Web-Regular.woff); }
+@font-face { font-family: 'Graphik Web medium'; src: url(/fonts/Graphik-Web-Medium.woff); }
 
 /*-------- Only fo the demo - menu colors bullets --------*/
 i.color_1{color:#e04f67;}
@@ -43,7 +45,7 @@ i.color_4{color:#f7941d;}
 .chromeframe a{color:#ed1c24;}
 
 /*-------- 1.1 Typography --------*/
-body {background:#f9f9f9; font-size:12px; line-height:20px; font-family:'Montserrat', Arial, sans-serif; color:#565a5c;-webkit-font-smoothing: antialiased;}
+body {background:#f9f9f9; font-size:13px; line-height:20px; font-family:'Graphik Web', Arial, sans-serif; color:#565a5c;-webkit-font-smoothing: antialiased;}
 
 h1, h2, h3, h4, h5, h6{-webkit-font-smoothing:antialiased; color:#333;}
 h3{ font-size:22px;}
@@ -844,7 +846,7 @@ video {
 #nav-search-in #nav-search-in-content {
     color:#fff;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
 	text-transform:uppercase;
     height: 45px;
     line-height: 35px;
@@ -1006,7 +1008,7 @@ ul#cat_nav i {
     background: rgba(255, 255, 255, 0.9);
     position: relative;
     z-index: 9999999;
-	font-family:'Montserrat', Arial, sans-serif;
+	font-family:'Graphik Web', Arial, sans-serif;
 }
 .marker_info img {
     display: block;
@@ -1026,7 +1028,7 @@ ul#cat_nav i {
 .marker_info span {
     display: block;
     padding: 0px 20px;
-    font-size: 12px;
+    font-size: 13px;
 	line-height:16px;
 	color:#7a7f82;
 	margin-bottom:15px;
@@ -1824,7 +1826,7 @@ a.bt_filters{
 
 /* Input form style */
 .form-control {
-  font-size: 12px;
+  font-size: 13px;
   color: #333;
   border-radius: 3px;
 }
@@ -2406,7 +2408,7 @@ ul.list_order li span {
 }
 .tooltip-back {
 	background: #e04f67;
-	font-size: 12px;
+	font-size: 13px;
 	line-height:14px;
 	padding-top:25px;
 	-webkit-transform-origin: 0% 50%;
@@ -2436,6 +2438,33 @@ ul.list_order li span {
 	border-top: 10px solid #e64b50;
 	border-right: 10px solid transparent;
 }
+
+.navigation {
+  background-color:#333;
+  padding:10px 0;
+  font-size:13px;
+}
+
+.navigation ul{
+  margin:0;
+  padding:0;
+  color:#888;
+}
+.navigation ul li a{
+  color:#fff;
+  opacity:0.7;
+}
+.navigation ul li a:hover{
+  color:#fff;
+  opacity:1;
+}
+.navigation ul li{
+  display:inline-block;
+  padding-right:30px;
+  margin-right:3px;
+  position:relative;
+}
+
 
 /* Position  breadcrumbs */
 #position {

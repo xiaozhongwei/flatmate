@@ -4,4 +4,15 @@
 .panel{
   border-radius:0;
 }
+.sticky{
+  height:0;
+  padding-top:0;
+}
 
+ul#top_links li{
+  border-left:none;
+  padding-left:15px;
+}
+a.btn_1, .btn_1{
+  border-radius: 0px;
+}

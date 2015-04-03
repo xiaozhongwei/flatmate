@@ -1,13 +1,15 @@
-<header>
-    <div id="top_line">
-        <div class="container">
+<header style="position:inherit;background:white;">
+    <div id="top_line" style="border-bottom:none;font-size:13px">
+        <div class="container" style="color:rgb(51,51,51)">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="col-md-6 col-sm-6 col-xs-6" style="font-size:15px;padding-top:8px"><strong>FlatmateShanghai</strong> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6" >
                     <ul id="top_links">
                         <li>
                           {{#if session.isAuthenticated}}
-                              Hi, {{session.user.firstName}}  <a href="javascript:;" {{ action 'invalidateSession' }} >Logout</a>
+                              <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="AMaze">
+                              <strong>Hi, {{session.user.firstName}}</strong>
+                              <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->
                           {{else}}
                               <div class="dropdown dropdown-access">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
@@ -41,7 +43,8 @@
                               </div><!-- End Dropdown access -->
                           {{/if}}
                         </li>
-                        <li><a href="#" id="wishlist_link">Wishlist</a></li>
+                        <li><a><i class="icon_set_1_icon-84" style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i></a></li>
+                        <li style="margin-left: 33px;margin-right: 0"><a href="#" class="btn_1" style="text-transform: none; background:rgb(0,150,164);">List your Room</a></li>
                     </ul>
                 </div>
             </div><!-- End row -->

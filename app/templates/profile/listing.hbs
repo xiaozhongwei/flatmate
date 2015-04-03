@@ -1,82 +1,101 @@
-{{#view 'profile/profile-layout'}}
-    <style>
-        .bg-red {
-            color: #fff;
-            border-color: #cf4436;
-            background: #e74c3c;
-        }
+<div class="navigation">
+    <div class="container ">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">PROFILE</a></li>
+            <li><a href="#">LISTING</a></li>
+            <li><a href="#">INBOX</a></li>
+            <li><a href="#">WISHLIST</a></li>
+            <li><a href="#">ABOUT</a></li>
+        </ul>
+    </div>
+</div><!-- End Position -->
+<style>
+    .bg-red {
+        color: #fff;
+        border-color: #cf4436;
+        background: #e74c3c;
+    }
 
-        .bg-green {
-            color: #fff;
-            border-color: #008000;
-            background: #008000;
-        }
+    .bg-green {
+        color: #fff;
+        border-color: #008000;
+        background: #008000;
+    }
 
-        .status-badge {
-            position: relative;
-            display: inline-block;
-        }
-        .small-badge{
-            float:right;
-            margin-top:26px;
-        }
+    .status-badge {
+        position: relative;
+        display: inline-block;
+    }
+    .small-badge{
+        float:right;
+        margin-top:26px;
+    }
 
-        .status-badge .small-badge {
-            position: absolute;
-            right: 1px;
-            bottom: 1px;
-        }
-        .small-badge {
-            overflow: hidden;
-            width: 15px;
-            height: 15px;
-            padding: 0;
-            border: #fff solid 2px !important;
-            border-radius: 20px;
-        }
-    </style>
-    <ul class="booking-list booking-list-wishlist">
-      {{#each house in content}}
-          <li>
+    .status-badge .small-badge {
+        position: absolute;
+        right: 1px;
+        bottom: 1px;
+    }
+    .small-badge {
+        overflow: hidden;
+        width: 15px;
+        height: 15px;
+        padding: 0;
+        border: #fff solid 2px !important;
+        border-radius: 20px;
+    }
+</style>
+<div class="container margin_30">
+    <div class="row">
+        <aside class="col-lg-3 col-md-3">
+        </aside>
+        <div class="col-md-9">
+            <ul class="booking-list booking-list-wishlist">
+              {{#each house in content}}
+                  <li>
             <span class="booking-item-wishlist-title">
                 <i class="fa fa-home"></i> {{house.name}} <span >{{house.bedrooms}} bedrooms {{house.bedrooms}} bathrooms {{house.livingRooms}} livingRooms</span>
             </span>
-              <a class="fa fa-times booking-item-wishlist-remove" href="javascript:;" title="remove the group"></a>
-              <div class="booking-item">
-                {{#each listing in house.listings}}
-                    <div class="row">
-                        <div class="col-md-2">
-                          {{#if listing.coverPhoto}}
-                              <img {{bind-attr src=listing.coverPhoto.downloadFilePath}} alt="Image Alternative text" title="cover photo" />
-                          {{else}}
-                              <img src="images/user_pic_225x225.png" alt="Image Alternative text" title="cover photo" />
-                          {{/if}}
-                        </div>
-                        <div class="col-md-7">
-                            <h5 class="booking-item-title">{{listing.title}}</h5>
-                            <p class="booking-item-description" style="color:#ed8323;font-size:17px;">
-                              {{#link-to 'listing.manage' listing.id}}management your listing...{{/link-to}}
-                            </p>
-                        </div>
-                        <div class="col-md-3" style="padding-top:15px;">
+                      <a class="fa fa-times booking-item-wishlist-remove" href="javascript:;" title="remove the group"></a>
+                      <div class="booking-item">
+                        {{#each listing in house.listings}}
+                            <div class="row">
+                                <div class="col-md-2">
+                                  {{#if listing.coverPhoto}}
+                                      <img {{bind-attr src=listing.coverPhoto.downloadFilePath}} alt="Image Alternative text" title="cover photo" />
+                                  {{else}}
+                                      <img src="images/user_pic_225x225.png" alt="Image Alternative text" title="cover photo" />
+                                  {{/if}}
+                                </div>
+                                <div class="col-md-7">
+                                    <h5 class="booking-item-title">{{listing.title}}</h5>
+                                    <p class="booking-item-description" style="color:#ed8323;font-size:17px;">
+                                      {{#link-to 'listing.manage' listing.id}}management your listing...{{/link-to}}
+                                    </p>
+                                </div>
+                                <div class="col-md-3" style="padding-top:15px;">
                         <span class="booking-item-price" style="color:#008000;font-size:25px;margin-top:15px;">
                             <select class="form-control">
                                 <option>Have rental</option>
                             </select>
                        </span>
-                            <span><div class="small-badge bg-red"></div></span>
-                        </div>
-                    </div>
-                    <hr>
-                {{/each}}
-              </div>
-          </li>
-      {{/each}}
-        <hr style="border-top-style:dashed">
-    </ul>
-    <div class="row">
-        <div class="col-md-12">
-          {{pagination-pager current=page count=totalPage}}
+                                    <span><div class="small-badge bg-red"></div></span>
+                                </div>
+                            </div>
+                            <hr>
+                        {{/each}}
+                      </div>
+                  </li>
+              {{/each}}
+                <hr style="border-top-style:dashed">
+            </ul>
+            <div class="row">
+                <div class="col-md-12">
+                  {{pagination-pager current=page count=totalPage}}
+                </div>
+            </div>
         </div>
     </div>
-{{/view}}
+</div>
+

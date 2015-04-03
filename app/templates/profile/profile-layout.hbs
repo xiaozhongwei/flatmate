@@ -1,49 +1,40 @@
-<section class="parallax-window" style="min-height:270px;" data-parallax="scroll" data-image-src="/images/bg_blog.jpg" data-natural-width="1400" data-natural-height="270">
-    <div class="parallax-content-1" style="height:270px;">
-        <div class="animated fadeInDown">
-            <h1>Tour Blog</h1>
-            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p></div>
-    </div>
-</section><!-- End section -->
-
-<div id="position">
-    <div class="container">
+<div class="navigation">
+    <div class="container ">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Category</a></li>
-            <li>Page active</li>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">PROFILE</a></li>
+            <li><a href="#">LISTING</a></li>
+            <li><a href="#">INBOX</a></li>
+            <li><a href="#">WISHLIST</a></li>
+            <li><a href="#">ABOUT</a></li>
         </ul>
     </div>
-</div><!-- End position -->
-
-<div class="container margin_60">
+</div><!-- End Position -->
+<div class="container margin_30">
     <div class="row">
-        <aside class="col-md-3 add_bottom_30">
 
+        <aside class="col-lg-3 col-md-3">
             <div class="widget">
                 <div id="tour_guide">
-                    <p>
-                        <img src="/images/testimonial_1.jpg" alt="" class="img-circle styled">
+                    <p style="margin-bottom: 10px;">
+                        <img src="/images/amaze_300x300.jpg" alt="" style="width:170px;" class="img-circle styled">
                     </p>
+                    <h5 style="margin:5px 0;font-weight:bold">John Doe</h5>
+                    <p>Member Since May 2012</p>
                 </div>
             </div><!-- End Search -->
-
-            <hr>
-
-            <div class="widget" id="cat_blog">
-                <h4>Profile Management</h4>
-                <ul>
-                    <li>{{#link-to 'profile.dashboard'}}Dashboard{{/link-to}}</li>
-                    <li>{{#link-to 'profile.edit-profile'}}Edit Profile{{/link-to}}</li>
-                    <li>{{#link-to 'profile.photo'}}Upload Photo{{/link-to}}</li>
-                    <li>{{#link-to 'profile.change-password'}}Security{{/link-to}}</li>
-                    <li>{{#link-to 'profile.listing'}}Listing{{/link-to}}</li>
-                    <li><a href="#">Credit/Debit Cards</a></li>
-                    <li><a href="#">Wishlist</a></li>
+            <div class="box_style_cat">
+                <ul id="cat_nav">
+                    <li>{{#link-to 'profile.edit-profile' id="active"}}<i class="icon_set_1_icon-51"></i>Edit Profile{{/link-to}}</li>
+                    <li>{{#link-to 'profile.photo'}}<i class="icon_set_1_icon-3"></i>Upload Photo{{/link-to}}</li>
+                    <li>{{#link-to 'profile.change-password'}}<i class="icon_set_1_icon-4"></i>Security{{/link-to}}</li>
+                    <li><a href="#"><i class="icon_set_1_icon-43"></i>Credit/Debit Cards</a></li>
                 </ul>
-            </div><!-- End widget -->
-
-        </aside><!-- End aside -->
+            </div>
+            <p>
+                <a class="btn_map" href="/#/profile/view">View Profile</a>
+            </p>
+        </aside>
 
         <div class="col-md-9">
 

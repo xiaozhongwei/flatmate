@@ -22,6 +22,7 @@ Router.map(function() {
     this.route('view');
   });
 
+  this.route('about');
 });
 
 export default Router;

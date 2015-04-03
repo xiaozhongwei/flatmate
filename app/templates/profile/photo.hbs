@@ -5,9 +5,9 @@
                 <div id="tour_guide">
                     <p>
                       {{#if model.logo.id}}
-                          <img {{bind-attr src=model.logo.downloadFilePath}} alt="" class="img-circle styled"/>
+                          <img {{bind-attr src=model.logo.downloadFilePath}} alt="" style="width: 200px;" class="img-circle styled"/>
                       {{else}}
-                          <img src="images/testimonial_1.jpg" alt="" class="img-circle styled"/>
+                          <img src="images/testimonial_1.jpg" style="width: 200px;" alt="" class="img-circle styled"/>
                       {{/if}}
                     </p>
                 </div>
@@ -18,8 +18,7 @@
             <div class="fileinput">
                 <div class="input-group">
                     <span class="btn btn-file" style=" padding-left: 0;">
-                      <span><input type="submit" class="btn btn-primary" value="Upload a photo from your computer"></span>
-                      {{em-file-field name="logo" url=uploadUrl document=model.logo}}
+                      <span>{{em-file-field name="logo" class="btn btn-primary" url=uploadUrl document=model.logo}}</span>
                     </span>
                 </div>
             </div>
