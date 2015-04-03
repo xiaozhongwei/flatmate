@@ -16,3 +16,7 @@ ul#top_links li{
 a.btn_1, .btn_1{
   border-radius: 0px;
 }
+.btn-blue{
+  text-transform: none !important;
+  background: rgb(0,150,163) !important;
+}
