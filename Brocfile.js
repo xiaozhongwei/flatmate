@@ -34,6 +34,8 @@ var respond = pickFiles('bower_components/respond/dest', {
 var bootstrap = pickFiles('bower_components/bootstrap/dist/css/', {
   srcDir: '/',files: ['**/bootstrap.min.css'],destDir: '/assets'
 });
+app.import('bower_components/Modernizr/modernizr.js');
+
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/select2-bootstrap-css/select2-bootstrap.css');
 
@@ -50,6 +52,7 @@ var sliderPro = pickFiles('bower_components/slider-pro/dist/css/images', {
   files: ['**/*.*'],
   destDir: '/images/sliderPro'
 });
+
 
 //fontello
 app.import('vendor/fontello/css/icon_set_1.css');
