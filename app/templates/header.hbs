@@ -46,7 +46,10 @@
                           {{/if}}
                         </li>
                         <li><a><i class="icon_set_1_icon-84" style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i></a></li>
-                        <li style="margin-left: 33px;margin-right: 0"><a href="#" class="btn_1" style="text-transform: none; background:rgb(0,150,164);">List your Room</a></li>
+                        <li style="margin-left: 33px;margin-right: 0">
+                          {{#link-to 'listing.add' class="btn_1" style="text-transform: none; background:rgb(0,150,164);"}}
+                              List your Room
+                          {{/link-to}}</li>
                     </ul>
                 </div>
             </div><!-- End row -->
