@@ -37,54 +37,168 @@
 </style>
 <div class="container margin_30">
     <div class="row">
-        <aside class="col-lg-3 col-md-3">
+        <aside class="col-lg-2 col-md-2">
+            <div class="box_style_cat">
+                <ul id="cat_nav">
+                    <li><a href="#" id="active"><i class="icon_set_1_icon-64"></i>All tours <span>(141)</span></a></li>
+                    <li><a href="#"><i class=" icon_set_1_icon-76"></i>Listed<span>(20)</span></a></li>
+                    <li><a href="#"><i class=" icon_set_1_icon-74"></i>Unlisted<span>(16)</span></a></li>
+                </ul>
+            </div>
         </aside>
-        <div class="col-md-9">
-            <ul class="booking-list booking-list-wishlist">
-              {{#each house in content}}
-                  <li>
-            <span class="booking-item-wishlist-title">
-                <i class="fa fa-home"></i> {{house.name}} <span >{{house.bedrooms}} bedrooms {{house.bedrooms}} bathrooms {{house.livingRooms}} livingRooms</span>
-            </span>
-                      <a class="fa fa-times booking-item-wishlist-remove" href="javascript:;" title="remove the group"></a>
-                      <div class="booking-item">
-                        {{#each listing in house.listings}}
+        <div class="col-md-10">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Anim pariatur cliche reprehenderit?<i class="indicator icon-up-open-2 pull-right"></i></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-2">
-                                  {{#if listing.coverPhoto}}
-                                      <img {{bind-attr src=listing.coverPhoto.downloadFilePath}} alt="Image Alternative text" title="cover photo" />
-                                  {{else}}
-                                      <img src="images/user_pic_225x225.png" alt="Image Alternative text" title="cover photo" />
-                                  {{/if}}
+                                <div class="col-lg-1 col-md-1 col-sm-1">
+                                    <span class="radius-number">A</span>
                                 </div>
-                                <div class="col-md-7">
-                                    <h5 class="booking-item-title">{{listing.title}}</h5>
-                                    <p class="booking-item-description" style="color:#ed8323;font-size:17px;">
-                                      {{#link-to 'listing.manage' listing.id}}management your listing...{{/link-to}}
-                                    </p>
+                                <div class="col-lg-3 col-md-3 col-sm-3" style=" padding-left: 0px;">
+                                    <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
                                 </div>
-                                <div class="col-md-3" style="padding-top:15px;">
-                        <span class="booking-item-price" style="color:#008000;font-size:25px;margin-top:15px;">
-                            <select class="form-control">
-                                <option>Have rental</option>
-                            </select>
-                       </span>
-                                    <span><div class="small-badge bg-red"></div></span>
+                                <div class="clearfix visible-xs-block"></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6" style=" padding-left: 0px;">
+                                    <div class="tour_list_desc" style="padding-top:20px;height: 110px;">
+                                        <h3><strong>Arch Triomphe</strong> tour</h3>
+                                        <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" style=" padding-right: 0px;padding-top: 35px;">
+                                    <select class="form-control">
+                                        <option value="English" selected="">English</option>
+                                        <option value="French">French</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Russian">Russian</option>
+                                    </select>
                                 </div>
                             </div>
                             <hr>
-                        {{/each}}
-                      </div>
-                  </li>
-              {{/each}}
-                <hr style="border-top-style:dashed">
-            </ul>
-            <div class="row">
-                <div class="col-md-12">
-                  {{pagination-pager current=page count=totalPage}}
+                            <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1">
+                                    <span class="radius-number">B</span>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3" style=" padding-left: 0px;">
+                                    <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
+                                </div>
+                                <div class="clearfix visible-xs-block"></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6" style=" padding-left: 0px;">
+                                    <div class="tour_list_desc" style="padding-top:20px;height: 110px;">
+                                        <h3><strong>Arch Triomphe</strong> tour</h3>
+                                        <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" style=" padding-right: 0px;padding-top: 35px;">
+                                    <select class="form-control">
+                                        <option value="English" selected="">English</option>
+                                        <option value="French">French</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Russian">Russian</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-1">
+                                    <span class="radius-number">C</span>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3" style=" padding-left: 0px;">
+                                    <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
+                                </div>
+                                <div class="clearfix visible-xs-block"></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6" style=" padding-left: 0px;">
+                                    <div class="tour_list_desc" style="padding-top:20px;height: 110px;">
+                                        <h3><strong>Arch Triomphe</strong> tour</h3>
+                                        <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2" style=" padding-right: 0px;padding-top: 35px;">
+                                    <select class="form-control">
+                                        <option value="English" selected="">English</option>
+                                        <option value="French">French</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Russian">Russian</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title" style="color:rgb(202,202,202)">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Parsnip lotus root celery?<i class="indicator  icon-down-open-2 pull-right"></i></a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title" style="color:rgb(202,202,202)">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Beet greens peanut salad?<i class="indicator  icon-down-open-2 pull-right"></i></a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+<style>
+    .panel-heading{
+        padding-top:17px;
+        padding-bottom:17px;
+    }
+    .img_list a img{
+        height:120px;
+    }
+    .img_list{
+        min-height:120px;
+    }
+    .img_list img{
+        height:120px;
+    }
+    .radius-number{
+        background-color:rgb(113,113,113);
+        text-align:center;
+        width:40px;
+        height:40px;
+        margin-top:35px;
+        display:inline-block;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        color:#fff;
+        font-size:18px;
+        line-height:40px;
+        text-align:center;
+        /* position:absolute; */
+        left:0;
+        top:0;
+    }
+    .panel-collapse .col-lg-3 {
+        width:22%;
+    }
+    .panel-collapse .col-md-3 {
+        width:22%;
+    }
+    .panel-collapse .col-sm-3 {
+        width:22%;
+    }
+</style>
