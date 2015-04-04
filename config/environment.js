@@ -43,6 +43,7 @@ module.exports = function(environment) {
   }
 
   ENV['simple-auth'] = {
+    authenticationRoute: 'index',
     crossOriginWhitelist: ['*'],
     authorizer: 'simple-auth-authorizer:oauth2-bearer'
   };

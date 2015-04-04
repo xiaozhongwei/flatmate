@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Notify from 'ember-notify';
+import LanguageMapping from 'flatmate/transforms/language';
 import OccupationMapping from 'flatmate/transforms/occupation';
 import HobbyMapping from 'flatmate/transforms/hobby';
 
@@ -15,6 +16,7 @@ export default Ember.Controller.extend({
     }
   },
 
+  languageMapping: LanguageMapping.create({}).get("mapping"),
   occupationMapping: OccupationMapping.create({}).get("mapping"),
   hobbyMapping: HobbyMapping.create({}).get("mapping")
 
