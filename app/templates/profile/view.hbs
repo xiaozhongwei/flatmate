@@ -1,15 +1,3 @@
-<div class="navigation">
-    <div class="container ">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">PROFILE</a></li>
-            <li><a href="#">LISTING</a></li>
-            <li><a href="#">INBOX</a></li>
-            <li><a href="#">WISHLIST</a></li>
-            <li><a href="#">ABOUT</a></li>
-        </ul>
-    </div>
-</div><!-- End Position -->
 <div class="white_bg">
     <div class=" container" style="padding-top:25px; padding-bottom:15px;">
         <div class="row">
@@ -17,17 +5,22 @@
                 <div class="widget">
                     <div id="tour_guide">
                         <p>
-                            <img src="/images/testimonial_1.jpg" alt="" style="width:180px;float:left" class="img-circle styled">
+                          {{#if model.photo}}
+                              <img src={{model.photo}} alt="" style="width:180px;float:left" class="img-circle styled"/>
+                          {{else}}
+                              <img src="/images/testimonial_1.jpg" alt="" style="width:180px;float:left" class="img-circle styled">
+                          {{/if}}
                         </p>
                     </div>
                 </div><!-- End Search -->
             </div>
             <div class="col-md-10" style="padding-left:20px;">
-                <h1>Liu Xiao Jie</h1>
+                <h1>{{model.firstName}} {{model.lastName}}</h1>
                 <h5>Member Since May 2014</h5>
-                <h4  style="margin-top:45px;margin-bottom: 5px;">USA</h4>
-                <h4  style="  margin-top: 5px; margin-bottom: 5px;">Specialist</h4>
-                <h4 style="  margin-top: 5px; margin-bottom: 5px;">Guy</h4>
+                <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
+                <h4  style="margin-top:45px;margin-bottom: 5px;">{{model.country}}</h4>
+                <h4  style="  margin-top: 5px; margin-bottom: 5px;">{{model.occupation}}</h4>
+                <h4 style="  margin-top: 5px; margin-bottom: 5px;">{{model.gender}}</h4>
             </div>
         </div>
     </div>
@@ -42,7 +35,7 @@
     <div class="row">
         <div class="col-md-7 col-md-offset-2" style="padding-right:20px;padding-left:20px;">
             <h3>About Me</h3>
-            <p style="margin-top:30px;font-size: 14px;line-height: 1.6;">In the heart of the most romanticised Shanghai neighbourhood, our Yongkang studio is tucked quietly at the end of an authentic Shanghainese lane community, just steps away from the vibrant energy of Yongkang Road in the former French Qtr.</p>
+            <p style="margin-top:30px;font-size: 14px;line-height: 1.6;">{{model.description}}</p>
             <hr style="margin-top:40px;margin-bottom:40px;">
             <table>
                 <thead>
@@ -57,7 +50,7 @@
                         E-Mail
                     </td>
                     <td >
-                        liuxiaojie@qq.com
+                        {{model.email}}
                     </td>
                 </tr>
                 <tr>
@@ -65,7 +58,7 @@
                         Phone Number
                     </td>
                     <td >
-                        +86 1378888888
+                        {{model.phone}}
                     </td>
                 </tr>
                 <tr>
@@ -73,16 +66,19 @@
                         WeChart
                     </td>
                     <td >
-                        Appleseed
+                        {{model.wechat}}
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <aside class="col-md-3">
-            <h3 style="margin-bottom:30px;">Listing (1)</h3>
-            <img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">
-            <a>View all Listings</a>
-        </aside>
+        {{#if model.listingsCount}}
+            <aside class="col-md-3">
+                <h3 style="margin-bottom:30px;">Listing ({{model.listingsCount}})</h3>
+                <img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">
+                <a>View all Listings</a>
+            </aside>
+        {{/if}}
+
     </div>
 </div>

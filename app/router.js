@@ -23,6 +23,11 @@ Router.map(function() {
   });
 
   this.route('about');
+
+  this.route('house', function() {
+    this.route('list');
+    this.route('add');
+  });
 });
 
 export default Router;

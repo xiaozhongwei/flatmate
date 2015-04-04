@@ -8,11 +8,16 @@ export default Ember.Controller.extend({
   _profileTitle:"Edit Profile",
   actions: {
     save: function(model){
-      model.save().then($.proxy(function(listing) {
-        Notify.info('保存成功');
-      }, this), function() {
-        Ember.Logger.error("保存房源时发生错误。");
-      });
+      if (model.get('isValid')) {
+        model.save().then($.proxy(function(user) {
+          Notify.info('保存成功');
+        }, this), function() {
+          Ember.Logger.error("保存时发生错误。");
+        });
+      }
+      else {
+        Notify.error("当前数据验证错误，请检查错误后再进行尝试!");
+      }
     }
   },
 
