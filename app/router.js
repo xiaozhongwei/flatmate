@@ -23,6 +23,10 @@ Router.map(function() {
   });
 
   this.route('about');
+  this.route('inbox', function() {
+    this.route('list');
+    this.route('detail');
+  });
 
   this.route('house', function() {
     this.route('list');
