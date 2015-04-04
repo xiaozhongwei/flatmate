@@ -6,11 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('about');
+
   this.resource("listing", {path: '/listing'}, function () {
     this.route("list", { path: "/list" });
     this.route('detail', { path: "/detail/:listing_id" });
-    this.route('add');
-    this.route('manage', {path: "/manage/:house_id"});
     this.route('book');
   });
   this.resource("profile", {path: '/profile'}, function () {
@@ -18,11 +18,9 @@ Router.map(function() {
     this.route('change-password');
     this.route('photo');
     this.route('edit-profile');
-    this.route('listing');
     this.route('view');
   });
 
-  this.route('about');
   this.route('inbox', function() {
     this.route('list');
     this.route('detail');
@@ -31,6 +29,7 @@ Router.map(function() {
   this.route('house', function() {
     this.route('list');
     this.route('add');
+    this.route('manage',{path: "/manage/:house_id"});
   });
 });
 
