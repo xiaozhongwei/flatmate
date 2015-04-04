@@ -24,7 +24,7 @@ module.exports = function(app) {
         phone: '22345678',
         occupation:'Student',
         hobbies: 'Running',
-        logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
+        logo: {id: "11111111", downloadFilePath: 'images/LISA_100.jpg'}
       }
     });
   });
@@ -40,7 +40,7 @@ module.exports = function(app) {
         country: 'USA',
         hobbies: ["Running", "Football"],
         occupation: 'Clerk',
-        logo: {id: "11111111", downloadFilePath: 'images/amaze_300x300.jpg'}
+        logo: {id: "11111111", downloadFilePath: 'images/LISA_100.jpg'}
       }
     });
   });

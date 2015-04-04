@@ -24,7 +24,7 @@ module.exports = function(app) {
         languages: ["English", "Chinese"],
         hobbies: ["Running", "Football"],
         occupation: 'Clerk',
-        photo: 'images/amaze_300x300.jpg',
+        photo: 'images/LISA_100.jpg',
         description: 'Hello, I‘m Lisa, a young girl living and working in Shanghai. I am outgoing and friendly, fond of people, traveling & food :) I worked as a Skincare Shop Manager before starting the "hosting idea" in 2012.',
         listingsCount: 3,
         latestListing: {

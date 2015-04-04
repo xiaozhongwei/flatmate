@@ -10,7 +10,11 @@
                         <li>
                           {{#if session.isAuthenticated}}
                             {{#link-to 'profile.dashboard'}}
-                                <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="AMaze">
+                              {{#if session.user.logo.id}}
+                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+                              {{else}}
+                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="Please Upload">
+                              {{/if}}
                                 <strong  style="color:black">Hi, {{session.user.firstName}}</strong>
                                 <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->
                             {{/link-to}}

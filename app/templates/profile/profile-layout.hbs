@@ -5,9 +5,13 @@
             <div class="widget">
                 <div id="tour_guide">
                     <p style="margin-bottom: 10px;">
-                        <img src="/images/amaze_300x300.jpg" alt="" style="width:170px;" class="img-circle styled">
+                      {{#if model.logo.id}}
+                          <img {{bind-attr src=model.logo.downloadFilePath}} alt="" style="width:170px;" class="img-circle styled"/>
+                      {{else}}
+                          <img src="/images/amaze_300x300.jpg" alt="" style="width:170px;" class="img-circle styled">
+                      {{/if}}
                     </p>
-                    <h5 style="margin:5px 0;font-weight:bold">John Doe</h5>
+                    <h5 style="margin:5px 0;font-weight:bold">{{model.firstName}}</h5>
                     <p>Member Since May 2012</p>
                 </div>
             </div><!-- End Search -->
