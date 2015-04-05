@@ -1,4 +1,3 @@
-{{partial 'navigation'}}
 <div class="white_bg">
     <div class="container margin_60">
         <div class="row">
@@ -6,9 +5,13 @@
                 <div class="widget">
                     <div id="tour_guide">
                         <p style="margin-bottom: 10px;">
-                            <img src="/images/amaze_300x300.jpg" alt="" style="width:170px;" class="img-circle styled">
+                            {{#if currentUser.logo.id}}
+                                <img {{bind-attr src=currentUser.logo.downloadFilePath}} alt="" style="width: 170px;" class="img-circle styled"/>
+                            {{else}}
+                                <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
+                            {{/if}}
                         </p>
-                        <h5 style="margin:5px 0;font-weight:bold">John Doe</h5>
+                        <h5 style="margin:5px 0;font-weight:bold">{{currentUser.fullName}}</h5>
                         <p>Member Since May 2012</p>
                     </div>
                 </div><!-- End Search -->
@@ -26,10 +29,29 @@
             </aside>
 
             <div class="col-md-9 ">
-                <div class="message-list-overlay"></div>
-
                 <ul class="list-material message-list" style="border:1px solid rgb(225,225,225)">
-                    <li class="has-action-left has-action-right ">
+                  {{#each message in model}}
+                      <li class="has-action-left has-action-right">
+                        {{#link-to 'inbox.detail' message.id class="visible" }}
+                            <div class="list-action-left">
+                                {{#if message.speakerPhoto}}
+                                    <img src="{{message.speakerPhoto}}" class="face-radius" title="{{message.speakerName}}">
+                                {{else}}
+                                    <img src="/images/user_unknown.png" class="face-radius" >
+                                {{/if}}
+                            </div>
+                            <div class="list-content">
+                                <span class="title">Want: {{message.listingTitle}}</span>
+                                <span class="caption">{{message.lastContent}}</span>
+                            </div>
+                            <div class="list-action-right">
+                                <span class="top"><strong>{{message.speakerName}}</strong></span>
+                                <span class="bottom">{{ago message.lastUpdateTime}}</span>
+                            </div>
+                        {{/link-to}}
+                      </li>
+                  {{/each}}
+                    <!--<li class="has-action-left has-action-right">
                       {{#link-to 'inbox.detail' class="visible" }}
                           <div class="list-action-left">
                               <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
@@ -103,18 +125,11 @@
                                 <i class=" icon_set_1_icon-76 bottom"></i>
                             </div>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
                 <div class="text-right">
-                    <ul class="pagination">
-                        <li><a href="#">Prev</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul></div>
+                  {{pagination-pager current=page count=totalPage}}
+                </div>
             </div><!-- End col-md-9-->
         </div><!-- End row-->
     </div><!-- End container -->
@@ -148,7 +163,7 @@
     }
     .list-action-right {
         right: 30px;
-        width: 75px;
+        width: 150px;
         color: rgba(0, 0, 0, 0.3);
     }
     .list-material {
@@ -270,7 +285,7 @@
         top: 0%;
         right: 16px;
         padding: 0;
-        width: 70px;
+        width: 150px;
         height: 100%;
         text-align: right;
         font-size: 12px;

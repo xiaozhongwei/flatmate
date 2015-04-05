@@ -36,7 +36,7 @@ export default DS.Model.extend({
     return this.get('status') === 1;
   }),
 
-  coverPhoto: Ember.computed('status',function () {
+  coverPhoto: Ember.computed('photos',function () {
     return this.get('photos').find(function (item, index, enumerable) {
       if (item.get('index') == 0) {
         return true;

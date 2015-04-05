@@ -1,31 +1,51 @@
-{{partial 'navigation'}}
-<div class="white_bg margin_60"  style="padding-top:20px">
+<div class="white_bg margin_60" style="padding-top:20px">
     <div class="container ">
         <div class="row">
             <div class="col-md-9 " style="padding-right:60px;">
-                <h3 style="margin-bottom:20px;">Conversation with <strong>Wang Feng</strong> on <strong>Nice Room in JingAn</strong></h3>
-                <form action="#" method="post">
+                <h3 style="margin-bottom:20px;">Conversation with <strong>{{model.speakerName}}</strong> on
+                    <strong>{{model.listingTitle}}</strong></h3>
+
+                <form {{action 'saveMessage' on='submit'}}>
                     <div class="form-group">
-                        <textarea name="message" class="form-control style_2" style="height:120px;" placeholder="Message"></textarea>
+                      {{textarea class="form-control style_2" placeholder="please write your message here" rows="6" value=newMessageContent}}
                     </div>
                     <div class="form-group text-right">
-                        <input type="submit" style="background: rgb(0,150,163);padding-top:15px;padding-bottom:15px;" class="btn_1" value="Sent message">
+                        <input type="submit" style="background: rgb(0,150,163);padding-top:15px;padding-bottom:15px;"
+                               class="btn_1" value="Sent message">
                     </div>
                 </form>
-              <hr style="margin-bottom: 0">
+                <hr style="margin-bottom: 0">
                 <div class="message-send-container">
 
-                    <div class="messages" style="height: calc(100% - 89px);"><div class="message left">
-                        <div class="message-text">Hello!</div>
-                        <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
-                    </div>
+
+                    <div class="messages" style="height: calc(100% - 89px);">
+                      {{#each messageRecord in model.records}}
+                          <div class="message {{if messageRecord.isSender 'right' 'left'}}">
+                            <div class="message-text">{{messageRecord.content}}</div>
+                            {{#if messageRecord.senderPhoto}}
+                                <img src="{{messageRecord.senderPhoto}}" class="user-picture" title="{{messageRecord.senderName}}">
+                            {{else}}
+                                <img src="/images/user_unknown.png" class="user-picture" title="{{messageRecord.senderName}}" >
+                            {{/if}}
+                          </div>
+                      {{/each}}
+
+                        <!--<div class="message left">
+                            <div class="message-text">Hello!</div>
+                            <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
+                        </div>
                         <div class="message right">
                             <div class="message-text">Hi!</div>
-                            <div class="message-text">Credibly innovate granular internal or "organic" sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences.</div>
+                            <div class="message-text">Credibly innovate granular internal or "organic" sources whereas
+                                high standards in web-readiness. Energistically scale future-proof core competencies
+                                vis-a-vis impactful experiences.
+                            </div>
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
                         </div>
                         <div class="message left">
-                            <div class="message-text">Dramatically synthesize integrated schemas with optimal networks.</div>
+                            <div class="message-text">Dramatically synthesize integrated schemas with optimal
+                                networks.
+                            </div>
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
                         </div>
                         <div class="message right">
@@ -33,24 +53,41 @@
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
                         </div>
                         <div class="message left">
-                            <div class="message-text">Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</div>
-                            <div class="message-text">Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.</div>
+                            <div class="message-text">Globally incubate standards compliant channels before scalable
+                                benefits. Quickly disseminate superior deliverables whereas web-enabled applications.
+                                Quickly drive clicks-and-mortar catalysts for change before vertical architectures.
+                            </div>
+                            <div class="message-text">Credibly reintermediate backend ideas for cross-platform models.
+                                Continually reintermediate integrated processes through technically sound intellectual
+                                capital. Holistically foster superior methodologies without market-driven best
+                                practices.
+                            </div>
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
                         </div>
                         <div class="message right">
-                            <div class="message-text">Distinctively exploit optimal alignments for intuitive bandwidth</div>
+                            <div class="message-text">Distinctively exploit optimal alignments for intuitive bandwidth
+                            </div>
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
                         </div>
                         <div class="message left">
                             <div class="message-text">Quickly coordinate e-business applications through</div>
                             <img src="/images/amaze_300x300.jpg" class="user-picture" alt="">
-                        </div></div><!--.messages-->
+                        </div>-->
+                    </div>
+                    <!--.messages-->
                 </div>
             </div>
             <aside class="col-lg-3 col-md-3" style="padding-top:63px;">
                 <div class="feature" style="padding-right: 0px; padding-left: 0px;text-align: center;">
-                    <img src="/images/amaze_300x300.jpg" style="border-radius:50%;width: 120px;" class="user-picture" alt="">
-                    <h5 style="margin:5px 0;font-weight:bold">John Doe</h5>
+                  {{#if model.speakerPhoto}}
+                      <img src="{{model.speakerPhoto}}" style="border-radius:50%;width: 120px;" class="user-picture"
+                           alt="">
+                  {{else}}
+                      <img src="/images/user_unknown.png" style="border-radius:50%;width: 120px;" class="user-picture"
+                           alt="">
+                  {{/if}}
+                    <h5 style="margin:5px 0;font-weight:bold">{{model.speakerName}}</h5>
+
                     <p>Member Since May 2012</p>
                 </div>
 
@@ -58,9 +95,10 @@
                     <div class="img_container">
                         <a href="single_tour.html">
                             <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                            <div class="ribbon top_rated"></div>
+                            <!--<div class="ribbon top_rated"></div>-->
                             <div class="short_info">
-                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span
+                                    class="price"><sup>$</sup>45</span>
                             </div>
                         </a>
                     </div>
@@ -70,30 +108,34 @@
                             <li>Size, m2<span>14</span></li>
                             <li>Price ￥<span>8000</span></li>
                         </ul>
-                      <div style="clear:both"></div>
+                        <div style="clear:both"></div>
                         <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
                         <h3 style="text-transform:none;font-weight:bold;">Nice room at Yonkang Lu</h3>
-                        <p style="min-height:80px;">French Concession</p><ul class="add_info">
-                        <li>
-                            <div class="tooltip_styled tooltip-effect-4">
-                                <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
-                                <div class="tooltip-content"><h4>Schedule</h4>
-                                    <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
-                                    <strong>Saturday</strong> 09.00 AM - 5.30 PM<br>
-                                    <strong>Sunday</strong> <span class="label label-danger">Closed</span>
+
+                        <p style="min-height:80px;">French Concession</p>
+                        <ul class="add_info">
+                            <li>
+                                <div class="tooltip_styled tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
+
+                                    <div class="tooltip-content"><h4>Schedule</h4>
+                                        <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
+                                        <strong>Saturday</strong> 09.00 AM - 5.30 PM<br>
+                                        <strong>Sunday</strong> <span class="label label-danger">Closed</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tooltip_styled tooltip-effect-4">
-                                <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
-                                <div class="tooltip-content"><h4>Address</h4>
-                                    Musée du Louvre, 75058 Paris - France<br>
-                                    <a href="#">View on map</a>
+                            </li>
+                            <li>
+                                <div class="tooltip_styled tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
+
+                                    <div class="tooltip-content"><h4>Address</h4>
+                                        Musée du Louvre, 75058 Paris - France<br>
+                                        <a href="#">View on map</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -105,31 +147,35 @@
     ul.stats {
         list-style-type: none;
     }
+
     ul.stats li {
-        width:33.33333333%;
+        width: 33.33333333%;
         text-align: left;
-        float:left;
+        float: left;
         font-size: 10px;
         line-height: 10px;
         color: #999;
         /*border-left: 1px solid #e8e8e8;*/
         /*padding: 11px 0;*/
     }
+
     ul.stats li span {
         display: block;
         font-size: 28px;
         line-height: 1.4;
-        color: rgb(74,74,74);
+        color: rgb(74, 74, 74);
     }
 
     .messages {
         padding: 15px;
     }
+
     .messages .message {
         position: relative;
         margin: 10px 0;
         overflow: hidden;
     }
+
     .messages .message .user-picture {
         position: absolute;
         left: 0;
@@ -138,6 +184,7 @@
         height: 45px;
         border-radius: 50%;
     }
+
     .messages .message .message-text {
         position: relative;
         float: right;
@@ -147,13 +194,16 @@
         font-size: 14px;
         clear: both;
     }
+
     .messages .message .message-text:before,
     .messages .message .message-text:after {
         border-radius: 100%;
     }
+
     .messages .message .message-text:first-child {
         margin-top: 15px;
     }
+
     .messages .message .message-text:first-child:before,
     .messages .message .message-text:first-child:after {
         content: '';
@@ -163,11 +213,13 @@
         height: 20px;
         z-index: 0;
     }
+
     .messages .message.left {
         -webkit-transform-origin: left;
         -ms-transform-origin: left;
         transform-origin: left;
     }
+
     .messages .message.left .message-text {
         margin-right: 70px;
         margin-left: 55px;
@@ -175,11 +227,13 @@
         color: rgba(0, 0, 0, 0.87);
         float: left;
     }
+
     .messages .message.left .message-text:before {
         left: -16px;
         background-color: #f0f0f0;
         border-radius: 0;
     }
+
     .messages .message.left .message-text:after {
         top: -1px;
         left: -50px;
@@ -187,15 +241,18 @@
         width: 50px;
         height: 50px;
     }
+
     .messages .message.right {
         -webkit-transform-origin: right;
         -ms-transform-origin: right;
         transform-origin: right;
     }
+
     .messages .message.right .user-picture {
         left: auto;
         right: 0;
     }
+
     .messages .message.right .message-text {
         margin-left: 70px;
         margin-right: 55px;
@@ -203,11 +260,13 @@
         color: #fff;
         float: right;
     }
+
     .messages .message.right .message-text:before {
         right: -16px;
         border-radius: 0;
         background-color: #2095f2;
     }
+
     .messages .message.right .message-text:after {
         top: -1px;
         right: -49px;
@@ -215,6 +274,7 @@
         height: 50px;
         background-color: #fff;
     }
+
     .messages .message.animate {
         -webkit-animation: display 0.5s cubic-bezier(0.55, 0, 0.1, 1) forwards;
         animation: display 0.5s cubic-bezier(0.55, 0, 0.1, 1) forwards;

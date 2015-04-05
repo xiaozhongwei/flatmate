@@ -25,5 +25,9 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   wechat: DS.attr(),
   hobbies: DS.attr(),
   description: DS.attr(),
-  logo: DS.belongsTo("system/document")
+  logo: DS.belongsTo("system/document"),
+
+  fullName: Ember.computed("firstName","lastName", function(){
+    return this.get('firstName') + ' ' + this.get('lastName');
+  })
 });

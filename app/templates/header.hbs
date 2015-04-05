@@ -2,28 +2,47 @@
     <div id="top_line" style="border-bottom:none;font-size:13px">
         <div class="container" style="color:rgb(51,51,51)">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-6" style="font-size:15px;font-family:'Gochi Hand', cursive;padding-top:8px">
+                <div class="col-md-6 col-sm-6 col-xs-6"
+                     style="font-size:15px;font-family:'Gochi Hand', cursive;padding-top:8px">
                   {{#link-to 'index'}}<strong>FlatmateShanghai</strong>{{/link-to}}
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-md-6 col-sm-6 col-xs-6">
                     <ul id="top_links">
-                        <li>
-                          {{#if session.isAuthenticated}}
+                      {{#if session.isAuthenticated}}
+                          <li>
                             {{#link-to 'profile.dashboard'}}
                               {{#if session.user.logo.id}}
-                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
+                                       src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
                               {{else}}
-                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white" src="/images/amaze_300x300.jpg" alt="Image Alternative text" title="Please Upload">
+                                  <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
+                                       src="/images/user_unknown.png" alt="Image Alternative text"
+                                       title="Please Upload">
                               {{/if}}
-                                <strong  style="color:black">Hi, {{session.user.firstName}}</strong>
+                                <strong style="color:black">Hi, {{session.user.firstName}}</strong>
                                 <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->
                             {{/link-to}}
-                          {{else}}
+                          </li>
+                          <li>
+                            {{#link-to 'inbox.list'}}
+                                <i class="icon_set_1_icon-84"
+                                   style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i>
+                            {{/link-to}}
+                          </li>
+                          <li style="margin-left: 33px;margin-right: 0">
+                            {{#link-to 'house.add' class="btn_1 btn-blue"}}
+                                List your Room
+                            {{/link-to}}
+                          </li>
+                      {{else}}
+                          <li>
                               <div class="dropdown dropdown-access">
-                                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
+                                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
+                                     id="access_link">Sign in</a>
+
                                   <div class="dropdown-menu">
                                       <form {{action 'authenticate' on='submit'}}>
-                                          <div class="row">
+                                          <!--<div class="row">
                                               <div class="col-md-6 col-sm-6 col-xs-6">
                                                   <a href="#" class="bt_facebook">
                                                       <i class="icon-facebook"></i>Facebook </a>
@@ -36,7 +55,7 @@
                                           <div class="login-or">
                                               <hr class="hr-or">
                                               <span class="span-or">or</span>
-                                          </div>
+                                          </div>-->
                                           <div class="form-group">
                                             {{input value=identification placeholder='Email' id="inputUsernameEmail" class='form-control'}}
                                           </div>
@@ -48,18 +67,26 @@
                                           <input type="submit" name="" value="Sign up" id="Sign_up" class="button_drop outline">
                                       </form>
                                   </div>
-                              </div><!-- End Dropdown access -->
-                          {{/if}}
-                        </li>
-                        <li><a><i class="icon_set_1_icon-84" style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i></a></li>
-                        <li style="margin-left: 33px;margin-right: 0">
-                          {{#link-to 'house.add' class="btn_1 btn-blue"}}
-                              List your Room
-                          {{/link-to}}</li>
+                              </div>
+                              <!-- End Dropdown access -->
+                          </li>
+                          <li><a href="javascript:;">
+                              <i class="icon_set_1_icon-84"
+                                 style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i></a>
+                          </li>
+                          <li style="margin-left: 33px;margin-right: 0">
+                              <a href="javascript:;" class="btn_1 btn-blue">
+                                  List your Room
+                              </a>
+                          </li>
+                      {{/if}}
                     </ul>
                 </div>
-            </div><!-- End row -->
-        </div><!-- End container-->
-    </div><!-- End top line-->
+            </div>
+            <!-- End row -->
+        </div>
+        <!-- End container-->
+    </div>
+    <!-- End top line-->
 </header><!-- End Header -->
 

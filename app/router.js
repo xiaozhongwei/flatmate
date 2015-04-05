@@ -23,7 +23,7 @@ Router.map(function() {
 
   this.route('inbox', function() {
     this.route('list');
-    this.route('detail');
+    this.route('detail', { path: "/detail/:message_id" });
   });
 
   this.route('house', function() {
