@@ -20,3 +20,24 @@ a.btn_1, .btn_1{
   text-transform: none !important;
   background: rgb(0,150,163) !important;
 }
+.listing ul.stats {
+  list-style-type: none;
+}
+
+.listing ul.stats li {
+  width: 33.33333333%;
+  text-align: left;
+  float: left;
+  font-size: 10px;
+  line-height: 10px;
+  color: #999;
+  /*border-left: 1px solid #e8e8e8;*/
+  /*padding: 11px 0;*/
+}
+
+.listing ul.stats li span {
+  display: block;
+  font-size: 25px;
+  line-height: 1.4;
+  color: rgb(74, 74, 74);
+}

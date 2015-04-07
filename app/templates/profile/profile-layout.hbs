@@ -15,27 +15,24 @@
                     <p>Member Since May 2012</p>
                 </div>
             </div><!-- End Search -->
-            <div class="box_style_cat">
-                <ul id="cat_nav">
-                    <li>{{#link-to 'profile.dashboard'}}<i class="icon_set_1_icon-50"></i>Dashboard{{/link-to}}</li>
-                    <li>{{#link-to 'profile.edit-profile'}}<i class="icon_set_1_icon-51"></i>Edit Profile{{/link-to}}</li>
-                    <li>{{#link-to 'profile.photo'}}<i class="icon_set_1_icon-3"></i>Upload Photo{{/link-to}}</li>
-                    <li>{{#link-to 'profile.change-password'}}<i class="icon_set_1_icon-4"></i>Security{{/link-to}}</li>
-                    <li><a href="#"><i class="icon_set_1_icon-43"></i>Credit/Debit Cards</a></li>
+            <hr>
+            <div class="other_tours ">
+                <ul>
+                    <li>{{#link-to 'profile.dashboard'}}<i class="icon_set_1_icon-50"></i>Dashboard<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>{{/link-to}}</li>
+                    <li>{{#link-to 'profile.edit-profile'}}<i class="icon_set_1_icon-51"></i>Edit Profile<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>{{/link-to}}</li>
+                    <li>{{#link-to 'profile.photo'}}<i class="icon_set_1_icon-3"></i>Upload Photo<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>{{/link-to}}</li>
+                    <li>{{#link-to 'profile.change-password'}}<i class="icon_set_1_icon-4"></i>Security<span class="other_tours_price"><span class=" icon-ok"></span></span>{{/link-to}}</li>
+                    <li><a href="#"><i class="icon_set_1_icon-43"></i>Credit/Debit Cards<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
                 </ul>
             </div>
+            <hr>
             <p>
               {{#link-to 'profile.view' class="btn_map"}}View Profile{{/link-to}}
             </p>
         </aside>
 
-        <div class="col-md-9">
-
-          {{#if isFull}}
-            {{yield}}
-          {{else}}
-            {{yield}}
-          {{/if}}
+        <div class="col-md-9" style="padding-left:30px;">
+          {{yield}}
         </div><!-- End col-md-9-->
     </div><!-- End row-->
 </div><!-- End container -->

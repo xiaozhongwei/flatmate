@@ -1,5 +1,5 @@
 <div class="white_bg">
-    <div class="container margin_60">
+    <div class="container margin_60" style="padding-top:30px;">
         <div class="row">
             <aside class="col-lg-3 col-md-3">
                 <div class="widget">
@@ -30,6 +30,42 @@
 
             <div class="col-md-9 ">
                 <ul class="list-material message-list" style="border:1px solid rgb(225,225,225)">
+                    <li class="has-action-left has-action-right" style=" border-bottom: 1px solid rgb(225,225,225); margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
+                        <div class="list-action-left">
+                            <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                        </div>
+                        <div class="list-content" style="margin-left:130px;">
+                            <span class="title" style="color: rgb(51,51,51);font-size: 17px; font-weight: bold;">Tai17</span>
+                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">13 Dec 2014</span>
+                        </div>
+                        <div class="list-action-right" style="width: 67%;top: 24px;color: rgb(51,51,51);text-align:left;height: inherit;">
+                            <span class="title" style="display:block;font-size: 17px;font-weight: bold;">Nice ‘n Cozy Apt in Jing’An </span>
+                            <span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>
+                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">Thank you very much for your reply. I’m sorry the room is not available...</span>
+                        </div>
+                        <!--<div class="list-action-right">-->
+                            <!--<span class="top">Jan 10, 2015</span>-->
+                            <!--<i class=" icon_set_1_icon-76 bottom"></i>-->
+                        <!--</div>-->
+                    </li>
+                    <li class="has-action-left has-action-right" style=" border-bottom: 1px solid rgb(225,225,225); margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
+                        <div class="list-action-left">
+                            <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                        </div>
+                        <div class="list-content" style="margin-left:130px;">
+                            <span class="title" style="color: rgb(51,51,51);font-size: 16px; font-weight: bold;">Tai17</span>
+                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">13 Dec 2014</span>
+                        </div>
+                        <div class="list-action-right" style="width: 67%;top: 24px;color: rgb(51,51,51);text-align:left;height: inherit;">
+                            <span class="title" style="display:block;font-size: 16px;font-weight: bold;">Nice ‘n Cozy Apt in Jing’An </span>
+                            <span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>
+                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">Thank you very much for your reply. I’m sorry the room is not available...</span>
+                        </div>
+                        <!--<div class="list-action-right">-->
+                        <!--<span class="top">Jan 10, 2015</span>-->
+                        <!--<i class=" icon_set_1_icon-76 bottom"></i>-->
+                        <!--</div>-->
+                    </li>
                   {{#each message in model}}
                       <li class="has-action-left has-action-right">
                         {{#link-to 'inbox.detail' message.id class="visible" }}
@@ -135,6 +171,9 @@
     </div><!-- End container -->
 </div>
 <style>
+    .list-content{
+        width:150px;
+    }
     .selected .list-content {
         border-bottom-color: transparent;
     }
@@ -219,7 +258,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 25px 16px 25px 0;
-        border-bottom: 1px solid rgb(225,225,225);
+        /*border-bottom: 1px solid rgb(225,225,225);*/
     }
 
     .list-material > li:first-child .list-content {
@@ -253,8 +292,8 @@
         transform: translateY(-50%);
     }
     .list-material > li .list-action-left img {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
     .list-material > li .list-action-left .icon {
         position: relative;
