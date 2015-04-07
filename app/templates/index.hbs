@@ -1,9 +1,14 @@
+<style>
+    .find-it{
+        text-transform: initial  !important; padding-top: 10px !important; padding-bottom: 10px !important;
+    }
+</style>
 <section class="header-video">
     <div id="hero_video">
         <div class="intro_title" >
-            <h1 class="animated fadeInDown" style="font-weight: normal;text-transform: none;">Find a nice appartment <a href="#" style="color:white"><i class=" icon-play-circled2"></i></a> at Shanghai </h1>
+            <h1 class="animated fadeInDown" style="font-weight: normal;text-transform: none;">Find a nice appartment at Shanghai </h1>
             <p class="animated fadeInDown" style="color:rgb(0,150,164);margin-top: 22px;margin-bottom: 33px;font-size:45px;text-transform:none">500 + Listings</p>
-            <a href="/#/listing/list" class="animated fadeInUp button_intro btn_1 medium" style=" text-transform: initial; padding-top: 15px; padding-bottom: 15px;">Find it!</a>
+          {{#link-to 'listing.list' class=" animated fadeInUp button_intro btn_1 medium find-it"}}Find it!{{/link-to}}
             <a  href="https://www.youtube.com/watch?v=Zz5cu72Gv5Y" class="video animated fadeInUp button_intro outline">Play video</a>
         </div>
     </div>
