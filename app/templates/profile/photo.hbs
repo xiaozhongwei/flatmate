@@ -10,7 +10,7 @@
                         <div id="tour_guide">
                             <p>
                               {{#if model.logo.id}}
-                                  <img {{bind-attr src=model.logo.downloadFilePath}} alt="" style="width: 200px;" class="img-circle styled"/>
+                                  <img src="{{model.logo.downloadFilePath}}"  alt="" style="width: 200px;" class="img-circle styled"/>
                               {{else}}
                                   <img src="images/user_unknown.png" style="width: 200px;" alt="" class="img-circle styled"/>
                               {{/if}}
