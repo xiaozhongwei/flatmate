@@ -11,13 +11,12 @@
                       {{#if session.isAuthenticated}}
                           <li>
                             {{#link-to 'profile.dashboard'}}
-                              {{#if session.user.logo.id}}
+                              {{#if session.user.logo.downloadFilePath}}
                                   <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
                                        src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
                               {{else}}
                                   <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
-                                       src="/images/user_unknown.png" alt="Image Alternative text"
-                                       title="Please Upload">
+                                       src="/images/user_unknown.png" title="Not Upload Yet">
                               {{/if}}
                                 <strong style="color:black">Hi, {{session.user.firstName}}</strong>
                                 <!--<a href="javascript:;" {{! action 'invalidateSession' }} >Logout</a>-->

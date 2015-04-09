@@ -9,8 +9,8 @@
                     <div class="widget">
                         <div id="tour_guide">
                             <p>
-                              {{#if model.logo.id}}
-                                  <img src="{{model.logo.downloadFilePath}}"  alt="" style="width: 200px;" class="img-circle styled"/>
+                              {{#if session.user.logo.downloadFilePath}}
+                                  <img src="{{session.user.logo.downloadFilePath}}"  alt="" style="width: 200px;" class="img-circle styled"/>
                               {{else}}
                                   <img src="images/user_unknown.png" style="width: 200px;" alt="" class="img-circle styled"/>
                               {{/if}}
@@ -22,9 +22,14 @@
                     <p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It's not much fun to host a landscape! Please upload a photo that clearly shows your face.</p>
                     <div class="fileinput">
                         <div class="input-group">
-                    <span class="btn btn-file" style=" padding-left: 0;">
-                      <span>{{em-file-field name="logo" class="btn btn-primary" url=uploadUrl document=model.logo}}</span>
-                    </span>
+                          <span class="btn btn-file" style=" padding-left: 0;">
+                            <span>
+                            {{#if session.user.logo}}
+                              {{em-file-field name="logo" class="btn btn-primary" url=uploadUrl document=session.user.logo}}
+                            {{/if}}
+                            </span>
+                          </span>
+
                         </div>
                     </div>
                 </div>

@@ -5,13 +5,13 @@
                 <div class="widget">
                     <div id="tour_guide">
                         <p style="margin-bottom: 10px;">
-                            {{#if currentUser.logo.id}}
-                                <img {{bind-attr src=currentUser.logo.downloadFilePath}} alt="" style="width: 170px;" class="img-circle styled"/>
+                            {{#if session.user.logo.downloadFilePath}}
+                                <img {{bind-attr src=session.user.logo.downloadFilePath}} alt="" style="width: 170px;" class="img-circle styled"/>
                             {{else}}
                                 <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
                             {{/if}}
                         </p>
-                        <h5 style="margin:5px 0;font-weight:bold">{{currentUser.fullName}}</h5>
+                        <h5 style="margin:5px 0;font-weight:bold">{{session.user.fullName}}</h5>
                         <p>Member Since May 2012</p>
                     </div>
                 </div><!-- End Search -->
@@ -30,62 +30,32 @@
 
             <div class="col-md-9 ">
                 <ul class="list-material message-list" style="border:1px solid rgb(225,225,225)">
-                    <li class="has-action-left has-action-right" style=" border-bottom: 1px solid rgb(225,225,225); margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
+
+                    {{#each model as |message index| }}
+                    <li class="has-action-left has-action-right" style="{{if index 'border-top: 1px solid rgb(225,225,225);'}} margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
+                    {{#link-to 'inbox.detail' message.id class="visible" }}
                         <div class="list-action-left">
-                            <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                          {{#if message.speakerPhoto}}
+                              <img src="{{message.speakerPhoto}}" class="face-radius" title="{{message.speakerName}}">
+                          {{else}}
+                              <img src="/images/user_unknown.png" class="face-radius" title="{{message.speakerName}}">
+                          {{/if}}
                         </div>
                         <div class="list-content" style="margin-left:130px;">
-                            <span class="title" style="color: rgb(51,51,51);font-size: 15px; font-weight: bold;">Tai17</span>
-                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">13 Dec 2014</span>
+                            <span class="title" style="color: rgb(51,51,51);font-size: 15px; font-weight: bold;"><strong>{{message.speakerName}}</strong></span>
+                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">{{ago message.lastUpdateTime}}</span>
                         </div>
                         <div class="list-action-right" style="width: 67%;top: 24px;color: rgb(51,51,51);text-align:left;height: inherit;">
-                            <span class="title" style="display:block;font-size: 15px;font-weight: bold;">Nice ‘n Cozy Apt in Jing’An </span>
-                            <span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>
-                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">Thank you very much for your reply. I’m sorry the room is not available...</span>
-                        </div>
-                        <!--<div class="list-action-right">-->
-                            <!--<span class="top">Jan 10, 2015</span>-->
-                            <!--<i class=" icon_set_1_icon-76 bottom"></i>-->
-                        <!--</div>-->
-                    </li>
-                    <li class="has-action-left has-action-right" style=" border-bottom: 1px solid rgb(225,225,225); margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
-                        <div class="list-action-left">
-                            <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
-                        </div>
-                        <div class="list-content" style="margin-left:130px;">
-                            <span class="title" style="color: rgb(51,51,51);font-size: 15px; font-weight: bold;">Tai17</span>
-                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">13 Dec 2014</span>
-                        </div>
-                        <div class="list-action-right" style="width: 67%;top: 24px;color: rgb(51,51,51);text-align:left;height: inherit;">
-                            <span class="title" style="display:block;font-size: 15px;font-weight: bold;">Nice ‘n Cozy Apt in Jing’An </span>
-                            <span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>
-                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">Thank you very much for your reply. I’m sorry the room is not available...</span>
+                            <span class="title" style="display:block;font-size: 15px;font-weight: bold;">Want: {{message.listingTitle}} </span>
+                            <!--<span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>-->
+                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">{{message.lastContent}}</span>
                         </div>
                         <!--<div class="list-action-right">-->
                         <!--<span class="top">Jan 10, 2015</span>-->
                         <!--<i class=" icon_set_1_icon-76 bottom"></i>-->
                         <!--</div>-->
+                    {{/link-to}}
                     </li>
-                  {{#each message in model}}
-                      <li class="has-action-left has-action-right">
-                        {{#link-to 'inbox.detail' message.id class="visible" }}
-                            <div class="list-action-left">
-                                {{#if message.speakerPhoto}}
-                                    <img src="{{message.speakerPhoto}}" class="face-radius" title="{{message.speakerName}}">
-                                {{else}}
-                                    <img src="/images/user_unknown.png" class="face-radius" >
-                                {{/if}}
-                            </div>
-                            <div class="list-content">
-                                <span class="title">Want: {{message.listingTitle}}</span>
-                                <span class="caption">{{message.lastContent}}</span>
-                            </div>
-                            <div class="list-action-right">
-                                <span class="top"><strong>{{message.speakerName}}</strong></span>
-                                <span class="bottom">{{ago message.lastUpdateTime}}</span>
-                            </div>
-                        {{/link-to}}
-                      </li>
                   {{/each}}
                     <!--<li class="has-action-left has-action-right">
                       {{#link-to 'inbox.detail' class="visible" }}
