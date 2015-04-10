@@ -6,6 +6,12 @@ export default Ember.Route.extend({
       refreshModel: true
     }
   },
+  resetController: function (controller, isExiting, transition) {
+    if (isExiting) {
+      // isExiting would be false if only the route's model was changing
+      controller.set('page', 1);
+    }
+  },
   model: function(params){
     return this.store.find('inbox/message',params);
   },

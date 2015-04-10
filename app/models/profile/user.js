@@ -18,13 +18,14 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   lastName: DS.attr(),
   email: DS.attr(),
   country: DS.attr(),
-  gender: DS.attr('', {defaultValue: 'male'}),
+  gender: DS.attr('', {defaultValue: "1"}),
   phone: DS.attr(),
   occupation: DS.attr(),
   languages: DS.attr(),
   wechat: DS.attr(),
   hobbies: DS.attr(),
   description: DS.attr(),
+  createTime: DS.attr(),
   logo: DS.belongsTo("system/document"),
 
   fullName: Ember.computed("firstName","lastName", function(){

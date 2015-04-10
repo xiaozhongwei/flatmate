@@ -8,7 +8,7 @@ module.exports = function(environment) {
     apiRoot: 'api',
     locationType: 'auto',
     host: "http://192.168.0.50:8001",
-    uploadHost: "api/upload",
+    uploadHost: "http://192.168.0.50:8001/api/upload",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -37,10 +37,10 @@ module.exports = function(environment) {
     'script-src': "'self' https://cdn.mxpnl.com", // Allow scripts from https://cdn.mxpnl.com
     'font-src': "'self' http://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
     'connect-src': "'self' http://192.168.0.50:8001 https://api.mixpanel.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
-    'img-src': "'self'",
+    'img-src': "'self' http://7u2qna.com1.z0.glb.clouddn.com",
     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
     'media-src': "'self'"
-  }
+  };
 
   ENV['simple-auth'] = {
     authenticationRoute: 'index',
@@ -54,9 +54,11 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.host = "http://localhost:4200";
+    uploadHost: "api/upload",
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'http://localhost:4200/token'
     };
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

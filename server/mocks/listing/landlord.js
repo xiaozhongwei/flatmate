@@ -1,30 +1,31 @@
 module.exports = function(app) {
   var express = require('express');
-  var listingLandloadRouter = express.Router();
+  var listingLandlordRouter = express.Router();
 
-  listingLandloadRouter.get('/', function(req, res) {
+  listingLandlordRouter.get('/', function(req, res) {
     res.send({
-      'listing/landload': []
+      'listing/landlord': []
     });
   });
 
-  listingLandloadRouter.post('/', function(req, res) {
+  listingLandlordRouter.post('/', function(req, res) {
     res.status(201).end();
   });
 
-  listingLandloadRouter.get('/:id', function(req, res) {
+  listingLandlordRouter.get('/:id', function(req, res) {
     res.send({
-      'listing/landload': {
+      'listing/landlord': {
         id: req.params.id,
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'John@gmail.com',
-        gender: 'male',
+        firstName: 'Lisa',
+        lastName: 'Lee',
+        email: 'Lisa@gmail.com',
+        gender: '2',
         country: 'USA',
         languages: ["English", "Chinese"],
         hobbies: ["Running", "Football"],
         occupation: 'Clerk',
         photo: 'images/LISA_100.jpg',
+        createTime: 'May 2015',
         description: 'Hello, I‘m Lisa, a young girl living and working in Shanghai. I am outgoing and friendly, fond of people, traveling & food :) I worked as a Skincare Shop Manager before starting the "hosting idea" in 2012.',
         listingsCount: 3,
         latestListing: {
@@ -114,17 +115,17 @@ module.exports = function(app) {
     });
   });
 
-  listingLandloadRouter.put('/:id', function(req, res) {
+  listingLandlordRouter.put('/:id', function(req, res) {
     res.send({
-      'listing/landload': {
+      'listing/landlord': {
         id: req.params.id
       }
     });
   });
 
-  listingLandloadRouter.delete('/:id', function(req, res) {
+  listingLandlordRouter.delete('/:id', function(req, res) {
     res.status(204).end();
   });
 
-  app.use('/api/listing/landloads', listingLandloadRouter);
+  app.use('/api/listing/landlords', listingLandlordRouter);
 };

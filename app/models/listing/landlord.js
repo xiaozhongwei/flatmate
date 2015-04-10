@@ -5,7 +5,7 @@ export default DS.Model.extend({
   lastName: DS.attr(),
   email: DS.attr(),
   country: DS.attr(),
-  gender: DS.attr('', {defaultValue: 'male'}),
+  gender: DS.attr('', {defaultValue: "1"}),
   phone: DS.attr(),
   wechat: DS.attr(),
   occupation: DS.attr(),
@@ -13,7 +13,12 @@ export default DS.Model.extend({
   hobby: DS.attr(),
   description: DS.attr(),
   photo: DS.attr(),
+  createTime: DS.attr(),
 
   listingsCount: DS.attr(),
-  latestListing: DS.belongsTo('listing')
+  latestListing: DS.belongsTo('listing'),
+
+  fullName: Ember.computed("firstName","lastName", function(){
+    return this.get('firstName') + ' ' + this.get('lastName');
+  })
 });

@@ -16,14 +16,15 @@ module.exports = function(app) {
     res.send({
       'profile/user': {
         id: req.params.id,
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'John@gmail.com',
-        gender: 'male',
+        firstName: 'Lisa',
+        lastName: 'Lee',
+        email: 'Lisa@gmail.com',
+        gender: "1",
         country: 'USA',
         phone: '22345678',
         occupation:'Student',
         hobbies: 'Running',
+        createTime: 'May 2014',
         logo: {id: "11111111", downloadFilePath: 'images/LISA_100.jpg'}
       }
     });
@@ -33,13 +34,14 @@ module.exports = function(app) {
     res.send({
       'profile/user': {
         id: req.params.id,
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'John@gmail.com',
-        gender: 'male',
+        firstName: 'Lisa',
+        lastName: 'Lee',
+        email: 'Lisa@gmail.com',
+        gender: "1",
         country: 'USA',
         hobbies: ["Running", "Football"],
         occupation: 'Clerk',
+        createTime: 'May 2014',
         logo: {id: "11111111", downloadFilePath: 'images/LISA_100.jpg'}
       }
     });

@@ -15,12 +15,12 @@
                 </div><!-- End Search -->
             </div>
             <div class="col-md-10" style="padding-left:20px;">
-                <h1>{{model.firstName}} {{model.lastName}}</h1>
-                <h5>Member Since May 2014</h5>
+                <h1>{{model.fullName}}</h1>
+                <h5>Member Since {{model.createTime}}</h5>
                 <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
                 <h4  style="margin-top:45px;margin-bottom: 5px;">{{model.country}}</h4>
                 <h4  style="  margin-top: 5px; margin-bottom: 5px;">{{model.occupation}}</h4>
-                <h4 style="  margin-top: 5px; margin-bottom: 5px;">{{model.gender}}</h4>
+                <h4 style="  margin-top: 5px; margin-bottom: 5px;">{{format-gender model.gender}}</h4>
             </div>
         </div>
     </div>
@@ -46,28 +46,18 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>
-                        E-Mail
-                    </td>
+                    <td>E-Mail</td>
                     <td >
                         {{model.email}}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Phone Number
-                    </td>
-                    <td >
-                        {{model.phone}}
-                    </td>
+                    <td>Phone Number</td>
+                    <td>{{model.phone}}</td>
                 </tr>
                 <tr>
-                    <td>
-                        WeChart
-                    </td>
-                    <td >
-                        {{model.wechat}}
-                    </td>
+                    <td>WeChart</td>
+                    <td>{{model.wechat}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -76,7 +66,7 @@
             <aside class="col-md-3">
                 <h3 style="margin-bottom:30px;">Listing ({{model.listingsCount}})</h3>
                 <img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">
-                <a>View all Listings</a>
+                {{#link-to 'listing.list' (query-params userId=model.id)}}View all Listings{{/link-to}}
             </aside>
         {{/if}}
 
