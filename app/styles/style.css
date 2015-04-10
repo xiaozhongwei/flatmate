@@ -183,7 +183,7 @@ a.btn_1, .btn_1{
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	text-transform:uppercase;
+	text-transform:none;
 	font-weight:bold;
 }
 a.btn_1.green, .btn_1.green  {background: #83c99f;}

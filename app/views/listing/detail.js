@@ -7,12 +7,12 @@ export default Ember.View.extend({
   didInsertElement: function () {
     $('#Img_carousel' ).sliderPro({
       width: 960,
-      height: 500,
+      height: 567,
       fade: true,
       arrows: true,
       buttons: false,
       fullScreen: false,
-      smallSize: 500,
+      smallSize: 567,
       startSlide: 0,
       mediumSize: 1000,
       largeSize: 3000,
