@@ -45,6 +45,7 @@
     "ember-multiselect-checkboxes": "^0.2.1",
     "ember-notify": "^3.1.4",
     "ember-select-2": "1.2.0",
+    "ember-truth-helpers": "0.0.5",
     "ember-validations": "~ 2.0.0-alpha.3",
     "express": "^4.12.3",
     "glob": "^4.5.3",

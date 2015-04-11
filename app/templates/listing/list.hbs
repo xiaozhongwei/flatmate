@@ -11,12 +11,16 @@
                 <label class="col-sm-1 control-label" style="text-align: left">Type</label>
                 <div class="col-sm-11"  style="text-align: left">
                     <div class="col-md-5" style="text-align: left;padding-left:0">
-                      {{#link-to 'listing.list' (query-params type="room") class="btn_1 outline"}}Room{{/link-to}}
-                      {{#link-to 'listing.list' (query-params type="apt") class="btn_1 outline"}}Apt{{/link-to}}
+                        <a href="javascript:;"
+                           class="btn_1 {{if (not (eq rentType "all")) 'outline'}}" {{action "queryListing" "rentType" "all"}}>All</a>
+                        <a href="javascript:;"
+                           class="btn_1 {{if (not (eq rentType "share")) 'outline'}}" {{action "queryListing" "rentType" "share"}}>Room</a>
+                        <a href="javascript:;"
+                           class="btn_1 {{if (not (eq rentType "entire")) 'outline'}}" {{action "queryListing" "rentType" "entire"}}>Apt</a>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group"  style="margin-bottom: 0px;">
-                            <label class="col-sm-2 control-label" style="text-align: left">Area</label>
+                            <label class="col-sm-1 control-label" style="text-align: left">Price</label>
                             <div class="col-sm-10"  style="text-align: left">
                                 <a href="#" class="btn_1 outline">Button</a>
                                 <a href="#" class="btn_1 outline">Button</a>
@@ -28,7 +32,7 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="text-align: left">Area</label>
                 <div class="col-sm-11"  style="text-align: left">
-                    <a href="#" class="btn_1 outline">Button</a>
+                    <a href="#" class="btn_1 outline">All</a>
                     <a href="#" class="btn_1 outline">Button</a>
                     <a href="#" class="btn_1 outline">Button</a>
                     <a href="#" class="btn_1 outline">Button</a>
@@ -37,6 +41,7 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="text-align: left">Metro</label>
                 <div class="col-sm-11"  style="text-align: left">
+                    <a href="#" class="btn_1 outline">All</a>
                     <a href="#" class="btn_1 outline">1</a>
                     <a href="#" class="btn_1 outline">2</a>
                     <a href="#" class="btn_1 outline">3</a>
@@ -52,23 +57,44 @@
                     <a href="#" class="btn_1 outline">16</a>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="text-align: left">Flatmates</label>
-                <div class="col-sm-11"  style="text-align: left">
-                    <a href="#" class="btn_1 outline">Button</a>
-                    <a href="#" class="btn_1 outline">Button</a>
-                    <a href="#" class="btn_1 outline">Button</a>
-                    <a href="#" class="btn_1 outline">Button</a>
+            {{#if (not (eq rentType "entire"))}}
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" style="text-align: left">Flatmates</label>
+
+                  <div class="col-sm-11" style="text-align: left">
+                    {{select-2
+                    content=areaMapping
+                    value=country
+                    optionValuePath="id"
+                    placeholder="Choose One Country"
+                    }}
+
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq occupation "all")) 'outline'}}" {{action "queryListing" "occupation" "all"}}>All</a>
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq occupation "student")) 'outline'}}" {{action "queryListing" "occupation" "student"}}>Student</a>
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq occupation "specialist")) 'outline'}}" {{action "queryListing" "occupation" "specialist"}}>Specialist</a>
+
+                    <a href="javascript:;"
+                     class="btn_1 {{if (not (eq gender "all")) 'outline'}}" {{action "queryListing" "gender" "all"}}>All</a>
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq gender "1")) 'outline'}}" {{action "queryListing" "gender" "1"}}>Guy</a>
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq gender "2")) 'outline'}}" {{action "queryListing" "gender" "2"}}>Girl</a>
+
                     <a href="all_tours_grid.html" class="bt_filters"><i class="icon-th"></i></a> <a href="#" class="bt_filters"><i class=" icon-list"></i></a>
                     <a class="btn_map pull-right" style="
     padding-top: 8px;border-radius:0;padding-bottom: 8px;position: relative;text-transform: none;font-size: 14px;
     width: 200px;background: rgb(71,71,71);" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-                        View on map
-                        <div class="triangle-border tb-border"></div>
-                        <div class="triangle-border tb-background"></div>
-                    </a>
-                </div>
-            </div>
+                          View on map
+                          <div class="triangle-border tb-border"></div>
+                          <div class="triangle-border tb-background"></div>
+                      </a>
+                  </div>
+              </div>
+              {{/if}}
+
         </form>
     </div>
 </div>
@@ -532,7 +558,6 @@
                       </div>
                   </div>
               </div><!--End strip -->
-
           {{else}}
               <div class="col-md-4" style="padding-left:0">
                   <div class="tour_container active">
@@ -541,16 +566,15 @@
                             <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
                             <!--<div class="ribbon top_rated"></div>-->
                             <div class="short_info">
-                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                    class="price"><sup>$</sup>45</span>
+                                <span class="price"><sup>￥</sup>8000</span>
                             </div>
                         {{/link-to}}
                       </div>
                       <div class="tour_title listing">
                           <ul class="stats" style="padding-left: 0;">
-                              <li>Rooms<span>Apt</span></li>
+                              <li>Type<span>Apt</span></li>
+                              <li>Rooms<span>4</span></li>
                               <li>Size, m2<span>14</span></li>
-                              <li>Price ￥<span>8000</span></li>
                           </ul>
                           <div style="clear:both"></div>
                           <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
@@ -560,7 +584,7 @@
                           <ul class="add_info">
                               <li>
                                   <div class="tooltip_styled tooltip-effect-4">
-                                      <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
+                                      <span class="tooltip-item">Line 1</span>
 
                                       <div class="tooltip-content"><h4>Schedule</h4>
                                           <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
