@@ -20,6 +20,7 @@ export default DS.Model.extend({
   house: DS.belongsTo('listing/house'),       // 所属的house: house类似组的概念， 存储一些公共信息，如小区地铁等
 
 
+  wishlist: DS.attr(),                        // 所属心愿单
   status: DS.attr(),                          // 状态：0-未发布；1-已发布
 
   //creator: DS.belongsTo('profile.user'),    // 创建者（房东）信息: 头像 名称 描述
@@ -27,10 +28,6 @@ export default DS.Model.extend({
   creatorName: DS.attr(),                     // 创建者名称
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
-
-  //published: function () {
-  //  return this.get('status') === 1;
-  //}.property('status'),
 
   published: Ember.computed('status', function(){
     return this.get('status') === 1;

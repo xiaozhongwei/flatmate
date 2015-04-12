@@ -12,9 +12,8 @@
                 <h3>"Entire Apartment"</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                 <p>
-                  {{#link-to 'house.manage' 1 class=" btn_1 white"}}
-                      Selected
-                  {{/link-to}}</p>
+                    <a href="javascript:;" class="btn_1 white" {{action "save" "entire"}}>Selected</a>
+                </p>
             </div>
         </div>
         <div class="col-md-6 nopadding">
@@ -22,9 +21,7 @@
                 <h3>"Private Room"</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                 <p>
-                  {{#link-to 'house.manage' 1 class=" btn_1 white"}}
-                      Selected
-                  {{/link-to}}
+                    <a href="javascript:;" class="btn_1 white" {{action "save" "share"}}>Selected</a>
                 </p>
             </div>
         </div>

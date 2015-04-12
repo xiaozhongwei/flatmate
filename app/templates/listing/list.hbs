@@ -40,7 +40,7 @@
                      class="btn_1 {{if (not (eq area "all")) 'outline'}}" {{action "queryListing" "area" "all"}}>All</a>
                   {{#each areaMapping as |areaOption| }}
                       <a href="javascript:;"
-                         class="btn_1 {{if (not (eq area areaOption.id)) 'outline'}}" {{action "queryListing" "area" areaOption.id}}>{{areaOption.text}}</a>
+                         class="btn_1 {{if (not (eq area areaOption.id)) 'outline'}}" {{action "queryListing" "area" areaOption.id}}>{{areaOption.name}}</a>
                   {{/each}}
                 </div>
             </div>
@@ -583,22 +583,6 @@
                               <li>
                                   <div class="tooltip_styled tooltip-effect-4">
                                       <span class="tooltip-item">Line 1</span>
-
-                                      <div class="tooltip-content"><h4>Schedule</h4>
-                                          <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
-                                          <strong>Saturday</strong> 09.00 AM - 5.30 PM<br>
-                                          <strong>Sunday</strong> <span class="label label-danger">Closed</span>
-                                      </div>
-                                  </div>
-                              </li>
-                              <li>
-                                  <div class="tooltip_styled tooltip-effect-4">
-                                      <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
-
-                                      <div class="tooltip-content"><h4>Address</h4>
-                                          Musée du Louvre, 75058 Paris - France<br>
-                                          <a href="#">View on map</a>
-                                      </div>
                                   </div>
                               </li>
                           </ul>
@@ -851,6 +835,24 @@
                     <span class="radius-number-1 radius-number-gary">D</span>
                     <img src="/images/flag3.png" style="height: 70px;width: 70px;margin-top: -15px;" />
                     <span style="float: right;">
+                    <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
+                    <span style=" display: block;color:black;font-size: 15px;">Professional</span>
+                    <span style=" display: block;color:black;font-size: 15px;">Girl</span>
+                </span>
+                </p>
+
+
+                <h4>Amenities</h4>
+                <hr>
+                <p>
+                    <span class="radius-number-1">A</span>
+                    <span style="color: #f7941d; font-size: 18px; font-weight: bold; padding-left: 10px;">Availble</span>
+                </p>
+                <hr>
+                <p>
+                    <span class="radius-number-1 radius-number-gary">B</span>
+                    <img src="/images/flag1.png" style="height: 70px;width: 70px;margin-top: -15px;" />
+                <span style="float: right;">
                     <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
                     <span style=" display: block;color:black;font-size: 15px;">Professional</span>
                     <span style=" display: block;color:black;font-size: 15px;">Girl</span>

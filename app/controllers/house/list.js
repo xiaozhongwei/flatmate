@@ -12,6 +12,12 @@ export default Ember.Controller.extend({
       queryParams.status = value;
       this.transitionToRoute({queryParams});
     },
+    toggleHouse: function(house){
+      house.toggleProperty('isExpand')
+    },
+    manageHouse: function(house){
+      house.toggleProperty('isExpand')
+    },
     saveHouse: function(){
 
     }

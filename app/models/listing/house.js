@@ -33,11 +33,13 @@ export default DS.Model.extend({
 
   listings: DS.hasMany('listing', {async: true}),  // 房源信息： 一个house里可以有多个房源信息
 
+  isExpand: false,
+
   isFull: function () {
     return this.get('bedrooms') === this.get('listings.length');
   }.property('bedrooms', 'listings'),
 
-  isShared: function () {
-    return this.get('rentType') === "shared";
-  }.property('rentType')
+  isShared: Ember.computed('rentType', function(){
+    return this.get('rentType') === "share";
+  })
 });
