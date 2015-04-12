@@ -6,9 +6,9 @@ export default Ember.Controller.extend({
   actions:{
     removeWishlisting: function(listing, wishlist){
       var data = {
-        "wishlist":{
+        "profile/wishlist":{
           id: wishlist.get("id"),
-          listingId: listing.get("id")
+          listings: [{id: listing.get("id")}]
         }
       };
 

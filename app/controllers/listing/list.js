@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import AreaMapping from 'flatmate/transforms/area';
+import PriceMapping from 'flatmate/transforms/price';
+import LineMapping from 'flatmate/transforms/metro-line';
 
 export default Ember.Controller.extend({
   isShowList:false,
@@ -29,6 +31,8 @@ export default Ember.Controller.extend({
     }
   },
 
-  areaMapping: AreaMapping.create({}).get("mapping")
+  areaMapping: AreaMapping.create({}).get("mapping"),
+  priceMapping: PriceMapping.create({}).get("mapping"),
+  lineMapping: LineMapping.create({}).get("mapping")
 
 });

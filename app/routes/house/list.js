@@ -15,6 +15,11 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     // Call _super for default behavior
     this._super(controller, model);
+
+    this.store.find('listing/statistic').then(function(statistics){
+      controller.set("statistics", statistics);
+    });
+
     controller.set("totalPage", model.get("meta.totalPage"));  //页数
     controller.set("totalCount", model.get("meta.totalCount")); //项数
   }

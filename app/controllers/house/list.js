@@ -5,8 +5,13 @@ export default Ember.Controller.extend({
   queryParams: [ "page", "size", "status"],
   page: 1,
   size: 10,
-  status: 'all',
+  status: 'All',
   actions: {
+    queryHouse: function(value){
+      var queryParams = {};
+      queryParams.status = value;
+      this.transitionToRoute({queryParams});
+    },
     saveHouse: function(){
 
     }

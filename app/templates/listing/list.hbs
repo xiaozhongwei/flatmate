@@ -22,8 +22,12 @@
                         <div class="form-group"  style="margin-bottom: 0px;">
                             <label class="col-sm-1 control-label" style="text-align: left">Price</label>
                             <div class="col-sm-10"  style="text-align: left">
-                                <a href="#" class="btn_1 outline">Button</a>
-                                <a href="#" class="btn_1 outline">Button</a>
+                              {{select-2
+                              content=priceMapping
+                              value=price
+                              optionValuePath="id"
+                              placeholder="Choose Price"
+                              }}
                             </div>
                         </div>
                     </div>
@@ -32,29 +36,23 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="text-align: left">Area</label>
                 <div class="col-sm-11"  style="text-align: left">
-                    <a href="#" class="btn_1 outline">All</a>
-                    <a href="#" class="btn_1 outline">Button</a>
-                    <a href="#" class="btn_1 outline">Button</a>
-                    <a href="#" class="btn_1 outline">Button</a>
+                  <a href="javascript:;"
+                     class="btn_1 {{if (not (eq area "all")) 'outline'}}" {{action "queryListing" "area" "all"}}>All</a>
+                  {{#each areaMapping as |areaOption| }}
+                      <a href="javascript:;"
+                         class="btn_1 {{if (not (eq area areaOption.id)) 'outline'}}" {{action "queryListing" "area" areaOption.id}}>{{areaOption.text}}</a>
+                  {{/each}}
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="text-align: left">Metro</label>
                 <div class="col-sm-11"  style="text-align: left">
-                    <a href="#" class="btn_1 outline">All</a>
-                    <a href="#" class="btn_1 outline">1</a>
-                    <a href="#" class="btn_1 outline">2</a>
-                    <a href="#" class="btn_1 outline">3</a>
-                    <a href="#" class="btn_1 outline">4</a>
-                    <a href="#" class="btn_1 outline">5</a>
-                    <a href="#" class="btn_1 outline">6</a>
-                    <a href="#" class="btn_1 outline">7</a>
-                    <a href="#" class="btn_1 outline">8</a>
-                    <a href="#" class="btn_1 outline">9</a>
-                    <a href="#" class="btn_1 outline">10</a>
-                    <a href="#" class="btn_1 outline">11</a>
-                    <a href="#" class="btn_1 outline">12</a>
-                    <a href="#" class="btn_1 outline">16</a>
+                    <a href="javascript:;"
+                       class="btn_1 {{if (not (eq subwayLine "all")) 'outline'}}" {{action "queryListing" "subwayLine" "all"}}>All</a>
+                    {{#each lineMapping as |line| }}
+                        <a href="javascript:;"
+                           class="btn_1 {{if (not (eq subwayLine line.id)) 'outline'}}" {{action "queryListing" "subwayLine" line.id}}>{{line.text}}</a>
+                    {{/each}}
                 </div>
             </div>
             {{#if (not (eq rentType "entire"))}}
