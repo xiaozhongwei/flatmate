@@ -16,6 +16,12 @@ export default Ember.Route.extend({
     // Call _super for default behavior
     this._super(controller, model);
 
+    if(!Ember.isEmpty(model)){
+      model.setEach('isExpand', false);
+
+      model.get('firstObject').set('isExpand', true);
+    }
+
     this.store.find('listing/statistic').then(function(statistics){
       controller.set("statistics", statistics);
     });
