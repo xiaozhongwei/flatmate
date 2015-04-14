@@ -99,7 +99,8 @@ module.exports = function(app) {
         "bedrooms": 0,
         "livingRooms": 0,
         "createType": 0,
-        "rentType": "share"
+        "rentType": "entire"
+        //"rentType": "share"
       }
     });
   });
