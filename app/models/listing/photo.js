@@ -6,9 +6,9 @@ import DS from 'ember-data';
 export default DS.Model.extend({
     index: DS.attr(),
     description: DS.attr(),
-    downloadFilePath: DS.attr(),
+    imageUrl: DS.attr()
 
-    style: function(){
-        return "background-image:url('" + this.get("downloadFilePath") + "')";
-    }.property('downloadFilePath')
+    //,style: function(){
+    //      return "background-image:url('" + this.get("downloadFilePath") + "')";
+    //  }.property('downloadFilePath')
 });

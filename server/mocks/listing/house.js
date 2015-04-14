@@ -16,14 +16,14 @@ module.exports = function(app) {
           bedrooms: 4,
           bathrooms: 1,
           livingRooms: 1,
-          rentType: 'shared',
+          rentType: 'share',
           //createDate: '2015-03-14',
           listings: [{
               id: "2",
               title: "Listing 1",
               photos: [
-                {id:"21",index: 1, downloadFilePath:"images/street_yoga_800x600.jpg"},
-                {id:"22",index: 0, downloadFilePath:"images/hotel_eden_mar_suite_800x600.jpg"}
+                {id:"21",index: 1, imageUrl:"images/post-5.jpg"},
+                {id:"22",index: 0, imageUrl:"images/post-5.jpg"}
               ],
               status: 0
             }, {
@@ -37,12 +37,12 @@ module.exports = function(app) {
           bedrooms: 3,
           bathrooms: 1,
           livingRooms: 1,
-          rentType: 'shared',
+          rentType: 'share',
           //createDate: '2015-03-14',
           listings: [{
               id: "1",
               title: "舒适向南单间",
-              photos: [{id: "11", index:0, downloadFilePath:"images/street_yoga_800x600.jpg"}],
+              photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
               status: 0
           }]
         }
