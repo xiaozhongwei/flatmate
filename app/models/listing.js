@@ -8,10 +8,10 @@ export default DS.Model.extend({
 
   title: DS.attr(),
   description: DS.attr(),
-  perMonthPrice: DS.attr(),
-  perThreeMonthPrice: DS.attr(),
-  perSixMonthPrice: DS.attr(),
-  perYearPrice: DS.attr(),
+  perMonthPrice: DS.attr(),                   // 每月一付月租价格
+  perThreeMonthPrice: DS.attr(),              // 每三月一付月租价格
+  perSixMonthPrice: DS.attr(),                // 每六月一付月租价格
+  perYearPrice: DS.attr(),                    // 每年一付月租价格
   deposit: DS.attr(),
   features: DS.attr(),
 

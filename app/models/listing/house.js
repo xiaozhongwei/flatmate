@@ -15,6 +15,7 @@ export default DS.Model.extend({
   floor: DS.attr('number'),                        // 楼层
   doorplate: DS.attr(),                            // 门牌号
   metroStation: DS.attr(),                         // 地铁站名
+  size: DS.attr(),                                 // 面积
 
 
   bedrooms: DS.attr('number'),                     // 卧室数目

@@ -99,8 +99,17 @@ module.exports = function(app) {
         "bedrooms": 0,
         "livingRooms": 0,
         "createType": 0,
-        "rentType": "entire"
-        //"rentType": "share"
+        size: "100",
+        "rentType": "entire",
+        //"rentType": "share",
+        listings: [{
+          id: "1",
+          title: "舒适向南单间",
+          photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+          status: 0
+        }],
+        "amenities": [ "WashingMachine","Aircon","TV","Oven","Dryer","DVDPlayer","Internet",
+          "Security","HealthClub","Pool","Balcony","OutdoorSpace","Elevator"]
       }
     });
   });
