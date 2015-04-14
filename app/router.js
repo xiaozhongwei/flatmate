@@ -32,6 +32,7 @@ Router.map(function() {
     this.route('manage',{path: "/manage/:house_id"});
   });
   this.route('wishlist');
+  this.route('register');
 });
 
 export default Router;

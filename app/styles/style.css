@@ -1145,15 +1145,22 @@ ul.add_info{
 	margin:0;
 }
 ul.add_info li{
+  margin-bottom: 5px;
 	display:inline-block;
 	margin-right:5px;
-	border:1px solid #ededed;
+	border:1px solid rgb(0,150,163);
 	text-align:center;
-	width:35px;
-	height:35px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+  padding-top: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  /*font-weight: bold;*/
+  color:rgb(0,150,163);
+	/*width:35px;*/
+	height:25px;
+	/*-webkit-border-radius: 3px;*/
+	/*-moz-border-radius: 3px;*/
+	/*border-radius: 3px;*/
 }
 ul.add_info li i{
 	display:inline-block;
