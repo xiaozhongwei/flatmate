@@ -36,9 +36,11 @@ export default DS.Model.extend({
 
   isExpand: false,
 
-  isFull: function () {
+  //availableDate: Ember.computed.alias('listings.firstObject.availableDate'),
+
+  isFull: Ember.computed('bedrooms', 'listings', function(){
     return this.get('bedrooms') === this.get('listings.length');
-  }.property('bedrooms', 'listings'),
+  }),
 
   isShared: Ember.computed('rentType', function(){
     return this.get('rentType') === "share";

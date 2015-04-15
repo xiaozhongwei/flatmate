@@ -108,7 +108,7 @@ module.exports = function(app) {
           photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
           status: 0
         }],
-        "amenities": [ "WashingMachine","Aircon","TV","Oven","Dryer","DVDPlayer","Internet",
+        "amenities": ["WashingMachine","Aircon","TV","Oven","Dryer","DVDPlayer","Internet",
           "Security","HealthClub","Pool","Balcony","OutdoorSpace","Elevator"]
       }
     });
