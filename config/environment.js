@@ -54,7 +54,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.host = "http://localhost:4200";
-    uploadHost: "api/upload",
+    uploadHost: "api/upload";
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'http://localhost:4200/token'
     };

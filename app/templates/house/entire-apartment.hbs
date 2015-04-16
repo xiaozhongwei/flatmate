@@ -79,12 +79,7 @@
                                     }}
                                   </div>
                               </div>
-                              <div class="form-group">
-                                  <label class="col-md-2 control-label">Size</label>
-                                  <div class="col-md-6">
-                                    {{input class="form-control" type="text" autocomplete="off" value=model.size}}
-                                  </div>
-                              </div>
+
                               <div class="form-group">
                                   <label class="col-md-2 control-label">Metro</label>
                                   <div class="col-md-6">
@@ -95,6 +90,12 @@
                                     multiple=true
                                     placeholder="Choose the Metro"
                                     }}
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-md-2 control-label">Size</label>
+                                  <div class="col-md-2">
+                                    {{input class="form-control" type="text" autocomplete="off" value=model.size}}
                                   </div>
                               </div>
                               <div class="form-group" style="padding-top: 30px">
@@ -195,6 +196,12 @@
                                         {{input class="form-control" type="text" autocomplete="off" value=listing.perYearPrice}}
                                       </div>
                                   </div>
+                                  <div class="form-group">
+                                      <label class="col-md-2 control-label">Deposit</label>
+                                      <div class="col-md-2">
+                                        {{input class="form-control" type="text" autocomplete="off" value=listing.deposit}}
+                                      </div>
+                                  </div>
                               </form>
                           </div>
                       </div>
@@ -211,6 +218,11 @@
                   </div>
 
                   <a href="javascript:;" class="btn_1 pull-right" {{action "save" model}}>Next</a>
+              {{/if}}
+
+              {{#if (eq step 3)}}
+                  <h2>Photo</h2>
+
               {{/if}}
             </div>
         </div>
