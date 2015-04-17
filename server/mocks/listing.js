@@ -14,24 +14,24 @@ module.exports = function(app) {
         "title": "温馨朝南单间",
         "description": "Dictumst vestibulum odio mi dolor justo curabitur tellus nostra bibendum facilisis vitae est",
         "perMonthPrice": 3000,
-        "perThreeMonthPrice": 3000,
-        "perSixMonthPrice": 0.0,
-        "perYearPrice": 0.0,
+        "perThreeMonthPrice": 2800,
+        "perSixMonthPrice": 2500,
         "deposit": 0.0,
         "features": ["Balcony","PrivateBath","DeskOrWardrobe"],
         "photos": [
-          {id: "21", index: 1, downloadFilePath: "images/street_yoga_800x600.jpg"},
-          {id: "22", index: 0, downloadFilePath: "images/hotel_eden_mar_suite_800x600.jpg"}
+          {id: "21", index: 1, imageUrl: "images/post-5.jpg"},
+          {id: "22", index: 0, imageUrl: "images/post-5.jpg"}
         ],
         "house": {
           "id": "3",
-          "name": "外滩 静安豪景 Building 1 Floor 2",
           "bathrooms": 3,
           "bedrooms": 2,
           "livingRooms": 0,
-          "rentType": "shared",
+          size: 100,
+          "rentType": "share",
           "type": 0,
-          "metroStation": "Anshan Xincun",
+          "subwayLines": ["1 Line", "2 Line"],
+          "metroStation": ["Anshan Xincun"],
           "area": "Hongkou",
           "compound": "静安豪景",
           "building": "1",
@@ -76,11 +76,11 @@ module.exports = function(app) {
           "photos": [{
             "id": "1",
             "index": 0,
-            "downloadFilePath": "http://7u2qna.com1.z0.glb.clouddn.com/BodyPart_ec840e61-ef79-4b24-a95b-37a60e77ee57"
+            "imageUrl": "http://7u2qna.com1.z0.glb.clouddn.com/BodyPart_ec840e61-ef79-4b24-a95b-37a60e77ee57"
           }, {
             "id": "2",
             "index": 0,
-            "downloadFilePath": "http://7u2qna.com1.z0.glb.clouddn.com/BodyPart_d029c300-9ee0-43cf-8d36-f6fee8383bd6"
+            "imageUrl": "http://7u2qna.com1.z0.glb.clouddn.com/BodyPart_d029c300-9ee0-43cf-8d36-f6fee8383bd6"
           }]
         },
         "createUserName": "1111@qq.com",

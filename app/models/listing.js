@@ -29,6 +29,23 @@ export default DS.Model.extend({
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
 
+  lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
+    var price = this.get('perYearPrice');
+    //alert(price);
+    if(parseFloat(this.get('perSixMonthPrice')) < parseFloat(price)){
+      price = this.get('perSixMonthPrice');
+    }
+    if(this.get('perThreeMonthPrice') < price){
+      price = this.get('perThreeMonthPrice');
+    }
+    if(this.get('perMonthPrice') < price){
+      price = this.get('perMonthPrice');
+    }
+
+
+    return price;
+  }),
+
   published: Ember.computed('status', function(){
     return this.get('status') === 1;
   }),

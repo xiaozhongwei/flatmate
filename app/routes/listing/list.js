@@ -29,9 +29,11 @@ export default Ember.Route.extend({
     return this.store.find('listing', params);
   },
   setupController: function (controller, model) {
+    if(!Ember.isEmpty(model))
+      controller.set("currentListing",model.get('firstObject'));
+
     controller.set("totalPage", model.get("meta.totalPage"));  //页数
     controller.set("totalCount", model.get("meta.totalCount")); //项数
-    controller.set("currentListing",model.get('firstObject'));
 
     this._super(controller, model);
   }

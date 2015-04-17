@@ -106,7 +106,7 @@
                                   {{#if index}}<hr>{{/if}}
                                   <div class="row">
                                       <div class="col-lg-1 col-md-1 col-sm-1">
-                                          <span class="radius-number">{{room-index index}}</span>
+                                          <span class="radius-number">{{#if house.isShared}}{{room-index index}}{{/if}}</span>
                                       </div>
                                       <div class="col-lg-3 col-md-3 col-sm-3" style=" padding-left: 0;">
                                           <div class="img_list">

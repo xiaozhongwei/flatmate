@@ -10,8 +10,16 @@ module.exports = function(app) {
           listings: [{
             id: "1",
             title: "舒适向南单间",
-            photos: [{id: "11", index:0, downloadFilePath:"images/post-5.jpg"}],
-            status: 0
+            photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+            status: 0,
+            rentType: "share",
+            house: {
+              id: "1",
+              size: 100,
+              bedrooms: 3,
+              area: 'Gubei',
+              subwayLines: ['1 Line', '2 Line']
+            }
           }]
         }
       ]
