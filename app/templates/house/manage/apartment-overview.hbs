@@ -122,7 +122,7 @@
     </div>
 </div>
 
-{{#if model.isShared}}
+{{#unless model.isShared}}
   {{#each model.listings as |listing index|}}
     {{#unless index}}
         <div class="panel panel-default">
@@ -178,7 +178,7 @@
         </div>
     {{/unless}}
   {{/each}}
-{{/if}}
+{{/unless}}
 
 <div class="panel panel-default">
     <div class="panel-heading">

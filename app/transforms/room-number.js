@@ -1,6 +1,6 @@
 export default DS.Transform.extend({
   mapping : [
-    { id: 0, text: "" },
+    /*{ id: 0, text: "" },*/
     { id: 1, text: "1" },
     { id: 2, text: "2" },
     { id: 3, text: "3" },

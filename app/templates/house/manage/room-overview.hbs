@@ -1,0 +1,121 @@
+<h2>Overview</h2>
+
+{{#each model.house.flatmates as |flatmate index|}}
+  {{#if (eq model.activeId flatmate.listingId)}}
+      <div class="panel-body" style="background: rgb(247,247,247)">
+          <div class="row">
+              <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                  <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
+                  <div class="styled-select-filters">
+                    {{select-2
+                    content=roomStatusMapping
+                    value=flatmate.status
+                    optionValuePath="id"
+                    searchEnabled=false
+                    }}
+                  </div>
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: left">
+                  <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                      <select name="sort_price" id="sort_price">
+                          <option value="" selected="">Sort by price</option>
+                          <option value="lower">Lowest price</option>
+                          <option value="higher">Highest price</option>
+                      </select>
+                  </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                    {{select-2
+                    content=occupationMapping
+                    value=flatmate.occupation
+                    optionValuePath="id"
+                    placeholder="Occupation"
+                    }}
+                  </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                    {{select-2
+                    content=genderMapping
+                    value=flatmate.gender
+                    optionValuePath="id"
+                    searchEnabled=false
+                    placeholder="Gender"
+                    }}
+                  </div>
+              </div>
+          </div>
+      </div>
+  {{/if}}
+{{/each}}
+
+<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+  {{#if session.user.logo.downloadFilePath}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+  {{else}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src="images/user_unknown.png" title={{session.user.firstName}}>
+  {{/if}}
+    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">You don't need to fill that info if you don't plan to rent this room out</span>
+</div>
+
+{{#each model.house.listings as |listing index|}}
+  {{#if (eq model.activeId listing.id)}}
+      <div class="panel panel-default">
+          <div class="panel-body">
+              <form class="form-horizontal" action="#">
+                  <div class="form-group">
+                      <label class="col-md-2 control-label">Title</label>
+
+                      <div class="col-md-8">
+                        {{input class="form-control" type="text" autocomplete="off" placeholder="Write a title" value=listing.title}}
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-2 control-label">Description</label>
+
+                      <div class="col-md-8">
+                        {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know your apartment." value=listing.description}}
+                      </div>
+                  </div>
+                  <div class="form-group" style="padding-top: 30px">
+                      <label class="col-md-2 control-label">Pay cycle</label>
+
+                      <div class="col-md-8">
+                        {{input class="form-control" type="text" autocomplete="off" placeholder="换成1 3 6 12"}}
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-2 control-label">Price</label>
+                      <div class="col-md-2">
+                        {{input class="form-control" type="text" autocomplete="off" value=listing.perMonthPrice}}
+                      </div>
+                      <div class="col-md-2">
+                        {{input class="form-control" type="text" autocomplete="off" value=listing.perThreeMonthPrice}}
+                      </div>
+                      <div class="col-md-2">
+                        {{input class="form-control" type="text" autocomplete="off" value=listing.perSixMonthPrice}}
+                      </div>
+                      <div class="col-md-2">
+                        {{input class="form-control" type="text" autocomplete="off" value=listing.perYearPrice}}
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-2 control-label">Deposit</label>
+                      <div class="col-md-2">
+                        {{input class="form-control" type="text" autocomplete="off" value=listing.deposit}}
+                      </div>
+                  </div>
+                  <div class="form-group" style="padding-top: 30px">
+                      <label class="col-md-2 control-label">Features</label>
+                      <div class="col-md-8">
+                        {{multi-checkboxes options=featureMapping valueProperty='index' labelProperty='name' selection=listing.features}}
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  {{/if}}
+{{/each}}
+

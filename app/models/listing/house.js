@@ -39,7 +39,7 @@ export default DS.Model.extend({
 
   //availableDate: Ember.computed.alias('listings.firstObject.availableDate'),
 
-  name: Ember.computed('area', 'compound', '', function(){
+  name: Ember.computed('area', 'compound', 'building', function(){
     return null;
   }),
 

@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       house.toggleProperty('isExpand')
     },
     manageHouse: function(house){
-      house.toggleProperty('isExpand')
+      this.transitionToRoute('house.manage', house.get('id'));
     },
     publishListing: function(listing){
       var data = {

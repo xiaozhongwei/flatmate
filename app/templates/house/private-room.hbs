@@ -1,170 +1,96 @@
+<style>
+    .inactive {
+      color: rgb(235,235,235) !important;
+    }
+</style>
+
 <div class="white_bg">
     <div class="container margin_60" style="padding-top:10px;">
         <div class="row">
             <aside class="col-lg-4 col-md-4">
-                <h2>List Your Apt</h2>
+                <h2>List Your Room</h2>
                 <div class="other_tours left_other_tours col-md-6" style="margin-top:20px;background: rgb(251,251,251);padding: 0;min-height: 500px;">
                     <ul>
-                        <li class="active"><a class="active" href="/profile/dashboard">Calendar<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
-                        <li><a href="javascript:;" style="color: rgb(235,235,235)">Rooms (4)</a></li>
-                        <li><a href="javascript:;"><span class="radius-number-1 radius-number-gary">A</span></a> </li>
-                        <li><a href="javascript:;"><span class="radius-number-1 radius-number-gary">B</span></a> </li>
-                        <li><a href="javascript:;"><span class="radius-number-1 radius-number-gary">C</span></a> </li>
-                        <li><a href="javascript:;"><span class="radius-number-1 radius-number-gary">D</span></a> </li>
+                        <li class="{{if (eq activeType 'apt') 'active'}}" {{action "changeActive" "apt"}}>
+                            <a href="javascript:;" class="{{if (eq activeType 'apt') 'active' 'inactive'}}" >
+                                Apartment<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
+                            </a>
+                        </li>
+                        <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
+                            <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
+                                Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
+                            </a>
+                        </li>
+                      {{#each model.house.listings as |listing index|}}
+                          <li class="{{if (eq model.activeId listing.id) 'active'}}">
+                              <a href="javascript:;" class="{{if (eq model.activeId listing.id) 'active' 'inactive'}}" {{action "changeActive" "room" listing.id}}>
+                                  <span class="radius-number-1 {{if (not (eq model.activeId listing.id)) 'radius-number-gary'}} ">{{room-index index}}</span>
+                              </a>
+                          </li>
+                      {{/each}}
                     </ul>
                 </div>
+
+                {{#unless (eq activeType 'flatmate')}}
                 <div class="other_tours col-md-6" style="margin-top:20px;background: rgb(247,247,247);padding: 10px 15px 15px 15px;min-height: 500px;">
                     <ul>
-                        <li><a class="active" href="/profile/dashboard">Calendar<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
-                        <li><a href="/profile/edit-profile">Overview <span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
-                        <li><a href="/profile/photo">Photo<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
-                        <li><a href="/profile/change-password">Map<span class="other_tours_price"><span class=" icon-ok"></span></span></a></li>
+                        {{#if (eq activeType 'apt')}}
+                            <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span  style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class=" icon-ok"></span></span></a></li>
+                        {{/if}}
+                        {{#if (eq activeType 'room')}}
+                            <li><a href="javascript:;" {{action "changeStep" 1}}>Calendar<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 2}}>Overview <span class="other_tours_price"><span  style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 3}}>Photo<span class="other_tours_price"><span class=" icon-ok"></span></span></a></li>
+                        {{/if}}
                     </ul>
                 </div>
+                {{/unless}}
             </aside>
             <div class="col-md-8">
-                <h2>Calendar</h2>
-                <div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
-                    <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white" src="images/LISA_100.jpg" title="Lisa">
-                    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">Starting day of you listing?</span>
-                </div>
-                <div class="box_style_2" style="border-top:none;border-radius: 0;padding:10px 0;">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                                <span class="radius-number" style="margin-top: 0">A</span>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
-                                <div class="styled-select-filters" style="display: inline-block;width: 55%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7">
-                                <div class="styled-select-filters" style="display: inline-block;width: 33%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 32%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 30%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="panel-body"  style="background: rgb(247,247,247)">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                                <span class="radius-number" style="margin-top: 0">A</span>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
-                                <div class="styled-select-filters" style="display: inline-block;width: 55%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7">
-                                <div class="styled-select-filters" style="display: inline-block;width: 33%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 32%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 30%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="panel-body" style="background: rgb(250,244,244)">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                                <span class="radius-number" style="margin-top: 0">A</span>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
-                                <div class="styled-select-filters" style="display: inline-block;width: 55%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-7">
-                                <div class="styled-select-filters" style="display: inline-block;width: 33%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 32%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                                <div class="styled-select-filters" style="display: inline-block;width: 30%">
-                                    <select name="sort_price" id="sort_price">
-                                        <option value="" selected="">Sort by price</option>
-                                        <option value="lower">Lowest price</option>
-                                        <option value="higher">Highest price</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{#if (eq activeType 'apt')}}
+                  {{#if (eq step 1)}}
+                    {{render 'house.manage.apartment-overview' model.house}}
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
+                  {{/if}}
+                  {{#if (eq step 2)}}
+                    {{render 'house.manage.photo' model.house.photos}}
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
+                  {{/if}}
 
-                <div class="panel-body" style="border:2px dashed rgb(221,221,221);padding:30px 15px; ">
-                    <div class="row">
-                        <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                            <span class="radius-number" style="margin-top: 0">+</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left;padding-top: 8px;" >
-                            <span style="font-weight: bold;font-size:16px;">Add a room</span>
-                        </div>
-                    </div>
-                </div>
+                  {{#if (eq step 3)}}
+                      <h2>Map</h2>
 
+                  {{/if}}
+                {{/if}}
+                {{#if (eq activeType 'flatmate')}}
+                  {{render 'house.manage.flatmate' model.house}}
+                {{/if}}
+                {{#if (eq activeType 'room')}}
+                  {{#if (eq step 1)}}
+                    {{#each model.house.listings as |listing index|}}
+                      {{#if (eq model.activeId listing.id)}}
+                        {{render 'house.manage.calendar' listing}}
+                        <a href="javascript:;" class="btn_1 pull-right" {{action "save" listing}}>Next</a>
+                      {{/if}}
+                    {{/each}}
 
+                  {{/if}}
+                  {{#if (eq step 2)}}
+                    {{render 'house.manage.room-overview' model}}
+                      <a href="javascript:;" class="btn_1 pull-right" {{action "save" model}}>Next</a>
+                  {{/if}}
+
+                  {{#if (eq step 3)}}
+                    {{#each model.house.listings as |listing index|}}
+                      {{#if (eq model.activeId listing.id)}}
+                        {{render 'house.manage.photo' listing.photos}}
+                      {{/if}}
+                    {{/each}}
+
+                  {{/if}}
+                {{/if}}
 
 
             </div>

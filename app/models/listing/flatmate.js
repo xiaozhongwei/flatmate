@@ -9,7 +9,7 @@ export default DS.Model.extend({
   houseId: DS.attr(),
   listingId: DS.attr(),                           // 关联的房源信息
   country: DS.attr(),
-  gender: DS.attr('', {defaultValue: 'male'}),
+  gender: DS.attr('', {defaultValue: '1'}),
   occupation: DS.attr(),
   hobby: DS.attr(),
 

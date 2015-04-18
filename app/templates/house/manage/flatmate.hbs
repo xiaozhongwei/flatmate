@@ -1,0 +1,159 @@
+<h2>{{model.bedrooms}} rooms</h2>
+<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+  {{#if session.user.logo.downloadFilePath}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+  {{else}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src="images/user_unknown.png" title={{session.user.firstName}}>
+  {{/if}}
+    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">You can list your room now!</span>
+</div>
+
+<div class="box_style_2" style="border-top:none;border-radius: 0;padding:10px 0;">
+    {{#each model.flatmates as |flatmate index|}}
+      {{#if index}}<hr>{{/if}}
+      <div class="panel-body">
+          <div class="row">
+              <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                  <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
+                  <div class="styled-select-filters">
+                    {{select-2
+                    content=roomStatusMapping
+                    value=flatmate.status
+                    optionValuePath="id"
+                    searchEnabled=false
+                    }}
+                  </div>
+
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: left">
+                  <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                      <select name="sort_price" id="sort_price">
+                          <option value="" selected="">Sort by price</option>
+                          <option value="lower">Lowest price</option>
+                          <option value="higher">Highest price</option>
+                      </select>
+                  </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                    {{select-2
+                    content=occupationMapping
+                    value=flatmate.occupation
+                    optionValuePath="id"
+                    placeholder="Occupation"
+                    }}
+                  </div>
+                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                    {{select-2
+                    content=genderMapping
+                    value=flatmate.gender
+                    optionValuePath="id"
+                    searchEnabled=false
+                    placeholder="Gender"
+                    }}
+                  </div>
+              </div>
+          </div>
+      </div>
+    {{/each}}
+
+   <!-- <hr>
+    <div class="panel-body"  style="background: rgb(247,247,247)">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                <span class="radius-number" style="margin-top: 0">A</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
+                <div class="styled-select-filters" style="display: inline-block;width: 55%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="styled-select-filters" style="display: inline-block;width: 33%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="styled-select-filters" style="display: inline-block;width: 32%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="styled-select-filters" style="display: inline-block;width: 30%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="panel-body" style="background: rgb(250,244,244)">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                <span class="radius-number" style="margin-top: 0">A</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
+                <div class="styled-select-filters" style="display: inline-block;width: 55%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="styled-select-filters" style="display: inline-block;width: 33%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="styled-select-filters" style="display: inline-block;width: 32%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+                <div class="styled-select-filters" style="display: inline-block;width: 30%">
+                    <select name="sort_price" id="sort_price">
+                        <option value="" selected="">Sort by price</option>
+                        <option value="lower">Lowest price</option>
+                        <option value="higher">Highest price</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<div class="panel-body" style="border:2px dashed rgb(221,221,221);padding:30px 15px; ">
+    <a href="javascript:;">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                <span class="radius-number" style="margin-top: 0">+</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left;padding-top: 8px;" >
+                <span style="font-weight: bold;font-size:16px;">Add a room</span>
+            </div>
+        </div>
+    </a>
+
+</div>

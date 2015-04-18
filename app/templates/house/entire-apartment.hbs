@@ -16,7 +16,7 @@
             </aside>
             <div class="col-md-8 col-md-offset-1">
               {{#if (eq step 1)}}
-                  {{render 'house.manage.calendar' model}}
+                  {{render 'house.manage.calendar' model.listings.firstObject}}
                   <a href="javascript:;" class="btn_1 pull-right" {{action "save" model}}>Next</a>
               {{/if}}
               {{#if (eq step 2)}}

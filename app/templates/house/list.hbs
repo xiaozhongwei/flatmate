@@ -123,9 +123,9 @@
                                           <div class="tour_list_desc" style="padding-top:20px;height: 110px;">
                                               <h3><strong>{{listing.title}}</strong></h3>
                                             {{#if house.isShared}}
-                                                <a href="">Manage listing</a>
+                                              {{#link-to 'house.manage' house.id (query-params activeId=listing.id)}}Manage listing{{/link-to}}
                                             {{else}}
-                                                <a href="">Manage apt</a>
+                                              {{#link-to 'house.manage' house.id}}Manage apt{{/link-to}}
                                             {{/if}}
 
                                           </div>
