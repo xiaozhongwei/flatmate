@@ -105,7 +105,7 @@ module.exports = function(app) {
         listings: [{
           id: "1",
           title: "舒适向南单间",
-          photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+          photos: [{id: "11", index:11, imageUrl:"images/post-5.jpg"}],
           status: 0
         },{
           id: "2",

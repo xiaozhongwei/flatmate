@@ -51,8 +51,9 @@ export default DS.Model.extend({
     return editable;
   }),
 
-  name: Ember.computed('area', 'compound', 'building', function(){
-    return null;
+  showName: Ember.computed('area', 'compound', 'building', 'floor', 'doorplate', function(){
+    return (!Ember.isEmpty(this.get('area')) && !Ember.isEmpty(this.get('compound')) && !Ember.isEmpty(this.get('building'))
+              && (!Ember.isEmpty(this.get('floor'))) && (!Ember.isEmpty(this.get('doorplate'))));
   }),
 
   isFull: Ember.computed('bedrooms', 'listings', function(){

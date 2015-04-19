@@ -1,14 +1,14 @@
 module.exports = function(app) {
   var express = require('express');
-  var listingPhotoRouter = express.Router();
+  var listingRoomPhotoRouter = express.Router();
 
-  listingPhotoRouter.get('/', function(req, res) {
+  listingRoomPhotoRouter.get('/', function(req, res) {
     res.send({
-      'listing/photo': []
+      'listing/room-photo': []
     });
   });
 
-  listingPhotoRouter.post('/', function(req, res) {
+  listingRoomPhotoRouter.post('/', function(req, res) {
     var data = {
       photos: [{
         id: Math.ceil(Math.random() * 1000),
@@ -27,25 +27,25 @@ module.exports = function(app) {
     res.send(data);
   });
 
-  listingPhotoRouter.get('/:id', function(req, res) {
+  listingRoomPhotoRouter.get('/:id', function(req, res) {
     res.send({
-      'listing/photo': {
+      'listing/room-photo': {
         id: req.params.id
       }
     });
   });
 
-  listingPhotoRouter.put('/:id', function(req, res) {
+  listingRoomPhotoRouter.put('/:id', function(req, res) {
     res.send({
-      'listing/photo': {
+      'listing/room-photo': {
         id: req.params.id
       }
     });
   });
 
-  listingPhotoRouter.delete('/:id', function(req, res) {
+  listingRoomPhotoRouter.delete('/:id', function(req, res) {
     res.status(204).end();
   });
 
-  app.use('/api/house/:id/photos/upload', listingPhotoRouter);
+  app.use('/api/house/:id/photos/upload', listingRoomPhotoRouter);
 };

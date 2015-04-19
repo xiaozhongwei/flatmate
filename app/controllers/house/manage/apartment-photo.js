@@ -4,7 +4,7 @@ import Notify from 'ember-notify';
 
 export default Ember.Controller.extend({
   uploadUrl: function(){
-    return config.host + "/" + config.apiRoot + "/listing" + "/" + this.get('model.id') + "/photos/upload";
+    return config.host + "/" + config.apiRoot + "/house" + "/" + this.get('model.id') + "/photos/upload";
   }.property('model'),
   photoObserve: function(){
     //alert(this.get("model.photos.length"));

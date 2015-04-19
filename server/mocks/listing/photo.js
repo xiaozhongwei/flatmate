@@ -9,22 +9,7 @@ module.exports = function(app) {
   });
 
   listingPhotoRouter.post('/', function(req, res) {
-    var data = {
-      photos: [{
-        id: Math.ceil(Math.random() * 1000),
-        index: 1,
-        imageUrl: 'images/post-5.jpg'
-      },{
-        id: Math.ceil(Math.random() * 1000),
-        index: 2,
-        imageUrl: 'images/post-5.jpg'
-      },{
-        id: Math.ceil(Math.random() * 1000),
-        index: 3,
-        imageUrl: 'images/post-5.jpg'
-      }]
-    };
-    res.send(data);
+    res.status(201).end();
   });
 
   listingPhotoRouter.get('/:id', function(req, res) {
@@ -47,5 +32,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/house/:id/photos/upload', listingPhotoRouter);
+  app.use('/api/listing/photos', listingPhotoRouter);
 };

@@ -95,7 +95,11 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a class="accordion-toggle" href="javascript:;">
-                                    {{house.area}} <i class="icon-left"></i>{{house.compound}}, building {{house.building}}<i class="icon-left"></i> Floor {{house.floor}}, {{house.doorplate}}
+                                    {{#if house.showName}}
+                                      {{house.area}} <i class="icon-left"></i>{{house.compound}}, building {{house.building}}<i class="icon-left"></i> Floor {{house.floor}}, {{house.doorplate}}
+                                    {{else}}
+                                      New apartment with no detailed address info
+                                    {{/if}}
                                     <small style="color:#f7941d" {{action "manageHouse" house}}> Manage Apt</small>
                                     <i class="indicator {{if house.isExpand 'icon-up-open-2' 'icon-down-open-2'}} pull-right" {{action "toggleHouse" house}}></i></a>
                             </h4>

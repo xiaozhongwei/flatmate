@@ -8,6 +8,9 @@ export default DS.Model.extend({
     description: DS.attr(),
     imageUrl: DS.attr()
 
+    ,houseId: DS.attr(),
+    listingId: DS.attr()
+
     //,style: function(){
     //      return "background-image:url('" + this.get("downloadFilePath") + "')";
     //  }.property('downloadFilePath')

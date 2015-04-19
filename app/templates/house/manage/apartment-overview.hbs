@@ -10,10 +10,16 @@
     <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">Hi! Tell people about your beautiful apartment</span>
 </div>
 <div style="margin-top:20px;margin-bottom:20px; border:1px solid rgb(217, 217, 217);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
-    <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">A</span>
-    <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">B</span>
-    <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">C</span>
-    <span style="display: inline-block;margin-left:40px;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">Hongkou → Si He Yuan, 154 → Apt. 10</span>
+  {{#if model.showName}}
+    {{#each model.listings as |listing index|}}
+        <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">{{room-index index}}</span>
+    {{/each}}
+      <span style="display: inline-block;margin-left:40px;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">
+        {{model.area}} → {{model.compound}}, building {{model.building}} → Floor {{model.floor}}, {{model.doorplate}}</span>
+  {{else}}
+      <span style="display: inline-block;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">New apartment. No worries, name generates automaticly</span>
+  {{/if}}
+
 </div>
 
 <div class="panel panel-default">
@@ -189,3 +195,8 @@
       {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' selection=model.amenities}}
     </div>
 </div>
+
+<style>
+    .multiselect-checkboxes { list-style-type: none; margin: 0; padding: 5px; }
+    .multiselect-checkbox-option { float: left; width: 33.3%;}
+</style>
