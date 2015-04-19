@@ -32,5 +32,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/listing-photo', listingPhotoRouter);
+  app.use('/api/house/:id/photos/upload', listingPhotoRouter);
 };

@@ -7,8 +7,22 @@
       <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
            src="images/user_unknown.png" title={{session.user.firstName}}>
   {{/if}}
-    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">Guests love photos that highlight the features</span>
+  <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">
+      Guests love photos that highlight the features
+  </span>
+
+
 </div>
 <div class="box_style_2" style="border-top:none;border-radius: 0">
-
+    <div class="fileinput">
+        <div class="input-group">
+            <span class="btn btn-file" style=" padding-left: 0;">
+              <span>
+                {{#if session.user.logo}}
+                  {{photos-uploader name="logo" class="btn btn-primary" url="" document=session.user.logo}}
+                {{/if}}
+              </span>
+            </span>
+        </div>
+    </div>
 </div>

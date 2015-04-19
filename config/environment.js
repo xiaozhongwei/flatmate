@@ -53,11 +53,11 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.host = "http://localhost:4200";
-    uploadHost: "api/upload";
-    ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'http://localhost:4200/token'
-    };
+    //ENV.host = "http://localhost:4200";
+    //uploadHost: "api/upload";
+    //ENV['simple-auth-oauth2'] = {
+    //  serverTokenEndpoint: 'http://localhost:4200/token'
+    //};
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

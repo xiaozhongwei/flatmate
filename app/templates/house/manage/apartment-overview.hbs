@@ -50,7 +50,7 @@
                 <div class="col-md-6">
                   {{select-2
                   content=stationMapping
-                  value=model.metro
+                  value=model.metroStations
                   optionValuePath="id"
                   multiple=true
                   placeholder="Choose the Metro"
@@ -96,6 +96,7 @@
                   content=roomNumberMapping
                   value=model.bedrooms
                   optionValuePath="id"
+                  enabled=model.bedroomEditable
                   searchEnabled=false
                   }}
                 </div>

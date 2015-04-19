@@ -1,0 +1,53 @@
+<style>
+    .ui-sortable { list-style-type: none; margin: 0; padding: 0; }
+    .ui-sortable li { float: left; width: 33.3%; text-align: center; }
+    .ui-state-highlight { height: 100%; line-height: 100%; }
+</style>
+
+<h2>Add some photos</h2>
+<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+  {{#if session.user.logo.downloadFilePath}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+  {{else}}
+      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+           src="images/user_unknown.png" title={{session.user.firstName}}>
+  {{/if}}
+  <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">
+      Guests love photos that highlight the features
+  </span>
+
+
+</div>
+<div class="box_style_2" style="border-top:none;border-radius: 0">
+    <div class="row">
+      {{#collection "ivy-sortable" placeholder="ui-state-highlight" content=model.photos}}
+          <div class="tour_container">
+              <div class="img_container">
+                  <a>
+                      <img src="{{imageUrl}}" width="800" height="533" class="img-responsive" alt="">
+                      <!--<div class="ribbon top_rated"></div>-->
+                      <div class="short_info">
+                          <a href="javascript:;" {{action "removePhoto" this}}></a>
+                      </div></a>
+              </div>
+              <div class="tour_title listing">
+                {{textarea class="form-control" type="area" rows="3" placeholder="What are the highlights?" value=description}}
+              </div>
+          </div>
+      {{/collection}}
+    </div>
+
+    <hr>
+
+    <div class="fileinput">
+        <div class="input-group">
+            <span class="btn btn-file" style=" padding-left: 0;">
+              <span>
+                {{photos-uploader name=model.id class="btn btn-primary" url=uploadUrl uploadSuccess="addPhotos"}}
+              </span>
+            </span>
+        </div>
+    </div>
+</div>
+

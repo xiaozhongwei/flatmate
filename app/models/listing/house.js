@@ -14,7 +14,7 @@ export default DS.Model.extend({
   building: DS.attr(),                             // 单元
   floor: DS.attr(),                                // 楼层
   doorplate: DS.attr(),                            // 门牌号
-  metroStation: DS.attr(),                         // 地铁站名
+  metroStations: DS.attr(),                         // 地铁站名
   subwayLines: DS.attr(),                          // 地铁线名
   size: DS.attr(),                                 // 面积
 
@@ -38,6 +38,18 @@ export default DS.Model.extend({
   isExpand: false,
 
   //availableDate: Ember.computed.alias('listings.firstObject.availableDate'),
+
+  bedroomEditable: Ember.computed('flatmates.@id', function(){
+    var editable = true;
+
+    this.get("flatmates").forEach( flatmate => {
+      if(editable && !Ember.isEmpty(flatmate.id)){
+        editable = false;
+      }
+    });
+
+    return editable;
+  }),
 
   name: Ember.computed('area', 'compound', 'building', function(){
     return null;

@@ -16,11 +16,13 @@
                                 Apartment<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
                             </a>
                         </li>
-                        <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
-                            <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
-                                Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
-                            </a>
-                        </li>
+                      {{#unless model.house.bedroomEditable}}
+                          <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
+                              <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
+                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
+                              </a>
+                          </li>
+                      {{/unless}}
                       {{#each model.house.listings as |listing index|}}
                           <li class="{{if (eq model.activeId listing.id) 'active'}}">
                               <a href="javascript:;" class="{{if (eq model.activeId listing.id) 'active' 'inactive'}}" {{action "changeActive" "room" listing.id}}>
@@ -55,7 +57,7 @@
                     <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
                   {{/if}}
                   {{#if (eq step 2)}}
-                    {{render 'house.manage.photo' model.house.photos}}
+                    {{render 'house.manage.apartment-photo' model.house.photos}}
                     <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
                   {{/if}}
 
@@ -75,17 +77,16 @@
                         <a href="javascript:;" class="btn_1 pull-right" {{action "save" listing}}>Next</a>
                       {{/if}}
                     {{/each}}
-
                   {{/if}}
                   {{#if (eq step 2)}}
                     {{render 'house.manage.room-overview' model}}
-                      <a href="javascript:;" class="btn_1 pull-right" {{action "save" model}}>Next</a>
+
                   {{/if}}
 
                   {{#if (eq step 3)}}
                     {{#each model.house.listings as |listing index|}}
                       {{#if (eq model.activeId listing.id)}}
-                        {{render 'house.manage.photo' listing.photos}}
+                        {{render 'house.manage.room-photo' listing}}
                       {{/if}}
                     {{/each}}
 

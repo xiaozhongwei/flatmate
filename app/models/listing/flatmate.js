@@ -5,7 +5,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   index: DS.attr(),
-  status: DS.attr(),                              // 'renting': 招租中; 'rented': 已出租; 'vacant': 空置;
+  status: DS.attr('number', {defaultValue: 1}),                              // 'renting': 招租中; 'rented': 已出租; 'vacant': 空置;
   houseId: DS.attr(),
   listingId: DS.attr(),                           // 关联的房源信息
   country: DS.attr(),
@@ -19,10 +19,10 @@ export default DS.Model.extend({
     return this.get('gender') === "male";
   }.property('gender'),
   isAvailable: function () {
-    return this.get('status') === "available";
+    return this.get('status') === 0;
   }.property('status'),
   isOccupied: function () {
-    return this.get('status') === "occupied";
+    return this.get('status') === 1;
   }.property('status')
 
   //,isRenting: function(){
