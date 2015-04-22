@@ -9,7 +9,13 @@ module.exports = function(app) {
   });
 
   listingFlatmateRouter.post('/', function(req, res) {
-    res.status(201).end();
+    res.send({
+      'listing/flatmate': {
+        id: (new Date()).getTime(),
+        listingId: (new Date()).getTime(),
+        status: 0
+      }
+    });
   });
 
   listingFlatmateRouter.get('/:id', function(req, res) {

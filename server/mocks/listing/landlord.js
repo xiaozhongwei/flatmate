@@ -44,8 +44,8 @@ module.exports = function(app) {
           "deposit": 0.0,
           "features": ["Balcony","PrivateBath","DeskOrWardrobe"],
           "photos": [
-            {id: "21", index: 1, downloadFilePath: "images/street_yoga_800x600.jpg"},
-            {id: "22", index: 0, downloadFilePath: "images/hotel_eden_mar_suite_800x600.jpg"}
+            {id: "21", index: 1, imageUrl: "images/post-5.jpg"},
+            {id: "22", index: 0, imageUrl: "images/post-5.jpg"}
           ],
           "house": {
             "id": "3",

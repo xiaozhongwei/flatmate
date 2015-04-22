@@ -2,6 +2,9 @@
     .inactive {
       color: rgb(235,235,235) !important;
     }
+    .step-finish {
+      color: rgb(0,150,163) !important;
+    }
 </style>
 
 <div class="white_bg">
@@ -13,13 +16,13 @@
                     <ul>
                         <li class="{{if (eq activeType 'apt') 'active'}}" {{action "changeActive" "apt"}}>
                             <a href="javascript:;" class="{{if (eq activeType 'apt') 'active' 'inactive'}}" >
-                                Apartment<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
+                                Apartment<span class="other_tours_price"><span class="icon-ok {{if isApartmentFinished 'step-finish'}}"></span></span>
                             </a>
                         </li>
                       {{#unless model.house.bedroomEditable}}
                           <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
                               <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
-                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span style="color:rgb(0,150,163)" class=" icon-ok"></span></span>
+                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span class="icon-ok {{if isFlatmateFinished 'step-finish'}}"></span></span>
                               </a>
                           </li>
                       {{/unless}}
@@ -37,9 +40,9 @@
                 <div class="other_tours col-md-6" style="margin-top:20px;background: rgb(247,247,247);padding: 10px 15px 15px 15px;min-height: 500px;">
                     <ul>
                         {{#if (eq activeType 'apt')}}
-                            <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span  style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
-                            <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
-                            <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class=" icon-ok"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span class="icon-ok {{if isOverviewFinished 'step-finish'}}"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class="icon-ok {{if isPhotoFinished 'step-finish'}}"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class="icon-ok {{if isMapFinished 'step-finish'}}"></span></span></a></li>
                         {{/if}}
                         {{#if (eq activeType 'room')}}
                             <li><a href="javascript:;" {{action "changeStep" 1}}>Calendar<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
@@ -57,7 +60,7 @@
                     <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
                   {{/if}}
                   {{#if (eq step 2)}}
-                    {{render 'house.manage.apartment-photo' model.house.photos}}
+                    {{render 'house.manage.apartment-photo' model.house}}
                     <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
                   {{/if}}
 
@@ -89,7 +92,6 @@
                         {{render 'house.manage.room-photo' listing}}
                       {{/if}}
                     {{/each}}
-
                   {{/if}}
                 {{/if}}
 

@@ -13,7 +13,7 @@ export default EmberUploader.FileField.extend({
     if (!Ember.isEmpty(files)) {
       var promise = uploader.upload(files);
       promise.then(response => {
-        this.sendAction('uploadSuccess', response.photos);
+        this.sendAction('uploadSuccess', response['listing/photos']);
       });
       promise['catch'](function() {
         Ember.debug("file upload failure.");

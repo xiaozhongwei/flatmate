@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   listingPhotoRouter.post('/', function(req, res) {
     var data = {
-      photos: [{
+      'listing/photos': [{
         id: Math.ceil(Math.random() * 1000),
         index: 1,
         imageUrl: 'images/post-5.jpg'

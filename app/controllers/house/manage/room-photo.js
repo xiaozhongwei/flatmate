@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
       this.get("model.photos").forEach(photo => {
         if(!Ember.isEmpty(photo.get("description")) && photo.get("isDirty")){
           photo.save().then(function(){
-            Notify.info('Description saved');
+            Notify.info("Photo's description saved");
           },function(){
 
           });

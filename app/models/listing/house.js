@@ -2,10 +2,25 @@
  * Created by Eric on 2014/11/17.
  */
 import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default DS.Model.extend({
+export default DS.Model.extend(EmberValidations.Mixin,{
   //name: DS.attr(),                                 // 组名：compound + building + floor
   //type: DS.attr('number'),                         // 创建类型： 0-默认创建，1-用户创建
+
+  validations: {
+    area: { presence: true },
+    compound: { presence: true },
+    building: { presence: true },
+    floor: { presence: true },
+    doorplate: { presence: true },
+    metroStations: { presence: true },
+    size: { presence: true },
+    bedrooms: { presence: true },
+    bathrooms: { presence: true },
+    livingRooms: { presence: true },
+    amenities: { presence: true }
+  },
 
   rentType: DS.attr(),                             // 出租方式
 
@@ -63,4 +78,43 @@ export default DS.Model.extend({
   isShared: Ember.computed('rentType', function(){
     return this.get('rentType') === "share";
   })
+  ,
+  isFlatmateFinished: Ember.computed('flatmates.@each', function(){
+    alert(2);
+    var finished = true;
+    this.get("flatmates").forEach(flatmate => {
+      if(finished && flatmate.get("isOccupied") && !flatmate.get("isValid")){
+        alert(1);
+        finished = false;
+      }
+    });
+    return finished;
+  })
+  //isOverviewFinished: Ember.computed('rentType','isValid', function(){
+  //  if(this.get('rentType') === "share"){
+  //    return this.get('isValid');
+  //  }
+  //  else{
+  //    return true;
+  //  }
+  //}),
+
+  //isPhotoFinished: Ember.computed('photos', function(){
+  //  if(this.get('rentType') === "share"){
+  //    return this.get('photos.length') > 0;
+  //  }
+  //  else{
+  //    return this.get('listings.firstObject.photos.length') > 0;
+  //  }
+  //}),
+
+  //isMapFinished: Ember.computed('location', function(){
+  //  //return Ember.isEmpty(this.get('location'));
+  //  return true;
+  //})
+  //,
+  //
+  //isFinished: Ember.computed('isOverviewFinished', 'isPhotoFinished', 'isMapFinished', function(){
+  //  return this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+  //})
 });

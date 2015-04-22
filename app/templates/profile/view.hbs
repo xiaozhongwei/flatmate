@@ -65,7 +65,39 @@
         {{#if model.listingsCount}}
             <aside class="col-md-3">
                 <h3 style="margin-bottom:30px;">Listing ({{model.listingsCount}})</h3>
-                <img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">
+                <div class="tour_container">
+                    <div class="img_container">
+                      {{#link-to 'listing.detail' model.latestListing.id}}
+                          <img src="{{if model.latestListing.coverPhoto model.latestListing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
+                          <!--<div class="ribbon top_rated"></div>-->
+                          <div class="short_info">
+                              <span class="price"><sup>￥</sup>TODO</span>
+                          </div>
+                      {{/link-to}}
+                    </div>
+                    <div class="tour_title listing">
+                        <ul class="stats" style="padding-left: 0;">
+                            <li>Type
+                                <span>{{if model.latestListing.house.isShared 'Room' 'Apt'}}</span>
+                            </li>
+                            <li>Rooms<span>{{model.latestListing.house.bedrooms}}</span></li>
+                            <li>Size, m2<span>{{model.latestListing.house.size}}</span></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                        <hr style="margin: 10px -15px 10px -15px">
+                        <h3 style="text-transform:none;">{{model.latestListing.title}}</h3>
+
+                        <p style="min-height:80px;">{{model.latestListing.house.area}}</p>
+                        <ul class="add_info">
+                          {{#each model.latestListing.house.subwayLines as |subwayLine|}}
+                              <li>
+                                  <span style="display: inline-block">{{subwayLine}}</span>
+                              </li>
+                          {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <!--<img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">-->
                 {{#link-to 'listing.list' (query-params userId=model.id)}}View all Listings{{/link-to}}
             </aside>
         {{/if}}
