@@ -66,9 +66,9 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     return editable;
   }),
 
-  showName: Ember.computed('area', 'compound', 'building', 'floor', 'doorplate', function(){
+  showName: Ember.computed('area', 'compound', 'building', 'floor', function(){
     return (!Ember.isEmpty(this.get('area')) && !Ember.isEmpty(this.get('compound')) && !Ember.isEmpty(this.get('building'))
-              && (!Ember.isEmpty(this.get('floor'))) && (!Ember.isEmpty(this.get('doorplate'))));
+              && (!Ember.isEmpty(this.get('floor'))));
   }),
 
   isFull: Ember.computed('bedrooms', 'listings', function(){

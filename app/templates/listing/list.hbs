@@ -378,7 +378,7 @@
           {{else}}
               {{#each model as |listing|}}
               <div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container active">
+                  <div class="tour_container {{if (eq currentListing.id listing.id) 'active'}}">
                       <div class="img_container" style="height: 220px;">
                         {{#link-to 'listing.detail' listing.id}}
                             <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
@@ -396,6 +396,7 @@
                           </ul>
                           <div style="clear:both"></div>
                           <hr style="margin: 10px -15px 10px -15px">
+                          <a href="javascript:;" {{action "preview" listing}}>
                           <h3 style="text-transform:none;">{{listing.title}}</h3>
 
                           <p style="min-height:80px;">{{listing.house.area}}</p>
@@ -408,6 +409,7 @@
                                 </li>
                             {{/each}}
                           </ul>
+                          </a>
                       </div>
                   </div>
               </div>
@@ -575,58 +577,30 @@
 
               {{#if currentListing.house.isShared}}
                   <h4>Rooms & Flatmates </h4>
-                  <hr>
-                  <p>
-                      <span class="radius-number-1">A</span>
-                      <span style="color: #f7941d; font-size: 18px; font-weight: bold; padding-left: 10px;">Availble</span>
-                  </p>
-                  <hr>
-                  <p>
-                      <span class="radius-number-1 radius-number-gary">B</span>
-                      <img src="/images/flag1.png" style="height: 70px;width: 70px;margin-top: -15px;"/>
-                      <span style="float: right;">
-                          <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
-                          <span style=" display: block;color:black;font-size: 15px;">Professional</span>
-                          <span style=" display: block;color:black;font-size: 15px;">Girl</span>
-                      </span>
-                  </p>
-                  <hr>
-                  <p>
-                      <span class="radius-number-1 radius-number-gary">C</span>
-                      <img src="/images/flag2.png" style="height: 70px;width: 70px;margin-top: -15px;"/>
-                    <span style="float: right;">
-                    <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Professional</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Girl</span>
-                </span>
-                  </p>
-                  <hr>
-                  <p>
-                      <span class="radius-number-1 radius-number-gary">D</span>
-                      <img src="/images/flag3.png" style="height: 70px;width: 70px;margin-top: -15px;"/>
-                    <span style="float: right;">
-                    <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Professional</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Girl</span>
-                </span>
-                  </p>
+                {{#each currentListing.house.flatmates as |flatmate index|}}
+                  {{#if flatmate.isAvailable}}
+                    <hr>
+                    <p>
+                        <span class="{{if (eq flatmate.listingId currentListing.id) 'radius-number-1' 'radius-number-1'}}">{{room-index index}}</span>
+                        <span style="color: #f7941d; font-size: 18px; font-weight: bold; padding-left: 10px;">Availble</span>
+                    </p>
+                  {{else}}
+                    <hr>
+                    <p>
+                        <span class="radius-number-1 radius-number-gary">{{room-index index}}</span>
+                        <img src="/images/flag1.png" style="height: 70px;width: 70px;margin-top: -15px;"/>
+                        <span style="float: right;">
+                            <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">{{flatmate.occupation}}</span>
+                            <span style=" display: block;color:black;font-size: 15px;">{{flatmate.occupation}}</span>
+                            <span style=" display: block;color:black;font-size: 15px;">{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}</span>
+                        </span>
+                    </p>
+                  {{/if}}
+                {{/each}}
               {{else}}
                   <h4>Amenities</h4>
                   <hr>
-                  <p>
-                      <span class="radius-number-1">A</span>
-                      <span style="color: #f7941d; font-size: 18px; font-weight: bold; padding-left: 10px;">Availble</span>
-                  </p>
-                  <hr>
-                  <p>
-                      <span class="radius-number-1 radius-number-gary">B</span>
-                      <img src="/images/flag1.png" style="height: 70px;width: 70px;margin-top: -15px;" />
-                <span style="float: right;">
-                    <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">USA</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Professional</span>
-                    <span style=" display: block;color:black;font-size: 15px;">Girl</span>
-                </span>
-                  </p>
+                  {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' disabled=true selection=currentListing.house.amenities}}
               {{/if}}
             </div>
             <div class="box_style_4">
@@ -685,4 +659,6 @@
     .tour_container.active .tour_title{
         padding-bottom: 10px !important;
     }
+    .multiselect-checkboxes { list-style-type: none; margin: 0; padding: 5px; }
+    .multiselect-checkbox-option { }
 </style>

@@ -15,7 +15,7 @@
         <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">{{room-index index}}</span>
     {{/each}}
       <span style="display: inline-block;margin-left:40px;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">
-        {{model.area}} → {{model.compound}}, building {{model.building}} → Floor {{model.floor}}, {{model.doorplate}}</span>
+        {{model.area}} → {{model.compound}}, building {{model.building}} → Floor {{model.floor}} {{#if model.doorplate}}, {{model.doorplate}}{{/if}}</span>
   {{else}}
       <span style="display: inline-block;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">New apartment. No worries, name generates automaticly</span>
   {{/if}}

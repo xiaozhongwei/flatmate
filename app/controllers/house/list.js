@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
+import ListingStatusMapping from 'flatmate/transforms/listing-status';
 
 export default Ember.Controller.extend({
   _profileTitle:"Listings",
@@ -7,6 +8,9 @@ export default Ember.Controller.extend({
   page: 1,
   size: 10,
   status: 'All',
+  listingObverse: function(){
+    alert(10);
+  }.observes("model.@listings"),
   actions: {
     queryHouse: function(value){
       var queryParams = {};
@@ -21,6 +25,8 @@ export default Ember.Controller.extend({
       this.transitionToRoute('house.manage', house.get('id'));
     },
     publishListing: function(listing){
+      alert(listing);
+
       var data = {
         "listingStatus":{
           id: listing.get("id"),
@@ -56,5 +62,7 @@ export default Ember.Controller.extend({
 
       });
     }
-  }
+  },
+
+  listingStatusMapping: ListingStatusMapping.create({}).get("mapping")
 });

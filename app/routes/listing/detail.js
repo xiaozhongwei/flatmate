@@ -6,8 +6,8 @@ export default Ember.Route.extend({
     return this.store.find('listing', listing_id);
   },
   setupController: function(controller, model){
-    //controller.set('currentUser', this.session.get("user"));
-
     this._super(controller, model);
+
+    controller.set('currentUser', this.session.get("user"));
   }
 });

@@ -6,15 +6,28 @@
                 <h2 style="margin-top: 0;margin-bottom: 20px;">Garden Room in French Concession </h2>
                 <div id="Img_carousel" class="slider-pro">
                     <div class="sp-slides">
-                        <div class="sp-slide">
-                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
-                                 data-src="images/slider_single_tour/1_medium.jpg"
-                                 data-small="images/slider_single_tour/1_small.jpg"
-                                 data-medium="images/slider_single_tour/1_medium.jpg"
-                                 data-large="images/slider_single_tour/1_large.jpg"
-                                 data-retina="images/slider_single_tour/1_large.jpg">
-                        </div>
-                        <div class="sp-slide">
+                        {{#each model.photos as |listingPhoto index|}}
+                            <div class="sp-slide">
+                                <img alt="aa" class="sp-image" src="/images/sliderPro/blank.gif"
+                                     data-src="{{listingPhoto.imageUrl}}"
+                                     data-small="{{listingPhoto.imageUrl}}"
+                                     data-medium="{{listingPhoto.imageUrl}}"
+                                     data-large="{{listingPhoto.imageUrl}}"
+                                     data-retina="{{listingPhoto.imageUrl}}">
+                            </div>
+                        {{/each}}
+                        {{#each model.house.photos as |housePhoto index|}}
+                            <div class="sp-slide">
+                                <img alt="aa" class="sp-image" src="/images/sliderPro/blank.gif"
+                                     data-src="{{housePhoto.imageUrl}}"
+                                     data-small="{{housePhoto.imageUrl}}"
+                                     data-medium="{{housePhoto.imageUrl}}"
+                                     data-large="{{housePhoto.imageUrl}}"
+                                     data-retina="{{housePhoto.imageUrl}}">
+                            </div>
+                        {{/each}}
+
+                        <!--<div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/2_medium.jpg"
                                  data-small="images/slider_single_tour/2_small.jpg"
@@ -30,7 +43,6 @@
                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/3_medium.jpg"
@@ -45,7 +57,6 @@
                                 consectetur adipisicing elit
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/4_medium.jpg"
@@ -57,7 +68,6 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/5_medium.jpg"
@@ -69,7 +79,6 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/6_medium.jpg"
@@ -81,7 +90,6 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/7_medium.jpg"
@@ -93,7 +101,6 @@
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="http://bqworks.com/slider-pro/images/image8_medium.jpg"
@@ -116,7 +123,6 @@
                                 consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
                         </div>
-
                         <div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/9_medium.jpg"
@@ -124,18 +130,15 @@
                                  data-medium="images/slider_single_tour/9_medium.jpg"
                                  data-large="images/slider_single_tour/9_large.jpg"
                                  data-retina="images/slider_single_tour/9_large.jpg">
-                        </div>
+                        </div>-->
                     </div>
                     <div class="sp-thumbnails">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/1_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/2_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/3_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/4_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/5_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/6_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/7_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/8_medium.jpg">
-                        <img alt="" class="sp-thumbnail" src="images/slider_single_tour/9_medium.jpg">
+                        {{#each model.photos as |listingPhoto index|}}
+                            <img alt="" class="sp-thumbnail" src="{{listingPhoto.imageUrl}}">
+                        {{/each}}
+                        {{#each model.house.photos as |housePhoto index|}}
+                            <img alt="" class="sp-thumbnail" src="{{housePhoto.imageUrl}}">
+                        {{/each}}
                     </div>
                 </div>
                 <div class="row">
@@ -143,9 +146,27 @@
                 </div>
             </div>
             <aside class="col-md-4 margin_60" style="padding-top:35px;padding-right: 0;">
-                <h5>Rooms</h5>
+                <h5>{{model.house.bedrooms}}Rooms</h5>
                 <div class="row rooms" style="margin-left:0; height: 230px;background: rgb(249,249,249);margin-right: 0px;">
-                    <div class="col-md-3 active">
+                    {{#each model.house.flatmates as |flatmate index|}}
+                        <div class="col-md-3 {{if (eq flatmate.listingId model.id) 'active'}}">
+                            {{#if flatmate.isAvailable}}
+                              <span class="radius-number-1">{{room-index index}}</span>
+                              <span style="font-weight: bold;color:#f7941d;font-size: 14px;display:block;margin-top:103px;"> Availble </span>
+                              {{#if (eq flatmate.listingId model.id)}}
+                                  <span style="color:black;font-size: 12px;font-weight: bold">  Right now</span>
+                              {{/if}}
+                            {{else}}
+                                <span class="radius-number-1 radius-number-gary">{{room-index index}}</span>
+                                <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
+                                <span style="font-weight: bold;color:black;font-size: 14px;">{{flatmate.country}}</span>
+                                <span style="color:black;font-size: 13px;">{{flatmate.occupation}}</span>
+                                <span style="font-size: 13px;color:rgb(130,130,130)">{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}</span>
+                            {{/if}}
+
+                        </div>
+                    {{/each}}
+                    <!--<div class="col-md-3 active">
                         <span class="radius-number-1">A</span>
                         <span style="font-weight: bold;color:#f7941d;font-size: 14px;display:block;margin-top:103px;"> Availble </span>
                         <span style="color:black;font-size: 12px;font-weight: bold">  Right now</span>
@@ -170,7 +191,7 @@
                         <span style="font-weight: bold;color:black;font-size: 14px;"> USA </span>
                         <span style="color:black;font-size: 13px;">Specialist</span>
                         <span style="font-size: 13px;color:rgb(130,130,130)">Guy</span>
-                    </div>
+                    </div>-->
                 </div>
                 <h5 style="margin-top:20px;">Price & Terms</h5>
                 <div class="box_style_1 expose" style=" border-radius: 0; border:none;background: rgb(249,249,249)">
@@ -187,7 +208,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline ">Add to wishlist</a>
+                        <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
                     </div>
                     <div class="col-md-6">
                         <a href="javascript:;" style="background:#f7941d " class=" btn_full">Inquiry</a>
@@ -213,14 +234,24 @@
 <div class="container margin_60">
     <div class="col-md-8" style="padding-left:0">
         <ul class="list_order_1" style="padding-left:0">
-            <li><span>Appartment</span>5BDR (120m2) — 2 Bathroom — Floor 8/12 </li>
-            <li><span>Metro </span>Changping Lu </li>
-            <li><span>Compound </span>Si He Yuan</li>
-            <li><span>Area</span>French Concession</li>
+            <li><span>Appartment</span>
+              {{model.house.bedrooms}}BDR (120m2) — {{model.house.bathrooms}} Bathroom — Floor {{model.house.floor}}
+            </li>
+            <li><span>Metro </span>
+              {{#each model.house.metroStations as |metroStation index|}}
+                {{#if index}},{{/if}}{{metroStation}}
+              {{/each}}
+            </li>
+            <li><span>Compound </span>
+              {{model.house.compound}}
+            </li>
+            <li><span>Area</span>
+              {{model.house.area}}
+            </li>
         </ul>
         <hr>
         <h3 style="margin-bottom: 25px;">Description</h3>
-        <p style="font-size:15px;margin-bottom: 30px;"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+        <p style="font-size:15px;margin-bottom: 30px;">{{model.description}} </p>
         <hr>
         <div class="row" style="margin-top:30px;">
             <div class="col-md-3">
@@ -228,23 +259,8 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <ul class="list_ok">
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                            <li>Ut est saepe munere ceteros</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <ul class="list_ok">
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                        </ul>
+                    <div class="col-md-12 col-sm-12">
+                      {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' disabled=true selection=model.house.amenities}}
                     </div>
                 </div>
             </div>
@@ -256,23 +272,8 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <ul class="list_ok">
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                            <li>Ut est saepe munere ceteros</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <ul class="list_ok">
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                            <li>Quidam percipitur instructior an eum</li>
-                            <li>No scripta electram necessitatibus sit</li>
-                        </ul>
+                    <div class="col-md-12 col-sm-12">
+                      {{multi-checkboxes options=featureMapping valueProperty='index' labelProperty='name' disabled=true selection=model.features}}
                     </div>
                 </div>
             </div>
@@ -285,9 +286,9 @@
             <div class="col-md-9">
                 <div class="row">
                     <img alt="" style="width:170px;" class="img-circle styled" src="images/LISA_100.jpg">
-                    <h3 style="display: inline-block;margin-left: 12px;font-weight: bold;">Wang Feng</h3>
-                    <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-                    <a href="#" class="btn_1">Contact host</a>
+                    <h3 style="display: inline-block;margin-left: 12px;font-weight: bold;">{{model.creatorName}}</h3>
+                    <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;">{{model.creatorDescription}}</p>
+                    <a href="javascript:;" class="btn_1" {{action "sendMessage"}}>Contact host</a>
                 </div>
             </div>
         </div>

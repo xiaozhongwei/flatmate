@@ -2,6 +2,7 @@ import Ember from 'ember';
 import AreaMapping from 'flatmate/transforms/area';
 import PriceMapping from 'flatmate/transforms/price';
 import LineMapping from 'flatmate/transforms/metro-line';
+import AmenityMapping from 'flatmate/transforms/amenity';
 
 export default Ember.Controller.extend({
   isShowList:false,
@@ -28,11 +29,16 @@ export default Ember.Controller.extend({
       }
 
       this.transitionToRoute({queryParams});
+    },
+
+    preview: function(listing){
+      this.set("currentListing",listing);
     }
   },
 
   areaMapping: AreaMapping.create({}).get("mapping"),
   priceMapping: PriceMapping.create({}).get("mapping"),
-  lineMapping: LineMapping.create({}).get("mapping")
+  lineMapping: LineMapping.create({}).get("mapping"),
+  amenityMapping: AmenityMapping.create({}).get("mapping")
 
 });
