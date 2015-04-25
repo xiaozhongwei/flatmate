@@ -178,7 +178,7 @@ module.exports = function(app) {
           "floor": "2",
           "amenities": ["WashingMachine","TV","Oven","Dryer","Internet","Security","Pool","Balcony","Elevator"],
           "flatmates": [{
-            "id": "7e89279d-1797-4ac0-80fc-0247c5a91cc1",
+            "id": req.params.id,
             "index": 1,
             "houseId": "3",
             "listingId": "54f71a3b641d671418a3f635",
