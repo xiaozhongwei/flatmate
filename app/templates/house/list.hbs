@@ -106,16 +106,16 @@
                         </div>
                         <div id="{{house.id}}" class="panel-collapse collapse {{if house.isExpand 'in'}}">
                             <div class="panel-body">
-                                {{#each house.listings as |listing index|}}
+                                {{#each house.listings itemController="house.listing" as |listing index|}}
                                   {{#if index}}<hr>{{/if}}
                                   <div class="row">
                                       <div class="col-lg-1 col-md-1 col-sm-1">
-                                          <span class="radius-number">{{#if house.isShared}}{{room-index index}}{{/if}}</span>
+                                          {{#if house.isShared}}<span class="radius-number">{{room-index index}}</span>{{/if}}
                                       </div>
                                       <div class="col-lg-3 col-md-3 col-sm-3" style=" padding-left: 0;">
                                           <div class="img_list">
-                                            {{#if listing.coverPhoto}}
-                                                <img src="{{listing.coverPhoto.imageUrl}}" style="width: 180px" alt="">
+                                            {{#if listing.model.coverPhoto}}
+                                                <img src="{{listing.model.coverPhoto.imageUrl}}" style="width: 180px" alt="">
                                             {{else}}
                                                 <img src="images/tour_box_1.jpg" alt="">
                                             {{/if}}
@@ -125,9 +125,9 @@
                                       <div class="clearfix visible-xs-block"></div>
                                       <div class="col-lg-6 col-md-6 col-sm-6" style=" padding-left: 0px;">
                                           <div class="tour_list_desc" style="padding-top:20px;height: 110px;">
-                                              <h3><strong>{{listing.title}}</strong></h3>
+                                              <h3><strong>{{listing.model.title}}</strong></h3>
                                             {{#if house.isShared}}
-                                              {{#link-to 'house.manage' house.id (query-params activeId=listing.id)}}Manage listing{{/link-to}}
+                                              {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}Manage listing{{/link-to}}
                                             {{else}}
                                               {{#link-to 'house.manage' house.id}}Manage apt{{/link-to}}
                                             {{/if}}
@@ -138,9 +138,8 @@
                                           <div class="styled-select-filters">
                                             {{select-2
                                             content=listingStatusMapping
-                                            value=listing.status
+                                            value=listing.model.status
                                             optionValuePath="id"
-                                            didSelect="publishListing"
                                             searchEnabled=false
                                             }}
                                               <select name="sort_price" id="sort_price">

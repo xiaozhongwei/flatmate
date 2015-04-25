@@ -35,6 +35,7 @@ module.exports = function(app) {
   });
 
   listingFlatmateRouter.delete('/:id', function(req, res) {
+    res.send({});
     res.status(204).end();
   });
 

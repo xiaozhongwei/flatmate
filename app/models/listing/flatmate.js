@@ -21,7 +21,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   occupation: DS.attr(),
   //hobby: DS.attr(),
 
-  editable: true,
+  isEditing: false,
 
   isAvailable: Ember.computed('status', function () {
     return this.get('status') === 0;

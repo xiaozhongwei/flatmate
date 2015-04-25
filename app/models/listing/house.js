@@ -19,7 +19,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     bedrooms: { presence: true },
     bathrooms: { presence: true },
     livingRooms: { presence: true },
-    amenities: { presence: true }
+    amenities: { presence: true}
   },
 
   rentType: DS.attr(),                             // 出租方式
@@ -90,6 +90,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     });
     return finished;
   })
+  //,
   //isOverviewFinished: Ember.computed('rentType','isValid', function(){
   //  if(this.get('rentType') === "share"){
   //    return this.get('isValid');
@@ -112,7 +113,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   //  //return Ember.isEmpty(this.get('location'));
   //  return true;
   //})
-  //,
   //
   //isFinished: Ember.computed('isOverviewFinished', 'isPhotoFinished', 'isMapFinished', function(){
   //  return this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");

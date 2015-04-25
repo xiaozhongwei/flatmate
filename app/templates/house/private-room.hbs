@@ -45,9 +45,13 @@
                             <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class="icon-ok {{if isMapFinished 'step-finish'}}"></span></span></a></li>
                         {{/if}}
                         {{#if (eq activeType 'room')}}
-                            <li><a href="javascript:;" {{action "changeStep" 1}}>Calendar<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>
-                            <li><a href="javascript:;" {{action "changeStep" 2}}>Overview <span class="other_tours_price"><span  style="color:rgb(0,150,163)" class=" icon-ok"></span></span></a></li>
-                            <li><a href="javascript:;" {{action "changeStep" 3}}>Photo<span class="other_tours_price"><span class=" icon-ok"></span></span></a></li>
+                          {{#each model.house.listings as |listing index|}}
+                            {{#if (eq model.activeId listing.id)}}
+                                <li><a href="javascript:;" {{action "changeStep" 1}}>Calendar<span class="other_tours_price"><span class="icon-ok {{if listing.isCalendarFinished 'step-finish'}}"></span></span></a></li>
+                                <li><a href="javascript:;" {{action "changeStep" 2}}>Overview <span class="other_tours_price"><span class="icon-ok {{if listing.isOverviewFinished 'step-finish'}}"></span></span></a></li>
+                                <li><a href="javascript:;" {{action "changeStep" 3}}>Photo<span class="other_tours_price"><span class="icon-ok {{if listing.isPhotoFinished 'step-finish'}}"></span></span></a></li>
+                            {{/if}}
+                          {{/each}}
                         {{/if}}
                     </ul>
                 </div>

@@ -8,9 +8,9 @@ export default Ember.Controller.extend({
   page: 1,
   size: 10,
   status: 'All',
-  listingObverse: function(){
-    alert(10);
-  }.observes("model.@listings"),
+  //listingObverse: function(){
+  //  alert(10);
+  //}.observes("model.@listings"),
   actions: {
     queryHouse: function(value){
       var queryParams = {};
@@ -23,45 +23,8 @@ export default Ember.Controller.extend({
     },
     manageHouse: function(house){
       this.transitionToRoute('house.manage', house.get('id'));
-    },
-    publishListing: function(listing){
-      alert(listing);
-
-      var data = {
-        "listingStatus":{
-          id: listing.get("id"),
-          status: 1
-        }
-      };
-
-      var promise = ajax({url: 'listing/updateStatus', type: 'post', data:JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8'});
-      promise['then'](function() {
-        listing.set('status',1);
-        Notify.info('房源发布成功');
-      });
-      promise['catch'](function(error) {
-
-      });
-    },
-    unPublishListing: function(listing){
-      var data = {
-        "listingStatus":{
-          id: listing.get("id"),
-          status: 0
-        }
-      };
-
-      var promise = ajax({url: 'listing/updateStatus', type: 'post', data:JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8'});
-      promise['then'](function() {
-        listing.set('status',0);
-        Notify.info('房源已取消发布');
-      });
-      promise['catch'](function(error) {
-
-      });
     }
+
   },
 
   listingStatusMapping: ListingStatusMapping.create({}).get("mapping")

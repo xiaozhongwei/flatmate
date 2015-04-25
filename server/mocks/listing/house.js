@@ -33,11 +33,10 @@ module.exports = function(app) {
           }]
         }, {
           id: 2,
-          name: 'Rainbow City Building 8 Floor 3',
           bedrooms: 3,
           bathrooms: 1,
           livingRooms: 1,
-          rentType: 'share',
+          rentType: 'entire',
           //createDate: '2015-03-14',
           listings: [{
               id: "1",
@@ -145,8 +144,7 @@ module.exports = function(app) {
           "gender": 2
         }],
         photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
-        "amenities": ["WashingMachine","Aircon","TV","Oven","Dryer","DVDPlayer","Internet",
-          "Security","HealthClub","Pool","Balcony","OutdoorSpace","Elevator"]
+        amenities: ["WashingMachine","Aircon","TV"]
       }
     });
   });

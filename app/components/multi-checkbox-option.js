@@ -31,6 +31,7 @@ export default Ember.Component.extend({
     var selected = this.get('selection').contains(value);
 
     if (arguments.length > 1) {
+
       if (checked && !selected) {
         this.get('selection').addObject(value);
       } else if (!checked && selected) {

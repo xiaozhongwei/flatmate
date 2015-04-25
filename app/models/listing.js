@@ -2,8 +2,16 @@
  * Created by Eric on 2014/11/17.
  */
 import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default DS.Model.extend({
+export default DS.Model.extend(EmberValidations.Mixin,{
+  validations: {
+    title: { presence: true },
+    description: { presence: true },
+    features: { presence: true },
+    deposit: { presence: true }
+  },
+
   availableDate: DS.attr(),                   // 可入住时间
 
   title: DS.attr(),
@@ -56,5 +64,17 @@ export default DS.Model.extend({
         return true;
       }
     })
+  }),
+
+  isCalendarFinished: Ember.computed('availableDate', function(){
+    return !Ember.isEmpty(this.get('availableDate'));
+  }),
+
+  isOverviewFinished: Ember.computed('isValid',function(){
+    return this.get('isValid');
+  }),
+
+  isPhotoFinished: Ember.computed('photos.length',function(){
+    return this.get('photos.length') > 0;
   })
 });

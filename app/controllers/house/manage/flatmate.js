@@ -19,6 +19,22 @@ export default Ember.Controller.extend({
       }, function(){
 
       });
+    },
+    editFlatmate: function(flatmate){
+      flatmate.toggleProperty("isEditing");
+    },
+    deleteFlatmate: function(flatmate){
+      flatmate.destroyRecord().then(res => {
+        var bedrooms = this.get("model.bedrooms");
+        this.get("model").set("bedrooms",(bedrooms-1));
+
+        var listings = this.get("model.listings").filterBy("id", flatmate.get("listingId"));
+        if(!Ember.isEmpty(listings)){
+          this.get("model.listings").removeObject(listings.get("firstObject"));
+        }
+      },function(){
+        Notify.error("delete failed");
+      });
     }
   },
   roomStatusMapping: RoomStatusMapping.create({}).get("mapping"),

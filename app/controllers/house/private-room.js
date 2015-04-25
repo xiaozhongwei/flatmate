@@ -6,8 +6,8 @@ export default Ember.Controller.extend({
   listStep: 3, //发布所需步骤
 
   isOverviewFinished: function(){
-    return this.get('model.house.isValid');
-  }.property("model.house.isValid"),
+    return this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
+  }.property("model.house.isValid","model.house.amenities.length"),
 
   isPhotoFinished: function(){
     return this.get('model.house.photos.length') > 0;
