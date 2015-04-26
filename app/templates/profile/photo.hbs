@@ -22,10 +22,10 @@
                     <p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It's not much fun to host a landscape! Please upload a photo that clearly shows your face.</p>
                     <div class="fileinput">
                         <div class="input-group">
-                          <span class="btn btn-file" style=" padding-left: 0;">
-                            <span>
+                          <span class="btn btn-file upload_file_style" style=" padding-left: 0;">
+                            <span >
                             {{#if session.user.logo}}
-                              {{em-file-field name="logo" class="btn btn-primary" url=uploadUrl document=session.user.logo}}
+                              {{em-file-field name="logo" url=uploadUrl document=session.user.logo}}
                             {{/if}}
                             </span>
                           </span>
