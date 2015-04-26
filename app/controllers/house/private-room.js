@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import ajax from 'ic-ajax';
+import Notify from 'ember-notify';
 
 export default Ember.Controller.extend({
   activeType: "apt", //apt or flatmate or room
   step: 1,
-  listStep: 3, //发布所需步骤
 
   isOverviewFinished: function(){
     var isFinished = this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
@@ -58,6 +59,32 @@ export default Ember.Controller.extend({
 
       var currentStep = this.get("step");
       this.set("step",(currentStep + 1));
+    },
+    changeStatus: function(listing) {
+      var status = listing.get("status");
+      var data = {
+        "listingStatus": {
+          id: listing.get("id"),
+          status: status
+        }
+      };
+
+      var promise = ajax({
+        url: 'listing/updateStatus', type: 'post', data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8'
+      });
+      promise['then'](function () {
+        //this.get("model").set('status',1);
+        if (status === 1) {
+          Notify.info('list successfully');
+        }
+        else {
+          Notify.info('unList successfully');
+        }
+      });
+      promise['catch'](function (error) {
+
+      });
     }
   }
 });

@@ -27,7 +27,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   deposit: DS.attr(),
   features: DS.attr(),
 
-  //basic: DS.belongsTo('listing/basic'),
   photos: DS.hasMany('listing/photo'),         // 房源图片
   house: DS.belongsTo('listing/house'),       // 所属的house: house类似组的概念， 存储一些公共信息，如小区地铁等
 
@@ -40,6 +39,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   creatorName: DS.attr(),                     // 创建者名称
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
+
+  listStep: 3, //发布所需步骤
 
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
     var price = this.get('perYearPrice');
@@ -71,18 +72,34 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   }),
 
   isCalendarFinished: Ember.computed('availableDate', function(){
-    return !Ember.isEmpty(this.get('availableDate'));
+    var isFinished = !Ember.isEmpty(this.get('availableDate'));
+    if(isFinished){
+      this.set("listStep", this.get("listStep") - 1);
+    }
+
+    return isFinished;
   }),
 
   isOverviewFinished: Ember.computed('perMonthPrice','perThreeMonthPrice','perSixMonthPrice','perYearPrice','isValid',function(){
-    if(Ember.isEmpty(this.get("perMonthPrice")) && Ember.isEmpty(this.get("perThreeMonthPrice")) &&
+    var isFinished = this.get('isValid');
+
+    if(isFinished && Ember.isEmpty(this.get("perMonthPrice")) && Ember.isEmpty(this.get("perThreeMonthPrice")) &&
       Ember.isEmpty(this.get("perSixMonthPrice")) && Ember.isEmpty(this.get("perYearPrice"))){
-      return false;
+      isFinished = false;
     }
-    return this.get('isValid');
+    if(isFinished){
+      this.set("listStep", this.get("listStep") - 1);
+    }
+
+    return isFinished;
   }),
 
   isPhotoFinished: Ember.computed('photos.length',function(){
-    return this.get('photos.length') > 0;
+    var isFinished = this.get('photos.length') > 0;
+    if(isFinished){
+      this.set("listStep", this.get("listStep") - 1);
+    }
+
+    return isFinished;
   })
 });
