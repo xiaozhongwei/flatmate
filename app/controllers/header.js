@@ -13,7 +13,6 @@ export default Ember.Controller.extend({
       this.get('session').invalidate();
     },
     register: function(){
-      alert(12);
       this.transitionToRoute('register');
     }
   }
