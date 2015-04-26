@@ -93,52 +93,37 @@
 
                 <div class="tour_container">
                     <div class="img_container">
-                        <a href="single_tour.html">
-                            <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                            <!--<div class="ribbon top_rated"></div>-->
-                            <div class="short_info">
-                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                    class="price"><sup>$</sup>45</span>
-                            </div>
-                        </a>
+                      {{#link-to 'listing.detail' listing.id}}
+                          <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
+                          <!--<div class="ribbon top_rated"></div>-->
+                          <div class="short_info">
+                              <a href="javascript:;" {{action "removeWishlisting" listing wishlist}}></a>
+                              <span class="price"><sup>￥</sup>TODO</span>
+                          </div>
+                      {{/link-to}}
                     </div>
                     <div class="tour_title listing">
                         <ul class="stats" style="padding-left: 0;">
-                            <li>Rooms<span>Apt</span></li>
-                            <li>Size, m2<span>14</span></li>
-                            <li>Price ￥<span>8000</span></li>
+                            <li>Type
+                                <span>{{if listing.house.isShared 'Room' 'Apt'}}</span>
+                            </li>
+                            <li>Rooms<span>{{listing.house.bedrooms}}</span></li>
+                            <li>Size, m2<span>{{listing.house.size}}</span></li>
                         </ul>
                         <div style="clear:both"></div>
-                        <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                        <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
+                        <hr style="margin: 10px -15px 10px -15px">
+                        <h3 style="text-transform:none;">{{listing.title}}</h3>
 
-                        <p style="min-height:80px;">French Concession</p>
+                        <p style="min-height:80px;">{{listing.house.area}}</p>
                         <ul class="add_info">
-                            <li>
-                                <div class="tooltip_styled tooltip-effect-4">
-                                    <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
-
-                                    <div class="tooltip-content"><h4>Schedule</h4>
-                                        <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
-                                        <strong>Saturday</strong> 09.00 AM - 5.30 PM<br>
-                                        <strong>Sunday</strong> <span class="label label-danger">Closed</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tooltip_styled tooltip-effect-4">
-                                    <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
-
-                                    <div class="tooltip-content"><h4>Address</h4>
-                                        Musée du Louvre, 75058 Paris - France<br>
-                                        <a href="#">View on map</a>
-                                    </div>
-                                </div>
-                            </li>
+                          {{#each listing.house.subwayLines as |subwayLine|}}
+                              <li>
+                                  <span style="display: inline-block">{{subwayLine}}</span>
+                              </li>
+                          {{/each}}
                         </ul>
                     </div>
                 </div>
-
             </aside>
         </div>
     </div>
