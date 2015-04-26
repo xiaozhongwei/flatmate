@@ -22,7 +22,7 @@
                         <li><a href="javascript:;" {{action "changeStep" 3}}>Photo<span class="other_tours_price"><span  class="{{if isPhotoFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
                         <li><a href="javascript:;" {{action "changeStep" 4}}>Map<span class="other_tours_price"><span class="{{if isMapFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
                     </ul>
-                  {{#unless listStep}}
+                  {{#if listStep}}
                     <div style="position: absolute;bottom:80px;width:88%;text-align: center;font-weight: bold;font-size:15px;">{{listStep}} steps to</div>
                     <div style="position: absolute;background: rgb(219,219,219);padding: 15px 5px; bottom: 20px;color: white;width: 88%;font-size: 17px;text-align: center;">List the room</div>
                   {{else}}
@@ -35,7 +35,7 @@
                             {{/if}}
                         </a>
                     </div>
-                  {{/unless}}
+                  {{/if}}
                 </div>
             </aside>
             <div class="col-md-8 col-md-offset-1">
