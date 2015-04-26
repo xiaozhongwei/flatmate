@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ajax from 'ic-ajax';
 import ListingStatusMapping from 'flatmate/transforms/listing-status';
 
 export default Ember.Controller.extend({

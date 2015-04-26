@@ -67,9 +67,8 @@
                     {{render 'house.manage.apartment-photo' model.house}}
                     <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
                   {{/if}}
-
                   {{#if (eq step 3)}}
-                      <h2>Map</h2>
+                    {{render 'house.manage.map' model.house}}
 
                   {{/if}}
                 {{/if}}

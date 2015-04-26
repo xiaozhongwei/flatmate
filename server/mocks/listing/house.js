@@ -99,8 +99,8 @@ module.exports = function(app) {
         "livingRooms": 1,
         "createType": 0,
         size: "100",
-        //"rentType": "entire",
-        "rentType": "share",
+        "rentType": "entire",
+        //"rentType": "share",
         listings: [{
           id: "1",
           title: "舒适向南单间",

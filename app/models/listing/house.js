@@ -13,7 +13,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     compound: { presence: true },
     building: { presence: true },
     floor: { presence: true },
-    doorplate: { presence: true },
+    //doorplate: { presence: true },
     metroStations: { presence: true },
     size: { presence: true },
     bedrooms: { presence: true },

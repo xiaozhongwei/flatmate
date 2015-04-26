@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
+import Notify from 'ember-notify';
 
 export default Ember.Controller.extend({
   statusObverse: function(){
-    alert(this.get("model.status"));
     var status = this.get("model.status");
     var data = {
       "listingStatus":{

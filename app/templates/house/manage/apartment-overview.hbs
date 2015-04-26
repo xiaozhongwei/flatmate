@@ -154,9 +154,17 @@
                     </div>
                     <div class="form-group" style="padding-top: 30px">
                         <label class="col-md-2 control-label">Pay cycle</label>
-
-                        <div class="col-md-8">
-                          {{input class="form-control" type="text" autocomplete="off" placeholder="换成1 3 6 12"}}
+                        <div class="col-md-2 text-center">
+                            <span class="radius-number-1 {{unless listing.perMonthPrice 'radius-number-gary'}}">1</span>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="radius-number-1 {{unless listing.perThreeMonthPrice 'radius-number-gary'}}">3</span>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="radius-number-1 {{unless listing.perSixMonthPrice 'radius-number-gary'}}">6</span>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="radius-number-1 {{unless listing.perYearPrice 'radius-number-gary'}}">12</span>
                         </div>
                     </div>
                     <div class="form-group">

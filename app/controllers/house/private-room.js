@@ -6,20 +6,24 @@ export default Ember.Controller.extend({
   listStep: 3, //发布所需步骤
 
   isOverviewFinished: function(){
-    return this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
+    var isFinished = this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
+    return isFinished;
   }.property("model.house.isValid","model.house.amenities.length"),
 
   isPhotoFinished: function(){
-    return this.get('model.house.photos.length') > 0;
+    var isFinished = this.get('model.house.photos.length') > 0;
+    return isFinished;
   }.property("model.house.photos.length"),
 
   isMapFinished: function(){
-    //return Ember.isEmpty(this.get('model.house.location'));
-    return true;
+    //var isFinished = Ember.isEmpty(this.get('model.house.location'));
+    var isFinished = true;
+    return isFinished;
   }.property("model.house.location"),
 
   isApartmentFinished: function(){
-    return this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+    var isFinished = this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+    return isFinished;
   }.property("isOverviewFinished","isPhotoFinished","isMapFinished"),
 
   isFlatmateFinished: function(){
