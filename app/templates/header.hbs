@@ -61,9 +61,10 @@
                                           <div class="form-group">
                                             {{input value=password placeholder='Password' id="inputPassword"  class='form-control' type='password'}}
                                           </div>
-                                          <a id="forgot_pw" href="#">Forgot password?</a>
-                                          <input type="submit" name="" value="Sign in" id="Sign_in" class="button_drop">
-                                          <input type="submit" name="" value="Sign up" id="Sign_up" class="button_drop outline">
+                                          {{#link-to "register" id="forgot_pw"}}Forgot password?{{/link-to}}
+                                          <input type="submit" name="" value="Sign in" id="Sign_in" class="button_drop outline">
+                                          <!--<a class="button_drop outline" {{action "register"}}>Sign_up</a>-->
+                                          {{#link-to "register" id="Sign_up" class="button_drop outline"}}Sign_up{{/link-to}}
                                       </form>
                                   </div>
                               </div>

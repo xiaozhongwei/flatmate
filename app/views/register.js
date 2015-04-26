@@ -59,7 +59,7 @@ export default Ember.View.extend({
           if(winHeight < settings.container.height()) {
             settings.container
               .width(winWidth)
-              .height(winHeight);;
+              .height(winHeight);
           }
 
         }).trigger('resize');
