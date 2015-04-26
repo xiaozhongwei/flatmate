@@ -8,8 +8,12 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     title: { presence: true },
     description: { presence: true },
-    features: { presence: true },
-    deposit: { presence: true }
+    //features: { presence: true },
+    deposit: { presence: true, numericality: { onlyInteger: true}},
+    perMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
+    perThreeMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
+    perSixMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
+    perYearPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}}
   },
 
   availableDate: DS.attr(),                   // 可入住时间
@@ -70,7 +74,11 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     return !Ember.isEmpty(this.get('availableDate'));
   }),
 
-  isOverviewFinished: Ember.computed('isValid',function(){
+  isOverviewFinished: Ember.computed('perMonthPrice','perThreeMonthPrice','perSixMonthPrice','perYearPrice','isValid',function(){
+    if(Ember.isEmpty(this.get("perMonthPrice")) && Ember.isEmpty(this.get("perThreeMonthPrice")) &&
+      Ember.isEmpty(this.get("perSixMonthPrice")) && Ember.isEmpty(this.get("perYearPrice"))){
+      return false;
+    }
     return this.get('isValid');
   }),
 

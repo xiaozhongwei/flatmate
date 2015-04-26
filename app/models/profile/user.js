@@ -8,9 +8,9 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     firstName: { presence: true },
     lastName: { presence: true },
-    email: { presence: true },
+    email: { presence: true, format: { with: /^[A-Za-z0-9]+([-_.][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z0-9]{2,5}$/, message: 'must be emails only'  } },
     gender: { presence: true },
-    phone: { presence: true }
+    phone: { presence: true, numericality: { onlyInteger: true} }
   },
 
   //fullName: DS.attr(),
