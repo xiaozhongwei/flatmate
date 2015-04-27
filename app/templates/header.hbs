@@ -24,15 +24,15 @@
 
                                   </a>
                                   <div class="dropdown-menu">
-                                      {{#link-to 'profile.dashboard' id="profile"}}My Profile{{/link-to}}
-                                      <a href="javascript:void(0);" {{action 'invalidateSession' }} class="button_drop outline">Logout</a>
+                                      {{#link-to 'profile.dashboard' class="button_drop outline" id="profile"}}Dashboard{{/link-to}}
+                                      <a href="javascript:void(0);" {{action 'invalidateSession' }} class="button_drop">Logout</a>
                                   </div>
                               </div>
                           </li>
                           <li>
                             {{#link-to 'inbox.list'}}
                                 <i class="icon_set_1_icon-84"
-                                   style="color:#f7941d; margin-top:-15px; position: absolute;font-size: 25px;"></i>
+                                   style="color:rgb(51,51,51); margin-top:-15px; position: absolute;font-size: 25px;"></i>
                             {{/link-to}}
                           </li>
                           <li style="margin-left: 33px;margin-right: 0">

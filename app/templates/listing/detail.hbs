@@ -1,4 +1,8 @@
-{{partial 'navigation'}}
+<style>
+    header{
+        background: rgb(246,246,246) !important;
+    }
+</style>
 <div class="white_bg" style="border-bottom: 2px solid rgb(234,234,234)">
     <div class="container margin_60" style="padding-top:30px;padding-bottom: 0px;">
         <div class="row">
@@ -259,7 +263,7 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 list-facilities">
                       {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' disabled=true selection=model.house.amenities}}
                     </div>
                 </div>
@@ -272,7 +276,7 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 list-facilities">
                       {{multi-checkboxes options=featureMapping valueProperty='index' labelProperty='name' disabled=true selection=model.features}}
                     </div>
                 </div>
@@ -430,5 +434,16 @@
         /* position:absolute; */
         left:0;
         top:0;
+    }
+    .multiselect-checkbox-option{
+        list-style: none;
+        min-width:150px;
+        display: inline-block !important;
+    }
+
+    .multiselect-checkbox-option input{
+        width: 18px;
+        margin-right: 5px;
+        height: 18px;
     }
 </style>
