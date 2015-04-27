@@ -6,14 +6,14 @@
             <div class="col-md-3">
                 <div class="tour_container">
                     <div class="img_container">
-                        <div class="wishlist">
-                            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);"></a>
+                        <div class="wishlist" {{action "removeWishlisting" listing wishlist}}>
+                            <a href="javascript:;" ></a>
                         </div>
                         {{#link-to 'listing.detail' listing.id}}
                           <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
                           <!--<div class="ribbon top_rated"></div>-->
                           <div class="short_info">
-                              <a href="javascript:;" {{action "removeWishlisting" listing wishlist}}></a>
+                              <a href="javascript:;" {{action "removeWishlisting" listing wishlist}}>aa</a>
                               <span class="price"><sup>￥</sup>TODO</span>
                           </div>
                         {{/link-to}}
@@ -41,6 +41,8 @@
                     </div>
                 </div>
             </div>
+          {{else}}
+              No listings in the wishlist.
           {{/each}}
         {{/each}}
         <!--<div class="col-md-3">

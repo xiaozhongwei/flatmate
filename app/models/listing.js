@@ -8,7 +8,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     title: { presence: true },
     description: { presence: true },
-    //features: { presence: true },
     deposit: { presence: true, numericality: { onlyInteger: true}},
     perMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
     perThreeMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
@@ -40,7 +39,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
 
-  listStep: 3, //发布所需步骤
+  //listStep: 3, //发布所需步骤
 
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
     var price = this.get('perYearPrice');
@@ -73,10 +72,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   isCalendarFinished: Ember.computed('availableDate', function(){
     var isFinished = !Ember.isEmpty(this.get('availableDate'));
-    if(isFinished){
-      this.set("listStep", this.get("listStep") - 1);
-    }
-
     return isFinished;
   }),
 
@@ -87,19 +82,27 @@ export default DS.Model.extend(EmberValidations.Mixin,{
       Ember.isEmpty(this.get("perSixMonthPrice")) && Ember.isEmpty(this.get("perYearPrice"))){
       isFinished = false;
     }
-    if(isFinished){
-      this.set("listStep", this.get("listStep") - 1);
-    }
-
     return isFinished;
   }),
 
   isPhotoFinished: Ember.computed('photos.length',function(){
     var isFinished = this.get('photos.length') > 0;
-    if(isFinished){
-      this.set("listStep", this.get("listStep") - 1);
+    return isFinished;
+  }),
+
+  // 发布所需步骤
+  listStep: Ember.computed('isCalendarFinished','isOverviewFinished','isPhotoFinished',function(){
+    var steps = 3;
+    if(this.get("isCalendarFinished")){
+      steps--;
+    }
+    if(this.get("isOverviewFinished")){
+      steps--;
+    }
+    if(this.get("isPhotoFinished")){
+      steps--;
     }
 
-    return isFinished;
+    return steps;
   })
 });

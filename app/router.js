@@ -33,6 +33,7 @@ Router.map(function() {
   });
   this.route('wishlist');
   this.route('register');
+  this.route('forgot-password');
 });
 
 export default Router;

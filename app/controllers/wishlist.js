@@ -15,11 +15,11 @@ export default Ember.Controller.extend({
       var promise = ajax({url: 'api/profile/wishlists/remove', type: 'post', data:JSON.stringify(data),
         contentType: 'application/json; charset=utf-8'});
       promise['then'](function() {
-        wishlist.get('listings').removeRecord(listing);
-        Notify.info('已删除');
+        wishlist.get('listings').removeObject(listing);
+        Notify.info('delete successfully');
       });
       promise['catch'](function(error) {
-        Notify.error('删除失败');
+        Notify.error('delete failed');
       });
     }
   }

@@ -9,5 +9,13 @@ export default Ember.Route.extend({
     this._super(controller, model);
 
     controller.set('currentUser', this.session.get("user"));
+
+    if(Ember.isEmpty(model.get('house.amenities'))){
+      model.set('house.amenities',Ember.A());
+    }
+
+    if(Ember.isEmpty(model.get('features'))){
+      model.set('features',Ember.A());
+    }
   }
 });

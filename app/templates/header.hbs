@@ -11,7 +11,7 @@
                       {{#if session.isAuthenticated}}
                           <li>
                               <div class="dropdown dropdown-access">
-                                  <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"s>
+                                  <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{#if session.user.logo.downloadFilePath}}
                                         <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
                                              src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
@@ -20,12 +20,12 @@
                                              src="/images/user_unknown.png" title="Not Upload Yet">
                                     {{/if}}
 
-                                      <strong style="color:black">Hi, {{session.user.firstName}}</strong>
+                                    <strong style="color:black">Hi, {{session.user.firstName}}</strong>
 
                                   </a>
                                   <div class="dropdown-menu">
-                                      {{#link-to 'profile.dashboard' class="button_drop"}}My Profile{{/link-to}}
-                                      <a href="javascript:;" {{ action 'invalidateSession' }} class="button_drop outline">Logout</a>
+                                      {{#link-to 'profile.dashboard' id="profile"}}My Profile{{/link-to}}
+                                      <a href="javascript:void(0);" {{action 'invalidateSession' }} class="button_drop outline">Logout</a>
                                   </div>
                               </div>
                           </li>
