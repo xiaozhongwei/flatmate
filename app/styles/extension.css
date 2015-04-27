@@ -120,3 +120,6 @@ a.btn_1, .btn_1{
 .un-calendar nav{
   padding-top: 10px !important;
 }
+a.button_drop, .button_drop{
+  text-transform: none;
+}
