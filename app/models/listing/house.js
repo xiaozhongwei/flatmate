@@ -54,7 +54,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   //availableDate: Ember.computed.alias('listings.firstObject.availableDate'),
 
-  bedroomEditable: Ember.computed('flatmates.@id', function(){
+  bedroomEditable: Ember.computed('flatmates.@each.id', function(){
     var editable = true;
 
     this.get("flatmates").forEach( flatmate => {

@@ -25,13 +25,13 @@ export default Ember.Controller.extend({
     },
     deleteFlatmate: function(flatmate){
       flatmate.destroyRecord().then(res => {
-        var bedrooms = this.get("model.bedrooms");
-        this.get("model").set("bedrooms",(bedrooms-1));
-
         var listings = this.get("model.listings").filterBy("id", flatmate.get("listingId"));
         if(!Ember.isEmpty(listings)){
           this.get("model.listings").removeObject(listings.get("firstObject"));
         }
+
+        var bedrooms = this.get("model.bedrooms");
+        this.get("model").set("bedrooms",(bedrooms-1)==0?null:(bedrooms-1));
       },function(){
         Notify.error("delete failed");
       });

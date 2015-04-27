@@ -37,6 +37,13 @@ export default Ember.Controller.extend({
     return finished;
   }.property("model.house.flatmates.@each.status","model.house.flatmates.@each.isValid"),
 
+  flatmatesObserver: function(){
+    if(this.get("model.house.bedrooms") < 1){
+      this.set("activeType","apt");
+      this.set('step', 1);
+    }
+  }.observes("model.house.bedrooms"),
+
   init: function(){
     this._super.apply(this, arguments);
 
@@ -49,10 +56,16 @@ export default Ember.Controller.extend({
       this.set('step', step);
     },
     changeActive: function(activeType,activeId){
-      this.set("activeType",activeType);
-      this.set("model.activeId",activeId);
+      // apt 完成才能够跳转
+      if(this.get("isApartmentFinished") || activeType === "apt"){
+        // flatmate 完成room才能跳转
+        if(this.get("isFlatmateFinished") || activeType != "room"){
+          this.set("activeType",activeType);
+          this.set("model.activeId",activeId);
 
-      this.set('step', 1);
+          this.set('step', 1);
+        }
+      }
     },
     save: function(model){
       model.save();
