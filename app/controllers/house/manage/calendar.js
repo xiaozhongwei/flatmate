@@ -12,5 +12,11 @@ export default Ember.Controller.extend({
   availableDateObverse: function(){
     var formatDate = moment(this.get("availableDate")).format('YYYY-MM-DD');
     this.get("model").set("availableDate",formatDate);
-  }.observes('availableDate')
+  }.observes('availableDate'),
+
+  willDestroy: function(){
+    if(this.get("model.isDirty")){
+      this.get("model").save();
+    }
+  }
 });

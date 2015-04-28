@@ -1,5 +1,9 @@
 <label>
   {{input type="checkbox" checked=isSelected disabled=disabled}}
-  {{label}}
+  {{#if (and disabled (not isSelected))}}
+    <s>{{label}}</s>
+  {{else}}
+    {{label}}
+  {{/if}}
 </label>
 

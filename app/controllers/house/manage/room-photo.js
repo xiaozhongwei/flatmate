@@ -6,13 +6,22 @@ export default Ember.Controller.extend({
   uploadUrl: function(){
     return config.host + "/" + config.apiRoot + "/listing" + "/" + this.get('model.id') + "/photos/upload";
   }.property('model'),
-  photoObserve: function(){
-    //alert(this.get("model.photos.length"));
-    //this.get("model.photos").forEach(photo => {
-    //  alert("id: " + photo.id + " index:" + photo.get("index"));
-    //})
-  }.observes('model.photos.@index'),
+  photosReset: function () {
+    var isDirty = false;
+    if (!Ember.isEmpty(this.get("model.photos"))) {
+      this.get("model.photos").forEach(function (p, index) {
+          if(p.get("index") != index){
+            isDirty = true;
+            p.set("index", index);
+          }
+        }
+      )
+    }
 
+    if(isDirty){
+      this.get("model").save();
+    }
+  },
   actions: {
     addPhotos: function(photos){
       photos.forEach(photo => {
@@ -21,7 +30,7 @@ export default Ember.Controller.extend({
           index: photo.index,
           imageUrl: photo.imageUrl
         });
-        newPhoto.transitionTo('updated.inFlight');
+        newPhoto.transitionTo('saved');
         this.get("model.photos").addObject(newPhoto);
       });
     },
@@ -36,6 +45,14 @@ export default Ember.Controller.extend({
           });
         }
       });
+    },
+    removePhoto: function (photo) {
+      photo.destroyRecord();
+      this.photosReset();
+    },
+
+    movePhoto: function (photo, oldIndex, newIndex) {
+      this.photosReset();
     }
   }
 });

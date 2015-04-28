@@ -12,6 +12,11 @@ export default Ember.Controller.extend({
       }
     })
   },
+  willDestroy: function(){
+    if(this.get("model.isDirty")){
+      this.get("model").save();
+    }
+  },
   roomStatusMapping: RoomStatusMapping.create({}).get("mapping"),
   occupationMapping: OccupationMapping.create({}).get("mapping"),
   genderMapping: GenderMapping.create({}).get("mapping"),

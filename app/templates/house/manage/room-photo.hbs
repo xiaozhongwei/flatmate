@@ -1,4 +1,9 @@
 <style>
+    .wishlist:before{
+        content:"\63";
+        color:white;
+        font-size:33px;
+    }
     .ui-sortable { list-style-type: none; margin: 0; padding: 0; }
     .ui-sortable li { float: left; width: 33.3%; text-align: center; }
     .ui-state-highlight { height: 100%; line-height: 100%; }
@@ -19,15 +24,15 @@
 </div>
 <div class="box_style_2" style="border-top:none;border-radius: 0">
     <div class="row">
-      {{#collection "ivy-sortable" placeholder="ui-state-highlight" content=model.photos}}
+      {{#collection "ivy-sortable" moved="movePhoto" placeholder="ui-state-highlight" content=model.photos}}
           <div class="tour_container">
               <div class="img_container">
+                  <div class="wishlist" {{action "removePhoto" this}}>
+                      <a href="javascript:;" ></a>
+                  </div>
                   <a href="javascript:;">
                       <img src="{{imageUrl}}" width="800" height="533" class="img-responsive" alt="">
                       <!--<div class="ribbon top_rated"></div>-->
-                      <div class="short_info">
-                          <a href="javascript:;" {{action "removePhoto" this}}></a>
-                      </div>
                   </a>
               </div>
               <div class="tour_title listing">

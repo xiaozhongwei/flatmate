@@ -43,7 +43,19 @@ export default Ember.Controller.extend({
       this.set('step', 1);
     }
   }.observes("model.house.bedrooms"),
+  saveAll: function(){
+    if(this.get("model.house.isDirty")){
+      this.get("model.house").save();
+    }
 
+    if(!Ember.isEmpty(this.get("model.house.listings"))){
+      this.get("model.house.listings").forEach(listing => {
+        if(listing.get("isDirty")){
+          listing.save();
+        }
+      })
+    }
+  },
   init: function(){
     this._super.apply(this, arguments);
 
@@ -67,12 +79,12 @@ export default Ember.Controller.extend({
         }
       }
     },
-    save: function(model){
-      model.save();
-
-      var currentStep = this.get("step");
-      this.set("step",(currentStep + 1));
-    },
+    //save: function(model){
+    //  model.save();
+    //
+    //  var currentStep = this.get("step");
+    //  this.set("step",(currentStep + 1));
+    //},
     changeStatus: function(listing) {
       var status = listing.get("status");
       var data = {

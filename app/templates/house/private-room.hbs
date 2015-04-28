@@ -80,11 +80,11 @@
                 {{#if (eq activeType 'apt')}}
                   {{#if (eq step 1)}}
                     {{render 'house.manage.apartment-overview' model.house}}
-                    <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 2}}>Next</a>
                   {{/if}}
                   {{#if (eq step 2)}}
                     {{render 'house.manage.apartment-photo' model.house}}
-                    <a href="javascript:;" class="btn_1 pull-right" {{action "save" model.house}}>Next</a>
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 3}}>Next</a>
                   {{/if}}
                   {{#if (eq step 3)}}
                     {{render 'house.manage.map' model.house}}
@@ -99,13 +99,13 @@
                     {{#each model.house.listings as |listing index|}}
                       {{#if (eq model.activeId listing.id)}}
                         {{render 'house.manage.calendar' listing}}
-                        <a href="javascript:;" class="btn_1 pull-right" {{action "save" listing}}>Next</a>
+                        <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 2}}>Next</a>
                       {{/if}}
                     {{/each}}
                   {{/if}}
                   {{#if (eq step 2)}}
                     {{render 'house.manage.room-overview' model}}
-
+                      <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 3}}>Next</a>
                   {{/if}}
 
                   {{#if (eq step 3)}}

@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
         this.get("model.flatmates").addObject(flatmate);
         this.incrementProperty("model.bedrooms");
         var newListing = this.store.createRecord("listing", {id: flatmate.get("listingId")});
-        newListing.transitionTo('updated.inFlight');
+        newListing.transitionTo('saved');
         this.get("model.listings").addObject(newListing);
 
         Notify.info("New room is created!");
@@ -35,6 +35,11 @@ export default Ember.Controller.extend({
       },function(){
         Notify.error("delete failed");
       });
+    }
+  },
+  willDestroy: function(){
+    if(this.get("model.isDirty")){
+      this.get("model").save();
     }
   },
   roomStatusMapping: RoomStatusMapping.create({}).get("mapping"),

@@ -33,6 +33,12 @@ export default Ember.Controller.extend({
     }
   }.observes('model.bedrooms'),
 
+  willDestroy: function(){
+    if(this.get("model.isDirty")){
+      this.get("model").save();
+    }
+  },
+
   areaMapping: AreaMapping.create({}).get("mapping"),
   compoundMapping: CompoundMapping.create({}).get("mapping"),
   stationMapping: StationMapping.create({}).get("mapping"),
