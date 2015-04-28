@@ -40,7 +40,7 @@ module.exports = function(app) {
           //createDate: '2015-03-14',
           listings: [{
               id: "1",
-              title: "舒适向南单间",
+              title: "豪华四室公寓",
               photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
               status: 0
           }]
