@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
   actions: {
     changeStep: function(step){
       //if(this.get("model.isDirty")){
-        this.get("model").save();
+        //this.get("model").save();
       //}
 
       this.set('step', step);

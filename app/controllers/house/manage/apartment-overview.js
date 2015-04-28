@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
   }.observes('model.bedrooms'),
 
   willDestroy: function(){
-    if(this.get("model.isDirty")){
+    if(this.get("model.isDirty") || this.get("model.listings.firstObject.isDirty")){
       this.get("model").save();
     }
   },

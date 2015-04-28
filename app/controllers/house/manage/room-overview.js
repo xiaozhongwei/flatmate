@@ -13,6 +13,14 @@ export default Ember.Controller.extend({
     })
   },
   willDestroy: function(){
+    if(!Ember.isEmpty(this.get("model.house.listings"))){
+      this.get("model.house.listings").forEach(function(listing){
+        if(listing.get("isDirty")){
+          listing.save();
+        }
+      })
+    }
+
     if(this.get("model.isDirty")){
       this.get("model").save();
     }
