@@ -23,7 +23,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   perThreeMonthPrice: DS.attr(),              // 每三月一付月租价格
   perSixMonthPrice: DS.attr(),                // 每六月一付月租价格
   perYearPrice: DS.attr(),                    // 每年一付月租价格
-  deposit: DS.attr(),
+  deposit: DS.attr(),                         // 押金
+  serviceFee: DS.attr(),                      // 服务费
   features: DS.attr(),
 
   photos: DS.hasMany('listing/photo'),         // 房源图片
