@@ -153,7 +153,7 @@ module.exports = function(app) {
         creatorDescription: 'Hello, I‘m Lisa, a young girl living and working in Shanghai. I am outgoing and friendly, fond of people, traveling & food :) I worked as a Skincare Shop Manager before starting the "hosting idea" in 2012.',
         "title": "温馨朝南单间",
         "description": "Dictumst vestibulum odio mi dolor justo curabitur tellus nostra bibendum facilisis vitae est",
-        "perMonthPrice": 3000,
+        //"perMonthPrice": 3000,
         "perThreeMonthPrice": 2800,
         "perSixMonthPrice": 2500,
         "deposit": 0.0,

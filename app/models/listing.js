@@ -43,20 +43,29 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   //listStep: 3, //发布所需步骤
 
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
-    var price = this.get('perYearPrice');
-    //alert(price);
-    if(parseFloat(this.get('perSixMonthPrice')) < parseFloat(price)){
-      price = this.get('perSixMonthPrice');
+    var lowestPrice = 0;
+    if(!Ember.isEmpty(this.get('perYearPrice'))){
+      if(lowestPrice == 0 || (this.get('perYearPrice')< lowestPrice)){
+        lowestPrice = this.get('perYearPrice')
+      }
     }
-    if(this.get('perThreeMonthPrice') < price){
-      price = this.get('perThreeMonthPrice');
+    if(!Ember.isEmpty(this.get('perSixMonthPrice'))){
+      if(lowestPrice == 0 || this.get('perSixMonthPrice')< lowestPrice){
+        lowestPrice = this.get('perSixMonthPrice')
+      }
     }
-    if(this.get('perMonthPrice') < price){
-      price = this.get('perMonthPrice');
+    if(!Ember.isEmpty(this.get('perThreeMonthPrice'))){
+      if(lowestPrice == 0 || this.get('perThreeMonthPrice')< lowestPrice){
+        lowestPrice = this.get('perThreeMonthPrice')
+      }
+    }
+    if(!Ember.isEmpty(this.get('perMonthPrice'))){
+      if(lowestPrice == 0 || this.get('perMonthPrice')< lowestPrice){
+        lowestPrice = this.get('perMonthPrice')
+      }
     }
 
-
-    return price;
+    return lowestPrice;
   }),
 
   published: Ember.computed('status', function(){

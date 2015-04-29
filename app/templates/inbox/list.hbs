@@ -18,12 +18,11 @@
                 <hr>-->
                 <div class="other_tours ">
                     <ul>
-                        <li><a href="#"><i class="icon_set_1_icon-3"></i>All Messages<span class="other_tours_price">42</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-30"></i>Drafts<span class="other_tours_price">35</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-44"></i>Trash<span class="other_tours_price">20</span></a>
-                        </li>
+                      {{#each statistics as |statistic| }}
+                          <li><a href="javascript:;" id="{{if (eq status statistic.type) 'active'}}" {{action "queryMessage" statistic.type}} >
+                              {{statistic.type}}<span class="other_tours_price">{{statistic.count}}</span></a>
+                          </li>
+                      {{/each}}
                     </ul>
                 </div>
             </aside>

@@ -11,5 +11,6 @@ export default DS.Model.extend({
   listingTitle: DS.attr(),
   lastContent: DS.attr(),
   lastUpdateTime: DS.attr(),
+  unReadMark: DS.attr(),        // 0-以读, 1-未读
   records: DS.hasMany('inbox/messageRecord')
 });
