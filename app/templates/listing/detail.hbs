@@ -2,12 +2,16 @@
     header{
         background: rgb(246,246,246) !important;
     }
+    .priceInactive{
+        color: rgb(51,51,51) !important;
+    }
+
 </style>
 <div class="white_bg" style="border-bottom: 2px solid rgb(234,234,234)">
     <div class="container margin_60" style="padding-top:30px;padding-bottom: 0px;">
         <div class="row">
             <div class="col-md-8" id="single_tour_desc">
-                <h2 style="margin-top: 0;margin-bottom: 20px;">Garden Room in French Concession </h2>
+                <h2 style="margin-top: 0;margin-bottom: 20px;">{{model.title}} </h2>
                 <div id="Img_carousel" class="slider-pro">
                     <div class="sp-slides">
                         {{#each model.photos as |listingPhoto index|}}
@@ -199,15 +203,36 @@
                 </div>
                 <h5 style="margin-top:20px;">Price & Terms</h5>
                 <div class="box_style_1 expose" style=" border-radius: 0; border:none;background: rgb(249,249,249)">
-                    <h3 class="inner" style="padding-top:20px;padding-bottom:20px;text-align: left">￥2850 <span style="font-size:13px;color:#ddd">+300 Service Fee</span>
-                        <span class="pull-right" style="font-size:14px;color: white;padding-top: 7px;">Per Month</span></h3>
+                    <h3 class="inner" style="padding-top:20px;padding-bottom:20px;text-align: left">
+                        ￥{{currentPrice}}
+                        {{#if model.serviceFee}}
+                          <span style="font-size:13px;color:#ddd">+{{model.serviceFee}} Service Fee</span>
+                          <span class="pull-right" style="font-size:14px;color: white;padding-top: 7px;">Per Month</span>
+                        {{/if}}
+                    </h3>
                     <div class="row">
-                        <span style="color: black">I will pay per</span>
-                        <span class="radius-number-1" style="color: rgb(51,51,51);background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">1</span>
-                        <span class="radius-number-1" style="color: rgb(51,51,51);background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">3</span>
-                        <span class="radius-number-1" style="color: rgb(51,51,51);background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">6</span>
-                        <span class="radius-number-1" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">12</span>
-                        <span style="color: black;padding-left: 5px;">Month</span>
+                      <span style="color: black">I will pay per</span>
+                      {{#if model.perMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perMonth" model.perMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">1</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">1</span>
+                      {{/if}}
+                      {{#if model.perThreeMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perThreeMonth" model.perThreeMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perThreeMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">3</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">3</span>
+                      {{/if}}
+                      {{#if model.perSixMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perSixMonth" model.perSixMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perSixMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">6</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">6</span>
+                      {{/if}}
+                      {{#if model.perYearPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perYear" model.perYearPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perYear') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">12</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">12</span>
+                      {{/if}}
+                      <span style="color: black;padding-left: 5px;">Month</span>
                     </div>
                 </div>
                 <div class="row">
@@ -215,7 +240,7 @@
                         <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="javascript:;" style="background:#f7941d " class=" btn_full">Inquiry</a>
+                        <a href="javascript:;" style="background:#f7941d;" {{action "showDialog"}} class=" btn_full">Inquiry</a>
                     </div>
                 </div>
             </aside>
@@ -239,7 +264,7 @@
     <div class="col-md-8" style="padding-left:0">
         <ul class="list_order_1" style="padding-left:0">
             <li><span>Appartment</span>
-              {{model.house.bedrooms}}BDR (120m2) — {{model.house.bathrooms}} Bathroom — Floor {{model.house.floor}}
+              {{model.house.bedrooms}}BDR ({{model.house.size}}m2) — {{model.house.bathrooms}} Bathroom — Floor {{model.house.floor}}
             </li>
             <li><span>Metro </span>
               {{#each model.house.metroStations as |metroStation index|}}

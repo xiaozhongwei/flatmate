@@ -4,6 +4,10 @@ import FeatureMapping from 'flatmate/transforms/feature';
 
 export default Ember.Controller.extend({
   actions:{
+    changePrice: function(cycle,price){
+      this.set("currentPayCycle", cycle);
+      this.set("currentPrice",price);
+    },
     addWishlisting: function(listing){
       var data = {
         "profile/wishlist":{
@@ -24,13 +28,7 @@ export default Ember.Controller.extend({
     },
     showDialog:function(){
       this.showModal('listing.message');
-      //this.set("title", "Send Message");
-      //var message = this.store.createRecord("inbox/messageRecord",{listingId: this.get('model.id'),listingTitle: this.get('model.basic.title'),
-      //  sender: this.get('currentUser.id'), senderName: this.get('currentUser.firstName'),senderPhoto: this.get('currentUser.logo.downloadFilePath'),
-      //  receiver: this.get('model.creatorId'),receiverName: this.get('model.creatorName'),receiverPhoto: this.get('model.creatorPhoto'),
-      //  content: 'Can I visit the room first?'});
-      //this.set('currentMessage',message);
-      //return Bootstrap.ModalManager.show("model-message");
+
     },
     cancel: function(){
       this.get('modal').close();

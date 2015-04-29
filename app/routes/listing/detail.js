@@ -10,6 +10,23 @@ export default Ember.Route.extend({
 
     controller.set('currentUser', this.session.get("user"));
 
+    if(!Ember.isEmpty(model.get('perYearPrice'))){
+      controller.set("currentPayCycle", "perYear");
+      controller.set("currentPrice", model.get('perYearPrice'));
+    }
+    else if(!Ember.isEmpty(model.get('perSixMonthPrice'))){
+      controller.set("currentPayCycle", "perSixMonth");
+      controller.set("currentPrice", model.get('perSixMonthPrice'));
+    }
+    else if(!Ember.isEmpty(model.get('perThreeMonthPrice'))){
+      controller.set("currentPayCycle", "perThreeMonth");
+      controller.set("currentPrice", model.get('perThreeMonthPrice'));
+    }
+    else {
+      controller.set("currentPayCycle", "perMonth");
+      controller.set("currentPrice", model.get('perMonthPrice'));
+    }
+
     if(Ember.isEmpty(model.get('house.amenities'))){
       model.set('house.amenities',Ember.A());
     }
