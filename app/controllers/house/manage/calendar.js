@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
     this._super.apply(this, arguments);
 
     if(!Ember.isEmpty(this.get("model.availableDate"))){
-      this.set("availableDate",moment(this.get("model.availableDate")));
+      this.set("availableDate",new Date(this.get("model.availableDate")));
     }
   },
   availableDateObverse: function(){

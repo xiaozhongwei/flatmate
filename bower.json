@@ -27,6 +27,7 @@
     "select2-bootstrap-css": "~1.4.6",
     "Modernizr": "Modernizr/Modernizr#~2.8.3",
     "Sortable": "~1.2.0",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "bootstrap-datepicker": "~1.4.0"
   }
 }
