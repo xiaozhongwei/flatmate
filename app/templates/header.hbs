@@ -23,10 +23,20 @@
                                     <strong style="color:black">Hi, {{session.user.firstName}}</strong>
 
                                   </a>
-                                  <div class="dropdown-menu">
-                                      {{#link-to 'profile.dashboard' class="button_drop outline" id="profile"}}Dashboard{{/link-to}}
-                                      <a href="javascript:void(0);" {{action 'invalidateSession' }} class="button_drop">Logout</a>
-                                  </div>
+                                  <ul class="dropdown-menu" id="cart_items">
+                                      <li style="padding-left: 15px">
+                                          <strong>{{#link-to 'profile.edit-profile'}}Edit Profile{{/link-to}}</strong>
+                                      </li>
+                                      <li>
+                                          <strong>{{#link-to 'house.list'}}My Listings{{/link-to}}</strong>
+                                      </li>
+                                      <li>
+                                          <strong>{{#link-to 'wishlist'}}Wish Lists{{/link-to}}</strong>
+                                      </li>
+                                      <li>
+                                          <strong><a href="javascript:;" {{action "invalidateSession"}}>Log Out</a></strong>
+                                      </li>
+                                  </ul>
                               </div>
                           </li>
                           <li>

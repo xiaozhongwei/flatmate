@@ -4,6 +4,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  init: function(){
+    //alert(12);
+  },
   actions: {
     authenticate: function () {
       var credentials = this.getProperties('identification', 'password');

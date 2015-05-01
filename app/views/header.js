@@ -4,7 +4,6 @@
 import Ember from "ember";
 
 export default Ember.View.extend({
-  templateName: 'header',
   didInsertElement: function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() > 1) {
@@ -15,7 +14,7 @@ export default Ember.View.extend({
       }
     });
     this.mobileMenuClick();
-    $('.dropdown-menu').on("click",function(e) {e.stopPropagation();});
+    //$('.dropdown-menu').on("click",function(e) {e.stopPropagation();});
   },
   mobileMenuClick:function(){
     $('a.open_close').on("click",function() {
