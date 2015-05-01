@@ -18,7 +18,7 @@ export default Ember.View.extend({
     //  }
     //});
     this.mobileMenuClick();
-    $('.dropdown-menu').on("click",function(e) {e.stopPropagation();});
+    //$('.dropdown-menu').on("click",function(e) {e.stopPropagation();});
   },
 
   mobileMenuClick:function(){
