@@ -135,14 +135,33 @@
                                           </div>
                                       </div>
                                       <div class="col-lg-2 col-md-2 col-sm-2" style=" padding-right: 0px;padding-top: 35px;">
-                                          <div class="styled-select-filters">
-                                            {{select-2
-                                            content=listingStatusMapping
-                                            value=listing.model.status
-                                            optionValuePath="id"
-                                            searchEnabled=false
-                                            }}
-                                          </div>
+                                            {{#if house.isShared}}
+                                              {{#if house.listStep}}
+                                                {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id) class="btn_1"}}
+                                                  {{listing.model.listStep}} to list
+                                                {{/link-to}}
+                                              {{else}}
+                                                {{select-2
+                                                content=listingStatusMapping
+                                                value=listing.model.status
+                                                optionValuePath="id"
+                                                searchEnabled=false
+                                                }}
+                                              {{/if}}
+                                            {{else}}
+                                              {{#if listing.model.listStep}}
+                                                {{#link-to 'house.manage' house.id class="btn_1"}}
+                                                  {{house.listStep}} to list
+                                                {{/link-to}}
+                                              {{else}}
+                                                {{select-2
+                                                content=listingStatusMapping
+                                                value=listing.model.status
+                                                optionValuePath="id"
+                                                searchEnabled=false
+                                                }}
+                                              {{/if}}
+                                            {{/if}}
                                       </div>
                                   </div>
                                 {{/each}}

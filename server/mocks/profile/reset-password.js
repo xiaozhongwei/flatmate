@@ -9,6 +9,7 @@ module.exports = function(app) {
   });
 
   profileResetPasswordRouter.post('/', function(req, res) {
+    res.send({});
     res.status(201).end();
   });
 
@@ -32,5 +33,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/profile-reset-password', profileResetPasswordRouter);
+  app.use('/api/profile/resetPasswords', profileResetPasswordRouter);
 };
