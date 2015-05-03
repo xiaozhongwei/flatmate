@@ -34,7 +34,7 @@
                                           <strong>{{#link-to 'wishlist'}}Wish Lists{{/link-to}}</strong>
                                       </li>
                                       <li>
-                                          <strong><a href="javascript:;" {{action "invalidateSession"}}>Log Out</a></strong>
+                                          <strong><a href="javascript:;" {{action "invalidateSession" bubbles=true}}>Log Out</a></strong>
                                       </li>
                                   </ul>
                               </div>
@@ -56,7 +56,7 @@
                                   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
                                      id="access_link">Sign in</a>
 
-                                  <div class="dropdown-menu">
+                                  <div class="dropdown-menu" id="login_form">
                                       <form {{action 'authenticate' on='submit'}}>
                                           <!--<div class="row">
                                               <div class="col-md-6 col-sm-6 col-xs-6">
