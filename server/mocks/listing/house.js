@@ -67,7 +67,7 @@ module.exports = function(app) {
             "id": (new Date()).getTime(),
             "perMonthPrice": 0,
             "perThreeMonthPrice": 0,
-            "perSixMonthPrice": 0,
+            "perSixMonthPrice": 1800,
             "perYearPrice": 0,
             "deposit": 0,
             "status": 0
@@ -99,8 +99,8 @@ module.exports = function(app) {
         "livingRooms": 1,
         "createType": 0,
         size: "100",
-        //"rentType": "entire",
-        "rentType": "share",
+        "rentType": "entire",
+        //"rentType": "share",
         listings: [{
           id: "1",
           title: "舒适向南单间",

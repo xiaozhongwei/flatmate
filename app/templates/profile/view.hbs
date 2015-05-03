@@ -17,7 +17,9 @@
             <div class="col-md-10" style="padding-left:20px;">
                 <h1>{{model.fullName}}</h1>
                 <h5>Member Since {{model.createTime}}</h5>
-                <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
+                {{#if (eq session.id model.id)}}
+                    <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
+                {{/if}}
                 <h4  style="margin-top:45px;margin-bottom: 5px;">{{model.country}}</h4>
                 <h4  style="  margin-top: 5px; margin-bottom: 5px;">{{model.occupation}}</h4>
                 <h4 style="  margin-top: 5px; margin-bottom: 5px;">{{format-gender model.gender}}</h4>
@@ -71,7 +73,7 @@
                           <img src="{{if model.latestListing.coverPhoto model.latestListing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
                           <!--<div class="ribbon top_rated"></div>-->
                           <div class="short_info">
-                              <span class="price"><sup>￥</sup>TODO</span>
+                              <span class="price"><sup>￥</sup>{{model.latestListing.lowestPrice}}</span>
                           </div>
                       {{/link-to}}
                     </div>

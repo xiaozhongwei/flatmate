@@ -6,42 +6,41 @@ import ListingStatusMapping from 'flatmate/transforms/listing-status';
 export default Ember.Controller.extend({
   step: 2,
   //listStep: 4, //发布所需步骤
-
-  isCalendarFinished: function(){
-    var isFinished = !Ember.isEmpty(this.get('model.listings.firstObject.availableDate'));
-    return isFinished;
-  }.property("model.listings.firstObject.availableDate"),
-  isOverviewFinished: function(){
-    var isFinished = this.get('model.isValid') && this.get('model.listings.firstObject.isValid') &&
-      (this.get('model.amenities.length') > 0);
-    return isFinished;
-  }.property("model.isValid","model.listings.firstObject.isValid","model.amenities.length"),
-  isPhotoFinished: function(){
-    var isFinished = this.get("model.listings.firstObject.photos.length") > 0;
-    return isFinished;
-  }.property("model.listings.firstObject.photos.length"),
-  isMapFinished: function(){
-    //var isFinished = !Ember.isEmpty(this.get('model.location'));
-    var isFinished = true;
-    return isFinished;
-  }.property("model.location"),
-
-  listStep: function(){   //发布所需步骤
-    var steps = 4;
-    if(this.get("isCalendarFinished")){
-      steps--;
-    }
-    if(this.get("isOverviewFinished")){
-      steps--;
-    }
-    if(this.get("isPhotoFinished")){
-      steps--;
-    }
-    if(this.get("isMapFinished")){
-      steps--;
-    }
-    return steps;
-  }.property("isCalendarFinished","isOverviewFinished","isPhotoFinished","isMapFinished"),
+  //isCalendarFinished: function(){
+  //  var isFinished = !Ember.isEmpty(this.get('model.listings.firstObject.availableDate'));
+  //  return isFinished;
+  //}.property("model.listings.firstObject.availableDate"),
+  //isOverviewFinished: function(){
+  //  var isFinished = this.get('model.isValid') && this.get('model.listings.firstObject.isValid') &&
+  //    (this.get('model.amenities.length') > 0);
+  //  return isFinished;
+  //}.property("model.isValid","model.listings.firstObject.isValid","model.amenities.length"),
+  //isPhotoFinished: function(){
+  //  var isFinished = this.get("model.listings.firstObject.photos.length") > 0;
+  //  return isFinished;
+  //}.property("model.listings.firstObject.photos.length"),
+  //isMapFinished: function(){
+  //  //var isFinished = !Ember.isEmpty(this.get('model.location'));
+  //  var isFinished = true;
+  //  return isFinished;
+  //}.property("model.location"),
+  //
+  //listStep: function(){   //发布所需步骤
+  //  var steps = 4;
+  //  if(this.get("isCalendarFinished")){
+  //    steps--;
+  //  }
+  //  if(this.get("isOverviewFinished")){
+  //    steps--;
+  //  }
+  //  if(this.get("isPhotoFinished")){
+  //    steps--;
+  //  }
+  //  if(this.get("isMapFinished")){
+  //    steps--;
+  //  }
+  //  return steps;
+  //}.property("isCalendarFinished","isOverviewFinished","isPhotoFinished","isMapFinished"),
 
   actions: {
     changeStep: function(step){

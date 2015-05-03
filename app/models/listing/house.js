@@ -77,8 +77,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   isShared: Ember.computed('rentType', function(){
     return this.get('rentType') === "share";
-  })
-  ,
+  }),
   isFlatmateFinished: Ember.computed('flatmates.@each', function(){
     alert(2);
     var finished = true;
@@ -89,16 +88,28 @@ export default DS.Model.extend(EmberValidations.Mixin,{
       }
     });
     return finished;
-  })
-  //,
-  //isOverviewFinished: Ember.computed('rentType','isValid', function(){
-  //  if(this.get('rentType') === "share"){
-  //    return this.get('isValid');
-  //  }
-  //  else{
-  //    return true;
-  //  }
-  //}),
+  }),
+
+  isCalendarFinished: Ember.computed('listings.firstObject.availableDate', function(){
+    var isFinished = !Ember.isEmpty(this.get('listings.firstObject.availableDate'));
+    return isFinished;
+  }),
+  isOverviewFinished: Ember.computed('isValid','listings.firstObject.isValid','amenities.length',function(){
+    var isFinished = false;
+    if(this.get('rentType') === "share"){
+      isFinished = this.get('isValid') && (this.get('amenities.length') > 0);
+    }
+    else {
+      isFinished = this.get('isValid') && this.get('listings.firstObject.isValid') &&
+        (this.get('amenities.length') > 0);
+    }
+    return isFinished;
+  }),
+  isPhotoFinished: Ember.computed('photos.length','listings.firstObject.photos.length',function(){
+    var isFinished = false;
+    isFinished = this.get('listings.firstObject.photos.length') > 0;
+    return isFinished;
+  }),
 
   //isPhotoFinished: Ember.computed('photos', function(){
   //  if(this.get('rentType') === "share"){
@@ -109,12 +120,26 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   //  }
   //}),
 
-  //isMapFinished: Ember.computed('location', function(){
-  //  //return Ember.isEmpty(this.get('location'));
-  //  return true;
-  //})
-  //
-  //isFinished: Ember.computed('isOverviewFinished', 'isPhotoFinished', 'isMapFinished', function(){
-  //  return this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
-  //})
+  isMapFinished: Ember.computed('location', function(){
+    //return Ember.isEmpty(this.get('location'));
+    return true;
+  }),
+  // 发布所需步骤
+  listStep: Ember.computed('isCalendarFinished','isOverviewFinished','isPhotoFinished','isMapFinished',function(){
+    var steps = 4;
+    if(this.get("isCalendarFinished")){
+      steps--;
+    }
+    if(this.get("isOverviewFinished")){
+      steps--;
+    }
+    if(this.get("isPhotoFinished")){
+      steps--;
+    }
+    if(this.get("isMapFinished")){
+      steps--;
+    }
+
+    return steps;
+  })
 });

@@ -280,7 +280,10 @@
         </ul>
         <hr>
         <h3 style="margin-bottom: 25px;">Description</h3>
-        <p style="font-size:15px;margin-bottom: 30px;">{{model.description}} </p>
+        <p style="font-size:15px;margin-bottom: 30px;">
+          {{model.description}}
+
+        </p>
         <hr>
         <div class="row" style="margin-top:30px;">
             <div class="col-md-3">
@@ -316,7 +319,10 @@
                 <div class="row">
                     <img alt="" style="width:170px;" class="img-circle styled" src="images/LISA_100.jpg">
                     <h3 style="display: inline-block;margin-left: 12px;font-weight: bold;">{{model.creatorName}}</h3>
-                    <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;">{{model.creatorDescription}}</p>
+                    <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;">
+                      {{model.creatorDescription}}
+                      {{#link-to 'profile.view'}}View Full Profile{{/link-to}}
+                    </p>
                     <a href="javascript:;" class="btn_1" {{action "sendMessage"}}>Contact host</a>
                 </div>
             </div>

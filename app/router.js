@@ -34,6 +34,7 @@ Router.map(function() {
   this.route('wishlist');
   this.route('register');
   this.route('forgot-password');
+  this.route('reset-password');
 });
 
 export default Router;

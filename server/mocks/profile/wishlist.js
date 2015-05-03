@@ -13,6 +13,7 @@ module.exports = function(app) {
             photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
             status: 0,
             rentType: "share",
+            perSixMonthPrice: 1800,
             house: {
               id: "1",
               size: 100,

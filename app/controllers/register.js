@@ -8,7 +8,10 @@ export default Ember.Controller.extend({
       if (this.get('model.isValid')) {
         var promise = this.get("model").save();
         promise.then(function () {
-          var credentials = _this.getProperties('email', 'password');
+          var credentials = {
+            identification: _this.get('model.email'),
+            password: _this.get('model.password')
+          };
           _this.get('session').authenticate('simple-auth-authenticator:oauth2-password-grant', credentials);
         });
       }

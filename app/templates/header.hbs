@@ -11,7 +11,7 @@
                       {{#if session.isAuthenticated}}
                           <li>
                               <div class="dropdown dropdown-access">
-                                  <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{#if session.user.logo.downloadFilePath}}
                                         <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
                                              src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
@@ -78,7 +78,7 @@
                                           <div class="form-group">
                                             {{input value=password placeholder='Password' id="inputPassword"  class='form-control' type='password'}}
                                           </div>
-                                          {{#link-to "register" id="forgot_pw"}}Forgot password?{{/link-to}}
+                                          {{#link-to "forgot-password" id="forgot_pw"}}Forgot password?{{/link-to}}
                                           <input type="submit" name="" value="Sign in" id="Sign_in" class="button_drop outline">
                                           <!--<a class="button_drop outline" {{action "register"}}>Sign_up</a>-->
                                           {{#link-to "register" id="Sign_up" class="button_drop outline"}}Sign_up{{/link-to}}
