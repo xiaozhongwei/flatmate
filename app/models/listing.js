@@ -111,9 +111,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
       steps--;
     }
 
-    if(steps > 1)
-      return steps + " steps";
-    else
-      return steps + " step";
+    return steps;
   })
 });

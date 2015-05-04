@@ -142,7 +142,7 @@
                                         {{#if house.isShared}}
                                           {{#if house.listStep}}
                                             {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id) class="btn_1"}}
-                                              {{listing.model.listStep}} to list
+                                              {{format-step listing.model.listStep}} to list
                                             {{/link-to}}
                                           {{else}}
                                             {{select-2
@@ -155,7 +155,7 @@
                                         {{else}}
                                           {{#if listing.model.listStep}}
                                             {{#link-to 'house.manage' house.id class="btn_1"}}
-                                              {{house.listStep}} to list
+                                              {{format-step house.listStep}} to list
                                             {{/link-to}}
                                           {{else}}
                                             {{select-2
