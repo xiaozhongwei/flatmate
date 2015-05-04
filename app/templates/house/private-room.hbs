@@ -19,13 +19,13 @@
                     <ul>
                         <li class="{{if (eq activeType 'apt') 'active'}}" {{action "changeActive" "apt"}}>
                             <a href="javascript:;" class="{{if (eq activeType 'apt') 'active' 'inactive'}}" >
-                                Apartment<span class="other_tours_price"><span class="{{if isApartmentFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
+                                Apartment<span class="other_tours_price"><span class="{{if model.house.isApartmentFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
                             </a>
                         </li>
                       {{#unless model.house.bedroomEditable}}
                           <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
                               <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
-                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span class="{{if isFlatmateFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
+                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span class="{{if model.house.isFlatmateFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
                               </a>
                           </li>
                       {{/unless}}
@@ -43,9 +43,9 @@
                 <div class="other_tours col-md-6" style="margin-top:20px;background: rgb(247,247,247);padding: 10px 15px 15px 15px;min-height: 500px;">
                   {{#if (eq activeType 'apt')}}
                     <ul>
-                      <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span class="{{if isOverviewFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
-                      <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class="{{if isPhotoFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
-                      <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class="{{if isMapFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                      <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span class="{{if model.house.isOverviewFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                      <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class="{{if model.house.isPhotoFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                      <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class="{{if model.house.isMapFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
                     </ul>
                   {{/if}}
                   {{#if (eq activeType 'room')}}

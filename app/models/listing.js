@@ -40,8 +40,6 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
 
-  //listStep: 3, //发布所需步骤
-
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
     var lowestPrice = 0;
     if(!Ember.isEmpty(this.get('perYearPrice'))){

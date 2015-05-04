@@ -7,30 +7,32 @@ module.exports = function(app) {
       'listing/houses': [
         {
           id: 1,
-          name: 'Rainbow City Building 8 Floor 2',
           area: 'Hongkou',
           compound: '鸿艺豪苑',
           building: 8,
           floor: 3,
           doorplate: 202,
+          size:100,
           bedrooms: 4,
           bathrooms: 1,
           livingRooms: 1,
+          metroStations: ["Anshan Xincun"],
           rentType: 'share',
-          //createDate: '2015-03-14',
           listings: [{
-              id: "2",
+              id: "6",
               title: "Listing 1",
               photos: [
-                {id:"21",index: 1, imageUrl:"images/post-5.jpg"},
-                {id:"22",index: 0, imageUrl:"images/post-5.jpg"}
+                {id:"61",index: 1, imageUrl:"images/post-5.jpg"},
+                {id:"62",index: 0, imageUrl:"images/post-5.jpg"}
               ],
               status: 0
             }, {
-              id: "3",
+              id: "7",
               title: "Listing 2",
               status: 0
-          }]
+          }],
+          photos: [{id: "101", index:0, imageUrl:"images/post-5.jpg"}],
+          amenities: ["WashingMachine","Aircon","TV"]
         }, {
           id: 2,
           bedrooms: 3,
@@ -39,11 +41,64 @@ module.exports = function(app) {
           rentType: 'entire',
           //createDate: '2015-03-14',
           listings: [{
-              id: "1",
+              id: "5",
               title: "豪华四室公寓",
-              photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+              photos: [{id: "51", index:0, imageUrl:"images/post-5.jpg"}],
               status: 0
           }]
+        },{
+          id: 3,
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "livingRooms": 1,
+          "createType": 0,
+          size: "100",
+          //"rentType": "entire",
+          "rentType": "share",
+          listings: [{
+            id: "1",
+            title: "舒适向南单间",
+            photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+            status: 0
+          },{
+            id: "2",
+            status: 0
+          },{
+            id: "3",
+            status: 0
+          },{
+            id: "4",
+            status: 0
+          }],
+          "flatmates": [{
+            "id": "1",
+            "index": 1,
+            "listingId": "1",
+            "status": 0
+          }, {
+            "id": "2",
+            "index": 2,
+            "listingId": "2",
+            "status": 0
+          }, {
+            "id": "3",
+            "index": 3,
+            "listingId": "3",
+            "status": 1,
+            "country": "USA",
+            "occupation": "Student",
+            "gender": 1
+          }, {
+            "id": "4",
+            "index": 4,
+            "listingId": "4",
+            "status": 1,
+            "country": "UK",
+            "occupation": "Student",
+            "gender": 2
+          }],
+          photos: [{id: "301", index:0, imageUrl:"images/post-5.jpg"}],
+          amenities: ["WashingMachine","Aircon","TV"]
         }
       ],
       meta: {
@@ -104,7 +159,7 @@ module.exports = function(app) {
         listings: [{
           id: "1",
           title: "舒适向南单间",
-          photos: [{id: "11", index:11, imageUrl:"images/post-5.jpg"}],
+          photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
           status: 0
         },{
           id: "2",
@@ -143,7 +198,7 @@ module.exports = function(app) {
           "occupation": "Student",
           "gender": 2
         }],
-        photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
+        photos: [{id: "21", index:0, imageUrl:"images/post-5.jpg"}],
         amenities: ["WashingMachine","Aircon","TV"]
       }
     });

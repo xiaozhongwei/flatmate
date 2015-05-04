@@ -6,36 +6,36 @@ export default Ember.Controller.extend({
   activeType: "apt", //apt or flatmate or room
   step: 1,
 
-  isOverviewFinished: function(){
-    var isFinished = this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
-    return isFinished;
-  }.property("model.house.isValid","model.house.amenities.length"),
+  //isOverviewFinished: function(){
+  //  var isFinished = this.get('model.house.isValid') && (this.get('model.house.amenities.length') > 0);
+  //  return isFinished;
+  //}.property("model.house.isValid","model.house.amenities.length"),
+  //
+  //isPhotoFinished: function(){
+  //  var isFinished = this.get('model.house.photos.length') > 0;
+  //  return isFinished;
+  //}.property("model.house.photos.length"),
+  //
+  //isMapFinished: function(){
+  //  //var isFinished = Ember.isEmpty(this.get('model.house.location'));
+  //  var isFinished = true;
+  //  return isFinished;
+  //}.property("model.house.location"),
 
-  isPhotoFinished: function(){
-    var isFinished = this.get('model.house.photos.length') > 0;
-    return isFinished;
-  }.property("model.house.photos.length"),
-
-  isMapFinished: function(){
-    //var isFinished = Ember.isEmpty(this.get('model.house.location'));
-    var isFinished = true;
-    return isFinished;
-  }.property("model.house.location"),
-
-  isApartmentFinished: function(){
-    var isFinished = this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
-    return isFinished;
-  }.property("isOverviewFinished","isPhotoFinished","isMapFinished"),
-
-  isFlatmateFinished: function(){
-    var finished = true;
-    this.get("model.house.flatmates").forEach(flatmate => {
-      if(finished && flatmate.get("isOccupied") && !flatmate.get("isValid")){
-        finished = false;
-      }
-    });
-    return finished;
-  }.property("model.house.flatmates.@each.status","model.house.flatmates.@each.isValid"),
+  //isApartmentFinished: function(){
+  //  var isFinished = this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+  //  return isFinished;
+  //}.property("isOverviewFinished","isPhotoFinished","isMapFinished"),
+  //
+  //isFlatmateFinished: function(){
+  //  var finished = true;
+  //  this.get("model.house.flatmates").forEach(flatmate => {
+  //    if(finished && flatmate.get("isOccupied") && !flatmate.get("isValid")){
+  //      finished = false;
+  //    }
+  //  });
+  //  return finished;
+  //}.property("model.house.flatmates.@each.status","model.house.flatmates.@each.isValid"),
 
   flatmatesObserver: function(){
     if(this.get("model.house.bedrooms") < 1){
@@ -43,19 +43,19 @@ export default Ember.Controller.extend({
       this.set('step', 1);
     }
   }.observes("model.house.bedrooms"),
-  saveAll: function(){
-    if(this.get("model.house.isDirty")){
-      this.get("model.house").save();
-    }
-
-    if(!Ember.isEmpty(this.get("model.house.listings"))){
-      this.get("model.house.listings").forEach(listing => {
-        if(listing.get("isDirty")){
-          listing.save();
-        }
-      })
-    }
-  },
+  //saveAll: function(){
+  //  if(this.get("model.house.isDirty")){
+  //    this.get("model.house").save();
+  //  }
+  //
+  //  if(!Ember.isEmpty(this.get("model.house.listings"))){
+  //    this.get("model.house.listings").forEach(listing => {
+  //      if(listing.get("isDirty")){
+  //        listing.save();
+  //      }
+  //    })
+  //  }
+  //},
   init: function(){
     this._super.apply(this, arguments);
 
@@ -69,9 +69,9 @@ export default Ember.Controller.extend({
     },
     changeActive: function(activeType,activeId){
       // apt 完成才能够跳转
-      if(this.get("isApartmentFinished") || activeType === "apt"){
+      if(this.get("model.house.isApartmentFinished") || activeType === "apt"){
         // flatmate 完成room才能跳转
-        if(this.get("isFlatmateFinished") || activeType != "room"){
+        if(this.get("model.house.isFlatmateFinished") || activeType != "room"){
           this.set("activeType",activeType);
           this.set("model.activeId",activeId);
 
@@ -86,7 +86,7 @@ export default Ember.Controller.extend({
     //  this.set("step",(currentStep + 1));
     //},
     changeStatus: function(listing) {
-      var status = listing.get("status");
+      var status = listing.get("published") ? 0:1;
       var data = {
         "listingStatus": {
           id: listing.get("id"),
@@ -99,7 +99,7 @@ export default Ember.Controller.extend({
         contentType: 'application/json; charset=utf-8'
       });
       promise['then'](function () {
-        //this.get("model").set('status',1);
+        listing.set("status",status);
         if (status === 1) {
           Notify.info('list successfully');
         }

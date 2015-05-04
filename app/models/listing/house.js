@@ -71,30 +71,19 @@ export default DS.Model.extend(EmberValidations.Mixin,{
               && (!Ember.isEmpty(this.get('floor'))));
   }),
 
-  isFull: Ember.computed('bedrooms', 'listings', function(){
-    return this.get('bedrooms') === this.get('listings.length');
-  }),
+  //isFull: Ember.computed('bedrooms', 'listings', function(){
+  //  return this.get('bedrooms') === this.get('listings.length');
+  //}),
 
   isShared: Ember.computed('rentType', function(){
     return this.get('rentType') === "share";
-  }),
-  isFlatmateFinished: Ember.computed('flatmates.@each', function(){
-    alert(2);
-    var finished = true;
-    this.get("flatmates").forEach(flatmate => {
-      if(finished && flatmate.get("isOccupied") && !flatmate.get("isValid")){
-        alert(1);
-        finished = false;
-      }
-    });
-    return finished;
   }),
 
   isCalendarFinished: Ember.computed('listings.firstObject.availableDate', function(){
     var isFinished = !Ember.isEmpty(this.get('listings.firstObject.availableDate'));
     return isFinished;
   }),
-  isOverviewFinished: Ember.computed('isValid','listings.firstObject.isValid','amenities.length',function(){
+  isOverviewFinished: Ember.computed('rentType','isValid','listings.firstObject.isValid','amenities.length',function(){
     var isFinished = false;
     if(this.get('rentType') === "share"){
       isFinished = this.get('isValid') && (this.get('amenities.length') > 0);
@@ -105,20 +94,16 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     }
     return isFinished;
   }),
-  isPhotoFinished: Ember.computed('photos.length','listings.firstObject.photos.length',function(){
+  isPhotoFinished: Ember.computed('rentType','photos.length','listings.firstObject.photos.length',function(){
     var isFinished = false;
-    isFinished = this.get('listings.firstObject.photos.length') > 0;
+    if(this.get('rentType') === "share"){
+      isFinished = this.get('photos.length') > 0;
+    }
+    else {
+      isFinished = this.get('listings.firstObject.photos.length') > 0;
+    }
     return isFinished;
   }),
-
-  //isPhotoFinished: Ember.computed('photos', function(){
-  //  if(this.get('rentType') === "share"){
-  //    return this.get('photos.length') > 0;
-  //  }
-  //  else{
-  //    return this.get('listings.firstObject.photos.length') > 0;
-  //  }
-  //}),
 
   isMapFinished: Ember.computed('location', function(){
     //return Ember.isEmpty(this.get('location'));
@@ -144,5 +129,31 @@ export default DS.Model.extend(EmberValidations.Mixin,{
       return steps + " steps";
     else
       return steps + " step";
+  }),
+
+  isApartmentFinished: Ember.computed("isOverviewFinished","isPhotoFinished","isMapFinished", function(){
+    var isFinished = this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+    return isFinished;
+  }),
+
+  isFlatmateFinished: Ember.computed("flatmates.@each.status","flatmates.@each.isValid",function(){
+    var finished = true;
+    this.get("flatmates").forEach(flatmate => {
+      if(finished && flatmate.get("isOccupied") && !flatmate.get("isValid")){
+        finished = false;
+      }
+    });
+    return finished;
+  }),
+
+  showRooms: Ember.computed('rentType','isApartmentFinished', 'isFlatmateFinished', function(){
+    if(this.get('rentType') === "share"){
+      var isFinished = this.get('isApartmentFinished') && this.get('isFlatmateFinished');
+      return isFinished;
+    }
+    else{
+      return true;
+    }
   })
+
 });

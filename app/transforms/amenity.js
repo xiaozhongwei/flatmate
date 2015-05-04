@@ -2,7 +2,7 @@ import MappingTransformMixins from 'flatmate/transforms/mapping-transform-mixins
 
 export default DS.Transform.extend(MappingTransformMixins,{
   mapping : [
-    { index: "WashingMachine", name: "Balcony", icon:'' },
+    { index: "WashingMachine", name: "WashingMachine", icon:'' },
     { index: "Aircon", name: "Aircon" },
     { index: "TV", name: "TV" },
     { index: "Oven", name: "Oven" },

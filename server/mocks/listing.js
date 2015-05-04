@@ -31,7 +31,7 @@ module.exports = function(app) {
           "rentType": "share",
           "type": 0,
           "subwayLines": ["1 Line", "2 Line"],
-          "metroStation": ["Anshan Xincun"],
+          metroStations: ["Anshan Xincun"],
           "area": "Hongkou",
           "compound": "静安豪景",
           "building": "1",
