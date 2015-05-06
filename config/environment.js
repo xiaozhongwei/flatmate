@@ -79,7 +79,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.host = "http://121.40.221.53:4200";
+    uploadHost: "api/upload";
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://121.40.221.53:4200/token'
+    };
   }
 
 
