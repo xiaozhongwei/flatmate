@@ -27,11 +27,8 @@ module.exports = function(app) {
   });
 
   listingFlatmateRouter.put('/:id', function(req, res) {
-    res.send({
-      'listing/flatmate': {
-        id: req.params.id
-      }
-    });
+    req.body["listing/flatmate"].id = req.params.id;
+    res.send(req.body);
   });
 
   listingFlatmateRouter.delete('/:id', function(req, res) {
@@ -39,5 +36,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/listing/flatmates', listingFlatmateRouter);
+  app.use('/api/listing/flatmates', require('body-parser').json(),listingFlatmateRouter);
 };

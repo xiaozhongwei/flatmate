@@ -12,6 +12,16 @@ export default Ember.Controller.extend({
       }
     })
   },
+  actions:{
+    saveFlatmate: function(flatmate){
+      if(flatmate.get('isDirty')){
+        if((flatmate.get("isOccupied") && flatmate.get("isValid")) || flatmate.get("isAvailable")){
+          flatmate.save();
+        }
+      }
+
+    }
+  },
   willDestroy: function(){
     if(!Ember.isEmpty(this.get("model.house.listings"))){
       this.get("model.house.listings").forEach(function(listing){
