@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import ajax from 'ic-ajax';
+import config from 'flatmate/config/environment';
 import AmenityMapping from 'flatmate/transforms/amenity';
 import FeatureMapping from 'flatmate/transforms/feature';
 
@@ -16,7 +18,8 @@ export default Ember.Controller.extend({
         }
       };
 
-      var promise = ajax({url: 'api/profile/wishlists/add', type: 'post', data:JSON.stringify(data),
+      var promise = ajax({
+        url: config.host + "/" + config.apiRoot + '/profile/wishlists/add', type: 'post', data:JSON.stringify(data),
         contentType: 'application/json; charset=utf-8'});
       promise['then'](function() {
         //listing.set("wishlist", );

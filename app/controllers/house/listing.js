@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
+import config from 'flatmate/config/environment';
 import Notify from 'ember-notify';
 
 export default Ember.Controller.extend({
@@ -12,7 +13,8 @@ export default Ember.Controller.extend({
       }
     };
 
-    var promise = ajax({url: 'api/listing/updateStatus', type: 'post', data:JSON.stringify(data),
+    var promise = ajax({
+      url: config.host + "/" + config.apiRoot + '/listing/updateStatus', type: 'post', data:JSON.stringify(data),
       contentType: 'application/json; charset=utf-8'});
     promise['then'](function() {
       //this.get("model").set('status',1);

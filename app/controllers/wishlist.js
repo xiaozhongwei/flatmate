@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 import Notify from 'ember-notify';
+import config from 'flatmate/config/environment';
 
 export default Ember.Controller.extend({
   actions:{
@@ -12,7 +13,8 @@ export default Ember.Controller.extend({
         }
       };
 
-      var promise = ajax({url: 'api/profile/wishlists/remove', type: 'post', data:JSON.stringify(data),
+      var promise = ajax({url:
+        config.host + "/" + config.apiRoot + '/profile/wishlists/remove', type: 'post', data:JSON.stringify(data),
         contentType: 'application/json; charset=utf-8'});
       promise['then'](function() {
         wishlist.get('listings').removeObject(listing);

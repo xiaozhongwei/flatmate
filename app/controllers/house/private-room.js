@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 import Notify from 'ember-notify';
+import config from 'flatmate/config/environment';
 
 export default Ember.Controller.extend({
   activeType: "apt", //apt or flatmate or room
@@ -95,7 +96,7 @@ export default Ember.Controller.extend({
       };
 
       var promise = ajax({
-        url: 'api/listing/updateStatus', type: 'post', data: JSON.stringify(data),
+        url: config.host + "/" + config.apiRoot + '/listing/updateStatus', type: 'post', data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8'
       });
       promise['then'](function () {
