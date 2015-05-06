@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import RoomStatusMapping from 'flatmate/transforms/room-status';
+import CountryMapping from 'flatmate/transforms/country';
 import OccupationMapping from 'flatmate/transforms/occupation';
 import GenderMapping from 'flatmate/transforms/gender';
 import Notify from 'ember-notify';
@@ -52,6 +53,7 @@ export default Ember.Controller.extend({
     }
   },
   roomStatusMapping: RoomStatusMapping.create({}).get("mapping"),
+  countryMapping: CountryMapping.create({}).get("mapping"),
   occupationMapping: OccupationMapping.create({}).get("mapping"),
   genderMapping: GenderMapping.create({}).get("mapping")
 });

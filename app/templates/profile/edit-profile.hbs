@@ -70,7 +70,12 @@
                     <label class="col-md-3 control-label">Country</label>
 
                     <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. USA" value=model.country}}
+                      {{select-2
+                      content=countryMapping
+                      value=model.country
+                      optionValuePath="id"
+                      placeholder="Select your country"
+                      }}
                     </div>
                 </div>
                 <div class="form-group">

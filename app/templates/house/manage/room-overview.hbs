@@ -20,14 +20,15 @@
               <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: left">
                 {{#if flatmate.isOccupied}}
                   <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
-                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
-                      <select name="sort_price" id="sort_price">
-                          <option value="" selected="">Sort by price</option>
-                          <option value="lower">Lowest price</option>
-                          <option value="higher">Highest price</option>
-                      </select>
+                  <div style="display: inline-block;width: 20%">
+                    {{select-2
+                    content=countryMapping
+                    value=flatmate.country
+                    optionValuePath="id"
+                    placeholder="Country"
+                    }}
                   </div>
-                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                  <div style="display: inline-block;width: 20%">
                     {{select-2
                     content=occupationMapping
                     value=flatmate.occupation
@@ -35,7 +36,7 @@
                     placeholder="Occupation"
                     }}
                   </div>
-                  <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                  <div style="display: inline-block;width: 20%">
                     {{select-2
                     content=genderMapping
                     value=flatmate.gender

@@ -3,6 +3,7 @@ import AreaMapping from 'flatmate/transforms/area';
 import PriceMapping from 'flatmate/transforms/price';
 import LineMapping from 'flatmate/transforms/metro-line';
 import AmenityMapping from 'flatmate/transforms/amenity';
+import CountryMapping from 'flatmate/transforms/country';
 
 export default Ember.Controller.extend({
   isShowList:false,
@@ -39,6 +40,6 @@ export default Ember.Controller.extend({
   areaMapping: AreaMapping.create({}).get("mapping"),
   priceMapping: PriceMapping.create({}).get("mapping"),
   lineMapping: LineMapping.create({}).get("mapping"),
-  amenityMapping: AmenityMapping.create({}).get("mapping")
-
+  amenityMapping: AmenityMapping.create({}).get("mapping"),
+  countryMapping: CountryMapping.create({}).get("mapping")
 });

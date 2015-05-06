@@ -3,6 +3,7 @@ import Notify from 'ember-notify';
 import LanguageMapping from 'flatmate/transforms/language';
 import OccupationMapping from 'flatmate/transforms/occupation';
 import HobbyMapping from 'flatmate/transforms/hobby';
+import CountryMapping from 'flatmate/transforms/country';
 
 export default Ember.Controller.extend({
   _profileTitle:"Edit Profile",
@@ -23,6 +24,7 @@ export default Ember.Controller.extend({
 
   languageMapping: LanguageMapping.create({}).get("mapping"),
   occupationMapping: OccupationMapping.create({}).get("mapping"),
-  hobbyMapping: HobbyMapping.create({}).get("mapping")
+  hobbyMapping: HobbyMapping.create({}).get("mapping"),
+  countryMapping: CountryMapping.create({}).get("mapping")
 
 });
