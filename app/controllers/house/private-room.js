@@ -95,7 +95,7 @@ export default Ember.Controller.extend({
       };
 
       var promise = ajax({
-        url: 'listing/updateStatus', type: 'post', data: JSON.stringify(data),
+        url: 'api/listing/updateStatus', type: 'post', data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8'
       });
       promise['then'](function () {
