@@ -25,7 +25,7 @@
                           <span class="btn btn-file upload_file_style" style=" padding-left: 0;">
                             <span >
                             {{#if session.user.logo}}
-                              {{em-file-field name="logo" url=uploadUrl document=session.user.logo}}
+                              {{em-file-field name="logo" url=uploadUrl accept="image/*" document=session.user.logo}}
                             {{/if}}
                             </span>
                           </span>

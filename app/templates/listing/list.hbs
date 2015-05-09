@@ -30,6 +30,7 @@
                               value=price
                               optionValuePath="id"
                               searchEnabled=false
+                              allowClear=true
                               placeholder="Choose Price"
                               }}
                             </div>
@@ -69,6 +70,7 @@
                     value=country
                     optionValuePath="id"
                     class="form-control"
+                    allowClear=true
                     placeholder="Choose One Country"
                     }}
                   </div>
@@ -380,8 +382,8 @@
               </div><!--End strip -->
           {{else}}
               {{#each model as |listing|}}
-              <div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container {{if (eq currentListing.id listing.id) 'active'}}">
+              <div class="col-md-4" style="padding-left:0" {{action "preview" listing on="mouseEnter"}}>
+                  <div class="tour_container {{if (eq currentListing.id listing.id) 'active'}}" >
                       <div class="img_container" style="height: 220px;">
                         {{#link-to 'listing.detail' listing.id}}
                             <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
@@ -399,7 +401,6 @@
                           </ul>
                           <div style="clear:both"></div>
                           <hr style="margin: 10px -15px 10px -15px">
-                          <a href="javascript:;" {{action "preview" listing}}>
                           <h3 style="text-transform:none;">{{listing.title}}</h3>
 
                           <p style="min-height:80px;">{{listing.house.area}}</p>
@@ -412,7 +413,6 @@
                                 </li>
                             {{/each}}
                           </ul>
-                          </a>
                       </div>
                   </div>
               </div>

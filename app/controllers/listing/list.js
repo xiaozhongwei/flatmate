@@ -15,16 +15,16 @@ export default Ember.Controller.extend({
   rentType: "all",
   userId: null,
   subwayLine: "all",
-  country: null,
+  country: undefined,
   occupation: "all",
   gender: "all",
-  price: null,
+  price: undefined,
   actions:{
     queryListing: function(queryParam, value){
       var queryParams = {};
       queryParams[queryParam] = value;
       if(queryParam === "rentType" && value === "entire"){
-        queryParams.country = null;
+        queryParams.country = undefined;
         queryParams.occupation = "all";
         queryParams.gender = "all";
       }

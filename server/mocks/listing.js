@@ -147,7 +147,7 @@ module.exports = function(app) {
       'listing': {
         id: req.params.id,
         "availableDate": "2015-03-30",
-        creatorId: '1001',
+        creatorId: '1234',
         creatorName: 'Lisa',
         creatorPhoto: 'images/amaze_300x300.jpg',
         creatorDescription: 'Hello, I‘m Lisa, a young girl living and working in Shanghai. I am outgoing and friendly, fond of people, traveling & food :) I worked as a Skincare Shop Manager before starting the "hosting idea" in 2012.',
@@ -223,7 +223,6 @@ module.exports = function(app) {
             "imageUrl": "http://7u2qna.com1.z0.glb.clouddn.com/BodyPart_d029c300-9ee0-43cf-8d36-f6fee8383bd6"
           }]
         },
-        "createUserName": "1111@qq.com",
         "createTime": "2015-03-04T14:41:34.011Z",
         "status": 1
       }

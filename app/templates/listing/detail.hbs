@@ -236,12 +236,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="javascript:;" style="background:#f7941d;" {{action "showDialog"}} class=" btn_full">Inquiry</a>
-                    </div>
+                    {{#if (eq session.id model.creatorId)}}
+                        <div class="col-md-12">
+                            {{#link-to 'house.manage' model.house.id (query-params activeId=model.id) class="btn_map"}}Edit my listing{{/link-to}}
+                        </div>
+                    {{else}}
+                        <div class="col-md-6">
+                            <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="javascript:;" style="background:#f7941d;" {{action "showDialog"}} class=" btn_full">Inquiry</a>
+                        </div>
+                    {{/if}}
+
                 </div>
             </aside>
         </div>
@@ -317,13 +324,20 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <img alt="" style="width:170px;" class="img-circle styled" src="images/LISA_100.jpg">
+                    {{#if model.creatorPhoto}}
+                        <img src={{model.creatorPhoto}} alt="" style="width:170px;" class="img-circle styled"/>
+                    {{else}}
+                        <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
+                    {{/if}}
                     <h3 style="display: inline-block;margin-left: 12px;font-weight: bold;">{{model.creatorName}}</h3>
                     <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;">
                       {{model.creatorDescription}}
                       {{#link-to 'profile.view'}}View Full Profile{{/link-to}}
                     </p>
-                    <a href="javascript:;" class="btn_1" {{action "sendMessage"}}>Contact host</a>
+                    {{#unless (eq session.id model.creatorId)}}
+                        <a href="javascript:;" class="btn_1" {{action "sendMessage"}}>Contact host</a>
+                    {{/unless}}
+
                 </div>
             </div>
         </div>

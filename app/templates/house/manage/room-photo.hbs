@@ -49,7 +49,7 @@
         <div class="input-group">
             <span class="btn btn-file" style=" padding-left: 0;">
               <span>
-                {{photos-uploader name=model.id class="btn btn-primary" url=uploadUrl uploadSuccess="addPhotos"}}
+                {{photos-uploader name=model.id class="btn btn-primary" url=uploadUrl accept="image/*" uploadSuccess="addPhotos"}}
               </span>
             </span>
         </div>

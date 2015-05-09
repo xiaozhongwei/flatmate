@@ -53,11 +53,11 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    //ENV.host = "http://localhost:4200";
-    //uploadHost: "api/upload";
-    //ENV['simple-auth-oauth2'] = {
-    //  serverTokenEndpoint: 'http://localhost:4200/token'
-    //};
+    ENV.host = "http://localhost:4200";
+    ENV.uploadHost = "api/upload";
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'http://localhost:4200/token'
+    };
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -80,7 +80,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.host = "http://121.40.221.53:4200";
-    uploadHost: "api/upload";
+    ENV.uploadHost = "http://121.40.221.53:4200/api/upload";
     ENV['simple-auth-oauth2'] = {
       serverTokenEndpoint: 'http://121.40.221.53:4200/token'
     };

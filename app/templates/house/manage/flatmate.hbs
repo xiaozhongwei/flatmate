@@ -13,8 +13,8 @@
 <div class="box_style_2" style="border-top:none;border-radius: 0;padding:10px 0;">
     {{#each model.flatmates as |flatmate index|}}
       {{#if index}}<hr>{{/if}}
-      <div class="panel-body" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
-          <div class="row">
+      <div class="panel-body">
+          <div class="row" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
               <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
                   <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
               </div>

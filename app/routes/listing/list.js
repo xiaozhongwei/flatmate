@@ -20,9 +20,9 @@ export default Ember.Route.extend({
       controller.set('area', "all");
       controller.set('rentType', "all");
       controller.set('subwayLine', "all");
-      controller.set('country', null);
+      controller.set('country', undefined);
       controller.set('occupation', "all");
-      controller.set('price', null);
+      controller.set('price', undefined);
     }
   },
   model: function(params){
