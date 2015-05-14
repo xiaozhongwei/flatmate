@@ -1,4 +1,4 @@
-<!--<div class="modal_wrapper">
+<div class="modal_wrapper">
 
   {{!-- The actual model --}}
   {{!-- role="dialog" is a hook used in the view and for acessibility - keep it --}}
@@ -10,15 +10,14 @@
         </button>
 
       {{!-- The content of the template you specify will render here --}}
-
+      {{yield}}
     </section>
 
-</div>-->
-
-<div class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          {{yield}}
-        </div>
-    </div>
 </div>
+<!--<div class=" modal fade" role="dialog">-->
+<!--<div class="modal-dialog">-->
+<!--<div class="modal-content">-->
+<!---->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

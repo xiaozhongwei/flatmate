@@ -5,8 +5,8 @@ var pickFiles = require('broccoli-static-compiler');
 
 var app = new EmberApp({
   modals: {
-    layout: false,
-    style: false,
+    layout: true,
+    style: true,
     animation: 'scale'
   }
 });
