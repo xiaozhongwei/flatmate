@@ -40,6 +40,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
 
+  similarListings: DS.hasMany('listings', {async: true}),    //相似房源
+
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
     var lowestPrice = 0;
     if(!Ember.isEmpty(this.get('perYearPrice'))){
@@ -76,6 +78,11 @@ export default DS.Model.extend(EmberValidations.Mixin,{
         return true;
       }
     })
+  }),
+
+  showPhotos: Ember.computed('photos','house.photos',function () {
+    this.get("photos").pushObjects(this.get('house.photos'));
+    return this.get("photos");
   }),
 
   isCalendarFinished: Ember.computed('availableDate', function(){

@@ -1,3 +1,23 @@
-<div class="row" style="margin-top:30px;">
-  aaaxdsadsadsa
-</div>
+<!--<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Message Modal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                          {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know you." value=currentMessage.content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" {{action "sendMessage"}}>Send Message</button>
+            </div>
+        <!--</div>
+    </div>
+</div>-->

@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import Notify from 'ember-notify';
 import ajax from 'ic-ajax';
 import config from 'flatmate/config/environment';
 import AmenityMapping from 'flatmate/transforms/amenity';
 import FeatureMapping from 'flatmate/transforms/feature';
 
 export default Ember.Controller.extend({
+  isShowingModal: false,
   actions:{
     changePrice: function(cycle,price){
       this.set("currentPayCycle", cycle);
@@ -30,6 +32,7 @@ export default Ember.Controller.extend({
       });
     },
     showDialog:function(){
+      //this.toggleProperty('isShowingModal');
       this.showModal('listing.message');
 
     },

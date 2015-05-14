@@ -11,10 +11,10 @@
     <div class="container margin_60" style="padding-top:30px;padding-bottom: 0px;">
         <div class="row">
             <div class="col-md-8" id="single_tour_desc">
-                <h2 style="margin-top: 0;margin-bottom: 20px;">{{model.title}} </h2>
+                <h2 style="margin-top: 0;margin-bottom: 20px;">{{model.title}}</h2>
                 <div id="Img_carousel" class="slider-pro">
                     <div class="sp-slides">
-                        {{#each model.photos as |listingPhoto index|}}
+                        {{#each model.showPhotos as |listingPhoto index|}}
                             <div class="sp-slide">
                                 <img alt="aa" class="sp-image" src="/images/sliderPro/blank.gif"
                                      data-src="{{listingPhoto.imageUrl}}"
@@ -24,17 +24,6 @@
                                      data-retina="{{listingPhoto.imageUrl}}">
                             </div>
                         {{/each}}
-                        {{#each model.house.photos as |housePhoto index|}}
-                            <div class="sp-slide">
-                                <img alt="aa" class="sp-image" src="/images/sliderPro/blank.gif"
-                                     data-src="{{housePhoto.imageUrl}}"
-                                     data-small="{{housePhoto.imageUrl}}"
-                                     data-medium="{{housePhoto.imageUrl}}"
-                                     data-large="{{housePhoto.imageUrl}}"
-                                     data-retina="{{housePhoto.imageUrl}}">
-                            </div>
-                        {{/each}}
-
                         <!--<div class="sp-slide">
                             <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
                                  data-src="images/slider_single_tour/2_medium.jpg"
@@ -141,11 +130,8 @@
                         </div>-->
                     </div>
                     <div class="sp-thumbnails">
-                        {{#each model.photos as |listingPhoto index|}}
+                        {{#each model.showPhotos as |listingPhoto index|}}
                             <img alt="" class="sp-thumbnail" src="{{listingPhoto.imageUrl}}">
-                        {{/each}}
-                        {{#each model.house.photos as |housePhoto index|}}
-                            <img alt="" class="sp-thumbnail" src="{{housePhoto.imageUrl}}">
                         {{/each}}
                     </div>
                 </div>
@@ -245,7 +231,8 @@
                             <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="javascript:;" style="background:#f7941d;" {{action "showDialog"}} class=" btn_full">Inquiry</a>
+                            <a href="javascript:;" style="background:#f7941d;"  class=" btn_full" {{action "showDialog"}}>Inquiry</a>
+                            <!--<button style="background:#f7941d;" data-toggle="modal" data-target="#myModal" class=" btn_full">Inquiry</button>-->
                         </div>
                     {{/if}}
 
@@ -344,15 +331,39 @@
     </div>
 </div>
 <div class="white_bg">
-    <div class="container margin_60" style="padding-top:40px;">
+    <div class="container margin_60" style="padding:40px 0px;">
         <h3 style="margin-bottom: 20px;">Similar rooms</h3>
         <div class="row">
-            <div class="col-md-3">
+            {{#each model.similarListings as |similarListing|}}
+                <div class="col-md-3">
+                    <div class="tour_container">
+                        <div class="img_container">
+                            <a href="javascript:;">
+                                <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                                <!--<div class="ribbon top_rated"></div>-->
+                                <div class="short_info">
+                                    <a href="javascript:;" data-ember-action="1257"></a>
+                                    <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tour_title listing">
+                            <ul class="stats" style="padding-left: 0;">
+                                <li>Rooms<span>Apt</span></li>
+                                <li>Size, m2<span>14</span></li>
+                                <li>Price ￥<span>8000</span></li>
+                            </ul>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            <!--<div class="col-md-3">
                 <div class="tour_container">
                     <div class="img_container">
                         <a href="javascript:;">
                             <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
-                            <!--<div class="ribbon top_rated"></div>-->
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
                             <div class="short_info">
                                 <a href="javascript:;" data-ember-action="1257"></a>
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
@@ -374,7 +385,7 @@
                     <div class="img_container">
                         <a href="javascript:;">
                             <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
-                            <!--<div class="ribbon top_rated"></div>-->
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
                             <div class="short_info">
                                 <a href="javascript:;" data-ember-action="1257"></a>
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
@@ -396,7 +407,7 @@
                     <div class="img_container">
                         <a href="javascript:;">
                             <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
-                            <!--<div class="ribbon top_rated"></div>-->
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
                             <div class="short_info">
                                 <a href="javascript:;" data-ember-action="1257"></a>
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
@@ -418,7 +429,7 @@
                     <div class="img_container">
                         <a href="javascript:;">
                             <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
-                            <!--<div class="ribbon top_rated"></div>-->
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
                             <div class="short_info">
                                 <a href="javascript:;" data-ember-action="1257"></a>
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
@@ -434,10 +445,35 @@
                         <div style="clear:both"></div>
                     </div>
                 </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Message Modal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know you." value=currentMessage.content}}
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" {{action "sendMessage"}}>Send Message</button>
             </div>
         </div>
     </div>
 </div>
+
 <style>
     .rooms .col-md-3{
         padding-top:15px;

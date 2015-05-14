@@ -19,6 +19,19 @@ export default Ember.View.extend({
       thumbnailArrows: true,
       autoplay: false
     });
+    /*$('#img_carousel' ).sliderPro({
+      width: '23%',
+      visibleSize: '100%',
+      height: 400,
+      fade: true,
+      arrows: true,
+      buttons: false,
+      fullScreen: false,
+      startSlide: 0,
+      thumbnailArrows: true,
+      centerImage: false,
+      autoplay: false
+    });*/
     $(".numbers-row").append('<div class="inc button_inc">+</div><div class="dec button_inc">-</div>');
     $(".button_inc").on("click", function () {
 

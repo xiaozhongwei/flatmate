@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
 
   inboxMessageRecordRouter.post('/', function(req, res) {
-    req.body["inbox/messageRecord"].id = (new Date());
+    req.body["inbox/messageRecord"].id = (new Date()).getTime();
     res.send(req.body);
   });
 
