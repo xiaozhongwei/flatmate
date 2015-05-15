@@ -25,12 +25,14 @@ export default Ember.Controller.extend({
       flatmate.toggleProperty("isEditing");
     },
     saveFlatmate: function(flatmate){
-      if(flatmate.get('isDirty')){
-        if((flatmate.get("isOccupied") && flatmate.get("isValid")) || flatmate.get("isAvailable")){
+      if((flatmate.get("isOccupied") && flatmate.get("isValid")) || flatmate.get("isAvailable")){
+        if(flatmate.get('isDirty')){
           flatmate.save().then(res => {
             flatmate.toggleProperty("isEditing");
           });
         }
+
+        //flatmate.toggleProperty("isEditing");
       }
     },
     deleteFlatmate: function(flatmate){

@@ -32,22 +32,29 @@ export default Ember.Controller.extend({
       });
     },
     showDialog:function(){
-      //this.toggleProperty('isShowingModal');
-      this.showModal('listing.message');
+      if(this.session.get("isAuthenticated")){
+        //if(Ember.isEmpty(this.get("currentMessage"))){
+        var message = this.store.createRecord("inbox/messageRecord",{listingId: this.get('model.id'),listingTitle: this.get('model.title'),
+          sender: this.get('currentUser.id'), senderName: this.get('currentUser.firstName'),senderPhoto: this.get('currentUser.logo.downloadFilePath'),
+          receiver: this.get('model.creatorId'),receiverName: this.get('model.creatorName'),receiverPhoto: this.get('model.creatorPhoto')});
+        this.set('currentMessage',message);
+        //}
+
+        this.showModal('listing.message');
+      }
+      else{
+        Notify.error('please login first');
+      }
+    },
+    closeDialog: function(){
+      this.get('modal').hide();
 
     },
-    cancel: function(){
-      this.get('modal').close();
-    },
     sendMessage:function(){
-      var message = this.store.createRecord("inbox/messageRecord",{listingId: this.get('model.id'),listingTitle: this.get('model.title'),
-        sender: this.get('currentUser.id'), senderName: this.get('currentUser.firstName'),senderPhoto: this.get('currentUser.logo.downloadFilePath'),
-        receiver: this.get('model.creatorId'),receiverName: this.get('model.creatorName'),receiverPhoto: this.get('model.creatorPhoto'),
-        content: 'Can I visit the room first?'});
-      this.set('currentMessage',message);
       var promise = this.get('currentMessage').save();
-      promise.then(function() {
-        this.get('modal').close();
+      promise.then(res => {
+        this.get('modal').hide();
+        Notify.info('send message success');
       });
     }
   },

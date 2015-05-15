@@ -13,13 +13,13 @@
 <div class="box_style_2" style="border-top:none;border-radius: 0;padding:10px 0;">
     {{#each model.flatmates as |flatmate index|}}
       {{#if index}}<hr>{{/if}}
-      <div class="panel-body">
-          <div class="row" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
+      <div class="panel-body" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
+          <div class="row">
               <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
                   <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
-                  <div class="styled-select-filters">
+                  <div>
                     {{select-2
                     content=roomStatusMapping
                     value=flatmate.status
@@ -40,7 +40,7 @@
                           placeholder="Country"
                           }}
                         </div>
-                        <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                        <div style="display: inline-block;width: 20%">
                           {{select-2
                           content=occupationMapping
                           value=flatmate.occupation
@@ -48,7 +48,7 @@
                           placeholder="Occupation"
                           }}
                         </div>
-                        <div class="styled-select-filters" style="display: inline-block;width: 20%">
+                        <div style="display: inline-block;width: 20%">
                           {{select-2
                           content=genderMapping
                           value=flatmate.gender

@@ -166,7 +166,7 @@ module.exports = function(app) {
         "house": {
           "id": "3",
           "bathrooms": 3,
-          "bedrooms": 2,
+          "bedrooms": 4,
           "livingRooms": 0,
           size: 100,
           "rentType": "share",
@@ -188,7 +188,7 @@ module.exports = function(app) {
             "id": "7eac37c2-2ad1-462d-8710-2882ff4d5a2b",
             "index": 2,
             "houseId": "3",
-            "listingId": "54f7199e671418a3f634",
+            "listingId": "54f7199",
             "status": 0
           }, {
             "id": "7eac37c2-2ad1-462d-8710-28cccf4d5a2b",
@@ -256,7 +256,7 @@ module.exports = function(app) {
         "house": {
           "id": "3",
           "bathrooms": 3,
-          "bedrooms": 2,
+          "bedrooms": 4,
           "livingRooms": 0,
           size: 100,
           "rentType": "share",
@@ -337,7 +337,7 @@ module.exports = function(app) {
         "house": {
           "id": "3",
           "bathrooms": 3,
-          "bedrooms": 2,
+          "bedrooms": 4,
           "livingRooms": 0,
           size: 100,
           "rentType": "share",

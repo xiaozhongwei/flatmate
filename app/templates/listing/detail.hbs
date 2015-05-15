@@ -150,6 +150,7 @@
                               {{#if (eq flatmate.listingId model.id)}}
                                   <span style="color:black;font-size: 12px;font-weight: bold">  Right now</span>
                               {{/if}}
+
                             {{else}}
                                 <span class="radius-number-1 radius-number-gary">{{room-index index}}</span>
                                 <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
@@ -322,7 +323,7 @@
                       {{#link-to 'profile.view'}}View Full Profile{{/link-to}}
                     </p>
                     {{#unless (eq session.id model.creatorId)}}
-                        <a href="javascript:;" class="btn_1" {{action "sendMessage"}}>Contact host</a>
+                        <a href="javascript:;" class="btn_1" {{action "showDialog"}}>Contact host</a>
                     {{/unless}}
 
                 </div>
@@ -446,30 +447,6 @@
                     </div>
                 </div>
             </div>-->
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Message Modal</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-md-12">
-                        {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know you." value=currentMessage.content}}
-                      </div>
-                  </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" {{action "sendMessage"}}>Send Message</button>
-            </div>
         </div>
     </div>
 </div>

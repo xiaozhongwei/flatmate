@@ -17,11 +17,12 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   houseId: DS.attr(),
   listingId: DS.attr(),                           // 关联的房源信息
   country: DS.attr(),
+  //gender: DS.attr('', {defaultValue: '1'}),
   gender: DS.attr('', {defaultValue: '1'}),
   occupation: DS.attr(),
   //hobby: DS.attr(),
 
-  isEditing: false,
+  isEditing: true,
 
   isAvailable: Ember.computed('status', function () {
     return this.get('status') === 0;

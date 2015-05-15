@@ -125,6 +125,7 @@ a.button_drop, .button_drop{
 }
 .modal{
   display: block;
+  padding: 20px;
 }
 
 

@@ -8,7 +8,61 @@
                   <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
-                  <div class="styled-select-filters">
+                  <div >
+                    {{select-2
+                    content=roomStatusMapping
+                    value=flatmate.status
+                    optionValuePath="id"
+                    searchEnabled=false
+                    }}
+                  </div>
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: left">
+                {{#if flatmate.isOccupied}}
+                    <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
+                    <div style="display: inline-block;width: 20%">
+                      {{select-2
+                      content=countryMapping
+                      value=flatmate.country
+                      optionValuePath="id"
+                      placeholder="Country"
+                      }}
+                    </div>
+                    <div style="display: inline-block;width: 20%">
+                      {{select-2
+                      content=occupationMapping
+                      value=flatmate.occupation
+                      optionValuePath="id"
+                      placeholder="Occupation"
+                      }}
+                    </div>
+                    <div style="display: inline-block;width: 20%">
+                      {{select-2
+                      content=genderMapping
+                      value=flatmate.gender
+                      optionValuePath="id"
+                      searchEnabled=false
+                      placeholder="Gender"
+                      }}
+                    </div>
+                {{else}}
+
+                {{/if}}
+              </div>
+          </div>
+      </div>
+  {{/if}}
+{{/each}}
+
+{{#each model.house.flatmates as |flatmate index|}}
+  {{#if (eq model.activeId flatmate.listingId)}}
+      <div class="panel-body" style="background: rgb(247,247,247)" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
+          <div class="row" >
+              <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
+                  <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
+                  <div >
                     {{select-2
                     content=roomStatusMapping
                     value=flatmate.status
