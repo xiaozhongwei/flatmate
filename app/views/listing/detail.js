@@ -11,7 +11,7 @@ export default Ember.View.extend({
       fade: true,
       arrows: true,
       buttons: false,
-      fullScreen: false,
+      fullScreen: true,
       smallSize: 567,
       startSlide: 0,
       mediumSize: 1000,

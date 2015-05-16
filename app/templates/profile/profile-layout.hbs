@@ -27,7 +27,7 @@
             </div>
             <hr>
             <p>
-              {{#link-to 'profile.view' class="btn_map"}}View Profile{{/link-to}}
+              {{#link-to 'profile.view' session.user.id class="btn_map"}}View Profile{{/link-to}}
             </p>
         </aside>
 

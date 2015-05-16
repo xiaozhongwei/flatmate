@@ -2176,10 +2176,10 @@ ul.list_order li span {
   left:0;
   top:3px;
 }
-.img_container a:hover img {
+/*.img_container a:hover img {
 	-webkit-transform:scale(1);
 	transform:scale(1);
-}
+}*/
 .img_container img {
 	-webkit-transform:scale(1.2);
 	transform:scale(1.2);

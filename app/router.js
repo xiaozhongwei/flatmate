@@ -18,7 +18,7 @@ Router.map(function() {
     this.route('change-password');
     this.route('photo');
     this.route('edit-profile');
-    this.route('view');
+    this.route('view', { path: "/view/:listing.landlord_id" });
   });
 
   this.route('inbox', function() {
