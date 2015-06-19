@@ -1,0 +1,112 @@
+<div class="main-container">
+    <div class="step-bar">
+        <div class="wrapper">
+            <span>Step</span>
+            <img src="/images/static/step-4.png"/>
+            <span>of 4. </span><span class="active"> Tell us about your flatmates</span>
+        </div>
+    </div>
+    <div class="op-wrapper">
+        <div class="op-form margin-top-20">
+            <div class="flatmate-list">
+              {{#each model.flatmates as |flatmate index|}}
+                {{#if flatmate.isOccupied}}
+                    <div class="single-flatmate {{if flatmate.isFinished 'occupied' 'danger'}}">
+                        <div class="seq">
+                          {{room-index index}}
+                        </div>
+                        <div class="select-block is-available">
+                          {{select-2
+                          content=roomStatusMapping
+                          value=flatmate.status
+                          optionValuePath="id"
+                          searchEnabled=false
+                          }}
+                        </div>
+                      {{#if flatmate.isEditing}}
+                          <div class="user-header">
+                              <img src="/images/static/LISA_100.jpg"/>
+                          </div>
+                          <div class="select-block country">
+                            {{select-2
+                            content=countryMapping
+                            value=flatmate.country
+                            optionValuePath="id"
+                            placeholder="Country"
+                            }}
+                          </div>
+                          <div class="select-block job">
+                            {{select-2
+                            content=occupationMapping
+                            value=flatmate.occupation
+                            optionValuePath="id"
+                            placeholder="Occupation"
+                            }}
+                          </div>
+                          <div class="sex-select btn-group fr">
+                              <button class="col-2 {{if (eq flatmate.gender '1') 'active'}}" {{action "changeGender" flatmate '1'}}>Guy</button>
+                              <button class="col-2 {{if (eq flatmate.gender '2') 'active'}}" {{action "changeGender" flatmate '2'}}>Girl</button>
+                          </div>
+                      {{else}}
+                          <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""></div>
+                          <div style="display: inline-block;">
+                            {{flatmate.country}}.{{flatmate.occupation}}.{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}.
+                          </div>
+                          <a href="javascript:;" class="btn_1 pull-right" {{action "editFlatmate" flatmate}}>Change</a>
+                          <a href="javascript:;"
+                             class="btn_1 pull-right" {{action "deleteFlatmate" flatmate}}>Remove</a>
+                      {{/if}}
+
+                        <div class="remove" {{action "deleteFlatmate" flatmate}}>
+                            <img src="/images/static/remove.png"/>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="single-flatmate available">
+                        <div class="seq">
+                            {{room-index index}}
+                        </div>
+                        <div class="select-block is-available">
+                          {{select-2
+                          content=roomStatusMapping
+                          value=flatmate.status
+                          optionValuePath="id"
+                          searchEnabled=false
+                          }}
+                        </div>
+
+                        <button class="btn-list-room fr" disabled>List the room</button>
+                        <button class="btn-list-room fr" {{action "editRoom" flatmate}}>List the room</button>
+
+                        <div class="remove" {{action "deleteFlatmate" flatmate}}>
+                            <img src="/images/static/remove.png"/>
+                        </div>
+                    </div>
+                {{/if}}
+              {{/each}}
+            </div>
+            <div class="add-flatmate add-block" {{action "addFlatmate"}}>
+                <img src="/images/static/Add.png">
+
+                <p>Add room</p>
+            </div>
+            <div class="form-footer clearfix">
+                <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="show-room-box dialog-box">
+    <div class="box-content">
+        <div class="show-room-form dialog-form">
+            <div class="tell-about-room">
+                <img src="/images/static/Tell-About-Room.png"/>
+            </div>
+            <div class="intro">NOW TEEL US ABOUT <br/> YOUR ROOM</div>
+            <div class="form-footer">
+                <button class="op-btn btn-next" type="submit" {{action "save" model}}>Next</button>
+            </div>
+        </div>
+    </div>
+</div>
