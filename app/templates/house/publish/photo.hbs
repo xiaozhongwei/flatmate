@@ -1,0 +1,47 @@
+<div class="main-container">
+    <div class="step-bar">
+        <div class="wrapper">
+            <span>Step</span>
+            <img src="/images/static/step-3.png" />
+            <span>of 4. </span><span class="active"> Add some photos of common area</span>
+        </div>
+    </div>
+    <div class="op-wrapper">
+        <div class="op-form margin-top-20">
+            <div class="add-photo">
+                {{photos-uploader name=model.id id="upload_photo" style="display: none" url=uploadUrl accept="image/*" uploadSuccess="addPhotos"}}
+                <button id="btn_add_photo" class="op-btn btn-add-photo">Add Photos</button>
+                {{#if model.photos.length}}
+                    <p class="photo-num fr">{{model.photos.length}} photos</p>
+                {{/if}}
+            </div>
+            <div class="photo-list clearfix">
+              {{#collection "ivy-sortable" moved="movePhoto" placeholder="ui-state-highlight" content=model.photos}}
+                  <div class="single-photo">
+                      <div class="photo">
+                          <a class="slide-img" style="background-image: url({{imageUrl}})"></a>
+                          <div class="remove">
+                              <img src="/images/static/remove.png" />
+                          </div>
+                      </div>
+                      <div class="desc">
+                        {{textarea placeholder="What are the highlights?" value=description focus-out="saveDescription"}}
+                      </div>
+                  </div>
+              {{/collection}}
+
+
+            </div>
+            <div class="form-footer clearfix">
+                <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
+                <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .ui-sortable { list-style-type: none; margin: 0; padding: 0; }
+    .ui-sortable li { float: left; width: 33.3%; text-align: center; }
+    .ui-state-highlight { height: 100%; line-height: 100%; }
+</style>
