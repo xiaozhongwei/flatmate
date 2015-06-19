@@ -1,167 +1,70 @@
-{{partial 'navigation'}}
-<div class="container margin_60" style="padding-top:30px;">
-    <div class="row">
+<div class="main-container">
+  {{partial 'navigation'}}
+  <div class="edit-container">
+      <div class="wishlist-container">
         {{#each model as |wishlist| }}
           {{#each wishlist.listings as |listing|}}
-            <div class="col-md-3">
-                <div class="tour_container">
-                    <div class="img_container">
-                        <div class="wishlist" {{action "removeWishlisting" listing wishlist}}>
-                            <a href="javascript:;" ></a>
-                        </div>
-                        {{#link-to 'listing.detail' listing.id}}
-                          <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
-                          <!--<div class="ribbon top_rated"></div>-->
-                          <div class="short_info">
-                              <span class="price"><sup>￥</sup>{{listing.lowestPrice}}</span>
-                          </div>
-                        {{/link-to}}
-                    </div>
-                    <div class="tour_title listing">
-                        <ul class="stats" style="padding-left: 0;">
-                            <li>Type
-                              <span>{{if listing.house.isShared 'Room' 'Apt'}}</span>
-                            </li>
-                            <li>Rooms<span>{{listing.house.bedrooms}}</span></li>
-                            <li>Size, m2<span>{{listing.house.size}}</span></li>
-                        </ul>
-                        <div style="clear:both"></div>
-                        <hr style="margin: 10px -15px 10px -15px">
-                        <h3 style="text-transform:none;">{{listing.title}}</h3>
-
-                        <p style="min-height:80px;">{{listing.house.area}}</p>
-                        <ul class="add_info">
-                            {{#each listing.house.subwayLines as |subwayLine|}}
-                                <li>
-                                    <span style="display: inline-block">{{subwayLine}}</span>
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-          {{else}}
-              No listings in the wishlist.
+          <div class="single-result">
+              <div class="flat-pic">
+                  {{#if listing.coverPhoto}}
+                    <a class="slide-img" style="background-image: url({{listing.coverPhoto.imageUrl}})"></a>
+                  {{else}}
+                    <a class="slide-img" style="background-image: url(/images/post-5.jpg)"></a>
+                  {{/if}}
+              </div>
+              <div class="loc-info">
+                  <p class="subarea-name">{{listing.house.compound}} - Room {{room-index listing.index}}</p>
+                  <p><span></span>{{listing.house.area}} — {{listing.house.address}}</p>
+                  <p><span></span>
+                    {{#each listing.house.subwayLines as |subwayLine index|}}
+                      {{#if index}},{{/if}}{{subwayLine}}
+                    {{/each}}
+                  </p>
+                  <div class="features">
+                    {{#each listing.features as |feature|}}
+                        <span class="feature-block">{{feature}}</span>
+                    {{/each}}
+                  </div>
+              </div>
+              <div class="room-info">
+                  <div class="half-block">
+                      <p class="room-num"><span>{{listing.house.bedrooms}}</span>BR<span>{{listing.house.bathrooms}}</span>Bath</p>
+                      <p class="flat-num"><span>{{listing.house.floor}}</span>F</p>
+                      <p class="room-size"><span>{{listing.house.size}}</span><sub>m<sup>2</sup></sub></p>
+                      <div class="price fr">
+                          <p class="unit">RMB/month</p>
+                          <p class="price-num">{{listing.lowestPrice}}</p>
+                      </div>
+                  </div>
+                  <div class="half-block no-border-bottom">
+                      {{#if listing.house.isShared}}
+                          <span class="part">S</span>
+                      {{else}}
+                          <span class="full">E</span>
+                      {{/if}}
+                      <ul class="roommates">
+                          {{#each listing.house.flatmates as |flatmate| }}
+                              {{#if flatmate.country}}
+                                  <li>{{flatmate.country}}</li>
+                              {{/if}}
+                          {{/each}}
+                      </ul>
+                      <div class="remove">
+                          <img src="/images/static/remove.png" {{action "removeWishlisting" listing wishlist}}/>
+                      </div>
+                  </div>
+              </div>
+          </div>
           {{/each}}
-        {{else}}
-            No listings in the wishlist.
         {{/each}}
-        <!--<div class="col-md-3">
-            <div class="tour_container">
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                        &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title listing">
-                    <ul class="stats" style="padding-left: 0;">
-                        <li>Rooms<span>Apt</span></li>
-                        <li>Size, m2<span>14</span></li>
-                        <li>Price ￥<span>8000</span></li>
-                    </ul>
-                    <div style="clear:both"></div>
-                    <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                    <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                    <p style="min-height:80px;">French Concession</p>
-                    <ul class="add_info">
-                        <li>
-                            <span style="display: inline-block">1 Line</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Aircon</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Private Bath</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="tour_container">
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                        &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title listing">
-                    <ul class="stats" style="padding-left: 0;">
-                        <li>Rooms<span>Apt</span></li>
-                        <li>Size, m2<span>14</span></li>
-                        <li>Price ￥<span>8000</span></li>
-                    </ul>
-                    <div style="clear:both"></div>
-                    <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                    <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                    <p style="min-height:80px;">French Concession</p>
-                    <ul class="add_info">
-                        <li>
-                            <span style="display: inline-block">2 Line</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Aircon</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Private Bath</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="tour_container">
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                        &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title listing">
-                    <ul class="stats" style="padding-left: 0;">
-                        <li>Rooms<span>Apt</span></li>
-                        <li>Size, m2<span>14</span></li>
-                        <li>Price ￥<span>8000</span></li>
-                    </ul>
-                    <div style="clear:both"></div>
-                    <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                    <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-                    <p style="min-height:80px;">French Concession</p>
-                    <ul class="add_info">
-                        <li>
-                            <span style="display: inline-block">2 Line</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Aircon</span>
-                        </li>
-                        <li>
-                            <span style="display: inline-block">Private Bath</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>-->
-    </div>
+      </div>
+  </div>
 </div>
+
 <style>
-    .wishlist:before{
-        content:"\63";
-        color:white;
-        font-size:33px;
+    .footer {
+        position: fixed;
+        height: 40px;
+        bottom: 0;
     }
 </style>

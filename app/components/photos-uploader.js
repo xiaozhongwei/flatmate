@@ -1,5 +1,5 @@
 export default EmberUploader.FileField.extend({
-  attributeBindings: ['name'],
+  attributeBindings: ['name','style','id'],
   name: "",
   multiple: true,
   url: "",
@@ -15,7 +15,7 @@ export default EmberUploader.FileField.extend({
       promise.then(response => {
         this.sendAction('uploadSuccess', response['listing/photos']);
       });
-      promise['catch'](function() {
+      promise['catch'](response => {
         Ember.debug("file upload failure.");
         this.sendAction('uploadFail');
       });

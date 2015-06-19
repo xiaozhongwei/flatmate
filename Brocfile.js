@@ -65,4 +65,9 @@ var extraAssets = pickFiles('vendor/fontello/font', {
 
 app.import('bower_components/ember-uploader/dist/ember-uploader.js');
 
+//owl-carousel
+app.import('bower_components/owl-carousel/owl-carousel/owl.carousel.css');
+app.import('bower_components/owl-carousel/owl-carousel/owl.theme.css');
+app.import('bower_components/owl-carousel/owl-carousel/owl.carousel.js');
+
 module.exports = app.toTree([bootstrap,html5shiv,respond,sliderPro,extraAssets]);

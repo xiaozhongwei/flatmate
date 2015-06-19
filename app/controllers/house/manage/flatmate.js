@@ -24,6 +24,9 @@ export default Ember.Controller.extend({
     editFlatmate: function(flatmate){
       flatmate.toggleProperty("isEditing");
     },
+    changeGender: function(flatmate, gender){
+      flatmate.set('gender', gender);
+    },
     saveFlatmate: function(flatmate){
       if((flatmate.get("isOccupied") && flatmate.get("isValid")) || flatmate.get("isAvailable")){
         if(flatmate.get('isDirty')){

@@ -9,7 +9,9 @@ module.exports = function(app) {
   });
 
   profileAccountRouter.post('/', function(req, res) {
-    res.send({});
+    req.body["profile/account"].id = (new Date()).getTime();
+    res.send(req.body);
+    //res.send({});
     res.status(201).end();
   });
 
@@ -33,5 +35,5 @@ module.exports = function(app) {
     res.status(204).end();
   });
 
-  app.use('/api/profile/accounts', profileAccountRouter);
+  app.use('/api/profile/accounts', require('body-parser').json(), profileAccountRouter);
 };

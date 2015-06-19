@@ -1,5 +1,6 @@
 export default DS.Transform.extend({
   mapping : [
+    { id: "0-1000", text: "0-1000" },
     { id: "1000-2000", text: "1000-2000" },
     { id: "2000-3000", text: "2000-3000" },
     { id: "3000-4000", text: "3000-4000" },

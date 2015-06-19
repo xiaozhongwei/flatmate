@@ -5,140 +5,18 @@ import Ember from "ember";
 
 export default Ember.View.extend({
   didInsertElement: function () {
-    this.mobileMenuExtension();
-    $('body').delay(350).css({'overflow':'visible'});
-    $('#cat_nav').mobileMenu();
+    this.get('controller').on('closeModalBox', this, this.hide_dialog_box);
+  },
 
-    //$(window).scroll(function () {
-    //  if ($(this).scrollTop() > 1) {
-    //    $('header').addClass("sticky");
-    //  }
-    //  else {
-    //    $('header').removeClass("sticky");
-    //  }
+  // 关闭所有的框
+  hide_dialog_box: function() {
+    $('.dialog-box').css('display', 'none');
+    $('.overlay-full-screen').css('display', 'none');
+    //清空所有输入, 按钮置为disabled
+    //$.each($('.dialog-form').find('input'), function (index, value) {
+    //  value.value = '';
     //});
-    this.mobileMenuClick();
-    //$('.dropdown-menu').on("click",function(e) {e.stopPropagation();});
-  },
-
-  mobileMenuClick:function(){
-    $('a.open_close').on("click",function() {
-      $('.main-menu').toggleClass('show');
-      $('.layer').toggleClass('layer-is-visible');
-    });
-    $('a.show-submenu').on("click",function() {
-      $(this).next().toggleClass("show_normal");
-    });
-    $('a.show-submenu-mega').on("click",function() {
-      $(this).next().toggleClass("show_mega");
-    });
-  },
-
-  mobileMenuExtension:function(){
-    //variable for storing the menu count when no ID is present
-    var menuCount = 0;
-    //plugin code
-    $.fn.mobileMenu = function(options){
-      //plugin's default options
-      var settings = {
-        switchWidth: 767,
-        topOptionText: 'Filter by category',
-        indentString: '&nbsp;&nbsp;&nbsp;'
-      };
-      //function to check if selector matches a list
-      function isList($this){
-        return $this.is('ul, ol');
-      }
-      //function to decide if mobile or not
-      function isMobile(){
-        return ($(window).width() < settings.switchWidth);
-      }
-      //check if dropdown exists for the current element
-      function menuExists($this){
-        //if the list has an ID, use it to give the menu an ID
-        if($this.attr('id')){
-          return ($('#mobileMenu_'+$this.attr('id')).length > 0);
-        }
-        //otherwise, give the list and select elements a generated ID
-        else {
-          menuCount++;
-          $this.attr('id', 'mm'+menuCount);
-          return ($('#mobileMenu_mm'+menuCount).length > 0);
-        }
-      }
-      //change page on mobile menu selection
-      function goToPage($this){
-        if($this.val() !== null){document.location.href = $this.val()}
-      }
-      //show the mobile menu
-      function showMenu($this){
-        $this.css('display', 'none');
-        $('#mobileMenu_'+$this.attr('id')).show();
-      }
-      //hide the mobile menu
-      function hideMenu($this){
-        $this.css('display', '');
-        $('#mobileMenu_'+$this.attr('id')).hide();
-      }
-      //create the mobile menu
-      function createMenu($this){
-        if(isList($this)){
-          //generate select element as a string to append via jQuery
-          var selectString = '<div class="styled-select-cat"><select id="mobileMenu_'+$this.attr('id')+'" class="mobileMenu">';
-          //create first option (no value)
-          selectString += '<option value="">'+settings.topOptionText+'</option>';
-          //loop through list items
-          $this.find('li').each(function(){
-            //when sub-item, indent
-            var levelStr = '';
-            var len = $(this).parents('ul, ol').length;
-            for(i=1;i<len;i++){levelStr += settings.indentString;}
-            //get url and text for option
-            var link = $(this).find('a:first-child').attr('href');
-            var text = levelStr + $(this).clone().children('ul, ol').remove().end().text();
-            //add option
-            selectString += '<option value="'+link+'">'+text+'</option>';
-          });
-          selectString += '</select></div>';
-          //append select element to ul/ol's container
-          $this.parent().append(selectString);
-          //add change event handler for mobile menu
-          $('#mobileMenu_'+$this.attr('id')).change(function(){
-            goToPage($(this));
-          });
-          //hide current menu, show mobile menu
-          showMenu($this);
-        } else {
-          alert('mobileMenu will only work with UL or OL elements!');
-        }
-      }
-      //plugin functionality
-      function run($this){
-        //menu doesn't exist
-        if(isMobile() && !menuExists($this)){
-          createMenu($this);
-        }
-        //menu already exists
-        else if(isMobile() && menuExists($this)){
-          showMenu($this);
-        }
-        //not mobile browser
-        else if(!isMobile() && menuExists($this)){
-          hideMenu($this);
-        }
-      }
-      //run plugin on each matched ul/ol
-      //maintain chainability by returning "this"
-      return this.each(function() {
-        //override the default settings if user provides some
-        if(options){$.extend(settings, options);}
-        //cache "this"
-        var $this = $(this);
-        //bind event to browser resize
-        $(window).resize(function(){run($this);});
-        //run plugin
-        run($this);
-      });
-    };
+    //$('.dialog-form').find('button').attr('disabled', true);
   }
+
 });

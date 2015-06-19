@@ -1,14 +1,18 @@
-<h2>Calendar</h2>
-<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+<div class="add-tenant add-block">
+    <img src="/images/static/Add.png">
+    <p>Add a tenant if the room is now occupied</p>
+</div>
+<div class="alert-block margin-top-25">
   {{#if session.user.logo.downloadFilePath}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
   {{else}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src="images/user_unknown.png" title={{session.user.firstName}}>
   {{/if}}
-    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">Starting day of you listing?</span>
+    <p>Starting day of you listing?</p>
 </div>
-<div class="box_style_2" style="border-top:none;border-radius: 0">
+<div class="calendar-block margin-top-25">
   {{bootstrap-datepicker-inline value=availableDate}}
 </div>
+

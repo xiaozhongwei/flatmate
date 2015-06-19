@@ -5,7 +5,7 @@ import config from 'flatmate/config/environment';
 import ListingStatusMapping from 'flatmate/transforms/listing-status';
 
 export default Ember.Controller.extend({
-  step: 2,
+  step: 1,
   //listStep: 4, //发布所需步骤
   //isCalendarFinished: function(){
   //  var isFinished = !Ember.isEmpty(this.get('model.listings.firstObject.availableDate'));

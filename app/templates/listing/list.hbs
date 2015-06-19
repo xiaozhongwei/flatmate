@@ -1,671 +1,164 @@
-
-<style>
-    a.btn_1.outline, .btn_1.outiline, input .btn_1.outiline{
-        border:2px solid #ededed
-    }
-    header{
-        background: rgb(246,246,246) !important;
-    }
-</style>
-<div class="white_bg">
-    <div class="container margin_60" style="padding-top:30px;padding-bottom:20px;">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="text-align: left">Type</label>
-                <div class="col-sm-11"  style="text-align: left">
-                    <div class="col-md-5" style="text-align: left;padding-left:0">
-                        <a href="javascript:;"
-                           class="btn_1 {{if (not (eq rentType "all")) 'outline'}}" {{action "queryListing" "rentType" "all"}}>All</a>
-                        <a href="javascript:;"
-                           class="btn_1 {{if (not (eq rentType "share")) 'outline'}}" {{action "queryListing" "rentType" "share"}}>Room</a>
-                        <a href="javascript:;"
-                           class="btn_1 {{if (not (eq rentType "entire")) 'outline'}}" {{action "queryListing" "rentType" "entire"}}>Apt</a>
+<div class="main-container">
+    <div class="main-wrapper search-page clearfix">
+        <div class="search-container">
+            <div class="search-row">
+                <div class="search-group clearfix">
+                    <div class="search-item location">
+                        {{input placeholder="search address" value=addressFilter}}
+                        <span class="circle" {{action "queryListing" "address" addressFilter}}>
+                            <span class="inner-circle"></span>
+                        </span>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group"  style="margin-bottom: 0px;">
-                            <label class="col-sm-1 control-label" style="text-align: left">Price</label>
-                            <div class="col-sm-5"  style="text-align: left">
-                              {{select-2
-                              content=priceMapping
-                              value=price
-                              optionValuePath="id"
-                              searchEnabled=false
-                              allowClear=true
-                              placeholder="Choose Price"
-                              }}
+                    <div class="search-item home-type">
+                      {{select-2
+                      content=lineMapping
+                      value=subwayLine
+                      optionValuePath="id"
+                      searchEnabled=false
+                      allowClear=true
+                      placeholder="SubwayLine"
+                      }}
+                    </div>
+                    <div class="search-item home-type no-margin-right">
+                      {{select-2
+                      content=areaMapping
+                      value=area
+                      optionValuePath="id"
+                      allowClear=true
+                      placeholder="Area"
+                      }}
+                    </div>
+                </div>
+                <div class="search-group clearfix">
+                    <div class="search-item s-label">
+                        Price
+                    </div>
+                    <div class="search-item cost">
+                      {{select-2
+                      content=priceMapping
+                      value=price
+                      optionValuePath="id"
+                      searchEnabled=false
+                      allowClear=true
+                      placeholder="Price"
+                      }}
+                    </div>
+                    <div class="search-item s-label">
+                        BR
+                    </div>
+                    <div class="search-item room-num">
+                      {{select-2
+                      content=roomNumberMapping
+                      value=bedrooms
+                      optionValuePath="id"
+                      searchEnabled=false
+                      allowClear=true
+                      placeholder="Bedrooms"
+                      }}
+                    </div>
+                </div>
+                <div class="search-group no-margin-right fr clearfix">
+                    <div class="search-item map-search">
+                        <p><span class="circle"></span> 地图找房</p>
+                    </div>
+                </div>
+                <div class="search-group clearfix">
+                    <div class="search-item s-label">
+                        Available:
+                    </div>
+                    <div class="search-item cond-in">
+                        <ul>
+                            <li class="{{if (eq availableDate 'all') 'active'}}" {{action "queryListing" "availableDate" "all"}}><span>All</span></li>
+                            <li class="{{if (eq availableDate '0') 'active'}}" {{action "queryListing" "availableDate" "0"}}><span>Right Now</span></li>
+                            <li class="{{if (eq availableDate '1') 'active'}}" {{action "queryListing" "availableDate" "1"}}><span>One Week</span></li>
+                            <li class="{{if (eq availableDate '2') 'active'}}" {{action "queryListing" "availableDate" "2"}}><span>Two Week</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search-group clearfix">
+                    <div class="search-item s-label">
+                        Type
+                    </div>
+                    <div class="search-item rent-type">
+                        <ul>
+                            <li class="all {{if (eq rentType "all") 'active'}}" {{action "queryListing" "rentType" "all"}}>All</li>
+                            <li class="part {{if (eq rentType "share") 'active'}}" {{action "queryListing" "rentType" "share"}}>S</li>
+                            <li class="full {{if (eq rentType "entire") 'active'}}" {{action "queryListing" "rentType" "entire"}}>E</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result-container">
+            {{#each model as |listing|}}
+                <div class="single-result">
+                    <div class="flat-pic">
+                      {{#if listing.coverPhoto}}
+                          <a class="slide-img" style="background-image: url({{listing.coverPhoto.imageUrl}})"></a>
+                      {{else}}
+                          <a class="slide-img" style="background-image: url(/images/post-5.jpg)"></a>
+                      {{/if}}
+                    </div>
+                    <div class="loc-info">
+                        {{#link-to 'listing.detail' listing.id}}
+                            <p class="subarea-name">{{listing.house.compound}} - Room {{room-index listing.index}}</p>
+                        {{/link-to}}
+                        <p><span></span>{{listing.house.area}} — {{listing.house.address}}</p>
+                        <p><span></span>
+                          {{#each listing.house.subwayLines as |subwayLine index|}}
+                            {{#if index}},{{/if}}{{subwayLine}}
+                          {{/each}}
+                        </p>
+                        <div class="features">
+                          {{#each listing.features as |feature|}}
+                              <span class="feature-block">{{feature}}</span>
+                          {{/each}}
+                        </div>
+                    </div>
+                    <div class="room-info">
+                        <div class="half-block">
+                            <p class="room-num"><span>{{listing.house.bedrooms}}</span>BR<span>{{listing.house.bathrooms}}</span>Bath</p>
+                            <p class="flat-num"><span>{{listing.house.floor}}</span>F</p>
+                            <p class="room-size"><span>{{listing.house.size}}</span><sub>m<sup>2</sup></sub></p>
+                            <div class="price fr">
+                                <p class="unit">RMB/month</p>
+                                <p class="price-num">{{listing.lowestPrice}}</p>
+                            </div>
+                        </div>
+                        <div class="half-block no-border-bottom">
+                          {{#if listing.house.isShared}}
+                              <span class="part">S</span>
+                          {{else}}
+                              <span class="full">E</span>
+                          {{/if}}
+                            <ul class="roommates">
+                              {{#each listing.house.flatmates as |flatmate| }}
+                                {{#if flatmate.country}}
+                                    <li>{{flatmate.country}}</li>
+                                {{/if}}
+                              {{/each}}
+                            </ul>
+                            <div class="owner fr">
+                                <p>王阴雨</p>
+                                <img src="/images/static/LISA_100.jpg"/>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="text-align: left">Area</label>
-                <div class="col-sm-11"  style="text-align: left">
-                    <a href="javascript:;"
-                       class="btn_1 {{if (not (eq area "all")) 'outline'}}" {{action "queryListing" "area" "all"}}>All</a>
-                  {{#each areaMapping as |areaOption| }}
-                      <a href="javascript:;" style="margin-bottom: 5px;"
-                         class="btn_1 {{if (not (eq area areaOption.id)) 'outline'}}" {{action "queryListing" "area" areaOption.id}}>{{areaOption.name}}</a>
-                  {{/each}}
+            {{/each}}
+            <div class="list-footer clearfix">
+                <div class="pagination fr">
+                  {{em-pagination-pager current=page count=totalPage}}
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="text-align: left">Metro</label>
-                <div class="col-sm-11"  style="text-align: left">
-                    <a href="javascript:;"
-                       class="btn_1 {{if (not (eq subwayLine "all")) 'outline'}}" {{action "queryListing" "subwayLine" "all"}}>All</a>
-                  {{#each lineMapping as |line| }}
-                      <a href="javascript:;"
-                         class="btn_1 {{if (not (eq subwayLine line.id)) 'outline'}}" {{action "queryListing" "subwayLine" line.id}}>{{line.text}}</a>
-                  {{/each}}
-                </div>
-            </div>
-          {{#if (not (eq rentType "entire"))}}
-              <div class="form-group">
-                  <label class="col-sm-1 control-label" style="text-align: left">Flatmates</label>
-
-                  <div class="col-md-3 col-sm-3" style="text-align: left">
-                    {{select-2
-                    content=countryMapping
-                    value=country
-                    optionValuePath="id"
-                    class="form-control"
-                    allowClear=true
-                    placeholder="Choose One Country"
-                    }}
-                  </div>
-                  <div class="col-md-8">
-                          <a href="javascript:;"
-                             class="btn_1 {{if (not (eq occupation "all")) 'outline'}}" {{action "queryListing" "occupation" "all"}}>All</a>
-                          <a href="javascript:;"
-                             class="btn_1 {{if (not (eq occupation "student")) 'outline'}}" {{action "queryListing" "occupation" "student"}}>Student</a>
-                          <a href="javascript:;"
-                             class="btn_1 {{if (not (eq occupation "specialist")) 'outline'}}" {{action "queryListing" "occupation" "specialist"}}>Specialist</a>
-
-                    <span style="height: 20px;border-left: 1px solid rgb(224,224,224);margin-right: 20px;margin-left: 20px;"></span>
-
-                      <a href="javascript:;"
-                             class="btn_1 {{if (not (eq gender "all")) 'outline'}}" {{action "queryListing" "gender" "all"}}>All</a>
-                          <a href="javascript:;"
-                             class="btn_1 {{if (not (eq gender "1")) 'outline'}}" {{action "queryListing" "gender" "1"}}>Guy</a>
-                          <a href="javascript:;"
-                             class="btn_1 {{if (not (eq gender "2")) 'outline'}}" {{action "queryListing" "gender" "2"}}>Girl</a>
-                      <a class="btn_map pull-right" style="
-    padding-top: 8px;border-radius:0;padding-bottom: 8px;position: relative;text-transform: none;font-size: 14px;
-    width: 200px;background: rgb(71,71,71);" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-                          View on map
-                          <div class="triangle-border tb-border"></div>
-                          <div class="triangle-border tb-background"></div>
-                      </a>
-                  </div>
-
-              </div>
-          {{/if}}
-
-        </form>
+        </div>
     </div>
 </div>
-<div  class="container margin_30">
-    <div class="row">
-        <div class="col-lg-9 col-md-9">
 
-          {{#if isShowList}}
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon popular" ></div><img src="/images/tour_box_1.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-4"></i>Museums </div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Arch Triomphe</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <span style="display: inline-block">1 Line</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Aircon</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Private Bath</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>39*<span class="normal_price_list">$99</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.2s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon top_rated" ></div><img src="/images/tour_box_2.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-44"></i>Churches</div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Notredame</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <div class="tooltip_styled tooltip-effect-4">
-                                          <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
-                                          <div class="tooltip-content"><h4>Schedule</h4>
-                                              <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM<br>
-                                              <strong>Saturday</strong> 09.00 AM - 5.30 PM<br>
-                                              <strong>Sunday</strong> <span class="label label-danger">Closed</span>
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="tooltip_styled tooltip-effect-4">
-                                          <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
-                                          <div class="tooltip-content"><h4>Address</h4>
-                                              Musée du Louvre, 75058 Paris - France<br>
-                                              <a href="#">View on map</a>
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="tooltip_styled tooltip-effect-4">
-                                          <span class="tooltip-item"><i class="icon_set_1_icon-97"></i></span>
-                                          <div class="tooltip-content"><h4>Languages</h4>
-                                              English - French - Chinese - Russian - Italian
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="tooltip_styled tooltip-effect-4">
-                                          <span class="tooltip-item"><i class="icon_set_1_icon-27"></i></span>
-                                          <div class="tooltip-content"><h4>Parking</h4>
-                                              1-3 Rue Elisée Reclus<br>
-                                              76 Rue du Général Leclerc<br>
-                                              8 Rue Caillaux 94923<br>
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="tooltip_styled tooltip-effect-4">
-                                          <span class="tooltip-item"><i class="icon_set_1_icon-25"></i></span>
-                                          <div class="tooltip-content"><h4>Transport</h4>
-                                              <strong>Metro: </strong>Musée du Louvre station (line 1)<br>
-                                              <strong>Bus:</strong> 21, 24, 27, 39, 48, 68, 69, 72, 81, 95<br>
-                                          </div>
-                                      </div>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>42*<span class="normal_price_list">$99</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.3s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon top_rated" ></div><img src="/images/tour_box_3.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-44"></i>Historic Buildings</div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Versailles</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <span style="display: inline-block">1 Line</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Aircon</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Private Bath</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>39*<span class="normal_price_list">$99</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.4s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon top_rated" ></div><img src="/images/tour_box_4.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-37"></i>Walking tour</div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Pompidue</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <span style="display: inline-block">1 Line</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Aircon</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Private Bath</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>69*<span class="normal_price_list">$59</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.5s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon top_rated" ></div><img src="/images/tour_box_14.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-28"></i>Skyline tour</div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Tour Eiffel</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <span style="display: inline-block">1 Line</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Aircon</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Private Bath</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>49*<span class="normal_price_list">$59</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-
-              <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.7s">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-4">
-                          <div class="wishlist">
-                              <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                          </div>
-                          <div class="img_list"><a href="/#/listing/detail/1"><div class="ribbon top_rated" ></div><img src="/images/tour_box_5.jpg" alt="">
-                              <div class="short_info"><i class="icon_set_1_icon-44"></i>Historic Building</div></a>
-                          </div>
-                      </div>
-                      <div class="clearfix visible-xs-block"></div>
-                      <div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="tour_list_desc">
-                              <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i><small>(75)</small></div>
-                              <h3><strong>Pantheon</strong> tour</h3>
-                              <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus detracto vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit dicat.....</p>
-                              <ul class="add_info">
-                                  <li>
-                                      <span style="display: inline-block">1 Line</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Aircon</span>
-                                  </li>
-                                  <li>
-                                      <span style="display: inline-block">Private Bath</span>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-lg-2 col-md-2 col-sm-2">
-                          <div class="price_list"><div><sup>$</sup>49*<span class="normal_price_list">$59</span><small >*Per person</small>
-                              <p><a href="/#/listing/detail/1" class="btn_1">Details</a></p>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div><!--End strip -->
-          {{else}}
-              {{#each model as |listing|}}
-              <div class="col-md-4" style="padding-left:0" {{action "preview" listing on="mouseEnter"}}>
-                  <div class="tour_container {{if (eq currentListing.id listing.id) 'active'}}" >
-                      <div class="img_container" style="height: 220px;">
-                        {{#link-to 'listing.detail' listing.id}}
-                            <img src="{{if listing.coverPhoto listing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
-                            <!--<div class="ribbon top_rated"></div>-->
-                            <div class="short_info">
-                                <span class="price"><sup>￥</sup>{{listing.lowestPrice}}</span>
-                            </div>
-                        {{/link-to}}
-                      </div>
-                      <div class="tour_title listing">
-                          <ul class="stats" style="padding-left: 0;">
-                              <li>Type<span>{{if listing.house.isShared 'Room' 'Apt'}}</span></li>
-                              <li>Rooms<span>{{listing.house.bedrooms}}</span></li>
-                              <li>Size, m2<span>{{listing.house.size}}</span></li>
-                          </ul>
-                          <div style="clear:both"></div>
-                          <hr style="margin: 10px -15px 10px -15px">
-                          <h3 style="text-transform:none;">{{listing.title}}</h3>
-
-                          <p style="min-height:80px;">{{listing.house.area}}</p>
-                          <ul class="add_info">
-                            {{#each listing.house.subwayLines as |subwayLine|}}
-                                <li>
-                                    <div class="tooltip_styled tooltip-effect-4">
-                                        <span class="tooltip-item">{{subwayLine}}</span>
-                                    </div>
-                                </li>
-                            {{/each}}
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              {{else}}
-                No listing find.
-              {{/each}}
-              <!--<div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container">
-                      <div class="img_container" style="height: 220px;">
-                          <a href="single_tour.html">
-                              <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                              &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                              <div class="short_info">
-                                  <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                      class="price"><sup>$</sup>45</span>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="tour_title listing">
-                          <ul class="stats" style="padding-left: 0;">
-                              <li>Rooms<span>Apt</span></li>
-                              <li>Size, m2<span>14</span></li>
-                              <li>Price ￥<span>8000</span></li>
-                          </ul>
-                          <div style="clear:both"></div>
-                          <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                          <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                          <p style="min-height:80px;">French Concession</p>
-                          <ul class="add_info">
-                              <li>
-                                  <span style="display: inline-block">1 Line</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Aircon</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Private Bath</span>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container">
-                      <div class="img_container" style="height: 220px;">
-                          <a href="single_tour.html">
-                              <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                              &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                              <div class="short_info">
-                                  <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                      class="price"><sup>$</sup>45</span>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="tour_title listing">
-                          <ul class="stats" style="padding-left: 0;">
-                              <li>Rooms<span>Apt</span></li>
-                              <li>Size, m2<span>14</span></li>
-                              <li>Price ￥<span>8000</span></li>
-                          </ul>
-                          <div style="clear:both"></div>
-                          <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                          <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                          <p style="min-height:80px;">French Concession</p>
-                          <ul class="add_info">
-                              <li>
-                                  <span style="display: inline-block">1 Line</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Aircon</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Private Bath</span>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container">
-                      <div class="img_container" style="height: 220px;">
-                          <a href="single_tour.html">
-                              <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                              &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                              <div class="short_info">
-                                  <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                      class="price"><sup>$</sup>45</span>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="tour_title listing">
-                          <ul class="stats" style="padding-left: 0;">
-                              <li>Rooms<span>Apt</span></li>
-                              <li>Size, m2<span>14</span></li>
-                              <li>Price ￥<span>8000</span></li>
-                          </ul>
-                          <div style="clear:both"></div>
-                          <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                          <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                          <p style="min-height:80px;">French Concession</p>
-                          <ul class="add_info">
-                              <li>
-                                  <span style="display: inline-block">1 Line</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Aircon</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Private Bath</span>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4" style="padding-left:0">
-                  <div class="tour_container">
-                      <div class="img_container" style="height: 220px;">
-                          <a href="single_tour.html">
-                              <img src="images/post-5.jpg" width="800" height="533" class="img-responsive" alt="">
-                              &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
-                              <div class="short_info">
-                                  <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                      class="price"><sup>$</sup>45</span>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="tour_title listing">
-                          <ul class="stats" style="padding-left: 0;">
-                              <li>Rooms<span>Apt</span></li>
-                              <li>Size, m2<span>14</span></li>
-                              <li>Price ￥<span>8000</span></li>
-                          </ul>
-                          <div style="clear:both"></div>
-                          <hr style="margin-left:-15px;margin-right:-15px;margin-top:10px;margin-bottom:10px;">
-                          <h3 style="text-transform:none;">Nice room at Yonkang Lu</h3>
-
-                          <p style="min-height:80px;">French Concession</p>
-                          <ul class="add_info">
-                              <li>
-                                  <span style="display: inline-block">1 Line</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Aircon</span>
-                              </li>
-                              <li>
-                                  <span style="display: inline-block">Private Bath</span>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>-->
-          {{/if}}
-            <div style="clear:both"></div>
-            <hr>
-            <div class="text-center">
-              {{pagination-pager current=page count=totalPage}}
-            </div><!-- end pagination-->
-        </div>
-        <aside class="col-md-3" style=" padding-left: 0px;padding-right: 0px;">
-            <div class="box_style_1">
-              <span class="tape"></span>
-
-              {{#if currentListing.house.isShared}}
-                  <h4>Rooms & Flatmates </h4>
-                {{#each currentListing.house.flatmates as |flatmate index|}}
-                  {{#if flatmate.isAvailable}}
-                    <hr>
-                    <p>
-                        <span class="{{if (eq flatmate.listingId currentListing.id) 'radius-number-1' 'radius-number-1'}}">{{room-index index}}</span>
-                        <span style="color: #f7941d; font-size: 18px; font-weight: bold; padding-left: 10px;">Availble</span>
-                    </p>
-                  {{else}}
-                    <hr>
-                    <p>
-                        <span class="radius-number-1 radius-number-gary">{{room-index index}}</span>
-                        <img src="/images/flag1.png" style="height: 70px;width: 70px;margin-top: -15px;"/>
-                        <span style="float: right;">
-                            <span style=" display: block;font-weight: bold;color:black;font-size: 15px;">{{flatmate.occupation}}</span>
-                            <span style=" display: block;color:black;font-size: 15px;">{{flatmate.occupation}}</span>
-                            <span style=" display: block;color:black;font-size: 15px;">{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}</span>
-                        </span>
-                    </p>
-                  {{/if}}
-                {{/each}}
-              {{else}}
-                  <h4>Amenities</h4>
-                  <hr>
-                  {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' disabled=true selection=currentListing.house.amenities}}
-              {{/if}}
-            </div>
-            <div class="box_style_4">
-                <i class="icon_set_1_icon-57"></i>
-                <h4>Need <span>Help?</span></h4>
-                <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                <small>Monday to Friday 9.00am - 7.30pm</small>
-            </div>
-        </aside>
-    </div><!-- End row -->
-</div><!-- End container -->
 <style>
-    .radius-number-gary{
-        background: rgb(202,202,202) !important;
-        color: rgb(242,242,242) !important;
-    }
-    .radius-number-1{
-        border:1px solid #ddd;
-        color:#f7941d;
-        margin-top: 0px;
-        padding-top: 7px;
-        text-align:center;
-        width:60px;
-        height:60px;
-        display:inline-block;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        font-size:35px;
-        line-height:40px;
-        text-align:center;
-        /* position:absolute; */
-        left:0;
-        top:0;
-    }
-    .triangle-border {
-        position:absolute;
-        left:45%;
-        overflow:hidden;
-        width:0;
-        height:0;
-        border-width:10px;
-        border-style:solid dashed dashed dashed;
-    }
-    .tb-border {
-        bottom:-20px;
-        border-color:rgb(71,71,71) transparent transparent transparent;
-    }
-    .tb-background {
-        bottom:-19px;
-        border-color:rgb(71,71,71) transparent transparent transparent;
-    }
-    .tour_container.active{
-        border-bottom: 5px solid #f7941d;
-    }
-    .tour_container.active .tour_title{
-        padding-bottom: 10px !important;
-    }
-    .multiselect-checkboxes { list-style-type: none; margin: 0; padding: 5px; }
-    .multiselect-checkbox-option input{
-        width: 18px;
-        margin-right: 5px;
-        height: 18px;
+    .footer {
+        position: fixed;
+        height: 40px;
+        bottom: 0;
     }
 </style>

@@ -1,0 +1,507 @@
+<style>
+    header{
+        background: rgb(246,246,246) !important;
+    }
+    .priceInactive{
+        color: rgb(51,51,51) !important;
+    }
+
+</style>
+<div class="white_bg" style="border-bottom: 2px solid rgb(234,234,234)">
+    <div class="container margin_60" style="padding-top:30px;padding-bottom: 0px;">
+        <div class="row">
+            <div class="col-md-8" id="single_tour_desc">
+                <h2 style="margin-top: 0;margin-bottom: 20px;">{{model.title}}</h2>
+                <div id="Img_carousel" class="slider-pro">
+                    <div class="sp-slides">
+                        {{#each model.showPhotos as |listingPhoto index|}}
+                            <div class="sp-slide">
+                                <img alt="aa" class="sp-image" src="/images/sliderPro/blank.gif"
+                                     data-src="{{listingPhoto.imageUrl}}"
+                                     data-small="{{listingPhoto.imageUrl}}"
+                                     data-medium="{{listingPhoto.imageUrl}}"
+                                     data-large="{{listingPhoto.imageUrl}}"
+                                     data-retina="{{listingPhoto.imageUrl}}">
+                            </div>
+                        {{/each}}
+                        <!--<div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/2_medium.jpg"
+                                 data-small="images/slider_single_tour/2_small.jpg"
+                                 data-medium="images/slider_single_tour/2_medium.jpg"
+                                 data-large="images/slider_single_tour/2_large.jpg"
+                                 data-retina="images/slider_single_tour/2_large.jpg">
+                            <h3 class="sp-layer sp-black sp-padding" data-horizontal="40" data-vertical="40" data-show-transition="left">
+                                Lorem ipsum dolor sit amet </h3>
+                            <p class="sp-layer sp-white sp-padding" data-horizontal="40" data-vertical="100" data-show-transition="left" data-show-delay="200">
+                                consectetur adipisicing elit
+                            </p>
+                            <p class="sp-layer sp-black sp-padding" data-horizontal="40" data-vertical="160" data-width="350" data-show-transition="left" data-show-delay="400">
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/3_medium.jpg"
+                                 data-small="images/slider_single_tour/3_small.jpg"
+                                 data-medium="images/slider_single_tour/3_medium.jpg"
+                                 data-large="images/slider_single_tour/3_large.jpg"
+                                 data-retina="images/slider_single_tour/3_large.jpg">
+                            <p class="sp-layer sp-white sp-padding" data-position="centerCenter" data-vertical="-50" data-show-transition="right" data-show-delay="500">
+                                Lorem ipsum dolor sit amet
+                            </p>
+                            <p class="sp-layer sp-black sp-padding" data-position="centerCenter" data-vertical="50" data-show-transition="left" data-show-delay="700">
+                                consectetur adipisicing elit
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/4_medium.jpg"
+                                 data-small="images/slider_single_tour/4_small.jpg"
+                                 data-medium="images/slider_single_tour/4_medium.jpg"
+                                 data-large="images/slider_single_tour/4_large.jpg"
+                                 data-retina="images/slider_single_tour/4_large.jpg">
+                            <p class="sp-layer sp-black sp-padding" data-position="bottomLeft" data-vertical="0" data-width="100%" data-show-transition="up">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/5_medium.jpg"
+                                 data-small="images/slider_single_tour/5_small.jpg"
+                                 data-medium="images/slider_single_tour/5_medium.jpg"
+                                 data-large="images/slider_single_tour/5_large.jpg"
+                                 data-retina="images/slider_single_tour/5_large.jpg">
+                            <p class="sp-layer sp-white sp-padding" data-vertical="5%" data-horizontal="5%" data-width="90%" data-show-transition="down" data-show-delay="400">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/6_medium.jpg"
+                                 data-small="images/slider_single_tour/6_small.jpg"
+                                 data-medium="images/slider_single_tour/6_medium.jpg"
+                                 data-large="images/slider_single_tour/6_large.jpg"
+                                 data-retina="images/slider_single_tour/6_large.jpg">
+                            <p class="sp-layer sp-white sp-padding" data-horizontal="10" data-vertical="10" data-width="300">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/7_medium.jpg"
+                                 data-small="images/slider_single_tour/7_small.jpg"
+                                 data-medium="images/slider_single_tour/7_medium.jpg"
+                                 data-large="images/slider_single_tour/7_large.jpg"
+                                 data-retina="images/slider_single_tour/7_large.jpg">
+                            <p class="sp-layer sp-black sp-padding" data-position="bottomLeft" data-horizontal="5%" data-vertical="5%" data-width="90%" data-show-transition="up" data-show-delay="400">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="http://bqworks.com/slider-pro/images/image8_medium.jpg"
+                                 data-small="http://bqworks.com/slider-pro/images/image8_small.jpg"
+                                 data-medium="http://bqworks.com/slider-pro/images/image8_medium.jpg"
+                                 data-large="http://bqworks.com/slider-pro/images/image8_large.jpg"
+                                 data-retina="http://bqworks.com/slider-pro/images/image8_large.jpg"/>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/8_medium.jpg"
+                                 data-small="images/slider_single_tour/8_small.jpg"
+                                 data-medium="images/slider_single_tour/8_medium.jpg"
+                                 data-large="images/slider_single_tour/8_large.jpg"
+                                 data-retina="images/slider_single_tour/8_large.jpg">
+                            <p class="sp-layer sp-black sp-padding" data-horizontal="50" data-vertical="50" data-show-transition="down" data-show-delay="500">
+                                Lorem ipsum dolor sit amet
+                            </p>
+                            <p class="sp-layer sp-white sp-padding" data-horizontal="50" data-vertical="100" data-show-transition="up" data-show-delay="500">
+                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                        <div class="sp-slide">
+                            <img alt="" class="sp-image" src="/images/sliderPro/blank.gif"
+                                 data-src="images/slider_single_tour/9_medium.jpg"
+                                 data-small="images/slider_single_tour/9_small.jpg"
+                                 data-medium="images/slider_single_tour/9_medium.jpg"
+                                 data-large="images/slider_single_tour/9_large.jpg"
+                                 data-retina="images/slider_single_tour/9_large.jpg">
+                        </div>-->
+                    </div>
+                    <div class="sp-thumbnails">
+                        {{#each model.showPhotos as |listingPhoto index|}}
+                            <img alt="" class="sp-thumbnail" src="{{listingPhoto.imageUrl}}">
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+            <aside class="col-md-4 margin_60" style="padding-top:35px;padding-right: 0;">
+                <h5>{{model.house.bedrooms}}Rooms</h5>
+                <div class="row rooms" style="margin-left:0; height: 230px;background: rgb(249,249,249);margin-right: 0px;">
+                    {{#each model.house.flatmates as |flatmate index|}}
+                        <div class="col-md-3 {{if (eq flatmate.listingId model.id) 'active'}}">
+                            {{#if flatmate.isAvailable}}
+                              <span class="radius-number-1">{{room-index index}}</span>
+                              <span style="font-weight: bold;color:#f7941d;font-size: 14px;display:block;margin-top:103px;"> Availble </span>
+                              {{#if (eq flatmate.listingId model.id)}}
+                                  <span style="color:black;font-size: 12px;font-weight: bold">  Right now</span>
+                              {{/if}}
+
+                            {{else}}
+                                <span class="radius-number-1 radius-number-gary">{{room-index index}}</span>
+                                <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
+                                <span style="font-weight: bold;color:black;font-size: 14px;">{{flatmate.country}}</span>
+                                <span style="color:black;font-size: 13px;">{{flatmate.occupation}}</span>
+                                <span style="font-size: 13px;color:rgb(130,130,130)">{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}</span>
+                            {{/if}}
+
+                        </div>
+                    {{/each}}
+                    <!--<div class="col-md-3 active">
+                        <span class="radius-number-1">A</span>
+                        <span style="font-weight: bold;color:#f7941d;font-size: 14px;display:block;margin-top:103px;"> Availble </span>
+                        <span style="color:black;font-size: 12px;font-weight: bold">  Right now</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="radius-number-1 radius-number-gary">B</span>
+                        <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
+                        <span style="font-weight: bold;color:black;font-size: 14px;"> USA </span>
+                        <span style="color:black;font-size: 13px;">Specialist</span>
+                        <span style="font-size: 13px;color:rgb(130,130,130)">Guy</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="radius-number-1 radius-number-gary">C</span>
+                        <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
+                        <span style="font-weight: bold;color:black;font-size: 14px;"> USA </span>
+                        <span style="color:black;font-size: 13px;">Specialist</span>
+                        <span style="font-size: 13px;color:rgb(130,130,130)">Guy</span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="radius-number-1 radius-number-gary">D</span>
+                        <img style="border-radius:50%;width:60px;margin-right:10px;" src="images/LISA_100.jpg" title="John">
+                        <span style="font-weight: bold;color:black;font-size: 14px;"> USA </span>
+                        <span style="color:black;font-size: 13px;">Specialist</span>
+                        <span style="font-size: 13px;color:rgb(130,130,130)">Guy</span>
+                    </div>-->
+                </div>
+                <h5 style="margin-top:20px;">Price & Terms</h5>
+                <div class="box_style_1 expose" style=" border-radius: 0; border:none;background: rgb(249,249,249)">
+                    <h3 class="inner" style="padding-top:20px;padding-bottom:20px;text-align: left">
+                        ￥{{currentPrice}}
+                        {{#if model.serviceFee}}
+                          <span style="font-size:13px;color:#ddd">+{{model.serviceFee}} Service Fee</span>
+                          <span class="pull-right" style="font-size:14px;color: white;padding-top: 7px;">Per Month</span>
+                        {{/if}}
+                    </h3>
+                    <div class="row">
+                      <span style="color: black">I will pay per</span>
+                      {{#if model.perMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perMonth" model.perMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">1</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">1</span>
+                      {{/if}}
+                      {{#if model.perThreeMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perThreeMonth" model.perThreeMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perThreeMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">3</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">3</span>
+                      {{/if}}
+                      {{#if model.perSixMonthPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perSixMonth" model.perSixMonthPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perSixMonth') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">6</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">6</span>
+                      {{/if}}
+                      {{#if model.perYearPrice}}
+                          <a href="javascript:;" {{action "changePrice" "perYear" model.perYearPrice}}><span class="radius-number-1 {{unless (eq currentPayCycle 'perYear') 'priceInactive'}}" style="background: white;height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">12</span></a>
+                      {{else}}
+                          <span class="radius-number-1 radius-number-gary" style="height: 50px;width: 50px;font-size: 30px;padding-top: 5px;">12</span>
+                      {{/if}}
+                      <span style="color: black;padding-left: 5px;">Month</span>
+                    </div>
+                </div>
+                <div class="row">
+                    {{#if (eq session.id model.creatorId)}}
+                        <div class="col-md-12">
+                            {{#link-to 'house.manage' model.house.id (query-params activeId=model.id) class="btn_map"}}Edit my listing{{/link-to}}
+                        </div>
+                    {{else}}
+                        <div class="col-md-6">
+                            <a href="javascript:;" style="border:2px solid #ddd;color:rgb(51,51,51)" class="btn_full_outline" {{action "addWishlisting" model}}>Add to wishlist</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="javascript:;" style="background:#f7941d;"  class=" btn_full" {{action "showDialog"}}>Inquiry</a>
+                            <!--<button style="background:#f7941d;" data-toggle="modal" data-target="#myModal" class=" btn_full">Inquiry</button>-->
+                        </div>
+                    {{/if}}
+
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<style>
+    .list_order_1 span{
+        width: 200px;
+        display: inline-block;
+        color:rgb(130,130,130);
+        padding:5px 0px;
+    }
+    .list_order_1{
+        font-size:18px;
+        list-style: none;
+        color:black;
+    }
+</style>
+<div class="container margin_60">
+    <div class="col-md-8" style="padding-left:0">
+        <ul class="list_order_1" style="padding-left:0">
+            <li><span>Appartment</span>
+              {{model.house.bedrooms}}BDR ({{model.house.size}}m2) — {{model.house.bathrooms}} Bathroom — Floor {{model.house.floor}}
+            </li>
+            <li><span>Metro </span>
+              {{#each model.house.metroStations as |metroStation index|}}
+                {{#if index}},{{/if}}{{metroStation}}
+              {{/each}}
+            </li>
+            <li><span>Compound </span>
+              {{model.house.compound}}
+            </li>
+            <li><span>Area</span>
+              {{model.house.area}}
+            </li>
+        </ul>
+        <hr>
+        <h3 style="margin-bottom: 25px;">Description</h3>
+        <p style="font-size:15px;margin-bottom: 30px;">
+          {{model.description}}
+
+        </p>
+        <hr>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-md-3">
+                <h3 style="margin-top:4px;">Amenities</h3>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 list-facilities">
+                      {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' disabled=true selection=model.house.amenities}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-md-3">
+                <h3 style="margin-top:4px">Room features</h3>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 list-facilities">
+                      {{multi-checkboxes options=featureMapping valueProperty='index' labelProperty='name' disabled=true selection=model.features}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-md-3">
+                <h3 style="margin-top:4px;">Host</h3>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    {{#if model.creatorPhoto}}
+                        <img src={{model.creatorPhoto}} alt="" style="width:170px;" class="img-circle styled"/>
+                    {{else}}
+                        <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
+                    {{/if}}
+                    <h3 style="display: inline-block;margin-left: 12px;font-weight: bold;">{{model.creatorName}}</h3>
+                    <p style="font-size:15px;color:black;padding-top:20px;padding-bottom: 20px;">
+                      {{model.creatorDescription}}
+                      {{#link-to 'profile.view' model.creatorId}}View Full Profile{{/link-to}}
+                    </p>
+                    {{#unless (eq session.id model.creatorId)}}
+                        <a href="javascript:;" class="btn_1" {{action "showDialog"}}>Contact host</a>
+                    {{/unless}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="white_bg">
+    <div class="container margin_60" style="padding:40px 0px;">
+        <h3 style="margin-bottom: 20px;">Similar rooms</h3>
+        <div class="row">
+            {{#each model.similarListings as |similarListing|}}
+                <div class="col-md-3">
+                    <div class="tour_container">
+                        <div class="img_container">
+                            <a href="javascript:;">
+                                <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                                <!--<div class="ribbon top_rated"></div>-->
+                                <div class="short_info">
+                                    <a href="javascript:;" data-ember-action="1257"></a>
+                                    <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tour_title listing">
+                            <ul class="stats" style="padding-left: 0;">
+                                <li>Rooms<span>Apt</span></li>
+                                <li>Size, m2<span>14</span></li>
+                                <li>Price ￥<span>8000</span></li>
+                            </ul>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            <!--<div class="col-md-3">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="javascript:;">
+                            <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
+                            <div class="short_info">
+                                <a href="javascript:;" data-ember-action="1257"></a>
+                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tour_title listing">
+                        <ul class="stats" style="padding-left: 0;">
+                            <li>Rooms<span>Apt</span></li>
+                            <li>Size, m2<span>14</span></li>
+                            <li>Price ￥<span>8000</span></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="javascript:;">
+                            <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
+                            <div class="short_info">
+                                <a href="javascript:;" data-ember-action="1257"></a>
+                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tour_title listing">
+                        <ul class="stats" style="padding-left: 0;">
+                            <li>Rooms<span>Apt</span></li>
+                            <li>Size, m2<span>14</span></li>
+                            <li>Price ￥<span>8000</span></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="javascript:;">
+                            <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
+                            <div class="short_info">
+                                <a href="javascript:;" data-ember-action="1257"></a>
+                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tour_title listing">
+                        <ul class="stats" style="padding-left: 0;">
+                            <li>Rooms<span>Apt</span></li>
+                            <li>Size, m2<span>14</span></li>
+                            <li>Price ￥<span>8000</span></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="javascript:;">
+                            <img width="800" height="400" class="img-responsive" alt="" src="images/post-5.jpg">
+                            &lt;!&ndash;<div class="ribbon top_rated"></div>&ndash;&gt;
+                            <div class="short_info">
+                                <a href="javascript:;" data-ember-action="1257"></a>
+                                <i class="icon_set_1_icon-44"></i>Historic Buildings<span class="price"><sup>$</sup>45</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tour_title listing">
+                        <ul class="stats" style="padding-left: 0;">
+                            <li>Rooms<span>Apt</span></li>
+                            <li>Size, m2<span>14</span></li>
+                            <li>Price ￥<span>8000</span></li>
+                        </ul>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<style>
+    .rooms .col-md-3{
+        padding-top:15px;
+        text-align: center;
+        height: 100% !important;
+        border-right: 1px solid rgb(241,241,241) !important;
+    }
+    .rooms img{
+        margin-top:5px;
+        margin-bottom: 20px;
+    }
+    .rooms .col-md-3:last-child{
+        border-right:none;
+    }
+
+    .rooms .active{
+        background: white;
+        border:1px solid #f7941d !important;
+    }
+    .radius-number-gary{
+        background: rgb(202,202,202) !important;
+        color: rgb(242,242,242) !important;
+    }
+    .radius-number-1{
+        border:1px solid #ddd;
+        color:#f7941d;
+        margin-top: 0px;
+        padding-top: 7px;
+        text-align:center;
+        width:60px;
+        height:60px;
+        display:inline-block;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        font-size:35px;
+        line-height:40px;
+        text-align:center;
+        /* position:absolute; */
+        left:0;
+        top:0;
+    }
+    .multiselect-checkbox-option{
+        list-style: none;
+        min-width:150px;
+        display: inline-block !important;
+    }
+
+    .multiselect-checkbox-option input{
+        width: 18px;
+        margin-right: 5px;
+        height: 18px;
+    }
+</style>

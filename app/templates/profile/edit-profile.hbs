@@ -1,133 +1,120 @@
 {{#view 'profile/profile-layout'}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="font-size:22px;padding:5px 0;">Required</h3>
+    <div class="edit-panel">
+        <div class="panel-header">
+            Required
         </div>
-        <div class="panel-body">
-            <form class="form-horizontal" action="#">
-                <div class="form-group">
-                    <label class="col-md-3 control-label">First Name</label>
+        <div class="panel-content">
+            <div class="form-row clearfix">
+                <label>First Name</label>
 
-                    <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. John" value=model.firstName}}
+                <div class="col">
+                  {{input type="text" autocomplete="off" placeholder="e.g. John" value=model.firstName}}
+                </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>Last Name</label>
+                <div class="col">
+                  {{input type="text" autocomplete="off" placeholder="e.g. Doe" value=model.lastName}}
+                </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>I Am</label>
+                <div class="col">
+                    <div class="sex-select btn-group">
+                        <button class="col-2 {{if (eq model.gender '1') 'active'}}" {{action "changeGender" model '1'}}>Guy</button>
+                        <button class="col-2 {{if (eq model.gender '2') 'active'}}" {{action "changeGender" model '2'}}>Girl</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Last Name</label>
-
-                    <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. Doe" value=model.lastName}}
-                    </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>E-mail</label>
+                <div class="col">
+                  {{input type="text" autocomplete="off" placeholder="e.g. John@gmail.com" value=model.email}}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">I Am</label>
-
-                    <div class="col-md-9">
-                        <div class="radio-inline">
-                            <label>
-                              {{radio-field class="i-radio" checked=content.gender value="1" name="genderRadio"}}
-                                Guy</label>
-                        </div>
-                        <div class="radio-inline">
-                            <label>
-                              {{radio-field class="i-radio" checked=content.gender value="2" name="genderRadio"}}
-                                Girl</label>
-                        </div>
-                    </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>Phone Number</label>
+                <div class="col">
+                  {{input type="text" autocomplete="off" placeholder="e.g. +1 202 555 0113" value=model.phone}}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">E-mail</label>
-
-                    <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. John@gmail.com" value=model.email}}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Phone Number</label>
-
-                    <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. +1 202 555 0113" value=model.phone}}
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="font-size:22px;padding:5px 0;">Optional</h3>
+    <div class="edit-panel">
+        <div class="panel-header">
+            Optional
         </div>
-        <div class="panel-body">
-            <form class="form-horizontal" action="#">
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Wechat</label>
+        <div class="panel-content">
+            <div class="form-row clearfix">
+                <label>Wechat</label>
 
-                    <div class="col-md-9">
-                      {{input class="form-control" type="text" autocomplete="off" placeholder="e.g. 550113" value=model.wechat}}
-                    </div>
+                <div class="col">
+                  {{input type="text" autocomplete="off" placeholder="e.g. 550113" value=model.wechat}}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Country</label>
+            </div>
+            <div class="form-row clearfix">
+                <label>Country</label>
 
-                    <div class="col-md-9">
-                      {{select-2
-                      content=countryMapping
-                      value=model.country
-                      optionValuePath="id"
-                      placeholder="Select your country"
-                      }}
-                    </div>
+                <div class="col">
+                  {{select-2
+                  content=countryMapping
+                  value=model.country
+                  optionValuePath="id"
+                  placeholder="Select your country"
+                  }}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Languages</label>
+            </div>
+            <div class="form-row clearfix">
+                <label>Languages</label>
 
-                    <div class="col-md-9">
-                      {{select-2
-                      content=languageMapping
-                      value=model.languages
-                      multiple=true
-                      optionValuePath="id"
-                      placeholder="Add languages you speak"
-                      }}
-                    </div>
+                <div class="col">
+                  {{select-2
+                  content=languageMapping
+                  value=model.languages
+                  multiple=true
+                  optionValuePath="id"
+                  placeholder="Add languages you speak"
+                  }}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Occupation</label>
+            </div>
+            <div class="form-row clearfix">
+                <label>Occupation</label>
 
-                    <div class="col-md-9">
-                      {{select-2
-                      content=occupationMapping
-                      value=model.occupation
-                      optionValuePath="id"
-                      placeholder="Choose your Occupation"
-                      }}
-                    </div>
+                <div class="col">
+                  {{select-2
+                  content=occupationMapping
+                  value=model.occupation
+                  optionValuePath="id"
+                  placeholder="Choose your Occupation"
+                  }}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Hobbies</label>
+            </div>
+            <div class="form-row clearfix">
+                <label>Hobbies</label>
 
-                    <div class="col-md-9">
-                      {{select-2
-                      content=hobbyMapping
-                      value=model.hobbies
-                      multiple=true
-                      optionValuePath="id"
-                      placeholder="Choose some hobbies"
-                      }}
-                    </div>
+                <div class="col">
+                  {{select-2
+                  content=hobbyMapping
+                  value=model.hobbies
+                  multiple=true
+                  optionValuePath="id"
+                  placeholder="Choose some hobbies"
+                  }}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Describe Yourself</label>
+            </div>
+            <div class="form-row with-textarea clearfix">
+                <label>Describe Yourself</label>
 
-                    <div class="col-md-9">
-                      {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know you." value=model.description}}
-                    </div>
+                <div class="col">
+                  {{textarea placeholder="Help other people get to know you." value=model.description}}
                 </div>
-                <div class="gap gap-small"></div>
-            </form>
+            </div>
+            <div class="gap gap-small"></div>
         </div>
     </div>
 
-    <hr>
-    <input type="submit" class="btn_1 pull-right" {{action "save" model}} value="Save Changes">
+    <div class="profile-op">
+        <button class="op-btn btn-save" {{action "save" model}}>Save</button>
+    </div>
 {{/view}}

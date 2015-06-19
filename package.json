@@ -49,10 +49,10 @@
     "ember-select-2": "1.2.0",
     "ember-truth-helpers": "0.0.5",
     "ember-validations": "~ 2.0.0-alpha.3",
-    "express": "^4.12.3",
+    "express": "^4.12.4",
     "glob": "^4.5.3",
     "ivy-sortable": "^1.0.0-beta.4",
-    "morgan": "^1.5.2",
+    "morgan": "^1.6.0",
     "pagination-pager": "^1.2.3"
   }
 }

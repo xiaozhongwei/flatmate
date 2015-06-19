@@ -1,12 +1,18 @@
-<div class="navigation">
-    <div class="container ">
+<div class="sub-nav-bar">
+    <div class="wrapper">
         <ul>
-            <li>{{#link-to 'index'}}HOME{{/link-to}}</li>
-            <li>{{#link-to 'profile.dashboard'}}PROFILE{{/link-to}}</li>
-            <li>{{#link-to 'house.list'}}LISTING{{/link-to}}</li>
-            <li>{{#link-to 'inbox.list'}}INBOX{{/link-to}}</li>
-            <li>{{#link-to 'wishlist'}}WISHLIST{{/link-to}}</li>
-            <li>{{#link-to 'about'}}ABOUT{{/link-to}}</li>
+            {{#link-to 'profile.edit-profile'}}
+                <li class="{{if (eq moduleName 'PROFILE') 'active'}}">PROFILE</li>
+            {{/link-to}}
+            {{#link-to 'house.list'}}
+                <li class="{{if (eq moduleName 'LISTING') 'active'}}">LISTING</li>
+            {{/link-to}}
+            {{#link-to 'inbox.list'}}
+                <li class="{{if (eq moduleName 'INBOX') 'active'}}">INBOX</li>
+            {{/link-to}}
+            {{#link-to 'wishlist'}}
+                <li class="{{if (eq moduleName 'WISHLIST') 'active'}}">WISHLIST</li>
+            {{/link-to}}
         </ul>
     </div>
 </div>

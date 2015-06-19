@@ -7,7 +7,7 @@ import EmberValidations from 'ember-validations';
 export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     status: { presence: true },
-    //country: { presence: true },
+    country: { presence: true },
     gender: { presence: true },
     occupation: { presence: true }
   },
@@ -18,7 +18,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   listingId: DS.attr(),                           // 关联的房源信息
   country: DS.attr(),
   //gender: DS.attr('', {defaultValue: '1'}),
-  gender: DS.attr('', {defaultValue: '1'}),
+  gender: DS.attr('', {/*defaultValue: '1'*/}),
   occupation: DS.attr(),
   //hobby: DS.attr(),
 
@@ -30,6 +30,12 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   isOccupied: Ember.computed('status', function () {
     return this.get('status') === 1;
+  }),
+
+  isFinished: Ember.computed('isAvailable', 'isOccupied', 'isValid', function () {
+    //return (this.get("isOccupied") && this.get("isValid")) || this.get("isAvailable");
+
+    return this.get("isAvailable") || this.get("isValid");
   })
 
   //,isRenting: function(){

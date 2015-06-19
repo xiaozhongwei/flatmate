@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(){
-    return this.store.find('listing/landlord',this.session.get("id"));
+  model: function(params){
+    var userId = params['listing.landlord_id'];
+    return this.store.find('listing/landlord',userId);
   }
 });

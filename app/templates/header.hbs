@@ -1,110 +1,176 @@
-<header style="position:inherit;background:white;">
-    <div id="top_line" style="border-bottom:none;font-size:13px">
-        <div class="container" style="color:rgb(51,51,51)">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-6"
-                     style="font-size:15px;font-family:'Gochi Hand', cursive;padding-top:8px">
-                  {{#link-to 'index'}}<strong style="color:rgb(51,51,51)">FlatmateShanghai</strong>{{/link-to}}
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <ul id="top_links">
-                      {{#if session.isAuthenticated}}
-                          <li>
-                              <div class="dropdown dropdown-access">
-                                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{#if session.user.logo.downloadFilePath}}
-                                        <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
-                                             src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
-                                    {{else}}
-                                        <img style="border-radius:50%;width:37px;margin-right:10px;border:1px solid white"
-                                             src="/images/user_unknown.png" title="Not Upload Yet">
-                                    {{/if}}
-
-                                    <strong style="color:black">Hi, {{session.user.firstName}}</strong>
-
-                                  </a>
-                                  <ul class="dropdown-menu" id="cart_items">
-                                      <li style="padding-left: 15px">
-                                          <strong>{{#link-to 'profile.edit-profile'}}Edit Profile{{/link-to}}</strong>
-                                      </li>
-                                      <li>
-                                          <strong>{{#link-to 'house.list'}}My Listings{{/link-to}}</strong>
-                                      </li>
-                                      <li>
-                                          <strong>{{#link-to 'wishlist'}}Wish Lists{{/link-to}}</strong>
-                                      </li>
-                                      <li>
-                                          <strong><a href="javascript:;" {{action "invalidateSession" bubbles=true}}>Log Out</a></strong>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </li>
-                          <li>
-                            {{#link-to 'inbox.list'}}
-                                <i class="icon_set_1_icon-84"
-                                   style="color:rgb(51,51,51); margin-top:-15px; position: absolute;font-size: 25px;"></i>
-                            {{/link-to}}
-                          </li>
-                          <li style="margin-left: 33px;margin-right: 0">
-                            {{#link-to 'house.add' class="btn_1 btn-blue"}}
-                                List your Room
-                            {{/link-to}}
-                          </li>
-                      {{else}}
-                          <li>
-                              <div class="dropdown dropdown-access">
-                                  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
-                                     id="access_link">Log in</a>
-
-                                  <div class="dropdown-menu" id="login_form">
-                                      <form {{action 'authenticate' on='submit'}}>
-                                          <!--<div class="row">
-                                              <div class="col-md-6 col-sm-6 col-xs-6">
-                                                  <a href="#" class="bt_facebook">
-                                                      <i class="icon-facebook"></i>Facebook </a>
-                                              </div>
-                                              <div class="col-md-6 col-sm-6 col-xs-6">
-                                                  <a href="#" class="bt_paypal">
-                                                      <i class="icon-paypal"></i>Paypal </a>
-                                              </div>
-                                          </div>
-                                          <div class="login-or">
-                                              <hr class="hr-or">
-                                              <span class="span-or">or</span>
-                                          </div>-->
-                                          <div class="form-group">
-                                            {{input value=identification placeholder='Email' id="inputUsernameEmail" class='form-control'}}
-                                          </div>
-                                          <div class="form-group">
-                                            {{input value=password placeholder='Password' id="inputPassword"  class='form-control' type='password'}}
-                                          </div>
-                                          {{#link-to "forgot-password" id="forgot_pw"}}Forgot password?{{/link-to}}
-                                          <input type="submit" name="" value="Sign in" id="Sign_in" class="button_drop outline">
-                                          <!--<a class="button_drop outline" {{action "register"}}>Sign_up</a>-->
-                                          {{#link-to "register" id="Sign_up" class="button_drop outline"}}Sign_up{{/link-to}}
-                                      </form>
-                                  </div>
-                              </div>
-                              <!-- End Dropdown access -->
-                          </li>
-                          <li>
-                              <!--<a href="javascript:;">
-                                  Sign up
-                              </a>-->
-                          </li>
-                          <li style="margin-left: 33px;margin-right: 0">
-                              <a href="javascript:;" class="btn_1 btn-blue">
-                                  List your Room
-                              </a>
-                          </li>
-                      {{/if}}
+<div class="nav-index-top bg-white nav-top">
+    <div class="wrapper">
+        <div class="resp-nav-left none-display-max display-768">
+            <img src="/images/static/menu-opener.png" />
+        </div>
+        <div class="resp-nav-logo none-display-max display-768">
+          {{#link-to 'index'}}
+            <img src="/images/static/logo-mini.png" />
+          {{/link-to}}
+        </div>
+        <div class="nav-left none-display-768 fl">
+          {{#link-to 'index'}}
+            <img src="/images/static/logo.png" />
+          {{/link-to}}
+        </div>
+        <div class="nav-right none-display-768 fr">
+          {{#if session.isAuthenticated}}
+            <div class="nav-user fl">
+              {{#if session.user.logo.downloadFilePath}}
+                  <img class="fl" src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+              {{else}}
+                  <img class="fl" src="/images/user_unknown.png" title="Not Upload Yet" />
+              {{/if}}
+                <a id="user_profile_dp" {{action "dropdownUser"  on="mouseEnter"}}><span>{{session.user.firstName}}</span> <span class="triangle"></span></a>
+                <div class="dropdown-user-profile">
+                    <span class="triangle"></span>
+                    <ul>
+                      {{#link-to 'profile.edit-profile'}}<li>Profile</li>{{/link-to}}
+                      {{#link-to 'house.list'}}<li>Listings</li>{{/link-to}}
+                      {{#link-to 'inbox.list'}}<li>Inbox</li>{{/link-to}}
+                      {{#link-to 'wishlist'}}<li>Wishlist</li>{{/link-to}}
+                      <a href="javascript:;" {{action "invalidateSession" bubbles=true}}><li>Logout</li></a>
                     </ul>
                 </div>
             </div>
-            <!-- End row -->
+            <div class="nav-notify fl">
+              {{#link-to 'inbox.list'}}
+                {{#if session.unreadMessages.totalCount}}
+                  <img src="/images/static/notify-active.png"/>
+                  <span>{{session.unreadMessages.totalCount}}</span>
+                {{else}}
+                  <img src="/images/static/notify.png"/>
+                {{/if}}
+              {{/link-to}}
+            </div>
+            <div class="nav-list-space fl">
+                <button class="btn-list-space" {{action "listing"}}>List your space</button>
+            </div>
+          {{else}}
+              <div class="nav-login fl">
+                  <a class="sign_up_link" target="_blank"><p>Sign Up</p></a>
+                  <a class="login_link" target="_blank"><p>Log In</p></a>
+              </div>
+              <div class="nav-list-space fl">
+                  <button class="btn-list-space">List your space</button>
+              </div>
+          {{/if}}
         </div>
-        <!-- End container-->
     </div>
-    <!-- End top line-->
-</header><!-- End Header -->
+</div>
 
+<div class="overlay-full-screen"></div>
+<div class="resp-left-menu none-display-max display-768">
+    {{#if session.isAuthenticated}}
+        <div class="user-wrapper">
+            <div class="nav-user">
+              {{#if session.user.logo.downloadFilePath}}
+                  <img src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
+              {{else}}
+                  <img src="/images/user_unknown.png" title="Not Upload Yet" />
+              {{/if}}
+                <a href="javascript:;"><span>{{session.user.firstName}}</span></a>
+            </div>
+        </div>
+        <div class="wrapper with-user">
+            <div class="menu-container">
+                <ul>
+                  {{#link-to 'profile.edit-profile'}}<li>Profile</li>{{/link-to}}
+                  {{#link-to 'house.list'}}<li>Listings</li>{{/link-to}}
+                  {{#link-to 'house.list'}}<li>Inbox</li>{{/link-to}}
+                  {{#link-to 'wishlist'}}<li>Wishlist</li>{{/link-to}}
+                  <a href="javascript:;"><li>Search</li></a>
+                  <a href="javascript:;" {{action "invalidateSession" bubbles=true}}><li>Logout</li></a>
+                </ul>
+            </div>
+        </div>
+    {{else}}
+        <div class="wrapper">
+            <div class="menu-container">
+                <ul>
+                    <a class="sign_up_link" target="_blank"><li>Sign Up</li></a>
+                    <a class="login_link" target="_blank"><li>Log In</li></a>
+                    <a href="#"><li class="active">Where to live?</li></a>
+                    <a href="#"><li>Search</li></a>
+                </ul>
+            </div>
+        </div>
+    {{/if}}
+</div>
+
+<!-- 登录注册浮层 -->
+<div class="login-box dialog-box ">
+    <div class="login-tab">
+        <div class="tab login">Log In</div>
+        <div class="tab sign-up">Sign Up</div>
+    </div>
+    <div class="login-container">
+        <div class="login-form dialog-form" id="register_form">
+            {{input type="text" autocomplete="off" placeholder="First Name" value=newAccount.firstName}}
+            {{input type="text" autocomplete="off" placeholder="Email" value=newAccount.email}}
+            {{input type="password" autocomplete="off" placeholder="Password" value=newAccount.password}}
+            {{input type="password" autocomplete="off" placeholder="Confirm Password" value=newAccount.passwordConfirmation}}
+            <button type="submit" disabled {{action "register" newAccount}}>Sign Up</button>
+        </div>
+        <div class="login-form dialog-form" id="login_form" >
+            {{input value=identification placeholder='Email'}}
+            {{input value=password placeholder='Password' type='password'}}
+            <button type="submit" disabled {{action 'authenticate'}}>Log In</button>
+            <a href="javascript:;" id="forget_pwd_link"><p>Forgot password?</p></a>
+            <p class="danger">Invalid Email or Password</p>
+        </div>
+        <div class="login-other-way">
+            <p>or connect by</p>
+            <div class="other-ways">
+                <a href="#" target="_blank"><img src="/images/static/connect-wb.png" /></a>
+                <a href="#" target="_blank"><img src="/images/static/connect-qq.png" /></a>
+                <a href="#" target="_blank"><img src="/images/static/connect-fb.png" class="no-margin-right"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 登录注册浮层 -->
+
+<!-- 注册完成 -->
+<div class="reg-success-box dialog-box">
+    <div class="box-header">
+        Thanks for joining us
+    </div>
+    <div class="box-content">
+        <p class="intro">
+            We sent a confIrmation e-mail to you.
+            Please check your mailbox to finish the registration — and start enjoying FlatmateShanghai
+        </p>
+    </div>
+</div>
+<!-- 注册完成-->
+
+<!-- 忘记密码 -->
+<div class="forget-box dialog-box">
+    <div class="box-header">
+        Reset Password
+    </div>
+    <div class="box-content">
+        <p class="intro">Please enter your email address and we’ll send you instructions</p>
+        <div class="forget-form dialog-form" id="forget_form">
+            <input type="text" placeholder="Email"/>
+            <button type="submit" disabled>Submit</button>
+        </div>
+    </div>
+</div>
+<!-- 忘记密码 -->
+
+<!-- 重置密码 -->
+<div class="reset-box dialog-box">
+    <div class="box-header">
+        Reset Password
+    </div>
+    <div class="box-content">
+        <div class="reset-form dialog-form" id="reset_form">
+            <input type="password" placeholder="New password" />
+            <input type="password" placeholder="Verify password" />
+            <button type="submit" disabled>Okay</button>
+        </div>
+    </div>
+</div>
+<!-- 重置密码 -->

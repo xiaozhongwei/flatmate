@@ -1,8 +1,10 @@
-{{#each option in options}}
+{{#each options as |option index|}}
   {{multi-checkbox-option value=option
   valueProperty=valueProperty
   labelProperty=labelProperty
   selection=selection
-  disabled=disabled}}
+  disabled=disabled
+  type=type
+  index=index}}
 {{/each}}
 

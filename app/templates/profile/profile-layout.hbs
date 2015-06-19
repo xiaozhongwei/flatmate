@@ -1,38 +1,27 @@
-<div class="container margin_30">
-    <div class="row">
-
-        <aside class="col-lg-3 col-md-3">
-            <div class="widget">
-                <div id="tour_guide">
-                    <p style="margin-bottom: 10px;">
-                      {{#if session.user.logo.downloadFilePath}}
-                          <img src={{session.user.logo.downloadFilePath}} alt="" style="width:170px;" class="img-circle styled"/>
-                      {{else}}
-                          <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
-                      {{/if}}
-                    </p>
-                    <h5 style="margin:5px 0;font-weight:bold">{{model.fullName}}</h5>
-                    <p>Member Since {{model.createTime}}</p>
-                </div>
-            </div><!-- End Search -->
-            <hr>
-            <div class="other_tours ">
-                <ul>
-                    <li>{{#link-to 'profile.dashboard'}}<i class="icon_set_1_icon-50"></i>Dashboard<span class="other_tours_price"><span style="color:rgb(0,150,163)" class="icon-right-open"></span></span>{{/link-to}}</li>
-                    <li>{{#link-to 'profile.edit-profile'}}<i class="icon_set_1_icon-51"></i>Edit Profile<span class="other_tours_price"><span style="color:rgb(0,150,163)" class="icon-right-open"></span></span>{{/link-to}}</li>
-                    <li>{{#link-to 'profile.photo'}}<i class="icon_set_1_icon-3"></i>Upload Photo<span class="other_tours_price"><span style="color:rgb(0,150,163)" class="icon-right-open"></span></span>{{/link-to}}</li>
-                    <li>{{#link-to 'profile.change-password'}}<i class="icon_set_1_icon-4"></i>Security<span class="other_tours_price"><span style="color:rgb(0,150,163)" class="icon-right-open"></span></span>{{/link-to}}</li>
-                    <!--<li><a href="#"><i class="icon_set_1_icon-43"></i>Credit/Debit Cards<span class="other_tours_price"><span  class=" icon-ok"></span></span></a></li>-->
-                </ul>
+<div class="edit-container">
+    <div class="profile-left-nav">
+        <div class="nav-area">
+            <div class="user-info">
+              {{#if session.user.logo.downloadFilePath}}
+                  <img src={{session.user.logo.downloadFilePath}} />
+              {{else}}
+                  <img src="/images/user_unknown.png" />
+              {{/if}}
+              <p class="username">{{session.user.fullName}}</p>
+              <p class="join-date">Member Since {{session.user.createTime}}</p>
             </div>
-            <hr>
-            <p>
-              {{#link-to 'profile.view' session.user.id class="btn_map"}}View Profile{{/link-to}}
-            </p>
-        </aside>
-
-        <div class="col-md-9" style="padding-left:30px;">
-          {{yield}}
-        </div><!-- End col-md-9-->
-    </div><!-- End row-->
-</div><!-- End container -->
+            <ul>
+                {{#link-to 'profile.edit-profile'}}<li class={{if (eq _profileTitle 'Edit') 'active'}}><span></span>Edit Profile</li>{{/link-to}}
+                {{#link-to 'profile.change-password'}}<li class={{if (eq _profileTitle 'Security') 'active'}}><span></span>Password</li>{{/link-to}}
+                {{#link-to 'profile.photo'}}<li class={{if (eq _profileTitle 'Photo') 'active'}} ><span></span>Upload Photo</li>{{/link-to}}
+                <a href="javascript:;"><li><span></span>Payment Methods</li></a>
+            </ul>
+        </div>
+        <div class="view-profile">
+            {{#link-to 'profile.view' session.user.id}}<button class="op-btn btn-view-profile">View Profile</button>{{/link-to}}
+        </div>
+    </div>
+    <div class="profile-area">
+      {{yield}}
+    </div>
+</div>

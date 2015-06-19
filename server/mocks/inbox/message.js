@@ -20,7 +20,7 @@ module.exports = function(app) {
       }],
       meta: {
         totalCount: 25,
-        totalPage: 3
+        totalPage: 123
       }
     });
   });
@@ -35,6 +35,13 @@ module.exports = function(app) {
         id: req.params.id,
         speakerName:  'Jack',
         speakerPhoto: 'images/amaze_300x300.jpg',
+
+        checkinDate: '2015-08-08',
+        livingMonth: 12,
+        guestNumber: 2,
+        payCycleMapping: 3,
+        price: 2800,
+
         listingId: 1,
         listingTitle: '瑞虹温馨单间',
         lastContent:  'Lisa, I want to see the room first.',
@@ -48,7 +55,10 @@ module.exports = function(app) {
             senderPhoto: 'images/LISA_100.jpg',
             receiver: 1,
             receiverName: 'Jack',
-            receiverPhoto: 'images/amaze_300x300.jpg'
+            receiverPhoto: 'images/amaze_300x300.jpg',
+            listingTitle: '瑞虹温馨单间',
+            createTime: '2014-11-17 11:40:29',
+            mark: false
           },{
             id: 2,
             content: 'Can I visit the room first?',
@@ -57,7 +67,10 @@ module.exports = function(app) {
             senderPhoto: 'images/amaze_300x300.jpg',
             receiver: "1234",
             receiverName: 'Lisa',
-            receiverPhoto: 'images/LISA_100.jpg'
+            receiverPhoto: 'images/LISA_100.jpg',
+            listingTitle: '瑞虹温馨单间',
+            createTime: '2014-11-17 11:39:29',
+            mark: true
           }
         ]
       }

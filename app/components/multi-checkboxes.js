@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['multiselect-checkboxes'],
+  //classNames: ['home-amenities'],
 
-  tagName: 'ul',
+  classNameBindings: ['editable:home-amenities:intro-content'],
+
+  //tagName: 'ul',
 
   options: null,
 
@@ -13,5 +15,11 @@ export default Ember.Component.extend({
 
   labelProperty: null,
 
-  disabled: false
+  disabled: false,
+
+  type: 'edit',
+
+  editable: function () {
+    return this.get('type') === 'edit';
+  }.property('type')
 });

@@ -1,40 +1,23 @@
 {{#view 'profile/profile-layout'}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="font-size:22px;padding:5px 0;">{{_profileTitle}}</h3>
+    <div class="edit-panel">
+        <div class="panel-header">
+            Photo
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="widget">
-                        <div id="tour_guide">
-                            <p>
-                              {{#if session.user.logo.downloadFilePath}}
-                                  <img src="{{session.user.logo.downloadFilePath}}"  alt="" style="width: 200px;" class="img-circle styled"/>
-                              {{else}}
-                                  <img src="images/user_unknown.png" style="width: 200px;" alt="" class="img-circle styled"/>
-                              {{/if}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It's not much fun to host a landscape! Please upload a photo that clearly shows your face.</p>
-                    <div class="fileinput">
-                        <div class="input-group">
-                          <span class="btn btn-file upload_file_style" style=" padding-left: 0;">
-                            <span >
-                            {{#if session.user.logo}}
-                              {{em-file-field name="logo" url=uploadUrl accept="image/*" document=session.user.logo}}
-                            {{/if}}
-                            </span>
-                          </span>
-
-                        </div>
-                    </div>
-                </div>
+        <div class="panel-content">
+            <div class="photo-preview">
+                {{#if session.user.logo.downloadFilePath}}
+                    <a class="slide-img" style="background-image: url({{session.user.logo.downloadFilePath}})"></a>
+                {{else}}
+                    <a class="slide-img" style="background-image: url(images/user_unknown.png)"></a>
+                {{/if}}
+                <div class="overlay"></div>
             </div>
-            <div id="map-canvas" style="width:100%; height:400px;"></div>
+            <div class="photo-op">
+                {{#if session.user.logo}}
+                  {{em-file-field name="logo" id="upload_photo" style="display: none;" url=uploadUrl accept="image/*" document=session.user.logo}}
+                {{/if}}
+                <button id="btn_add_photo" class="op-btn btn-add-photo">Upload Photo</button>
+            </div>
         </div>
     </div>
 {{/view}}

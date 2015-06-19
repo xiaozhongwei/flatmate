@@ -1,5 +1,5 @@
 export default EmberUploader.FileField.extend({
-    attributeBindings: ['name'],
+    attributeBindings: ['name','style','id'],
     name: "",
     url: "",
     filesDidChanged: (function() {

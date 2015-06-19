@@ -1,173 +1,97 @@
-<h2>{{model.bedrooms}} rooms</h2>
-<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+<div class="alert-block">
   {{#if session.user.logo.downloadFilePath}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
   {{else}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src="images/user_unknown.png" title={{session.user.firstName}}>
   {{/if}}
-    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">You can list your room now!</span>
+    <p>Tell us about your flatmates</p>
 </div>
 
-<div class="box_style_2" style="border-top:none;border-radius: 0;padding:10px 0;">
-    {{#each model.flatmates as |flatmate index|}}
-      {{#if index}}<hr>{{/if}}
-      <div class="panel-body" {{action "saveFlatmate" flatmate on="mouseLeave"}}>
-          <div class="row">
-              <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                  <span class="radius-number" style="margin-top: 0">{{room-index index}}</span>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: left">
-                  <div>
-                    {{select-2
-                    content=roomStatusMapping
-                    value=flatmate.status
-                    optionValuePath="id"
-                    searchEnabled=false
-                    }}
-                  </div>
-              </div>
-              <div class="col-lg-8 col-md-8 col-sm-8" style="text-align: left">
-                  {{#if flatmate.isOccupied}}
-                    {{#if flatmate.isEditing}}
-                        <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
-                        <div style="display: inline-block;width: 20%">
-                          {{select-2
-                          content=countryMapping
-                          value=flatmate.country
-                          optionValuePath="id"
-                          placeholder="Country"
-                          }}
-                        </div>
-                        <div style="display: inline-block;width: 20%">
-                          {{select-2
-                          content=occupationMapping
-                          value=flatmate.occupation
-                          optionValuePath="id"
-                          placeholder="Occupation"
-                          }}
-                        </div>
-                        <div style="display: inline-block;width: 20%">
-                          {{select-2
-                          content=genderMapping
-                          value=flatmate.gender
-                          optionValuePath="id"
-                          searchEnabled=false
-                          placeholder="Gender"
-                          }}
-                        </div>
-                    {{else}}
-                        <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""> </div>
-                        <div style="display: inline-block;">
-                          {{flatmate.country}}.{{flatmate.occupation}}.{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}.
-                        </div>
-                        <a href="javascript:;" class="btn_1 pull-right" {{action "editFlatmate" flatmate}}>Change</a>
-                        <a href="javascript:;" class="btn_1 pull-right" {{action "deleteFlatmate" flatmate}}>Remove</a>
-                    {{/if}}
+<div class="op-wrapper">
+    <div class="op-form margin-top-20">
+        <div class="flatmate-list">
+          {{#each model.flatmates as |flatmate index|}}
+            {{#if flatmate.isOccupied}}
+                <div class="single-flatmate {{if flatmate.isFinished 'occupied' 'danger'}}">
+                    <div class="seq">
+                      {{room-index index}}
+                    </div>
+                    <div class="select-block is-available">
+                      {{select-2
+                      content=roomStatusMapping
+                      value=flatmate.status
+                      optionValuePath="id"
+                      searchEnabled=false
+                      }}
+                    </div>
+                  {{#if flatmate.isEditing}}
+                      <div class="user-header">
+                          <img src="/images/static/LISA_100.jpg"/>
+                      </div>
+                      <div class="select-block country">
+                        {{select-2
+                        content=countryMapping
+                        value=flatmate.country
+                        optionValuePath="id"
+                        placeholder="Country"
+                        }}
+                      </div>
+                      <div class="select-block job">
+                        {{select-2
+                        content=occupationMapping
+                        value=flatmate.occupation
+                        optionValuePath="id"
+                        placeholder="Occupation"
+                        }}
+                      </div>
+                      <div class="sex-select btn-group fr">
+                          <button class="col-2 {{if (eq flatmate.gender '1') 'active'}}" {{action "changeGender" flatmate '1'}}>Guy</button>
+                          <button class="col-2 {{if (eq flatmate.gender '2') 'active'}}" {{action "changeGender" flatmate '2'}}>Girl</button>
+                      </div>
                   {{else}}
-                      <a href="javascript:;" class="btn_1 pull-right" {{action "save" listing}}>List the room</a>
-                      <a href="javascript:;" class="btn_1 pull-right" {{action "deleteFlatmate" flatmate}}>Remove</a>
+                      <div class="img_list" style="margin-right: 20%"><img src="images/tour_box_1.jpg" alt=""></div>
+                      <div style="display: inline-block;">
+                        {{flatmate.country}}.{{flatmate.occupation}}.{{if (eq flatmate.gender '1') 'Guy' 'Girl'}}.
+                      </div>
+                      <a href="javascript:;" class="btn_1 pull-right" {{action "editFlatmate" flatmate}}>Change</a>
+                      <a href="javascript:;"
+                         class="btn_1 pull-right" {{action "deleteFlatmate" flatmate}}>Remove</a>
                   {{/if}}
-              </div>
-          </div>
-      </div>
-    {{/each}}
 
-   <!-- <hr>
-    <div class="panel-body"  style="background: rgb(247,247,247)">
-        <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                <span class="radius-number" style="margin-top: 0">A</span>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
-                <div class="styled-select-filters" style="display: inline-block;width: 55%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
+                    <div class="remove" {{action "deleteFlatmate" flatmate}}>
+                        <img src="/images/static/remove.png"/>
+                    </div>
                 </div>
-                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
-            </div>
-            <div class="col-lg-7 col-md-7 col-sm-7">
-                <div class="styled-select-filters" style="display: inline-block;width: 33%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
+            {{else}}
+                <div class="single-flatmate available">
+                    <div class="seq">
+                      {{room-index index}}
+                    </div>
+                    <div class="select-block is-available">
+                      {{select-2
+                      content=roomStatusMapping
+                      value=flatmate.status
+                      optionValuePath="id"
+                      searchEnabled=false
+                      }}
+                    </div>
+
+                    <button class="btn-list-room fr" disabled>List the room</button>
+                    <button class="btn-list-room fr" {{action "editRoom" flatmate}}>List the room</button>
+
+                    <div class="remove" {{action "deleteFlatmate" flatmate}}>
+                        <img src="/images/static/remove.png"/>
+                    </div>
                 </div>
-                <div class="styled-select-filters" style="display: inline-block;width: 32%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-                <div class="styled-select-filters" style="display: inline-block;width: 30%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-            </div>
+            {{/if}}
+          {{/each}}
+        </div>
+        <div class="add-flatmate add-block" {{action "addFlatmate"}}>
+            <img src="/images/static/Add.png">
+
+            <p>Add room</p>
         </div>
     </div>
-    <hr>
-    <div class="panel-body" style="background: rgb(250,244,244)">
-        <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                <span class="radius-number" style="margin-top: 0">A</span>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left">
-                <div class="styled-select-filters" style="display: inline-block;width: 55%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-                <div class="img_list"><img src="images/tour_box_1.jpg" alt=""> </div>
-            </div>
-            <div class="col-lg-7 col-md-7 col-sm-7">
-                <div class="styled-select-filters" style="display: inline-block;width: 33%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-                <div class="styled-select-filters" style="display: inline-block;width: 32%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-                <div class="styled-select-filters" style="display: inline-block;width: 30%">
-                    <select name="sort_price" id="sort_price">
-                        <option value="" selected="">Sort by price</option>
-                        <option value="lower">Lowest price</option>
-                        <option value="higher">Highest price</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>-->
-</div>
-
-<div class="panel-body" style="border:2px dashed rgb(221,221,221);padding:30px 15px; ">
-    <a href="javascript:;" {{action "addFlatmate"}}>
-        <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1" style="margin-top:3px;">
-                <span class="radius-number" style="margin-top: 0">+</span>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left;padding-top: 8px;" >
-                <span style="font-weight: bold;font-size:16px;">Add a room</span>
-            </div>
-        </div>
-    </a>
-
 </div>

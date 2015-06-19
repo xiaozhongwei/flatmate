@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['multiselect-checkbox-option'],
-  classNameBindings: ['isSelected:checked'],
+  classNames: ['single-checkbox'],
+  classNameBindings: ['isOdd:odd'],
 
-  tagName: 'li',
+  //tagName: 'li',
 
   value: null,
 
@@ -15,6 +15,14 @@ export default Ember.Component.extend({
   labelProperty: null,
 
   disabled: false,
+
+  type: 'edit',
+
+  index: null,
+
+  isOdd: function(){
+    return parseInt(this.get('index')) % 2 === 0;
+  }.property('index'),
 
   isSelected: function (_, checked) {
     var valueProperty = this.get('valueProperty');

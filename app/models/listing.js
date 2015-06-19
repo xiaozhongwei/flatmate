@@ -9,13 +9,15 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     title: { presence: true },
     description: { presence: true },
     deposit: { presence: true, numericality: { onlyInteger: true}},
-    perMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
-    perThreeMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
-    perSixMonthPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}},
-    perYearPrice: {numericality: { allowBlank: true, onlyInteger: true, greaterThanOrEqualTo: 1000}}
+    perMonthPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}},
+    perThreeMonthPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}},
+    perSixMonthPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}},
+    perYearPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}}
   },
 
   availableDate: DS.attr(),                   // 可入住时间
+
+  index: DS.attr(),                           // index
 
   title: DS.attr(),
   description: DS.attr(),
@@ -40,7 +42,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   creatorPhoto: DS.attr(),                    // 创建者头像
   creatorDescription: DS.attr(),              // 创建者描述
 
-  similarListings: DS.hasMany('listings', {async: true}),    //相似房源
+  tenants: DS.hasMany('listing/tenant', {async: true}),
+  similarListings: DS.hasMany('listing', {async: true}),    //相似房源
 
   lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
     var lowestPrice = 0;

@@ -1,0 +1,25 @@
+{{#unless pager}}
+  <a {{bind-attr href=previousUrl}} {{action 'previous'}}>
+    <li {{bind-attr class=':nav isFirst:disabled'}}>
+      <span class="triangle prev"></span>
+    </li>
+  </a>
+
+  {{#each page in pages}}
+    {{em-page-item page=page selected=current seperator=seperator urlTemplate=urlTemplate pageSet='pageChanged'}}
+  {{/each}}
+
+  <a {{bind-attr href=nextUrl}} {{action 'next'}}>
+    <li {{bind-attr class=':nav isLast:disabled'}}>
+        <span class="triangle next"></span>
+    </li>
+  </a>
+{{else}}
+  <li {{bind-attr class='pagerSpread:previous isFirst:disabled'}}>
+    <a {{bind-attr href=previousUrl}} {{action 'previous'}}>{{pagerPrevious}}</a>
+  </li>
+
+  <li {{bind-attr class='pagerSpread:next isLast:disabled'}}>
+    <a {{bind-attr href=nextUrl}} {{action 'next'}}>{{pagerNext}}</a>
+  </li>
+{{/unless}}

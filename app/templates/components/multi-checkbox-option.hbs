@@ -1,9 +1,11 @@
-<label>
-  {{input type="checkbox" checked=isSelected disabled=disabled}}
-  {{#if (and disabled (not isSelected))}}
-    <s>{{label}}</s>
+{{#if (eq type 'edit')}}
+  {{input type="checkbox" checked=isSelected disabled=disabled id=label}} <label for="{{label}}"><span></span>{{label}}</label>
+{{else}}
+  {{#if isSelected}}
+      <img src="/images/static/check-yes.png"><span class="element">{{label}}</span>
   {{else}}
-    {{label}}
+      <img src="/images/static/check-no.png"><span class="element deleted">{{label}}</span>
   {{/if}}
-</label>
+
+{{/if}}
 

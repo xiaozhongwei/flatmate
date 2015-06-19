@@ -25,7 +25,10 @@ module.exports = function(app) {
                 {id:"61",index: 1, imageUrl:"images/post-5.jpg"},
                 {id:"62",index: 0, imageUrl:"images/post-5.jpg"}
               ],
-              status: 0
+              status: 0,
+              "links":{
+                "tenants":"/api/listing/tenants?listingId=6"
+              }
             }, {
               id: "7",
               title: "Listing 2",
@@ -109,107 +112,187 @@ module.exports = function(app) {
   });
 
   listingHouseRouter.post('/', function(req, res) {
+    req.body["listing/house"].id = (new Date()).getTime();
+
     if(req.body["listing/house"].rentType == "entire"){
+      req.body["listing/house"].listings = [{
+        "id": (new Date()).getTime(),
+        "perMonthPrice": 0,
+        "perThreeMonthPrice": 0,
+        "perSixMonthPrice": 1800,
+        "perYearPrice": 0,
+        "deposit": 0,
+        "status": 0
+      }];
+
+    }
+    else{
+      //res.send({
+      //  'listing/house': {
+      //    "id": (new Date()).getTime(),
+      //    "bathrooms": 0,
+      //    "bedrooms": 0,
+      //    "livingRooms": 0,
+      //    "createType": 0,
+      //    "rentType": "share"
+      //  }
+      //});
+    }
+    res.send(req.body);
+    res.status(201).end();
+  });
+
+  listingHouseRouter.get('/:id', function(req, res) {
+    if(req.params.id < 10000){
       res.send({
         'listing/house': {
-          "id": (new Date()).getTime(),
-          "bathrooms": 0,
-          "bedrooms": 0,
-          "livingRooms": 0,
+          id: req.params.id,
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "livingRooms": 1,
           "createType": 0,
-          "rentType": "entire",
-          "listings": [{
-            "id": (new Date()).getTime(),
-            "perMonthPrice": 0,
-            "perThreeMonthPrice": 0,
-            "perSixMonthPrice": 1800,
-            "perYearPrice": 0,
-            "deposit": 0,
+          size: "100",
+          //"rentType": "entire",
+          "rentType": "share",
+          //"publishStep": 1,
+          listings: [{
+            id: "1",
+            index: 1,
+            title: "舒适向南单间",
+            photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
+            status: 0,
+            "links":{
+              "tenants":"/api/listing/tenants?listingId=1"
+            }
+          },{
+            id: "2",
+            index: 3,
+            status: 0,
+            "links":{
+              "tenants":"/api/listing/tenants?listingId=3"
+            }
+          },{
+            id: "3",
+            index: 3,
+            status: 0,
+            "links":{
+              "tenants":"/api/listing/tenants?listingId=3"
+            }
+          },{
+            id: "4",
+            index: 4,
+            status: 0,
+            "links":{
+              "tenants":"/api/listing/tenants?listingId=3"
+            }
+          }],
+          "flatmates": [{
+            "id": "1",
+            "index": 1,
+            "listingId": "1",
             "status": 0
-          }]
+          }, {
+            "id": "2",
+            "index": 2,
+            "listingId": "2",
+            "status": 0
+          }, {
+            "id": "3",
+            "index": 3,
+            "listingId": "3",
+            "status": 1,
+            "country": "USA",
+            "occupation": "Student",
+            "gender": "1"
+          }, {
+            "id": "4",
+            "index": 4,
+            "listingId": "4",
+            "status": 1,
+            "country": "UK",
+            "occupation": "Student",
+            "gender": "2"
+          }],
+          photos: [{id: "21", index:0, imageUrl:"images/post-5.jpg"}],
+          amenities: ["WashingMachine","Aircon","TV"]
         }
       });
     }
     else{
       res.send({
         'listing/house': {
-          "id": (new Date()).getTime(),
-          "bathrooms": 0,
-          "bedrooms": 0,
-          "livingRooms": 0,
+          id: req.params.id,
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "livingRooms": 1,
           "createType": 0,
-          "rentType": "share"
+          size: "100",
+          "rentType": "entire",
+          //"rentType": "share",
+          //"publishStep": 1,
+          listings: [{
+            id: "1",
+            index: 1,
+            title: "舒适向南单间",
+            photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
+            status: 0,
+            "links":{
+              "tenants":"/api/listing/tenants?listingId=1"
+            }
+          }],
+          photos: [{id: "21", index:0, imageUrl:"images/post-5.jpg"}],
+          amenities: ["WashingMachine","Aircon","TV"]
         }
       });
     }
-    res.status(201).end();
-  });
 
-  listingHouseRouter.get('/:id', function(req, res) {
-    res.send({
-      'listing/house': {
-        id: req.params.id,
-        "bedrooms": 4,
-        "bathrooms": 2,
-        "livingRooms": 1,
-        "createType": 0,
-        size: "100",
-        //"rentType": "entire",
-        "rentType": "share",
-        listings: [{
-          id: "1",
-          title: "舒适向南单间",
-          photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
-          status: 0
-        },{
-          id: "2",
-          status: 0
-        },{
-          id: "3",
-          status: 0
-        },{
-          id: "4",
-          status: 0
-        }],
-        "flatmates": [{
-          "id": "1",
-          "index": 1,
-          "listingId": "1",
-          "status": 0
-        }, {
-          "id": "2",
-          "index": 2,
-          "listingId": "2",
-          "status": 0
-        }, {
-          "id": "3",
-          "index": 3,
-          "listingId": "3",
-          "status": 1,
-          "country": "USA",
-          "occupation": "Student",
-          "gender": 1
-        }, {
-          "id": "4",
-          "index": 4,
-          "listingId": "4",
-          "status": 1,
-          "country": "UK",
-          "occupation": "Student",
-          "gender": 2
-        }],
-        photos: [{id: "21", index:0, imageUrl:"images/post-5.jpg"}],
-        amenities: ["WashingMachine","Aircon","TV"]
-      }
-    });
   });
 
   listingHouseRouter.put('/:id', function(req, res) {
-    res.send({
-      'listing/house': {
-        id: req.params.id
-      }
-    });
+    req.body["listing/house"].id = req.params.id;
+    req.body["listing/house"].listings = [{
+      id: "1",
+      title: "舒适向南单间",
+      photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
+      status: 0
+    },{
+      id: "2",
+      status: 0
+    },{
+      id: "3",
+      status: 0
+    },{
+      id: "4",
+      status: 0
+    }];
+    req.body["listing/house"].flatmates = [{
+      "id": "1",
+      "index": 1,
+      "listingId": "1",
+      "status": 0
+    }, {
+      "id": "2",
+      "index": 2,
+      "listingId": "2",
+      "status": 1
+    }, {
+      "id": "3",
+      "index": 3,
+      "listingId": "3",
+      "status": 1,
+      "country": "USA",
+      "occupation": "Student",
+      "gender": '1'
+    }, {
+      "id": "4",
+      "index": 4,
+      "listingId": "4",
+      "status": 1,
+      "country": "UK",
+      "occupation": "Student",
+      "gender": '2'
+    }];
+    res.send(req.body);
   });
 
   listingHouseRouter.delete('/:id', function(req, res) {

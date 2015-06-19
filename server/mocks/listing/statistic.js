@@ -16,6 +16,14 @@ module.exports = function(app) {
         id: 3,
         type: "Unlisted",
         count: 20
+      },{
+        id: 4,
+        type: "Apt",
+        count: 20
+      },{
+        id: 5,
+        type: "Rooms",
+        count: 20
       }]
     });
   });
@@ -27,7 +35,10 @@ module.exports = function(app) {
   listingStatisticRouter.get('/:id', function(req, res) {
     res.send({
       'listing/statistic': {
-        id: req.params.id
+        id: req.params.id,
+        totalCount: 67,
+        entireCount: 24,
+        shareCount: 43
       }
     });
   });

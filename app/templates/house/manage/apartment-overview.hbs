@@ -1,216 +1,103 @@
-<h2>Overview</h2>
-<div style="background:rgb(229,245,246) ;border:1px solid rgb(229, 245, 246);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
+<div class="alert-block">
   {{#if session.user.logo.downloadFilePath}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src={{session.user.logo.downloadFilePath}} title={{session.user.firstName}} />
   {{else}}
-      <img style="border-radius:50%;width:60px;margin-right:10px;border:1px solid white"
+      <img class="user-header"
            src="images/user_unknown.png" title={{session.user.firstName}}>
   {{/if}}
-    <span style="display: inline-block;margin-left:20px;font-size:18px;padding-top:26px;font-weight: bold;">Hi! Tell people about your beautiful apartment</span>
-</div>
-<div style="margin-top:20px;margin-bottom:20px; border:1px solid rgb(217, 217, 217);padding-top:3px;padding-left:10px; height: 80px;margin-top:20px;width: 100%">
-  {{#if model.showName}}
-    {{#each model.listings as |listing index|}}
-        <span class="radius-number-1 radius-number-gary" style="display: inline-block;margin-right:5px;">{{room-index index}}</span>
-    {{/each}}
-      <span style="display: inline-block;margin-left:40px;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">
-        {{model.area}} → {{model.compound}}, building {{model.building}} → Floor {{model.floor}} {{#if model.doorplate}}, {{model.doorplate}}{{/if}}</span>
-  {{else}}
-      <span style="display: inline-block;color:rgb(202,202,202);font-size:15px;padding-top:26px;font-weight: bold;">New apartment. No worries, name generates automaticly</span>
-  {{/if}}
-
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title" style="font-size:22px;padding:5px 0;">Basics</h3>
-    </div>
-    <div class="panel-body">
-        <form class="form-horizontal" action="#">
-            <div class="form-group">
-                <label class="col-md-2 control-label">Area</label>
-                <div class="col-md-6">
-                  {{select-2
-                  content=areaMapping
-                  value=model.area
-                  optionValuePath="id"
-                  placeholder="Choose the Area"
-                  }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label">Compound</label>
-                <div class="col-md-6">
-                  {{select-2
-                  content=compoundMapping
-                  value=model.compound
-                  optionValuePath="id"
-                  placeholder="Choose the Compound"
-                  }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-2 control-label">Metro</label>
-                <div class="col-md-6">
-                  {{select-2
-                  content=stationMapping
-                  value=model.metroStations
-                  optionValuePath="id"
-                  multiple=true
-                  placeholder="Choose the Metro"
-                  }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label">Size</label>
-                <div class="col-md-2">
-                  {{input class="form-control" type="text" autocomplete="off" value=model.size}}
-                </div>
-            </div>
-            <div class="form-group" style="padding-top: 30px">
-                <label class="col-md-2 control-label"></label>
-                <div class="col-md-2">
-                    Building
-                  {{select-2
-                  content=buildingMapping
-                  value=model.building
-                  optionValuePath="id"
-                  }}
-                </div>
-                <div class="col-md-2">
-                    Floor
-                  {{select-2
-                  content=floorMapping
-                  value=model.floor
-                  optionValuePath="id"
-                  }}
-                </div>
-                <div class="col-md-2">
-                    Doorplate
-                  {{input class="form-control" type="text" autocomplete="off" value=model.doorplate}}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label"></label>
-                <div class="col-md-2">
-                    Bedrooms
-                  {{select-2
-                  content=roomNumberMapping
-                  enabled=model.bedroomEditable
-                  value=model.bedrooms
-                  optionValuePath="id"
-                  }}
-                </div>
-                <div class="col-md-2">
-                    Bathrooms
-                  {{select-2
-                  content=roomNumberMapping
-                  value=model.bathrooms
-                  optionValuePath="id"
-                  }}
-                </div>
-                <div class="col-md-2">
-                    Living Rooms
-                  {{select-2
-                  content=roomNumberMapping
-                  value=model.livingRooms
-                  optionValuePath="id"
-                  }}
-                </div>
-            </div>
-        </form>
-    </div>
+    <p>Tell us about your apartment</p>
 </div>
 
 {{#unless model.isShared}}
   {{#each model.listings as |listing index|}}
     {{#unless index}}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title" style="font-size:22px;padding:5px 0;">Description and Payment</h3>
+        <div class="edit-form margin-top-25">
+            <div class="group-row">
+                <label for="title" class="sub-title">Write a title</label>
+              {{input id="title" type="text" autocomplete="off" placeholder="Write a title" value=listing.title}}
             </div>
-            <div class="panel-body">
-                <form class="form-horizontal" action="#">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Title</label>
+            <div class="group-row  margin-top-25">
+                <label for="description" class="sub-title">Description</label>
+              {{textarea id="description" placeholder="Write a description in 250 characters or less" value=listing.description}}
+            </div>
 
-                        <div class="col-md-8">
-                          {{input class="form-control" type="text" autocomplete="off" placeholder="Write a title" value=listing.title}}
-                        </div>
+            <div class="group-row with-title">
+                <label class="title">Payment</label>
+                <div class="payment clearfix">
+                    <div class="col">
+                        <p class="title"><span class="radius-number-1 {{unless listing.perMonthPrice 'radius-number-gary'}}">1</span></p>
+                      {{input type="text" autocomplete="off" value=listing.perMonthPrice}}
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Description</label>
+                    <div class="col">
+                        <p class="title"><span class="radius-number-1 {{unless listing.perThreeMonthPrice 'radius-number-gary'}}">3</span></p>
+                      {{input class="form-control" type="text" autocomplete="off" value=listing.perThreeMonthPrice}}
+                    </div>
+                    <div class="col">
+                        <p class="title"><span class="radius-number-1 {{unless listing.perSixMonthPrice 'radius-number-gary'}}">6</span></p>
+                      {{input class="form-control" type="text" autocomplete="off" value=listing.perSixMonthPrice}}
+                    </div>
+                    <div class="col">
+                        <p class="title"><span class="radius-number-1 {{unless listing.perYearPrice 'radius-number-gary'}}">12</span></p>
+                      {{input class="form-control" type="text" autocomplete="off" value=listing.perYearPrice}}
+                    </div>
+                </div>
 
-                        <div class="col-md-8">
-                          {{textarea class="form-control" type="area" rows="5" placeholder="Help other people get to know your apartment." value=listing.description}}
-                        </div>
+                <div class="payment clearfix">
+                    <div class="col">
+                        <p class="title">Deposit</p>
+                      {{input type="text" autocomplete="off" value=listing.deposit}}
                     </div>
-                    <div class="form-group" style="padding-top: 30px">
-                        <label class="col-md-2 control-label">Pay cycle</label>
-                        <div class="col-md-2 text-center">
-                            <span class="radius-number-1 {{unless listing.perMonthPrice 'radius-number-gary'}}">1</span>
-                        </div>
-                        <div class="col-md-2 text-center">
-                            <span class="radius-number-1 {{unless listing.perThreeMonthPrice 'radius-number-gary'}}">3</span>
-                        </div>
-                        <div class="col-md-2 text-center">
-                            <span class="radius-number-1 {{unless listing.perSixMonthPrice 'radius-number-gary'}}">6</span>
-                        </div>
-                        <div class="col-md-2 text-center">
-                            <span class="radius-number-1 {{unless listing.perYearPrice 'radius-number-gary'}}">12</span>
-                        </div>
+                    <div class="col">
+                        <p class="title">Service Fee</p>
+                      {{input type="text" autocomplete="off" value=listing.serviceFee}}
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Price</label>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.perMonthPrice}}
-                        </div>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.perThreeMonthPrice}}
-                        </div>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.perSixMonthPrice}}
-                        </div>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.perYearPrice}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Deposit</label>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.deposit}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Service Fee</label>
-                        <div class="col-md-2">
-                          {{input class="form-control" type="text" autocomplete="off" value=listing.serviceFee}}
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     {{/unless}}
   {{/each}}
 {{/unless}}
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title" style="font-size:22px;padding:5px 0;">Amenities</h3>
-    </div>
-    <div class="panel-body">
-      {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' selection=model.amenities}}
+<div class="op-wrapper">
+    <div class="op-form">
+        <p class="sub-title">Details</p>
+        <div class="home-detail clearfix">
+            <div class="col">
+                <p class="title">Bedrooms</p>
+              {{select-2
+              content=roomNumberMapping
+              enabled=model.bedroomEditable
+              value=model.bedrooms
+              optionValuePath="id"
+              }}
+            </div>
+            <div class="col">
+                <p class="title">Living Rooms</p>
+              {{select-2
+              content=roomNumberMapping
+              value=model.bathrooms
+              optionValuePath="id"
+              }}
+            </div>
+            <div class="col">
+                <p class="title">Bathrooms</p>
+              {{select-2
+              content=roomNumberMapping
+              value=model.livingRooms
+              optionValuePath="id"
+              }}
+            </div>
+            <div class="col">
+                <p class="title">Size,m2</p>
+              {{input type="text" autocomplete="off" value=model.size}}
+            </div>
+        </div>
+        <hr/>
+
+        <p class="sub-title">Amenities</p>
+        <div class="clearfix">
+          {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' selection=model.amenities}}
+        </div>
     </div>
 </div>
-
-<style>
-    .multiselect-checkboxes { list-style-type: none; margin: 0; padding: 5px; }
-    .multiselect-checkbox-option { float: left; width: 33.3%;}
-    .multiselect-checkbox-option input{
-        width: 18px;
-        margin-right: 5px;
-        height: 18px;
-    }
-</style>

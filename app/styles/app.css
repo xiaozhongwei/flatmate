@@ -1,7 +1,13 @@
-@import url("style.css");										/* Main theme styles */
-@import url("menu.css");										/* Menu styles */
-@import url("blog.css");										/* Blog styles */
-@import url("responsive.css");							/* Responsive */
-@import url("magnific-popup.css");					/* Lightbox & dialog script */
-@import url("color-orange.css");					  /* orange */
-@import url("extension.css");					      /* extension */
+/*
+
+@import url("style.css");										/!* Main theme styles *!/
+@import url("menu.css");										/!* Menu styles *!/
+@import url("blog.css");										/!* Blog styles *!/
+@import url("responsive.css");							/!* Responsive *!/
+@import url("magnific-popup.css");					/!* Lightbox & dialog script *!/
+@import url("color-orange.css");					  /!* orange *!/
+@import url("extension.css");					      /!* extension *!/
+*/
+
+@import url("style.flatmate.css");
+@import url("style.resp.css");

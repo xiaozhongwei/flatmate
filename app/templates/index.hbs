@@ -1,159 +1,167 @@
-<style>
-    .find-it{
-        text-transform: initial  !important; padding-top: 10px !important; padding-bottom: 10px !important;
-    }
-</style>
-<section class="header-video">
-    <div id="hero_video">
-        <div class="intro_title" >
-            <h1 class="animated fadeInDown" style="font-weight: normal;text-transform: none;">Find a nice appartment at Shanghai </h1>
-            <p class="animated fadeInDown" style="color:rgb(0,150,164);margin-top: 22px;margin-bottom: 33px;font-size:45px;text-transform:none">500 + Listings</p>
-          {{#link-to 'listing.list' class="animated fadeInUp button_intro btn_1 medium find-it"}}Find it!{{/link-to}}
-            <a  href="https://www.youtube.com/watch?v=Zz5cu72Gv5Y" class="video animated fadeInUp button_intro outline">Play video</a>
+<!-- 首页导航 -->
+<!-- 主体内容 -->
+<div class="main-container">
+    <!-- 首页大图 -->
+    <div class="main-slide">
+        <div class="single-slide">
+            <div class="overlay-15"></div>
+            <a class="slide-img" style="background-image: url(/images/static/index-slide-1.jpg)"></a>
+            <a class="slide-img" style="background-image: url(/images/static/index-slide-1.jpg)"></a>
+            <a class="slide-img" style="background-image: url(/images/static/index-slide-1.jpg)"></a>
+            <a class="slide-img" style="background-image: url(/images/static/index-slide-1.jpg)"></a>
+        </div>
+        <div class="slide-info">
+            <p class="slide-txt-2">Find a home at Shanghai</p>
+            {{#link-to 'listing.list' }}
+                <div class="btn-slide-rent">
+                    <p>Yes, find!</p>
+                </div>
+            {{/link-to}}
         </div>
     </div>
-    <img src=""  alt="" class="header-video--media" data-video-src="Zz5cu72Gv5Y"  data-teaser-source="http://testdasd.qiniudn.com/test" data-provider="Youtube" data-video-width="854" data-video-height="480">
-    <div id="search_bar_container" style="z-index:5">
-        <div class="container" style="padding-top: 25px;padding-bottom: 12px;">
-            <div class="col-md-6" style=" text-align: left;color: white; font-size: 14px;padding-left:0">
-                <span>FlatmateShanghai ©2015</span>
+    <!-- 首页大图 -->
+    <div class="main-wrapper">
+        <!-- 优势1 -->
+        <div class="block clearfix">
+            <h2>Want to rent a flat?</h2>
+            <div class="block-container none-display-768">
+                <div class="advantage-slide">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-adv-1.png)">
+                        <div class="slide-txt-over-pic">
+                            <div class="overlay-15"></div>
+                            <img src="/images/static/1.png" />
+                            <p class="slide-txt-2">EASY</p>
+                        </div>
+                    </a>
+                    <div class="slide-txt">
+                        <p>80% of apartments in the FlatmateShanghai shall in the first set the adequate price</p>
+                    </div>
+                </div>
+                <div class="advantage-slide">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-adv-2.png)">
+                        <div class="slide-txt-over-pic">
+                            <div class="overlay-15"></div>
+                            <img src="/images/static/2.png" />
+                            <p class="slide-txt-2">FAST</p>
+                        </div>
+                    </a>
+                    <div class="slide-txt">
+                        <p>She found a room for one day, and meters from the residence of the former!</p>
+                    </div>
+                </div>
+                <div class="advantage-slide no-margin-right">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-adv-3.png)">
+                        <div class="slide-txt-over-pic">
+                            <div class="overlay-15"></div>
+                            <img src="/images/static/3.png" />
+                            <p class="slide-txt-2">SAFE</p>
+                        </div>
+                    </a>
+                    <div class="slide-txt">
+                        <p>We provide all the nessesary documents for rent. You can of the apartment</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6" style="text-align:right;padding-right: 0;font-size:14px;">
-                <div>
-                    <ul>
-                        <li style="display: inline-block;padding:0 20px;">
-                            <a href="#" style="color:white">About</a>
-                        </li>
-                        <li style="display: inline-block;padding:0 20px">
-                            <a href="javascript:;">How It Works</a>
-                        </li>
-                        <li style="display: inline-block;padding-left:20px;"><a href="#" style="color:white">Contact</a></li>
-                    </ul>
+            <div class="block-container clearfix none-display-max">
+                <div class="advantage-slide">
+                    <a class="slide-img" style="background-image: url(/images/static/bg2.jpg)">
+                        <div class="slide-txt-over-pic">
+                            <p class="slide-txt-2">
+                                IT IS EASY. <br/>AND IT IS SAFE WITH US<br/>
+                                CONNECT WITH HOSTS, <br/>CONFIRM DATES, AND PAY— <br/>
+                                ALL THROUGH SHFLAMATES<br/> TRUSTED SERVICES
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
+        <!-- 优势1 -->
+        <!-- where2live -->
+        <div class="block clearfix">
+            <h2>Where to live?</h2>
+            <div class="block-container live-slide-list">
+                <div class="live-slide live-double-slide">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-pudong.png)" ></a>
+                    <div class="overlay-15"></div>
+                    <div class="slide-txt-over-pic">
+                        <img src="/images/static/pudong.png" />
+                        <p class="location">PUDONG</p>
+                    </div>
+                </div>
+                <div class="live-slide no-margin-right with-intro margin-right-1280">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-hongkou.png)" ></a>
+                    <div class="overlay-15"></div>
+                    <div class="slide-txt-over-pic">
+                        <img src="/images/static/hongkou.png" />
+                        <p class="location">HONGKOU</p>
+                    </div>
+                </div>
+                <div class="live-slide">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-jingan.png)" ></a>
+                    <div class="overlay-15"></div>
+                    <div class="slide-txt-over-pic">
+                        <img src="/images/static/jingan.png" />
+                        <p class="location">JING'AN</p>
+                    </div>
+                </div>
+                <div class="live-slide margin-right-1280">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-xuhui.png)" ></a>
+                    <div class="overlay-15"></div>
+                    <div class="slide-txt-over-pic">
+                        <img src="/images/static/xuhui.png" />
+                        <p class="location">XUHUI</p>
+                    </div>
+                </div>
+                <div class="live-slide no-margin-right">
+                    <a class="slide-img" style="background-image: url(/images/static/bg-changning.png)" ></a>
+                    <div class="overlay-15"></div>
+                    <div class="slide-txt-over-pic">
+                        <img src="/images/static/changning.png" />
+                        <p class="location">CHANGNING</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- where2live -->
+        <!-- 优势2 -->
+        <div class="block clearfix none-display-768">
+            <h2>Want to rent flat out?</h2>
+            <div class="block-container">
+                <div class="advantage-slide with-title">
+                    <a class="slide-img" style="background-image: url(/images/static/Yellow.png)"></a>
+                    <p class="title none-display-1100">SAVE TIME</p>
+                    <div class="slide-txt">
+                        <p class="title none-display-max display-1100">SAVE TIME</p>
+                        <p>80% of apartments in the week. Of course, provided that you set the adequate price</p>
+                    </div>
+                </div>
+                <div class="advantage-slide with-title">
+                    <a class="slide-img" style="background-image: url(/images/static/Green.png)"></a>
+                    <p class="title none-display-1100">HAVE CONTROL</p>
+                    <div class="slide-txt">
+                        <p class="title none-display-max display-1100">HAVE CONTROL</p>
+                        <p>She found a room for one day, and meters from the residence of the former!</p>
+                    </div>
+                </div>
+                <div class="advantage-slide with-title no-margin-right">
+                    <a class="slide-img" style="background-image: url(/images/static/Red.png)"></a>
+                    <p class="title none-display-1100">FOCUS ON GROWTH</p>
+                    <div class="slide-txt">
+                        <p class="title none-display-max display-1100">FOCUS ON GROWTH</p>
+                        <p>We provide all the nessesary documents for rent. You can of the apartment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 优势2 -->
     </div>
-</section><!-- End Header video -->
+    <!-- 主体内容 -->
+</div>
 
-<section class="white_bg ">
-    <div class="container margin_60">
-        <div class="main_title">
-            <h2>Other <span>Popular</span> tours</h2>
-            <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
-        </div>
-
-        <div class="row ">
-            <div class="col-md-4 other_tours">
-                <ul>
-                    <li><a href="#"><i class="icon_set_1_icon-3"></i>Tour Eiffel<span class="other_tours_price">$42</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-30"></i>Shopping tour<span class="other_tours_price">$35</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-44"></i>Versailles tour<span class="other_tours_price">$20</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-3"></i>Montparnasse skyline<span class="other_tours_price">$26</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-44"></i>Pompidue<span class="other_tours_price">$26</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-3"></i>Senna River tour<span class="other_tours_price">$32</span></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4 other_tours">
-                <ul>
-                    <li><a href="#"><i class="icon_set_1_icon-1"></i>Notredame<span class="other_tours_price">$48</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-4"></i>Lafaiette<span class="other_tours_price">$55</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-30"></i>Trocadero<span class="other_tours_price">$76</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-3"></i>Open Bus tour<span class="other_tours_price">$55</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-30"></i>Louvre museum<span class="other_tours_price">$24</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-3"></i>Madlene Cathedral<span class="other_tours_price">$24</span></a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 other_tours">
-                <ul>
-                    <li><a href="#"><i class="icon_set_1_icon-37"></i>Montparnasse<span class="other_tours_price">$36</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-1"></i>D'Orsey museum<span class="other_tours_price">$28</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-50"></i>Gioconda Louvre musuem<span class="other_tours_price">$44</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-44"></i>Tour Eiffel<span class="other_tours_price">$56</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-50"></i>Ladefanse<span class="other_tours_price">$16</span></a>
-                    </li>
-                    <li><a href="#"><i class="icon_set_1_icon-44"></i>Notredame<span class="other_tours_price">$26</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div><!-- End container -->
-</section><!-- End section -->
-
-<section class="margin_60 gray_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 main_title">
-                <h2>Some <span>good</span> reasons</h2>
-                <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4 wow zoomIn" data-wow-delay="0.2s">
-                <div class="feature_home">
-                    <i class="icon_set_1_icon-41"></i>
-                    <h3><span>+120</span> Premium tours</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-                    </p>
-                    <a href="about.html" class="btn_1 outline">Read more</a>
-                </div>
-            </div>
-            <div class="col-md-4 wow zoomIn" data-wow-delay="0.4s">
-                <div class="feature_home">
-                    <i class="icon_set_1_icon-30"></i>
-                    <h3><span>+1000</span> Customers</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-                    </p>
-                    <a href="about.html" class="btn_1 outline">Read more</a>
-                </div>
-            </div>
-            <div class="col-md-4 wow zoomIn" data-wow-delay="0.6s">
-                <div class="feature_home">
-                    <i class="icon_set_1_icon-57"></i>
-                    <h3><span>H24 </span> Support</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset.
-                    </p>
-                    <a href="about.html" class="btn_1 outline">Read more</a>
-                </div>
-            </div>
-        </div>
-    </div><!-- End container -->
-</section><!-- End section -->
 <style>
-    header{
-        position:fixed !important;;
+    .bg-white {
         background:transparent !important;
+        color: #fff;
     }
-    header .container{
-        color:white !important;
-    }
-    header .container .icon_set_1_icon-84{
-        color:white !important;
-    }
-
-    header .container strong{
-        color:white  !important;
-    }
-
 </style>

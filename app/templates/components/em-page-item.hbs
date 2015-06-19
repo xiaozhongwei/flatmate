@@ -1,0 +1,5 @@
+{{#if isDots}}
+  <li class="filter">...</li>
+{{else}}
+  <li class={{if isActive "active"}} {{action 'setCurrent'}}>{{page}}</li>
+{{/if}}

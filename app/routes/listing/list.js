@@ -9,7 +9,10 @@ export default Ember.Route.extend({
     price: {refreshModel: true},
     country: {refreshModel: true},
     gender: {refreshModel: true},
-    occupation: {refreshModel: true}
+    occupation: {refreshModel: true},
+    bedrooms: {refreshModel: true},
+    availableDate: {refreshModel: true},
+    address: {refreshModel: true}
   },
   resetController: function (controller, isExiting, transition) {
     if (isExiting) {
@@ -17,12 +20,15 @@ export default Ember.Route.extend({
       controller.set('userId', null);
       controller.set('page', 1);
       controller.set('size', 10);
-      controller.set('area', "all");
+      controller.set('area', undefined);
       controller.set('rentType', "all");
-      controller.set('subwayLine', "all");
+      controller.set('subwayLine', undefined);
       controller.set('country', undefined);
       controller.set('occupation', "all");
       controller.set('price', undefined);
+      controller.set('bedrooms', undefined);
+      controller.set('availableDate', 'all');
+      controller.set('address', undefined);
     }
   },
   model: function(params){

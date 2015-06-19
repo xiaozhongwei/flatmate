@@ -7,6 +7,7 @@ module.exports = function(app) {
     res.send({
       'listings': [{
         "id": "54f7199e641d671418a3f634",
+        "index": "1",
         "availableDate": "2015-03-30",
         creatorId: '1001',
         creatorName: 'Lisa',
@@ -18,7 +19,7 @@ module.exports = function(app) {
         "perThreeMonthPrice": 2800,
         "perSixMonthPrice": 2500,
         "deposit": 0.0,
-        "features": ["Balcony","PrivateBath","DeskOrWardrobe"],
+        "features": ["Balcony","PrivateBath"],
         "photos": [
           {id: "21", index: 1, imageUrl: "images/post-5.jpg"},
           {id: "22", index: 0, imageUrl: "images/post-5.jpg"}
@@ -32,7 +33,8 @@ module.exports = function(app) {
           "rentType": "share",
           "type": 0,
           "subwayLines": ["1 Line", "2 Line"],
-          metroStations: ["Anshan Xincun"],
+          "metroStations": ["Anshan Xincun"],
+          "address": '江宁路/康定路 1033',
           "area": "Hongkou",
           "compound": "静安豪景",
           "building": "1",
@@ -89,6 +91,7 @@ module.exports = function(app) {
         "status": 1
       },{
         "id": "54f7199e64ed6rw71418a3f623",
+        "index": "3",
         "availableDate": "2015-03-30",
         creatorId: '1001',
         creatorName: 'Lisa',
@@ -100,7 +103,7 @@ module.exports = function(app) {
         "perThreeMonthPrice": 2800,
         "perSixMonthPrice": 2500,
         "deposit": 0.0,
-        "features": ["Balcony","PrivateBath","DeskOrWardrobe"],
+        "features": ["Balcony","PrivateBath"],
         "photos": [
           {id: "25", index: 1, imageUrl: "images/post-5.jpg"},
           {id: "28", index: 0, imageUrl: "images/post-5.jpg"}
@@ -115,6 +118,7 @@ module.exports = function(app) {
           "type": 0,
           "subwayLines": ["1 Line", "2 Line"],
           "metroStation": ["Anshan Xincun"],
+          "address": '江宁路/康定路 1033',
           "area": "Hongkou",
           "compound": "静安豪景",
           "building": "1",

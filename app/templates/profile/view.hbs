@@ -1,108 +1,66 @@
-<div class="white_bg">
-    <div class=" container" style="padding-top:25px; padding-bottom:15px;">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="widget">
-                    <div id="tour_guide">
-                        <p>
-                          {{#if model.photo}}
-                              <img src={{model.photo}} alt="" style="width:180px;float:left" class="img-circle styled"/>
-                          {{else}}
-                              <img src="/images/testimonial_1.jpg" alt="" style="width:180px;float:left" class="img-circle styled">
-                          {{/if}}
-                        </p>
+<div class="profile-container">
+    <div class="left-block">
+        <div class="listing">
+          {{#if model.photo}}
+              <img src={{model.photo}} alt=""/>
+          {{else}}
+              <img src="/images/testimonial_1.jpg" alt="">
+          {{/if}}
+          {{#if model.listingsCount}}
+            <div class="header">
+                <p>Listing <span>({{model.listingsCount}})</span></p>
+            </div>
+            <div class="list">
+                <div class="listing-room">
+                  {{#if model.latestListing.coverPhoto}}
+                      <a class="slide-img" style="background-image: url({{model.latestListing.coverPhoto.imageUrl}})"></a>
+                  {{else}}
+                      <a class="slide-img" style="background-image: url(images/post-5.jpg)"></a>
+                  {{/if}}
+
+                  {{#link-to 'listing.detail' model.latestListing.id}}
+                    <div class="overlay"></div>
+                    <div class="intro">
+                        eart of the most romanticised Shanghai
                     </div>
-                </div><!-- End Search -->
+                  {{/link-to}}
+                </div>
             </div>
-            <div class="col-md-10" style="padding-left:20px;">
-                <h1>{{model.fullName}}</h1>
-                <h5>Member Since {{model.createTime}}</h5>
-                {{#if (eq session.id model.id)}}
-                    <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
-                {{/if}}
-                <h4  style="margin-top:45px;margin-bottom: 5px;">{{model.country}}</h4>
-                <h4  style="  margin-top: 5px; margin-bottom: 5px;">{{model.occupation}}</h4>
-                <h4 style="  margin-top: 5px; margin-bottom: 5px;">{{format-gender model.gender}}</h4>
+            <div class="more">
+                {{#link-to 'listing.list' (query-params userId=model.id)}}View all Listings →{{/link-to}}
             </div>
+        {{/if}}
         </div>
     </div>
-</div>
-<style>
-    td:first-child {
-        padding-right: 20px;
-        font-weight: bold;
-    }
-</style>
-<div class="container"  style="padding-top:15px; padding-bottom:60px;">
-    <div class="row">
-        <div class="col-md-7 col-md-offset-2" style="padding-right:20px;padding-left:20px;">
-            <h3>About Me</h3>
-            <p style="margin-top:30px;font-size: 14px;line-height: 1.6;">{{model.description}}</p>
-            <hr style="margin-top:40px;margin-bottom:40px;">
-            <table>
-                <thead>
-                    <tr>
-                        <td style="padding-right:20px;"></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>E-Mail</td>
-                    <td >
-                        {{model.email}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>Phone Number</td>
-                    <td>{{model.phone}}</td>
-                </tr>
-                <tr>
-                    <td>WeChart</td>
-                    <td>{{model.wechat}}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        {{#if model.listingsCount}}
-            <aside class="col-md-3">
-                <h3 style="margin-bottom:30px;">Listing ({{model.listingsCount}})</h3>
-                <div class="tour_container">
-                    <div class="img_container">
-                      {{#link-to 'listing.detail' model.latestListing.id}}
-                          <img src="{{if model.latestListing.coverPhoto model.latestListing.coverPhoto.imageUrl 'images/post-5.jpg'}}" width="800" height="533" class="img-responsive" alt="">
-                          <!--<div class="ribbon top_rated"></div>-->
-                          <div class="short_info">
-                              <span class="price"><sup>￥</sup>{{model.latestListing.lowestPrice}}</span>
-                          </div>
-                      {{/link-to}}
-                    </div>
-                    <div class="tour_title listing">
-                        <ul class="stats" style="padding-left: 0;">
-                            <li>Type
-                                <span>{{if model.latestListing.house.isShared 'Room' 'Apt'}}</span>
-                            </li>
-                            <li>Rooms<span>{{model.latestListing.house.bedrooms}}</span></li>
-                            <li>Size, m2<span>{{model.latestListing.house.size}}</span></li>
-                        </ul>
-                        <div style="clear:both"></div>
-                        <hr style="margin: 10px -15px 10px -15px">
-                        <h3 style="text-transform:none;">{{model.latestListing.title}}</h3>
-
-                        <p style="min-height:80px;">{{model.latestListing.house.area}}</p>
-                        <ul class="add_info">
-                          {{#each model.latestListing.house.subwayLines as |subwayLine|}}
-                              <li>
-                                  <span style="display: inline-block">{{subwayLine}}</span>
-                              </li>
-                          {{/each}}
-                        </ul>
-                    </div>
-                </div>
-                <!--<img src="/images/tour_box_8.jpg" width="800" height="333" class="img-responsive" alt="">-->
-                {{#link-to 'listing.list' (query-params userId=model.id)}}View all Listings →{{/link-to}}
-            </aside>
+    <div class="right-block">
+        <p class="username">{{model.fullName}}</p>
+        <p class="join-date">Member Since {{model.createTime}}</p>
+        {{#if (eq session.id model.id)}}
+            <h5>{{#link-to 'profile.edit-profile'}}Edit profile{{/link-to}}</h5>
         {{/if}}
-
+        <div class="basic-info">
+            <p>{{model.country}}</p>
+            <p>{{model.occupation}}</p>
+            <p class="sex">{{format-gender model.gender}}</p>
+        </div>
+        <div class="about-me">
+            <p class="title">About me</p>
+            <p class="intro">{{model.description}}</p>
+        </div>
+        <hr/>
+        <div class="detail-info">
+            <div class="detail-row clearfix">
+                <p class="sub">E-mail</p>
+                <p>{{model.email}}</p>
+            </div>
+            <div class="detail-row clearfix">
+                <p class="sub">Phone Number</p>
+                <p>{{model.phone}}</p>
+            </div>
+            <div class="detail-row clearfix">
+                <p class="sub">WeChat</p>
+                <p>{{model.wechat}}</p>
+            </div>
+        </div>
     </div>
 </div>

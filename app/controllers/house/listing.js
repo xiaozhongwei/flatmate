@@ -3,7 +3,7 @@ import ajax from 'ic-ajax';
 import config from 'flatmate/config/environment';
 import Notify from 'ember-notify';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(Ember.Evented,{
   statusObverse: function(){
     var status = this.get("model.status");
     var data = {

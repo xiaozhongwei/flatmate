@@ -26,6 +26,14 @@ export default Ember.Route.extend({
 
     this.store.find('inbox/statistic').then(function(statistics){
       controller.set("statistics", statistics);
+
+      //var statusFilter = Ember.A();
+      //
+      //statistics.forEach(function(item){
+      //  var status = {id: item.get('type'), name: item.get('name')};
+      //  statusFilter.pushObject(status);
+      //});
+      //controller.set("statusFilter", statusFilter);
     });
 
     controller.set("totalPage", model.get("meta.totalPage"));  //页数

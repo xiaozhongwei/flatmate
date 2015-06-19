@@ -24,6 +24,9 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   rentType: DS.attr(),                             // 出租方式
 
+  publishStep: DS.attr(),                          //发布步骤
+
+  address: DS.attr(),                              //地址
   area: DS.attr(),                                 // 区域
   compound: DS.attr(),                             // 小区
   building: DS.attr(),                             // 单元
@@ -94,6 +97,22 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     }
     return isFinished;
   }),
+  isDetailFinished: Ember.computed('rentType','bedrooms', 'bathrooms', 'livingRooms', 'size', 'listings.firstObject.isValid','amenities.length',function(){
+    var isFinished = false;
+    if(this.get('rentType') === "share"){
+      isFinished = (!Ember.isEmpty(this.get('bedrooms')) && !Ember.isEmpty(this.get('bathrooms')) && !Ember.isEmpty(this.get('livingRooms'))
+      && (!Ember.isEmpty(this.get('size'))) && (this.get('amenities.length') > 0));
+    }
+    else {
+      isFinished = (!Ember.isEmpty(this.get('bedrooms')) && !Ember.isEmpty(this.get('bathrooms')) && !Ember.isEmpty(this.get('livingRooms'))
+      && (!Ember.isEmpty(this.get('size'))) && (this.get('amenities.length') > 0) && this.get('listings.firstObject.isValid'));
+    }
+    return isFinished;
+  }),
+  isAddressFinished: Ember.computed('area', 'compound', 'building', 'floor', 'address', 'metroStations', function(){
+    return (!Ember.isEmpty(this.get('area')) && !Ember.isEmpty(this.get('compound')) && !Ember.isEmpty(this.get('building'))
+    && (!Ember.isEmpty(this.get('floor'))) && (!Ember.isEmpty(this.get('address'))) && (!Ember.isEmpty(this.get('metroStations'))));
+  }),
   isPhotoFinished: Ember.computed('rentType','photos.length','listings.firstObject.photos.length',function(){
     var isFinished = false;
     if(this.get('rentType') === "share"){
@@ -129,8 +148,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   }),
 
-  isApartmentFinished: Ember.computed("isOverviewFinished","isPhotoFinished","isMapFinished", function(){
-    var isFinished = this.get("isOverviewFinished") && this.get("isPhotoFinished") && this.get("isMapFinished");
+  isApartmentFinished: Ember.computed("isDetailFinished","isPhotoFinished","isAddressFinished", function(){
+    var isFinished = this.get("isDetailFinished") && this.get("isPhotoFinished") && this.get("isAddressFinished");
     return isFinished;
   }),
 
