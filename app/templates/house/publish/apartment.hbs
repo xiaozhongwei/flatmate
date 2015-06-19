@@ -1,0 +1,53 @@
+<div class="main-container">
+    <div class="step-bar">
+        <div class="wrapper">
+            <span>Step</span>
+            <img src="/images/static/step-1.png" />
+            <span>of 4. </span><span class="active"> Tell us about your apartment</span>
+        </div>
+    </div>
+    <div class="op-wrapper">
+        <div class="op-form">
+            <p class="sub-title">Details</p>
+            <div class="home-detail clearfix">
+                <div class="col">
+                    <p class="title">Bedrooms</p>
+                    {{select-2
+                    content=roomNumberMapping
+                    enabled=model.bedroomEditable
+                    value=model.bedrooms
+                    optionValuePath="id"
+                    }}
+                </div>
+                <div class="col">
+                    <p class="title">Living Rooms</p>
+                    {{select-2
+                    content=roomNumberMapping
+                    value=model.bathrooms
+                    optionValuePath="id"
+                    }}
+                </div>
+                <div class="col">
+                    <p class="title">Bathrooms</p>
+                    {{select-2
+                    content=roomNumberMapping
+                    value=model.livingRooms
+                    optionValuePath="id"
+                    }}
+                </div>
+                <div class="col">
+                    <p class="title">Size,m2</p>
+                    {{input type="text" autocomplete="off" value=model.size}}
+                </div>
+            </div>
+            <hr/>
+            <p class="sub-title">Amenities</p>
+            <div class="clearfix">
+                {{multi-checkboxes options=amenityMapping valueProperty='index' labelProperty='name' selection=model.amenities}}
+            </div>
+            <div class="form-footer clearfix">
+                <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
+            </div>
+        </div>
+    </div>
+</div>

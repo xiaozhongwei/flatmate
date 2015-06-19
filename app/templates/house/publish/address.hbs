@@ -1,0 +1,118 @@
+{{#if model.isAddressFinished}}
+    <div class="main-container">
+        <div class="step-bar">
+            <div class="wrapper">
+                <span>Step</span>
+                <img src="/images/static/step-2.png"/>
+                <span>of 4. </span><span class="active"> Tell us about your apartment</span>
+            </div>
+        </div>
+        <div class="op-wrapper">
+            <div class="op-form margin-top-20">
+                <div class="address-map"></div>
+                <div class="address-book">
+                    <p class="title">Address</p>
+
+                    <p>{{model.address}}</p>
+
+                    <p>{{model.area}}</p>
+
+                    <p>
+                      {{#each model.metroStations as |metroStation index|}}
+                        {{#if index}},{{/if}}{{metroStation}}
+                      {{/each}}
+                    </p>
+                    <span id="edit_address" {{action "editAddress"}}>Edit</span>
+                </div>
+                <div class="form-footer clearfix">
+                    <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
+                    <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <div class="main-container">
+        <div class="step-bar">
+            <div class="wrapper">
+                <span>Step</span>
+                <img src="/images/static/step-2.png"/>
+                <span>of 4. </span><span class="active"> Tell us about your apartment</span>
+            </div>
+        </div>
+        <div class="op-wrapper">
+            <div class="op-form margin-top-20">
+                <div class="none-address">
+                    <button id="btn_add_address" class="op-btn btn-add-address" {{action "editAddress"}}>Add address</button>
+                </div>
+                <div class="form-footer clearfix">
+                    <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
+                    <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+
+
+<div class="address-box dialog-box">
+    <div class="box-content">
+        <div class="address-form dialog-form">
+            <div class="address-map"></div>
+            <div class="form-row">
+              {{input type="text" autocomplete="off" placeholder="input the Address" value=newAddress.address}}
+            </div>
+            <div class="form-row">
+              {{select-2
+              content=areaMapping
+              value=newAddress.area
+              optionValuePath="id"
+              placeholder="Choose the Area"
+              }}
+            </div>
+            <div class="form-row">
+              {{select-2
+              content=compoundMapping
+              value=newAddress.compound
+              optionValuePath="id"
+              placeholder="Choose the Compound"
+              }}
+            </div>
+            <div class="form-row">
+              {{select-2
+              content=stationMapping
+              value=newAddress.metroStations
+              optionValuePath="id"
+              multiple=true
+              placeholder="Choose the Metro"
+              }}
+            </div>
+            <div class="form-row clearfix">
+                <div class="col">
+                  {{select-2
+                  content=buildingMapping
+                  value=newAddress.building
+                  optionValuePath="id"
+                  placeholder="Choose the Building"
+                  }}
+                </div>
+                <div class="col">
+                  {{select-2
+                  content=floorMapping
+                  value=newAddress.floor
+                  optionValuePath="id"
+                  placeholder="Choose the Floor"
+                  }}
+                </div>
+                <div class="col no-margin-right">
+                  {{input type="text" autocomplete="off" placeholder="input the doorplate" value=newAddress.doorplate}}
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-next fr" {{action "saveAddress"}}>Next</button>
+            </div>
+        </div>
+    </div>
+</div>
