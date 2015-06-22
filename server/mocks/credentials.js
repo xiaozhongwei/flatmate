@@ -15,6 +15,13 @@ module.exports = function(app) {
       "token_type":"bearer"
     });
     res.status(201).end();
+
+    //失败返回：
+    //res.status(422).send({
+    //  'errors': [
+    //    { "message": "用户名或密码错误", "id": 1, "fieldName": "" }
+    //  ]
+    //});
   });
 
   credentialsRouter.get('/:id', function(req, res) {

@@ -5,20 +5,26 @@
         </div>
         <div class="panel-content">
             <div class="form-row clearfix">
-                <label>First Name</label>
+                <div class="left-col">
+                    <label>First Name</label>
+                </div>
 
                 <div class="col">
                   {{input type="text" autocomplete="off" placeholder="e.g. John" value=model.firstName}}
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Last Name</label>
+                <div class="left-col">
+                    <label>Last Name</label>
+                </div>
                 <div class="col">
                   {{input type="text" autocomplete="off" placeholder="e.g. Doe" value=model.lastName}}
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>I Am</label>
+                <div class="left-col">
+                    <label>Gender</label>
+                </div>
                 <div class="col">
                     <div class="sex-select btn-group">
                         <button class="col-2 {{if (eq model.gender '1') 'active'}}" {{action "changeGender" model '1'}}>Guy</button>
@@ -27,13 +33,17 @@
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>E-mail</label>
+                <div class="left-col">
+                    <label>E-mail</label>
+                </div>
                 <div class="col">
                   {{input type="text" autocomplete="off" placeholder="e.g. John@gmail.com" value=model.email}}
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Phone Number</label>
+                <div class="left-col">
+                    <label>Phone Number</label>
+                </div>
                 <div class="col">
                   {{input type="text" autocomplete="off" placeholder="e.g. +1 202 555 0113" value=model.phone}}
                 </div>
@@ -47,14 +57,18 @@
         </div>
         <div class="panel-content">
             <div class="form-row clearfix">
-                <label>Wechat</label>
+                <div class="left-col">
+                    <label>Wechat</label>
+                </div>
 
                 <div class="col">
                   {{input type="text" autocomplete="off" placeholder="e.g. 550113" value=model.wechat}}
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Country</label>
+                <div class="left-col">
+                    <label>Country</label>
+                </div>
 
                 <div class="col">
                   {{select-2
@@ -66,7 +80,9 @@
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Languages</label>
+                <div class="left-col">
+                    <label>Languages</label>
+                </div>
 
                 <div class="col">
                   {{select-2
@@ -79,7 +95,9 @@
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Occupation</label>
+                <div class="left-col">
+                    <label>Occupation</label>
+                </div>
 
                 <div class="col">
                   {{select-2
@@ -91,7 +109,9 @@
                 </div>
             </div>
             <div class="form-row clearfix">
-                <label>Hobbies</label>
+                <div class="left-col">
+                    <label>Hobby</label>
+                </div>
 
                 <div class="col">
                   {{select-2
@@ -104,7 +124,9 @@
                 </div>
             </div>
             <div class="form-row with-textarea clearfix">
-                <label>Describe Yourself</label>
+                <div class="left-col">
+                    <label>Describe Yourself</label>
+                </div>
 
                 <div class="col">
                   {{textarea placeholder="Help other people get to know you." value=model.description}}

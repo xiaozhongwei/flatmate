@@ -5,6 +5,8 @@ import Ember from 'ember';
 import Notify from 'ember-notify';
 
 export default Ember.Controller.extend(Ember.Evented,{
+  showErrors: false,
+  showRegisterErrors: false,
   init: function(){
     this.loadMessages();
     var self = this;
@@ -13,6 +15,7 @@ export default Ember.Controller.extend(Ember.Evented,{
     //this.session.unreadMessages.reload();
 
     this.set('newAccount',this.store.createRecord('profile/account'));
+    this.set('forgotPassword',this.store.createRecord('profile/forgot-password'));
 
   },
   loadMessages: function(){
@@ -35,6 +38,10 @@ export default Ember.Controller.extend(Ember.Evented,{
         _this.loadMessages();
 
         _this.trigger('closeModalBox');
+      },function(error){
+        _this.set("showErrors", true);
+        _this.set("loginErrors", error.errors[0].message);
+        //Notify.error(error.errors[0].message);
       });
     },
     invalidateSession: function () {
@@ -54,16 +61,34 @@ export default Ember.Controller.extend(Ember.Evented,{
           _this.get('session').authenticate('simple-auth-authenticator:oauth2-password-grant', credentials);
 
           _this.trigger('closeModalBox');
+        }, function(error) {
+          var jsonErrors = Ember.$.parseJSON(error.responseText)["errors"];
+          _this.set("showRegisterErrors", true);
+          _this.set("registerErrors", jsonErrors[0].message);
+          //Notify.error(jsonErrors[0]);
         });
       }
       else {
-        Notify.error("当前数据验证错误，请检查错误后再进行尝试!");
-
+        this.set('showRegisterErrors', true);
+        //Notify.error("当前数据验证错误，请检查错误后再进行尝试!");
       }
     },
-    dropdownUser: function (){
-      $('.dropdown-user-profile').stop(true).fadeIn();
+    sendEmail: function(){
+      if (this.get('forgotPassword.isValid')) {
+        this.get("forgotPassword").save().then(res => {
+          this.set("forgotPassword.email", null);
+          Notify.info("An email for password reset had been sent");
+        }, function(){
+          Ember.Logger.error("保存时发生错误。");
+        });
+      }
+      else{
+        Notify.error("Email is blank or not right");
+      }
     },
+    //dropdownUser: function (){
+    //  $('.dropdown-user-profile').stop(true).fadeIn();
+    //},
     listing: function(){
       this.transitionToRoute('house.add');
     }

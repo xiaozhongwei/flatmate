@@ -122,5 +122,24 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     }
 
     return steps;
+  }),
+
+  listStepUrl: Ember.computed('listStep',function(){
+    var imageUrl = "";
+    if(this.get("listStep") === 1){
+      imageUrl = "/images/static/step-1.png";
+    }
+    if(this.get("listStep") === 2){
+      imageUrl = "/images/static/step-2.png";
+    }
+    if(this.get("listStep") === 3){
+      imageUrl = "/images/static/step-3.png";
+    }
+    if(this.get("listStep") === 4){
+      imageUrl = "/images/static/step-4.png";
+    }
+
+    return imageUrl;
+
   })
 });

@@ -18,7 +18,7 @@ module.exports = function(app) {
           phone: "15892849491",                              //phone
           contractStartDate: "2015-07-01",                   //合同开始日期
           contractEndDate: "2016-07-01",                     //合同结束日期
-          checkoutDate: "",                                  //checkout日期
+          //checkoutDate: "",                                  //checkout日期
 
           paymentCycle: "3",                                 //付款周期
           deposit: "2000",                                   //押金
@@ -28,7 +28,7 @@ module.exports = function(app) {
         {
           id: 2,
           "listingId": "4",
-          "name": "VINCE VINNIE",
+          "name": "VIN",
           idNumber: "421221",
           "country": "UK",
           "occupation": "Student",
@@ -38,7 +38,7 @@ module.exports = function(app) {
           phone: "15892849491",                              //phone
           contractStartDate: "2015-07-01",                   //合同开始日期
           contractEndDate: "2016-07-01",                     //合同结束日期
-          checkoutDate: "",                                  //checkout日期
+          //checkoutDate: "",                                  //checkout日期
 
           paymentCycle: "3",                                 //付款周期
           deposit: "2000",                                   //押金

@@ -21,7 +21,7 @@
               {{else}}
                   <img class="fl" src="/images/user_unknown.png" title="Not Upload Yet" />
               {{/if}}
-                <a id="user_profile_dp" {{action "dropdownUser"  on="mouseEnter"}}><span>{{session.user.firstName}}</span> <span class="triangle"></span></a>
+                <a id="user_profile_dp"><span>{{session.user.firstName}}</span> <span class="triangle"></span></a>
                 <div class="dropdown-user-profile">
                     <span class="triangle"></span>
                     <ul>
@@ -111,13 +111,30 @@
             {{input type="password" autocomplete="off" placeholder="Password" value=newAccount.password}}
             {{input type="password" autocomplete="off" placeholder="Confirm Password" value=newAccount.passwordConfirmation}}
             <button type="submit" disabled {{action "register" newAccount}}>Sign Up</button>
+            {{#if showRegisterErrors}}
+              {{#if newAccount.errors.email}}
+                  <small class="error">{{newAccount.errors.email}}</small>
+              {{/if}}
+              {{#if newAccount.errors.password}}
+                  <small class="error">{{newAccount.errors.password}}</small>
+              {{/if}}
+              {{#if newAccount.errors.passwordConfirmation}}
+                  <small class="error">{{newAccount.errors.passwordConfirmation}}</small>
+              {{/if}}
+              {{#if registerErrors}}
+                  <p class="danger">{{registerErrors}}</p>
+              {{/if}}
+            {{/if}}
+
         </div>
         <div class="login-form dialog-form" id="login_form" >
             {{input value=identification placeholder='Email'}}
             {{input value=password placeholder='Password' type='password'}}
             <button type="submit" disabled {{action 'authenticate'}}>Log In</button>
             <a href="javascript:;" id="forget_pwd_link"><p>Forgot password?</p></a>
-            <p class="danger">Invalid Email or Password</p>
+            {{#if loginErrors}}
+                <p class="danger">{{loginErrors}}</p>
+            {{/if}}
         </div>
         <div class="login-other-way">
             <p>or connect by</p>
@@ -153,8 +170,8 @@
     <div class="box-content">
         <p class="intro">Please enter your email address and we’ll send you instructions</p>
         <div class="forget-form dialog-form" id="forget_form">
-            <input type="text" placeholder="Email"/>
-            <button type="submit" disabled>Submit</button>
+            {{input type="text" autocomplete="off" placeholder="Email" value=forgotPassword.email}}
+            <button type="submit" disabled {{action "sendEmail" forgotPassword}}>Submit</button>
         </div>
     </div>
 </div>

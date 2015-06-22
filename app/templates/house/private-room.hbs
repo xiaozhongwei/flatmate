@@ -27,7 +27,7 @@
             <div class="left-nav-first left-nav">
                 <ul>
                   <a href="javascript:;" {{action "changeActive" "apt"}}>
-                      <li class="{{if (eq activeType 'apt') 'active'}} {{if model.house.isApartmentFinished 'finished' 'unfinished'}}">Appartment</li>
+                      <li class="{{if (eq activeType 'apt') 'active'}} {{if model.house.isApartmentFinished 'finished' 'unfinished'}}">Apartment</li>
                   </a>
                   {{#unless model.house.bedroomEditable}}
                   <a href="javascript:;" {{action "changeActive" "flatmate"}}>
@@ -72,7 +72,7 @@
                       </ul>
                     {{#if listing.listStep}}
                         <div class="left-steps">
-                            <img src="/images/static/step-3.png"/>
+                            <img src={{listing.listStepUrl}} />
                             <p>MORE STEPS</p>
                             <button class="btn-list-room" disabled>List the room</button>
                         </div>

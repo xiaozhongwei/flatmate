@@ -10,7 +10,7 @@ import GuestNumberMapping from 'flatmate/transforms/guest-number';
 export default Ember.Controller.extend(Ember.Evented,{
   needs: ['application'],
   isShowingModal: false,
-  priceObserve: function(){
+  payCycle: function(){
     if(!Ember.isEmpty(this.get("currentMessage.payCycle"))){
       if(this.get("currentMessage.payCycle")===3){
         this.set("currentMessage.price", this.get("model.perThreeMonthPrice"));

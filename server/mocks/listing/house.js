@@ -21,6 +21,9 @@ module.exports = function(app) {
           listings: [{
               id: "6",
               title: "Listing 1",
+              "perThreeMonthPrice": 2800,
+              "perSixMonthPrice": 2500,
+              "deposit": 0.0,
               photos: [
                 {id:"61",index: 1, imageUrl:"images/post-5.jpg"},
                 {id:"62",index: 0, imageUrl:"images/post-5.jpg"}
@@ -46,6 +49,9 @@ module.exports = function(app) {
           listings: [{
               id: "5",
               title: "豪华四室公寓",
+              "perThreeMonthPrice": 2800,
+              "perSixMonthPrice": 2500,
+              "deposit": 0.0,
               photos: [{id: "51", index:0, imageUrl:"images/post-5.jpg"}],
               status: 0
           }]
@@ -61,16 +67,28 @@ module.exports = function(app) {
           listings: [{
             id: "1",
             title: "舒适向南单间",
+            "perThreeMonthPrice": 2800,
+            "perSixMonthPrice": 2500,
+            "deposit": 0.0,
             photos: [{id: "11", index:0, imageUrl:"images/post-5.jpg"}],
             status: 0
           },{
             id: "2",
+            "perThreeMonthPrice": 2800,
+            "perSixMonthPrice": 2500,
+            "deposit": 0.0,
             status: 0
           },{
             id: "3",
+            "perThreeMonthPrice": 2800,
+            "perSixMonthPrice": 2500,
+            "deposit": 0.0,
             status: 0
           },{
             id: "4",
+            "perThreeMonthPrice": 2800,
+            "perSixMonthPrice": 2500,
+            "deposit": 0.0,
             status: 0
           }],
           "flatmates": [{

@@ -17,7 +17,7 @@
                     <li class="{{if (eq step 1) 'active'}} {{if model.isCalendarFinished 'finished' 'unfinished'}}">Calendar</li>
                 </a>
                 <a href="javascript:;" {{action "changeStep" 2}}>
-                    <li class="{{if (eq step 2) 'active'}} {{if model.isOverviewFinished 'finished' 'unfinished'}}">Overview</li>
+                    <li class="{{if (eq step 2) 'active'}} {{if model.isDetailFinished 'finished' 'unfinished'}}">Overview</li>
                 </a>
                 <a href="javascript:;" {{action "changeStep" 4}}>
                     <li class="{{if (eq step 4) 'active'}} {{if model.isMapFinished 'finished' 'unfinished'}}">Address</li>
@@ -28,7 +28,7 @@
             </ul>
             {{#if model.listStep}}
                 <div class="left-steps">
-                    <img src="/images/static/step-3.png"/>
+                    <img src={{model.listStepUrl}} />
                     <p>MORE STEPS</p>
                     <button class="btn-list-room" disabled>List the room</button>
                 </div>

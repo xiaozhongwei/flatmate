@@ -9,6 +9,10 @@ var app = new EmberApp({
     style: true,
     animation: 'scale'
   }
+  //,
+  //select2: {
+  //  includeAssets: false
+  //}
 });
 
 // Use `app.import` to add additional libraries to the generated

@@ -118,7 +118,7 @@
                                         <p class="phone-num">{{tenant.phone}}</p>
                                     </div>
                                     <div class="fr">
-                                        <button class="btn-edit op-btn" {{action "editTenant" tenant}}>Edit</button>
+                                        <button class="btn-edit op-btn" {{action "editTenant" tenant listing.model house}}>Edit</button>
                                     </div>
                                     <div class="remove" {{action "removeTenant" tenant}}>
                                         <img src="/images/static/remove.png"/>
@@ -173,7 +173,7 @@
                                   </div>
                                   <div class="op fr">
                                     {{#if listing.model.listStep}}
-                                      {{#link-to 'house.manage' house.id}}
+                                      {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}
                                           <button class="op-btn btn-to-list">
                                             {{format-step house.listStep}} to list
                                           </button>
@@ -259,73 +259,76 @@
             <div class="clearfix">
                 <div class="form-group col-2">
                     <p>Name</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="tenant name" value=currentTenant.name}}
                 </div>
                 <div class="form-group col-2 no-margin-right">
                     <p>ID number</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="ID number" value=currentTenant.idNumber}}
                 </div>
                 <div class="form-group col-2">
                     <p>County</p>
-                    <select>
-                        <option value="0">Select...</option>
-                        <option value="0">A</option>
-                        <option value="0">B</option>
-                        <option value="0">C</option>
-                    </select>
+                    {{select-2
+                    content=countryMapping
+                    value=currentTenant.country
+                    optionValuePath="id"
+                    allowClear=true
+                    placeholder="Choose County"
+                    }}
                 </div>
                 <div class="form-group col-2 no-margin-right">
                     <p>Occupation</p>
-                    <select>
-                        <option value="0">Select...</option>
-                        <option value="0">A</option>
-                        <option value="0">B</option>
-                        <option value="0">C</option>
-                    </select>
+                    {{select-2
+                    content=occupationMapping
+                    value=currentTenant.occupation
+                    optionValuePath="id"
+                    allowClear=true
+                    placeholder="Choose Occupation"
+                    }}
                 </div>
                 <div class="form-group col-2">
                     <p>Email</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="Email" value=currentTenant.email}}
                 </div>
                 <div class="form-group col-2 no-margin-right">
                     <p>Phone number</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="Phone Number" value=currentTenant.phone}}
                 </div>
             </div>
             <hr />
             <div class="clearfix">
                 <div class="form-group col-date">
                     <p>Contract duration</p>
-                    <input type="text" placeholder="Starting date" />
+                    {{bootstrap-datepicker value=currentTenant.contractStartDate autoclose=true placeholder="Starting date" endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
                 </div>
                 <div class="form-group col-date">
                     <p> </p>
-                    <input type="text" placeholder="Ending date" />
+                    {{bootstrap-datepicker value=currentTenant.contractEndDate autoclose=true placeholder="Ending date" startDate=currentTenant.contractStartDate format="yyyy-mm-dd"}}
                 </div>
                 <div class="form-group col-4 no-margin-right">
                     <p>Check-out date</p>
-                    <input type="text" placeholder="..." />
+                    {{bootstrap-datepicker value=currentTenant.checkoutDate autoclose=true placeholder="Check-out date" startDate=currentTenant.contractStartDate endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
                 </div>
                 <div class="form-group col-4">
                     <p>Payment cycle</p>
-                    <select>
-                        <option value="0">Select...</option>
-                        <option value="0">A</option>
-                        <option value="0">B</option>
-                        <option value="0">C</option>
-                    </select>
+                    {{select-2
+                    content=payCycleMapping
+                    value=currentTenant.paymentCycle
+                    optionValuePath="id"
+                    allowClear=true
+                    placeholder="Choose Payment Cycle"
+                    }}
+                </div>
+                <div class="form-group col-4">
+                    <p>Price</p>
+                  {{input placeholder="Price" value=currentTenant.price}}
                 </div>
                 <div class="form-group col-4">
                     <p>Deposit</p>
-                    <input type="text" placeholder="..." />
-                </div>
-                <div class="form-group col-4">
-                    <p>Rent in advance</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="Deposit" value=currentTenant.deposit}}
                 </div>
                 <div class="form-group col-4 no-margin-right">
                     <p>Rent in advance</p>
-                    <input type="text" placeholder="..." />
+                    {{input placeholder="Rent in advance" value=currentTenant.advanceDay}}
                 </div>
             </div>
             <hr/>
@@ -357,9 +360,9 @@
                 </div>
             </div>
             <div class="form-footer">
-                <button class="btn-cancel fl">Cancel</button>
-                <button class="btn-checkout">Check-Out Today</button>
-                <button class="btn-save">Save</button>
+                <button class="btn-cancel fl" {{action "cancel" currentTenant}}>Cancel</button>
+                <button class="btn-checkout" {{action "checkoutTenant" currentTenant}}>Check-Out Today</button>
+                <button class="btn-save" {{action "saveTenant" currentTenant}}>Save</button>
             </div>
         </div>
     </div>
