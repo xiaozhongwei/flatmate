@@ -1,0 +1,22 @@
+<div class="edit-container">
+    <div class="profile-left-nav">
+        <div class="nav-area">
+            <div class="user-info">
+              {{#if session.user.logo.downloadFilePath}}
+                  <img src={{session.user.logo.downloadFilePath}} />
+              {{else}}
+                  <img src="/images/user_unknown.png" />
+              {{/if}}
+              <p class="username">{{session.user.fullName}}</p>
+              <p class="join-date">Member Since {{session.user.createTime}}</p>
+            </div>
+            <ul>
+                {{#link-to 'account.notification'}}<li class={{if (eq _profileTitle 'Notification') 'active'}}><span></span>Notification</li>{{/link-to}}
+                {{#link-to 'account.payment'}}<li class={{if (eq _profileTitle 'Payment') 'active'}}><span></span>Payment Methods </li>{{/link-to}}
+                {{#link-to 'account.history'}}<li class={{if (eq _profileTitle 'History') 'active'}} ><span></span>Transaction History</li>{{/link-to}}
+            </ul>
+        </div>
+    </div>
+
+    {{yield}}
+</div>
