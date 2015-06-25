@@ -23,13 +23,6 @@ export default Ember.Controller.extend(Ember.Evented,{
       this.set("filteredTenants",tenants);
     });
 
-    //var articles = this.get('model');
-    //
-    //if (category) {
-    //  return articles.filterBy('category', category);
-    //} else {
-    //  return articles;
-    //}
   }.observes('nameFilter'),
   payCycleObserve: function(){
     if(!Ember.isEmpty(this.get("currentTenant.paymentCycle"))){
