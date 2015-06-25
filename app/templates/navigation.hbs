@@ -1,18 +1,24 @@
 <div class="sub-nav-bar">
     <div class="wrapper">
         <ul>
-            {{#link-to 'profile.edit-profile'}}
-                <li class="{{if (eq moduleName 'PROFILE') 'active'}}">PROFILE</li>
-            {{/link-to}}
-            {{#link-to 'house.list'}}
-                <li class="{{if (eq moduleName 'LISTING') 'active'}}">LISTING</li>
-            {{/link-to}}
-            {{#link-to 'inbox.list'}}
-                <li class="{{if (eq moduleName 'INBOX') 'active'}}">INBOX</li>
-            {{/link-to}}
-            {{#link-to 'wishlist'}}
-                <li class="{{if (eq moduleName 'WISHLIST') 'active'}}">WISHLIST</li>
-            {{/link-to}}
+          {{#link-to 'dashboard'}}
+              <li class="{{if (eq moduleName 'DASHBOARD') 'active'}}">DASHBOARD</li>
+          {{/link-to}}
+          {{#link-to 'inbox.list'}}
+              <li class="{{if (eq moduleName 'INBOX') 'active'}}">INBOX</li>
+          {{/link-to}}
+          {{#link-to 'house.list'}}
+              <li class="{{if (eq moduleName 'LISTING') 'active'}}">LISTING</li>
+          {{/link-to}}
+          {{#link-to 'profile.edit-profile'}}
+              <li class="{{if (eq moduleName 'PROFILE') 'active'}}">PROFILE</li>
+          {{/link-to}}
+          {{#link-to 'wishlist'}}
+              <li class="{{if (eq moduleName 'WISHLIST') 'active'}}">WISHLIST</li>
+          {{/link-to}}
+          {{#link-to 'account.notification'}}
+              <li class="{{if (eq moduleName 'ACCOUNT') 'active'}}">ACCOUNT</li>
+          {{/link-to}}
         </ul>
     </div>
 </div>

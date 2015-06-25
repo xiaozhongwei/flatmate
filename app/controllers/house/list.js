@@ -17,6 +17,20 @@ export default Ember.Controller.extend(Ember.Evented,{
   type: 'entire',
   area: undefined,
   roomStatus: undefined, //是否空置
+  filterTenants: function() {
+    var name = this.get('nameFilter');
+    this.store.find('listing/tenant',{name: name}).then(tenants => {
+      this.set("filteredTenants",tenants);
+    });
+
+    //var articles = this.get('model');
+    //
+    //if (category) {
+    //  return articles.filterBy('category', category);
+    //} else {
+    //  return articles;
+    //}
+  }.observes('nameFilter'),
   payCycleObserve: function(){
     if(!Ember.isEmpty(this.get("currentTenant.paymentCycle"))){
       if(this.get("currentTenant.paymentCycle")===3){
@@ -52,6 +66,8 @@ export default Ember.Controller.extend(Ember.Evented,{
   }.observes("currentTenant.paymentCycle","currentTenant.contractStartDate","currentTenant.contractEndDate","currentTenant.advanceDay").on("change"),
   actions: {
     queryHouse: function(status, type){
+      this.set("nameFilter", undefined);
+
       var queryParams = {};
       queryParams.status = status;
       queryParams.type = type;

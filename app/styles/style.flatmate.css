@@ -34,9 +34,11 @@ h1, h2, h3, h4, h5, h6 {
 *:focus, *:visited, *:focus {
     outline: none !important;
 }
+
 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
 }
+
 a {
     text-decoration: none;
 }
@@ -189,7 +191,7 @@ a {
 
 .nav-index-top .nav-left {
     position: relative;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     height: 68px;
     padding: 0 25px;
     display: none;
@@ -296,14 +298,14 @@ a {
     font-weight: bold;
     line-height: 30px;
     color: #fff;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     width: 120px;
     margin-top: 9px;
     cursor: pointer;
 }
 
 .nav-index-top .nav-right .nav-list-space .btn-list-space:hover {
-    background-color: #37828B;
+    background-color: #2c9ab7;
 }
 
 .nav-index-top .nav-right .dropdown-user-profile {
@@ -417,7 +419,7 @@ a {
     margin: 10px auto;
     text-align: center;
     cursor: pointer;
-    background-color: #FFBE00;
+    background-color: #f05368;
     color: #fff;
     cursor: pointer;
 }
@@ -606,7 +608,7 @@ a {
 }
 
 .main-container .main-wrapper .talk-slide .talk-user span a {
-    color: #37828B;
+    color: #2c9ab7;
 }
 
 /** index people-talk end **/
@@ -722,7 +724,7 @@ a {
 
 .main-container .main-wrapper .left-detail-block .detail-title {
     height: 90px;
-    background-color: #E1E1E1;
+    background-color: #fff;
     padding: 16px 20px;
     margin-bottom: 25px;
 }
@@ -782,7 +784,7 @@ a {
     font-size: 13px;
     line-height: 22px;
     font-weight: bold;
-    color: #00636F;
+    color: #2c9ab7;
     float: left;
 }
 
@@ -817,14 +819,14 @@ a {
     width: 140px;
     height: 32px;
     text-align: center;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     border: none;
     cursor: pointer;
     margin-top: 20px;
 }
 
 .main-container .main-wrapper .left-detail-block .detail-intro .btn-contact:hover {
-    background-color: #37828B;
+    background-color: #2c9ab7;
 }
 
 .main-container .main-wrapper .left-detail-block .detail-intro .single-checkbox {
@@ -867,14 +869,14 @@ a {
 
 .main-container .main-wrapper .right-detail-block .room-info {
     height: 90px;
-    background-color: #FFBE00;
+    background-color: #fff;
 }
 
 .main-container .main-wrapper .right-detail-block .room-info .col-3 {
     width: 33.333333%;
     float: left;
     text-align: center;
-    color: #fff;
+    color: #555;
     font-weight: bold;
 }
 
@@ -967,7 +969,7 @@ a {
 .main-container .main-wrapper .right-detail-block .room-mate .col-4.available .order-num,
 .main-container .main-wrapper .right-detail-block .room-mate .col-4.this-room .order-num {
     color: #fff;
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .main-wrapper .right-detail-block .room-mate .col-4 .user-header {
@@ -1021,7 +1023,7 @@ a {
 }
 
 .main-container .main-wrapper .right-detail-block .room-price .half-block.price {
-    background-color: #FFBE00;
+    background-color: #2c9ab7;
     padding-left: 20px;
 }
 
@@ -1042,11 +1044,12 @@ a {
 .main-container .main-wrapper .right-detail-block .room-price .half-block.price .service-fee {
     position: absolute;
     bottom: 20px;
+    color: #fff;
 }
 
 .main-container .main-wrapper .right-detail-block .room-price .half-block .inquery {
     height: 50%;
-    background-color: #00636F;
+    background-color: #f05368;
     font-size: 17px;
     line-height: 86px;
     font-weight: bold;
@@ -1056,12 +1059,12 @@ a {
 }
 
 .main-container .main-wrapper .right-detail-block .room-price .half-block .wishlist {
-    background-color: #E1E1E1;
+    background-color: #fff;
     height: 50%;
     font-size: 17px;
     line-height: 86px;
     font-weight: bold;
-    color: #00636F;
+    color: #f05368;
     text-align: center;
     cursor: pointer;
 }
@@ -1105,8 +1108,8 @@ a {
 
 .main-container .main-wrapper .right-detail-block .order-time .month-selector:hover,
 .main-container .main-wrapper .right-detail-block .order-time .month-selector.active {
-    border: 1px #00636F solid;
-    color: #00636F;
+    border: 1px #2c9ab7 solid;
+    color: #2c9ab7;
 }
 
 .main-container .main-wrapper .right-detail-block .order-time .month-selector.disabled {
@@ -1245,13 +1248,13 @@ a {
 }
 
 .main-container .main-wrapper .flat-list .single-flat .flat-info .more-infos .features .feature-block.color-green {
-    color: #37828B;
-    border: 1px #37828B solid;
+    color: #2c9ab7;
+    border: 1px #2c9ab7 solid;
 }
 
 .main-container .main-wrapper .flat-list .single-flat .flat-info .more-infos .features .feature-block.color-yellow {
-    color: #FFBE00;
-    border: 1px #FFBE00 solid;
+    color: #f05368;
+    border: 1px #f05368 solid;
 }
 
 .main-container .main-wrapper .flat-list .single-flat .switch {
@@ -1336,7 +1339,7 @@ a {
 
 .main-container .main-wrapper .flat-list .single-flat .mate-info .room-mate .col-4.available .order-num {
     color: #fff;
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .main-wrapper .flat-list .single-flat .mate-info .room-mate .col-4 .user-header {
@@ -1357,9 +1360,12 @@ a {
 }
 
 .main-container .main-wrapper .flat-list .single-flat .mate-info .room-mate .col-4 .tips p {
-    font-size: 9px !important;
+    font-size: 12px;
+    -moz-transform: scale(0.75) translate(-3px, 0px);
+    -ms-transform: scale(0.75) translate(-3px, 0px);
+    transform: scale(0.75) translate(-3px, 0px);
     -webkit-transform: scale(0.75) translate(-3px, 0px); /*12×0.75= 9,translate调整位置，视具体情况*/
-    -o-transform: scale(1);
+    -o-transform: scale(0.75) translate(-3px, 0px);
     line-height: 12px;
     color: #3B3B3B;
 }
@@ -1443,7 +1449,7 @@ a {
 .main-container .main-wrapper .search-box .search-form .form-row .metro-selector .col:hover,
 .main-container .main-wrapper .search-box .search-form .form-row .metro-selector .col.active {
     color: #fff;
-    background-color: #FFBE00;
+    background-color: #f05368;
     border: none;
 }
 
@@ -1471,7 +1477,7 @@ a {
     font-weight: bold;
     line-height: 38px;
     color: #fff;
-    background-color: #FFBE00;
+    background-color: #f05368;
     border: none;
     border-radius: 0;
 }
@@ -1534,7 +1540,7 @@ a {
 }
 
 .login-box .login-tab .tab.active {
-    color: #00636F;
+    color: #2c9ab7;
     background-color: #f7f7f7;
 }
 
@@ -1572,7 +1578,7 @@ a {
     font-size: 14px;
     line-height: 38px;
     font-weight: bold;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     color: #fff;
     border: none;
 }
@@ -1695,7 +1701,7 @@ a {
 }
 
 .dialog-box.inquiry-box .box-header .username {
-    color: #00636F;
+    color: #2c9ab7;
 }
 
 .dialog-box.inquiry-box .box-content {
@@ -1712,6 +1718,7 @@ a {
     line-height: 21px;
     overflow-y: scroll;
     border: 1px #ccc solid;
+    font-family: 'Graphik Web', Arial, sans-serif !important;
 }
 
 .dialog-box.inquiry-box .inquiry-form .triangle {
@@ -1848,7 +1855,7 @@ a {
 
 .main-container .op-wrapper .home-type-select .one-select .title {
     height: 52px;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
@@ -1985,7 +1992,7 @@ a {
 
 .main-container .op-btn.btn-next {
     width: 136px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
 }
 
@@ -1999,7 +2006,7 @@ a {
 
 .main-container .op-wrapper .op-form .none-address .btn-add-address {
     width: 160px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     margin-top: 154px;
 }
@@ -2047,7 +2054,7 @@ a {
 
 .dialog-box.address-box .address-form .form-footer .btn-next {
     width: 100px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     margin-left: 10px;
 }
 
@@ -2103,7 +2110,7 @@ a {
 
 .main-container .add-photo .btn-add-photo {
     width: 160px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
 }
 
@@ -2212,7 +2219,7 @@ a {
 }
 
 .main-container .flatmate-list .single-flatmate.available .seq {
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .flatmate-list .single-flatmate .user-header img {
@@ -2242,13 +2249,13 @@ a {
 .main-container .flatmate-list .single-flatmate .btn-edit {
     width: 100px;
     height: 38px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     margin-top: 21px;
 }
 
 .main-container .btn-list-room {
-    background-color: #FFBE00;
+    background-color: #f05368;
     height: 42px;
     width: 100px;
     line-height: 42px;
@@ -2276,10 +2283,12 @@ a {
     width: 50%;
     border: 1px #e7e7e7 solid;
     height: 38px;
-    float: left;
+    float: left !important;
     margin-left: -1px;
     background-color: #fff;
     font-weight: bold;
+    color: #555;
+    margin-right: 0 !important;
 }
 
 .sex-select .col-2.active,
@@ -2378,9 +2387,9 @@ a {
 }
 
 .show-room-box.dialog-box .box-content .show-room-form .tell-about-room .seq.available {
-    background-color: #FFBE00;
+    background-color: #f05368;
     color: #fff;
-    border: 2px #FFBE00 solid;
+    border: 2px #f05368 solid;
 }
 
 .show-room-box.dialog-box .box-content .show-room-form .intro {
@@ -2391,7 +2400,7 @@ a {
 
 .show-room-box.dialog-box .box-content .show-room-form .btn-next {
     width: 180px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
 }
 
@@ -2485,15 +2494,15 @@ a {
 }
 
 .main-container .edit-container .left-nav ul li.finished {
-    background: url(/images/static/Check-2x.png) right no-repeat;
+    background: url(/images/static/Check-2x.png) no-repeat;
     background-size: 12px;
-    background-position-x: 112px;
+    background-position: 112px;
 }
 
 .main-container .edit-container .left-nav ul li.unfinished {
-    background: url(/images/static/Plus-2x.png) right no-repeat;
+    background: url(/images/static/Plus-2x.png) no-repeat;
     background-size: 12px;
-    background-position-x: 112px;
+    background-position: 112px;
 }
 
 .main-container .edit-container .left-nav-first ul li.active {
@@ -2527,7 +2536,7 @@ a {
 }
 
 .main-container .edit-container .left-nav-first ul li.available .room-num {
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .edit-container .left-nav-second ul {
@@ -2807,7 +2816,7 @@ a {
 .dialog-box button.btn-confirm-list,
 .dialog-box button.btn-see-list {
     width: 160px;
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .dialog-box.list-success-box {
@@ -2848,7 +2857,7 @@ a {
 
 .main-container .alert-block .btn-edit {
     width: 160px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     position: absolute;
     bottom: 44px;
@@ -2882,7 +2891,7 @@ a {
 .main-container .edit-container .edit-area .flatmate-block .btn-edit {
     width: 100px;
     height: 38px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     margin-top: 13px;
 }
@@ -3010,15 +3019,22 @@ a {
 }
 
 .main-container .edit-container .listing-area .apt-room-list {
+}
+
+.main-container .edit-container .listing-area .apt-room-list.with-border {
     border: 1px #ddd solid;
 }
 
 input[type='search']:focus, input[type='text']:focus, input[type='password']:focus, textarea:focus {
-    border-color: #aaa !important;
+    border: 2px #2c9ab7 solid !important;
 }
 
 input[type='search'].danger, input[type='text'].danger, input[type='password'].danger, textarea.danger {
-    border-color: #9A1E2B !important;
+    border: 2px #9A1E2B solid !important;
+}
+
+.main-container .edit-container .listing-area .apt-room-list .single-tenant .btn-edit {
+    display: block;
 }
 
 .main-container .edit-container .listing-area .header .expand-close {
@@ -3079,7 +3095,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .edit-container .listing-area .single-apt .apt-header p a {
-    color: #00636F;
+    color: #f05368;
     text-decoration: none;
     margin-left: 10px;
     font-weight: normal;
@@ -3114,6 +3130,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     padding: 20px 0;
     height: 104px;
     padding-right: 20px;
+    background-color: #fff;
 }
 
 .main-container .edit-container .listing-area .single-apt.collapsed .apt-container {
@@ -3139,7 +3156,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     height: 25px;
     border-radius: 50%;
     display: block;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     margin: 0 auto;
 }
 
@@ -3157,7 +3174,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .edit-container .listing-area .single-apt .apt-container .left-tag .center-tag span.seq.available {
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .edit-container .listing-area .single-apt .apt-container .apt-pic {
@@ -3167,23 +3184,69 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     position: relative;
 }
 
-.main-container .edit-container .listing-area .single-apt .apt-container .apt-info {
-    margin-left: 50px;
-    padding-top: 8px;
+.main-container .edit-container .listing-area .single-apt .apt-container .list-manage,
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage {
+    margin-left: 30px;
+    line-height: 64px;
     float: left;
+    position: relative;
 }
 
-.main-container .edit-container .listing-area .single-apt .apt-container .apt-info .apt-title {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-
-.main-container .edit-container .listing-area .single-apt .apt-container .apt-info a {
+.main-container .edit-container .listing-area .single-apt .apt-container .list-manage a {
     font-size: 14px;
     line-height: 20px;
-    color: #00636F;
+    color: #555;
+    font-weight: bold;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage a {
+    font-size: 14px;
+    line-height: 20px;
+    color: #f05368;
+    cursor: pointer;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage span {
+    float: left;
+    display: inline-block;
+    margin-top: 22px;
+    font-weight: bold;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage.active .txt {
+    border-bottom: 2px #f05368 solid;
+    padding-bottom: 4px;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage .triangle {
+    border-width: 6px;
+    border-color: transparent;
+    border-style: solid;
+    border-bottom-width: 0;
+    border-top-color: #f05368;
+    color: #333;
+    display: none;
+    position: absolute;
+    top: 7px;
+    left: 106px;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage.active .triangle {
+    display: block;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage .btn-add-tenant {
+    display: none;
+    width: 28px;
+    margin: 6px 0 0 30px;
+    cursor: pointer;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage.active .btn-add-tenant {
+    display: inline-block;
+}
+
+.main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage {
 }
 
 .main-container .edit-container .listing-area .single-apt .apt-container .op .list-status {
@@ -3197,30 +3260,90 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .btn-to-list {
     width: 140px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     margin-top: 12px;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list {
     width: 100%;
-    /*padding: 0 50px;*/
+    margin-top: -1px;
+    position: relative;
     display: none;
 }
 
+.main-container .edit-container .listing-area .single-apt .tenant-list .triangle {
+    position: absolute;
+    border-width: 14px;
+    border-color: transparent;
+    border-style: solid;
+    border-top-width: 0;
+    border-bottom-color: #f0f0f0;
+    left: 368px;
+    top: -14px;
+}
+
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant {
-    height: 100px;
-    border-bottom: 1px #E7E7E7 solid;
+    height: 80px;
+    border-bottom: 1px #ccc solid;
     padding: 0 46px 0 0;
     position: relative;
-    background-color: #fff;
+    background-color: #f0f0f0;
     margin-bottom: 0;
 }
 
-.main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .left-op {
-    width: 60px;
+.single-tenant .tenant-status {
+    width: 115px;
     height: 100%;
     float: left;
+    text-align: center;
+    position: relative;
+}
+
+.single-tenant .tenant-status p {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 0 20px;
+}
+
+.single-tenant .tenant-status p.current {
+    color: #61B765;
+}
+
+.single-tenant .tenant-status p.pending {
+    color: #2c9ab7;
+}
+
+.single-tenant .tenant-status p.checked-out {
+    color: #555;
+}
+
+.single-apt.single-room .apt-container .apt-pic {
+    margin-left: 20px;
+}
+
+.single-apt.single-room .apt-container .apt-info {
+    margin-left: 20px;
+    float: left;
+}
+
+.single-apt.single-room .apt-container .apt-info .list-manage {
+    margin-left: 0 !important;
+    line-height: 50px !important;
+}
+
+.single-apt.single-room .apt-container .apt-info .tenant-manage span {
+    margin-top: 15px !important;
+}
+
+.single-apt.single-room .apt-container .apt-info .tenant-manage {
+    line-height: 56px !important;
+}
+
+.single-apt.single-room .apt-container .apt-info .tenant-manage .btn-add-tenant {
+    margin-top: -4px !important;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .left-op img {
@@ -3233,17 +3356,17 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     float: left;
     font-size: 12px;
     font-weight: bold;
-    line-height: 100px;
+    line-height: 80px;
     letter-spacing: 0.1em;
     width: 220px;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .user .user-header {
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     float: left;
-    margin-top: 21px;
+    margin-top: 14px;
     line-height: 58px;
     text-align: center;
     overflow: hidden;
@@ -3255,13 +3378,21 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     height: 20px;
     border-radius: 50%;
     position: absolute;
-    left: 42px;
-    top: 20px;
+    left: 36px;
+    top: 10px;
+}
+
+.main-container .edit-container .edit-area .single-tenant .tenant-info {
+    padding-top: 30px;
+    float: left;
+}
+
+.main-container .edit-container .edit-area .single-tenant .btn-edit {
+    display: block;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .tenant-info {
-    padding-top: 20px;
-    float: left;
+    padding-top: 22px;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .tenant-info p {
@@ -3270,31 +3401,40 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     line-height: 20px;
 }
 
+.main-container .edit-container .edit-area .single-tenant .tenant-info p.date-info,
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .tenant-info p.date-info {
-    color: #61B765;
+    color: #555;
 }
 
 .main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .tenant-info p.phone-num {
     color: #BDBBBB;
 }
 
-.main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant:hover .remove {
+.single-tenant:hover .remove {
     display: block;
 }
 
-.main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .remove {
+.single-tenant .btn-edit {
+    display: none;
+}
+
+.single-tenant:hover .btn-edit {
+    display: block;
+}
+
+.single-tenant .remove {
     cursor: pointer;
     position: absolute;
     right: 0;
     top: 0;
-    height: 100px;
+    height: 80px;
     width: 46px;
     text-align: center;
-    line-height: 100px;
+    line-height: 80px;
     display: none;
 }
 
-.main-container .edit-container .listing-area .single-apt .tenant-list .single-tenant .remove img {
+.single-tenant .remove img {
     width: 10px;
 }
 
@@ -3353,7 +3493,73 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .dialog-box.basic-listing-room .box-header .sub-header p .seq.available {
-    background-color: #FFBE00;
+    background-color: #f05368;
+}
+
+.dialog-box.basic-listing-room .box-header {
+    font-size: 13px;
+    line-height: 38px;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav {
+    height: 40px;
+    background-color: #333;
+    padding: 0 20px;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav .user-status {
+    width: 120px;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav .select2-selection--single {
+    height: 30px !important;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 30px !important;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 3px !important;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav a {
+    cursor: pointer;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav ul li {
+    float: left;
+    margin-right: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+.dialog-box.basic-listing-room .box-header .sub-nav ul li.active {
+    border-bottom: 2px #fff solid;
+    padding-bottom: 4px;
+}
+
+.dialog-box.basic-listing-room .btn-save {
+    float: left;
+    width: 120px;
+    margin-top: 4px;
+}
+
+.dialog-box.basic-listing-room .btn-checkout {
+    width: 180px;
+    background-color: #981A2A;
+    float: left;
+    margin-top: 5px;
+    margin-right: 8px;
 }
 
 .dialog-box.basic-listing-room .box-header .room-switch {
@@ -3388,61 +3594,85 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .dialog-box.basic-listing-room .box-content {
     background-color: #f7f7f7;
-}
-
-.dialog-box.basic-listing-room .box-content .user-info {
-    width: 178px;
+    padding: 0 20px;
+    overflow-y: scroll;
+    height: 500px;
     position: relative;
-    float: left;
-}
-
-.dialog-box.basic-listing-room .box-content .user-info .user-header {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    float: left;
-    margin-top: 21px;
-    line-height: 58px;
-    text-align: center;
-    overflow: hidden;
-    margin-left: 52px;
-}
-
-.dialog-box.basic-listing-room .box-content .user-info .flag {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    position: absolute;
-    left: 94px;
-    top: 20px;
-}
-
-.dialog-box.basic-listing-room .box-content .user-info .username {
-    margin: 90px 0 0 72px;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form {
-    margin-left: 178px;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-block {
     padding-top: 20px;
-    overflow-y: scroll;
-    height: 500px;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .form-group {
-    float: left;
     margin-bottom: 12px;
+    width: 100%;
 }
 
-.dialog-box.basic-listing-room .box-content .user-form .form-group.col-2 {
-    width: 308px;
-    margin-right: 16px;
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-2 {
+    width: 48%;
+    margin-right: 4%;
+    float: left;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-2 .for-label {
+    width: 32%;
+    float: left;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-2 .for-input {
+    width: 68%;
+    float: left;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-1 {
+    width: 100%;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-1 .for-label {
+    width: 15.36%;
+    float: left;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-1 .for-input {
+    width: 84.64%;
+    float: left;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-6 {
+    width: 16.6667%;
+    padding-right: 10px;
+    float: left;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-6.col-6-1 {
+    width: 15.36%;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-6 p {
+    text-align: right;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-6 input[type="text"] {
+    text-align: center;
+}
+
+.dialog-box.basic-listing-room .box-content .user-form .form-group .col-6 span {
+    display: block;
+    text-align: center;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .form-group p {
     font-size: 14px;
     font-weight: bold;
-    line-height: 20px;
-    margin-bottom: 4px;
+    line-height: 38px;
     height: 20px;
 }
 
@@ -3454,13 +3684,13 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 100%;
     height: 38px;
     border: 1px #ccc solid;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form hr {
     border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
     margin: 20px 0 24px;
-    width: 632px;
+    width: 100%;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .form-group.col-date {
@@ -3474,7 +3704,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .history {
-
+    margin-bottom: 40px;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .history .title {
@@ -3501,8 +3731,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     letter-spacing: 0.1em;
     background-repeat: no-repeat;
     background-size: 12px;
-    background-position-x: 18px;
-    background-position-y: 16px;
+    background-position: 10px;
     background-image: url(/images/static/Plus-2x.png);
 }
 
@@ -3523,10 +3752,9 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     color: #61B765;
 }
 
-.dialog-box.basic-listing-room .box-content .user-form .form-footer {
+.dialog-box.basic-listing-room .form-footer {
     text-align: right;
-    padding-right: 28px;
-    margin: 0 0 20px;
+    height: 40px;
 }
 
 .dialog-box.basic-listing-room .box-content .user-form .form-footer .btn-save {
@@ -3538,38 +3766,34 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     margin-top: 0;
 }
 
-.dialog-box.basic-listing-room .box-content .user-form .form-footer .btn-checkout {
-    width: 180px;
-    background-color: #981A2A;
-}
-
 .single-tenant {
     padding: 0 20px;
-    height: 100px;
+    height: 80px;
     background-color: #fff;
     border-bottom: 1px #e7e7e7 solid;
+    position: relative;
 }
 
 .single-tenant .user {
     float: left;
     font-size: 12px;
     font-weight: bold;
-    line-height: 100px;
+    line-height: 80px;
     letter-spacing: 0.1em;
     width: 220px;
     position: relative;
 }
 
 .single-tenant .user .highlight {
-    color: #FFBE00;
+    color: #f05368;
 }
 
 .single-tenant .user .user-header {
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     float: left;
-    margin-top: 21px;
+    margin-top: 14px;
     line-height: 58px;
     text-align: center;
     overflow: hidden;
@@ -3581,8 +3805,8 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     height: 20px;
     border-radius: 50%;
     position: absolute;
-    left: 42px;
-    top: 20px;
+    left: 36px;
+    top: 10px;
 }
 
 .single-tenant .tenant-info {
@@ -3596,8 +3820,13 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     line-height: 20px;
 }
 
+.single-tenant .tenant-info a {
+    color: #f05368;
+    cursor: pointer;
+}
+
 .single-tenant .tenant-info p.date-info {
-    color: #61B765;
+    color: #555;
     font-weight: normal;
 }
 
@@ -3608,10 +3837,10 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .single-tenant .btn-edit {
     width: 70px;
-    margin-top: 31px;
+    margin-top: 20px;
     height: 38px;
     line-height: 38px;
-    background-color: #00636F;
+    background-color: #2c9ab7;
     color: #fff;
     font-weight: bold;
 }
@@ -3674,7 +3903,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .dialog-box .box-content .btn-yes {
     width: 160px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     margin-left: 10px;
     margin-top: 24px;
 }
@@ -3684,7 +3913,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .dialog-box.refund-confirm-box .box-header span {
-    color: #00636F;
+    color: #2c9ab7;
 }
 
 .dialog-box.refund-confirm-box .box-content .op-footer {
@@ -3762,13 +3991,13 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .profile-left-nav .nav-area ul li:hover,
 .main-container .edit-container .profile-left-nav .nav-area ul li.active {
-    color: #FFBE00;
+    color: #f05368;
     font-weight: bold;
 }
 
 .main-container .edit-container .profile-left-nav .nav-area ul li:hover span,
 .main-container .edit-container .profile-left-nav .nav-area ul li.active span {
-    background-color: #FFBE00;
+    background-color: #f05368;
 }
 
 .main-container .edit-container .profile-left-nav .view-profile {
@@ -3778,7 +4007,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .profile-left-nav .view-profile .btn-view-profile {
     width: 100%;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -3863,7 +4092,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     line-height: 38px;
 }
 
-.edit-panel .panel-content .form-row .col .sex-select {
+.sex-select {
     width: 100px;
 }
 
@@ -3876,7 +4105,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 100%;
     height: 38px;
     border: 1px #ccc solid;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .edit-panel .panel-content .form-row .col textarea {
@@ -3892,7 +4121,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .profile-area .profile-op .btn-save {
     width: 120px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -3925,7 +4154,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .profile-area .photo-op .btn-add-photo {
     width: 100%;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -3940,7 +4169,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .edit-panel .panel-content .form-footer .btn-save {
     width: 120px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -4024,7 +4253,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .profile-container .left-block .listing .more a {
-    color: #37828B;
+    color: #2c9ab7;
     text-decoration: none;
 }
 
@@ -4113,6 +4342,11 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     background-color: #EEE;
 }
 
+.main-container .msg-container .msg-header p {
+    font-size: 20px;
+    line-height: 60px;
+}
+
 .main-container .msg-container .msg-header .msg-filter {
     width: 200px;
     height: 38px;
@@ -4137,7 +4371,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     line-height: 30px;
     background-color: #fff;
     display: inline-block;
-    color: #37828b;
+    color: #f05368;
     margin-right: 10px;
     position: relative;
     min-width: 28px;
@@ -4179,12 +4413,12 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .pagination ul li .triangle.prev {
     border-left-width: 0;
-    border-right-color: #37828B;
+    border-right-color: #f05368;
 }
 
 .main-container .pagination ul li .triangle.next {
     border-right-width: 0;
-    border-left-color: #37828B;
+    border-left-color: #f05368;
 }
 
 .main-container .msg-container .msg-list .single-msg {
@@ -4248,7 +4482,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .msg-container .msg-list .single-msg .msg-status .status.inquiry {
-    color: #FFBE00;
+    color: #f05368;
 }
 
 .main-container .list-footer {
@@ -4258,16 +4492,16 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .dialog-container {
     width: 960px;
-    margin: 20px auto 100px;
+    margin: 20px auto;
 }
 
 .main-container .dialog-container .left-block {
-    width: 585px;
+    width: 545px;
     float: left;
 }
 
 .main-container .dialog-container .right-block {
-    margin-left: 640px;
+    margin-left: 600px;
 }
 
 .main-container .dialog-container .send-block {
@@ -4289,7 +4523,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .dialog-container .send-block .btn-send {
     width: 160px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -4299,6 +4533,8 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .dialog-container .row {
     margin-bottom: 30px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .main-container .dialog-container .msg-list .msg-block {
@@ -4318,7 +4554,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .dialog-container .inquiry-block span {
-    color: #00636F;
+    color: #f05368;
     font-weight: bold;
 }
 
@@ -4329,7 +4565,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .dialog-container .msg-list .msg-block .dialog {
-    width: 510px;
+    width: 480px;
     border: 1px #e7e7e7 solid;
     padding: 25px 30px;
     background-color: #fff;
@@ -4362,7 +4598,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     border-left-width: 0;
     border-right-color: #e7e7e7;
     top: 16px;
-    left: 65px;
+    left: 55px;
 }
 
 .main-container .dialog-container .msg-list .msg-block.other-block .triangle:after {
@@ -4376,7 +4612,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     border-right-width: 0;
     border-left-color: #e7e7e7;
     top: 16px;
-    right: 65px;
+    right: 55px;
 }
 
 .main-container .dialog-container .msg-list .msg-block.my-block .triangle:after {
@@ -4493,7 +4729,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     font-size: 12px;
     line-height: 16px;
     transform: scale(0.83333);
-    color: #0096A3;
+    color: #f05368;
     position: absolute;
     right: 10px;
     bottom: 32px;
@@ -4501,7 +4737,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .dialog-container .flat-info .loc-info .price .price-num {
     font-size: 20px;
-    color: #0096A3;
+    color: #f05368;
     position: absolute;
     bottom: 12px;
     right: 10px;
@@ -4560,7 +4796,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     height: 26px;
     border-radius: 50%;
     display: inline-block;
-    background-color: #FFBE00;
+    background-color: #f05368;
     position: absolute;
     top: 6px;
     right: 6px;
@@ -4586,7 +4822,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item input[type='text']:focus {
-    border-color: #aaa;
+    border: 2px #2c9ab7 solid;
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item.home-type {
@@ -5045,7 +5281,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .account-area .profile-op .btn-save {
     width: 120px;
-    background-color: #37828b;
+    background-color: #2c9ab7;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -5130,7 +5366,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 100%;
     height: 38px;
     border: 1px #ccc solid;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .dialog-box.payment-box .payment-form .form-footer {
@@ -5138,3 +5374,308 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 /** account page  **/
+
+/** payment page **/
+.main-container .main-wrapper.payment-page {
+    margin: 20px auto;
+}
+
+.payment-page .payment-block {
+    width: 640px;
+    float: left;
+}
+
+.payment-page .payment-block .block-header {
+    font-size: 32px;
+    line-height: 64px;
+}
+
+.payment-page .payment-block .payment-way {
+    border-bottom: 1px #e7e7e7 solid;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.payment-page .payment-block .payment-way .form-row {
+    margin-top: 15px;
+    width: 300px;
+}
+
+.payment-page .payment-block .payment-way .form-row p {
+    margin-bottom: 5px;
+}
+
+.payment-page .payment-block .payment-way .hint {
+    margin-top: 20px;
+}
+
+.payment-page .payment-block .inquiry-block {
+    margin-top: 10px;
+    border-bottom: 1px #e7e7e7 solid;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.payment-page .payment-block .inquiry-block ul {
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.payment-page .payment-block .inquiry-block .dialog {
+    margin-top: 20px;
+}
+
+.payment-page .payment-block .inquiry-block .dialog .user-header {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    float: left;
+}
+
+.payment-page .payment-block .inquiry-block .dialog .input-box {
+    margin-left: 140px;
+}
+
+.payment-page .payment-block .inquiry-block .dialog .input-box textarea {
+    width: 100%;
+    height: 120px;
+    border: 1px #ccc solid;
+    padding: 10px;
+}
+
+.payment-page .payment-block .op-block {
+    margin-top: 20px;
+}
+
+.payment-page .payment-block .op-btn.btn-book {
+    width: 140px;
+    background-color: #2c9ab7;
+    color: #fff;
+}
+
+.payment-page .room-info {
+    width: 310px;
+    float: right;
+    margin-left: 60px;
+    background-color: #fff;
+    border: 1px #e7e7e7 solid;
+}
+
+.payment-page .room-info .flat-pic {
+    width: 100%;
+    height: 220px;
+    position: relative;
+}
+
+.payment-page .room-info .book-detail {
+    padding: 0 20px;
+}
+
+.payment-page .room-info .book-detail .flat-name {
+    padding: 20px 0;
+    border-bottom: 1px #e7e7e7 solid;
+}
+
+.payment-page .room-info .book-detail .flat-name .name {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.payment-page .room-info .book-detail .rent-info {
+    padding: 20px 0;
+    border-bottom: 1px #e7e7e7 solid;
+}
+
+.payment-page .room-info .book-detail .rent-info p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.payment-page .room-info .book-detail .order-info {
+    padding: 20px 0;
+    border-bottom: 1px #e7e7e7 solid;
+}
+
+.payment-page .room-info .book-detail .order-info .order-row {
+    width: 100%;
+}
+
+.payment-page .room-info .book-detail .order-info .order-row p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.payment-page .room-info .book-detail .order-info .order-row .col-left {
+    width: 60%;
+    float: left;
+}
+
+.payment-page .room-info .book-detail .order-info.total-price {
+    border-bottom: none;
+}
+
+.payment-page .room-info .book-detail .order-info.total-price .order-row p {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+/** payment page **/
+
+/** order list **/
+.main-container .order-area {
+    margin-left: 254px;
+    width: 712px;
+    padding-top: 30px;
+}
+
+.main-container .order-area .order-header {
+    height: 60px;
+    padding: 0 0 0 20px;
+    background-color: #EEE;
+    border: 1px #E7E7E7 solid;
+}
+
+.main-container .order-area .order-header ul {
+    list-style: none;
+}
+
+.main-container .order-area .order-header ul li {
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: #555;
+    margin-top: 22px;
+}
+
+.main-container .order-area .order-header ul li.active span {
+    border-bottom: 2px #555 solid;
+    padding-bottom: 6px;
+}
+
+.main-container .order-area .order-list {
+    border: 1px #E7E7E7 solid;
+    margin-top: -1px;
+}
+
+.main-container .order-area .order-list .single-order {
+    padding: 20px 0 20px 20px;
+    background-color: #fff;
+    border-bottom: 1px #e7e7e7 solid;
+    height: 110px;
+}
+
+.single-order .pay-date {
+    width: 100px;
+    float: left;
+    overflow: hidden;
+}
+
+.single-order .rent-info {
+    width: 220px;
+    float: left;
+    overflow: hidden;
+}
+
+.single-order .guest {
+    width: 220px;
+    float: left;
+    overflow: hidden;
+}
+
+.single-order .operation {
+    width: 150px;
+    float: left;
+    overflow: hidden;
+}
+
+.single-order p {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.single-order.order-list-header {
+    height: 60px !important;
+}
+
+.single-order.order-list-header p {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.single-order a {
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 20px;
+    color: #f05368;
+    display: block;
+    cursor: pointer;
+}
+
+.single-order a:hover {
+    text-decoration: none;
+}
+
+.single-order .guest .user-header {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    float: left;
+}
+
+.single-order .guest .guest-info {
+    margin-left: 70px;
+}
+
+/** order list **/
+
+/** calender **/
+.fc-view-container {
+    background-color: #fff;
+}
+
+.fc-day.select-day {
+    background-color: #8f83ff !important;
+}
+
+/** calender **/
+/** dashboard **/
+.main-container .order-container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.main-container .order-container .order-area {
+    width: 100%;
+    margin-left: 0;
+}
+
+.main-container .order-container .order-area .order-header ul li {
+    margin-right: 40px;
+}
+
+.main-container .order-container .order-area .order-header sup {
+    color: #f05368;
+    margin-left: 4px;
+}
+
+.main-container .order-container .order-area .order-list .single-order {
+    padding: 20px 0 20px 40px;
+}
+
+.main-container .order-container .order-area .order-list .single-order .pay-date {
+    width: 160px;
+}
+
+.main-container .order-container .order-area .order-list .single-order .rent-info {
+    width: 260px;
+}
+
+.main-container .order-container .order-area .order-list .single-order .guest {
+    width: 260px;
+    margin-left: 40px;
+}
+
+/** dashboard **/

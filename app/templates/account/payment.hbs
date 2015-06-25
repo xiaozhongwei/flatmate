@@ -1,0 +1,101 @@
+{{#view 'account/account-layout'}}
+    <div class="account-area clearfix">
+      <div class="edit-panel">
+          <div class="panel-header">
+              Payment Methods
+          </div>
+          <div class="panel-content">
+              <div class="payment-list">
+
+              </div>
+              <div class="add-payment">
+                  <img src="/images/static/Plus-2x-black.png" />
+                  <p>添加付款方式</p>
+              </div>
+          </div>
+      </div>
+    </div>
+{{/view}}
+
+<!-- edit-tenant-profile box -->
+<div class="dialog-box payment-box">
+    <div class="box-header">
+        <p class="fl">添加付款方式</p>
+    </div>
+    <div class="box-content">
+        <div class="payment-form">
+            <div class="clearfix">
+                <div class="form-group full-width clearfix">
+                    <div class="card-icon"></div>
+                    <div class="card-icon"></div>
+                    <div class="card-icon"></div>
+                    <div class="card-icon"></div>
+                </div>
+                <div class="form-group clearfix col-2">
+                    <p>卡类</p>
+                    <select>
+                        <option value="0">Visa</option>
+                        <option value="0">Master</option>
+                    </select>
+                </div>
+                <div class="form-group clearfix col-2 no-margin-right">
+                    <p>卡号</p>
+                    <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group clearfix col-2">
+                    <p>有效期至</p>
+                    <div class="col-2">
+                        <select>
+                            <option value="0">月</option>
+                            <option value="0">1</option>
+                            <option value="0">2</option>
+                            <option value="0">3</option>
+                            <option value="0">4</option>
+                        </select>
+                    </div>
+                    <div class="col-2 no-margin-right">
+                        <select>
+                            <option value="0">年</option>
+                            <option value="0">2015</option>
+                            <option value="0">2016</option>
+                            <option value="0">2017</option>
+                            <option value="0">2018</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group clearfix col-2 no-margin-right">
+                    <p>安全码</p>
+                    <div class="col-2">
+                        <input type="text" placeholder="..." />
+                    </div>
+                </div>
+                <div class="form-group clearfix col-2">
+                    <p>名字</p>
+                    <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group clearfix col-2 no-margin-right">
+                    <p>名字</p>
+                    <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group clearfix col-2">
+                    <p>邮政编码</p>
+                    <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group clearfix col-2 no-margin-right">
+                    <p>国家</p>
+                    <select>
+                        <option value="0">中国</option>
+                        <option value="0">xxx</option>
+                        <option value="0">xxx</option>
+                        <option value="0">xxx</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-footer">
+                <button class="btn-cancel fl">Cancel</button>
+                <button class="btn-save fr">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>

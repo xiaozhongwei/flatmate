@@ -25,9 +25,11 @@
                 <div class="dropdown-user-profile">
                     <span class="triangle"></span>
                     <ul>
+                      {{#link-to 'dashboard'}}<li>Dashboard</li>{{/link-to}}
                       {{#link-to 'profile.edit-profile'}}<li>Profile</li>{{/link-to}}
                       {{#link-to 'house.list'}}<li>Listings</li>{{/link-to}}
                       {{#link-to 'inbox.list'}}<li>Inbox</li>{{/link-to}}
+                      {{#link-to 'account.notification'}}<li>Account</li>{{/link-to}}
                       {{#link-to 'wishlist'}}<li>Wishlist</li>{{/link-to}}
                       <a href="javascript:;" {{action "invalidateSession" bubbles=true}}><li>Logout</li></a>
                     </ul>

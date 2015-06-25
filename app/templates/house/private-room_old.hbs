@@ -1,0 +1,125 @@
+<style>
+    .inactive {
+      color: rgb(235,235,235) !important;
+    }
+    .step-unfinish {
+        color: rgb(163, 0, 0) !important;
+    }
+    .step-finish {
+      color: rgb(0,150,163) !important;
+    }
+</style>
+
+<div class="white_bg">
+    <div class="container margin_60" style="padding-top:10px;">
+        <div class="row">
+            <aside class="col-lg-4 col-md-4">
+                <h2>List Your Room</h2>
+                <div class="other_tours left_other_tours col-md-6" style="margin-top:20px;background: rgb(251,251,251);padding: 0;min-height: 500px;">
+                    <ul>
+                        <li class="{{if (eq activeType 'apt') 'active'}}" {{action "changeActive" "apt"}}>
+                            <a href="javascript:;" class="{{if (eq activeType 'apt') 'active' 'inactive'}}" >
+                                Apartment<span class="other_tours_price"><span class="{{if model.house.isApartmentFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
+                            </a>
+                        </li>
+                      {{#unless model.house.bedroomEditable}}
+                          <li class="{{if (eq activeType 'flatmate') 'active'}}" {{action "changeActive" "flatmate"}}>
+                              <a href="javascript:;" class="{{if (eq activeType 'flatmate') 'active' 'inactive'}}" >
+                                  Rooms ({{model.house.bedrooms}})<span class="other_tours_price"><span class="{{if model.house.isFlatmateFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span>
+                              </a>
+                          </li>
+                      {{/unless}}
+                      {{#each model.house.listings as |listing index|}}
+                          <li class="{{if (eq model.activeId listing.id) 'active'}}">
+                              <a href="javascript:;" class="{{if (eq model.activeId listing.id) 'active' 'inactive'}}" {{action "changeActive" "room" listing.id}}>
+                                  <span class="radius-number-1 {{if (not (eq model.activeId listing.id)) 'radius-number-gary'}} ">{{room-index index}}</span>
+                              </a>
+                          </li>
+                      {{/each}}
+                    </ul>
+                </div>
+
+              {{#unless (eq activeType 'flatmate')}}
+                  <div class="other_tours col-md-6" style="margin-top:20px;background: rgb(247,247,247);padding: 10px 15px 15px 15px;min-height: 500px;">
+                    {{#if (eq activeType 'apt')}}
+                        <ul>
+                            <li><a href="javascript:;" {{action "changeStep" 1}}>Overview <span class="other_tours_price"><span class="{{if model.house.isOverviewFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 2}}>Photo<span class="other_tours_price"><span  class="{{if model.house.isPhotoFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                            <li><a href="javascript:;" {{action "changeStep" 3}}>Map<span class="other_tours_price"><span class="{{if model.house.isMapFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                        </ul>
+                    {{/if}}
+                    {{#if (eq activeType 'room')}}
+                      {{#each model.house.listings as |listing index|}}
+                        {{#if (eq model.activeId listing.id)}}
+                            <ul>
+                                <li><a href="javascript:;" {{action "changeStep" 1}}>Calendar<span class="other_tours_price"><span class="{{if listing.isCalendarFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                                <li><a href="javascript:;" {{action "changeStep" 2}}>Overview <span class="other_tours_price"><span class="{{if listing.isOverviewFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                                <li><a href="javascript:;" {{action "changeStep" 3}}>Photo<span class="other_tours_price"><span class="{{if listing.isPhotoFinished 'icon-ok step-finish' 'icon-plus step-unfinish'}}"></span></span></a></li>
+                            </ul>
+                          {{#if listing.listStep}}
+                              <div style="position: absolute;bottom:80px;width:88%;text-align: center;font-weight: bold;font-size:15px;">{{format-step listing.listStep}} to</div>
+                              <div style="position: absolute;background: rgb(219,219,219);padding: 15px 5px; bottom: 20px;color: white;width: 88%;font-size: 17px;text-align: center;">List the room</div>
+                          {{else}}
+                              <div style="position: absolute;bottom: 20px;width: 88%;text-align: center;">
+                                  <a href="javascript:;" class="btn_map" {{action "changeStatus" listing}}>
+                                    {{#if listing.published}}
+                                        unlist the room
+                                    {{else}}
+                                        List the room
+                                    {{/if}}
+                                  </a>
+                              </div>
+                          {{/if}}
+                        {{/if}}
+                      {{/each}}
+                    {{/if}}
+                  </div>
+              {{/unless}}
+            </aside>
+            <div class="col-md-8">
+              {{#if (eq activeType 'apt')}}
+                {{#if (eq step 1)}}
+                  {{render 'house.manage.apartment-overview' model.house}}
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 2}}>Next</a>
+                {{/if}}
+                {{#if (eq step 2)}}
+                  {{render 'house.manage.apartment-photo' model.house}}
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 3}}>Next</a>
+                {{/if}}
+                {{#if (eq step 3)}}
+                  {{render 'house.manage.map' model.house}}
+
+                {{/if}}
+              {{/if}}
+              {{#if (eq activeType 'flatmate')}}
+                {{render 'house.manage.flatmate' model.house}}
+              {{/if}}
+              {{#if (eq activeType 'room')}}
+                {{#if (eq step 1)}}
+                  {{#each model.house.listings as |listing index|}}
+                    {{#if (eq model.activeId listing.id)}}
+                      {{render 'house.manage.calendar' listing}}
+                        <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 2}}>Next</a>
+                    {{/if}}
+                  {{/each}}
+                {{/if}}
+                {{#if (eq step 2)}}
+                  {{render 'house.manage.room-overview' model}}
+                    <a href="javascript:;" class="btn_1 pull-right" {{action "changeStep" 3}}>Next</a>
+                {{/if}}
+
+                {{#if (eq step 3)}}
+                  {{#each model.house.listings as |listing index|}}
+                    {{#if (eq model.activeId listing.id)}}
+                      {{render 'house.manage.room-photo' listing}}
+                    {{/if}}
+                  {{/each}}
+                {{/if}}
+              {{/if}}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

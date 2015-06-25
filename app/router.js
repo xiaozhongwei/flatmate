@@ -8,17 +8,25 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('about');
 
-  this.resource("listing", {path: '/listing'}, function () {
+  this.route('dashboard');
+
+  this.route("listing", {path: '/listing'}, function () {
     this.route("list", { path: "/list" });
     this.route('detail', { path: "/detail/:listing_id" });
     this.route('book');
   });
-  this.resource("profile", {path: '/profile'}, function () {
+  this.route("profile", {path: '/profile'}, function () {
     this.route("dashboard", { path: "/dashboard" });
     this.route('change-password');
     this.route('photo');
     this.route('edit-profile');
     this.route('view', { path: "/view/:listing.landlord_id" });
+  });
+
+  this.route("account", {path: '/account'}, function () {
+    this.route("notification");
+    this.route('payment', { path: "/payment-methods" });
+    this.route('history', { path: "/transaction-history" });
   });
 
   this.route('inbox', function() {

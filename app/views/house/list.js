@@ -9,6 +9,8 @@ export default Ember.View.extend({
     });
     $('.close-all').click(function () {
       $('.single-apt').addClass('collapsed');
+      $('.single-apt').find('.tenant-list').css('display', 'none');
+      $('.single-apt').find('.tenant-manage').removeClass('active');
       $(this).css('display', 'none');
       $('.expand').css('display', 'block');
     });
@@ -18,9 +20,18 @@ export default Ember.View.extend({
         _single_apt.removeClass('collapsed');
       } else {
         _single_apt.addClass('collapsed');
+        _single_apt.find('.tenant-list').css('display', 'none');
+        _single_apt.find('.tenant-manage').removeClass('active');
       }
     });
-    $('.tenant').click(function () {
+
+    $('.tenant-manage a').click(function () {
+      if ($(this).parents('.tenant-manage').hasClass('active')){
+        $(this).parents('.tenant-manage').removeClass('active');
+      }else{
+        $(this).parents('.tenant-manage').addClass('active');
+      }
+
       var _tenant_list = $(this).parents('.apt-container').siblings('.tenant-list');
       if (_tenant_list.css('display') == 'none') {
         _tenant_list.css('display', 'block');
@@ -28,12 +39,18 @@ export default Ember.View.extend({
         _tenant_list.css('display', 'none');
       }
     });
+
     //$('.tenant-list .btn-edit').click(function () {
     //  $('.edit-tenant-profile').css('display', 'block');
     //  $('.overlay-full-screen').css('display', 'block');
     //});
     $('.remove').click(function () {
       $(this).parent('.single-tenant').remove();
+    });
+
+    $('.sub-nav li').click(function () {
+      $('.sub-nav li').removeClass('active');
+      $(this).addClass('active');
     });
 
     this.get('controller').on('openTenantBox', this, this.show_tenant_box);

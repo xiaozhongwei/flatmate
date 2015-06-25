@@ -1,0 +1,54 @@
+{{#view 'account/account-layout'}}
+    <div class="account-area clearfix">
+      <div class="edit-panel">
+          <div class="panel-header">
+              Notification
+          </div>
+          <div class="panel-content">
+              <div class="form-row clearfix">
+                  <div class="left-col">
+                      <label>手机</label>
+                      <p>通过定期手机短信接收更新信息</p>
+                  </div>
+                  <div class="col">
+                      <div class="single-checkbox">
+                          <input type="checkbox"  id="c1"/> <label for="c1"><span></span>启用短信通知功能</label>
+                      </div>
+                      <div class="sms clearfix">
+                          <p>接受短信通知至: </p>
+                          <div class="sms-select">
+                              <select>
+                                  <option>+86 188 **** **88</option>
+                              </select>
+                          </div>
+                      </div>
+                      <a href="#">修改电话号码</a>
+                  </div>
+              </div>
+              <div class="form-row clearfix no-border-bottom">
+                  <div class="left-col">
+                      <label>当出现以下情况通知我</label>
+                      <p>同时适用于短信和推送通知</p>
+                  </div>
+                  <div class="col">
+                      <div class="single-checkbox">
+                          <input type="checkbox"  id="c11"/> <label for="c11"><span></span>我收到了来自另一位xxx用户的消息</label>
+                      </div>
+                      <div class="single-checkbox">
+                          <input type="checkbox"  id="c12"/> <label for="c12"><span></span>未付款的订房申请已被接受或拒绝</label>
+                      </div>
+                      <div class="single-checkbox">
+                          <input type="checkbox"  id="c13"/> <label for="c13"><span></span>我收到了一个预定申请</label>
+                      </div>
+                      <div class="single-checkbox">
+                          <input type="checkbox"  id="c14"/> <label for="c14"><span></span>对我的xxx账户或房源做出了更改</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="profile-op">
+          <button class="op-btn btn-save">Save</button>
+      </div>
+    </div>
+{{/view}}

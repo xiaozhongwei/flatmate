@@ -41,124 +41,33 @@
                     <li class="{{if (eq type 'share') 'active'}}" {{action "queryHouse" status "share"}}><span>Rooms</span><sup>{{statistic.shareCount}}</sup></li>
                 </ul>
                 <div class="fr">
-                    <input type="search" placeholder="Search apt tenants"/>
+                    {{input type="search" placeholder="Search apt tenants" value=nameFilter}}
+                  {{#if nameFilter}}
+                      <div class="expand-close expand">
+                          <span>Expand All</span>
+                          <img src="/images/static/Expand-All.png"/>
+                      </div>
+                  {{else}}
+                      <div class="expand-close expand {{if (eq type 'share') 'active'}}">
+                          <span>Expand All</span>
+                          <img src="/images/static/Expand-All.png"/>
+                      </div>
 
-                    <div class="expand-close expand {{if (eq type 'share') 'active'}}">
-                        <span>Expand All</span>
-                        <img src="/images/static/Expand-All.png"/>
-                    </div>
+                      <div class="expand-close close-all {{if (eq type 'share') 'active'}}">
+                          <span>Close All</span>
+                          <img src="/images/static/Close-All.png"/>
+                      </div>
+                  {{/if}}
+
                 </div>
             </div>
-            <div class="apt-room-list">
-              {{#if (eq type 'entire')}}
-                {{#each model as |house|}}
-                  {{#each house.listings itemController="house.listing" as |listing index|}}
-                      <div class="single-apt">
-                          <div class="apt-container">
-                              <div class="left-tag">
-                                  <div class="center-tag">
-                                      <span class="tenant"></span>
-                                  </div>
-                              </div>
-                              <div class="apt-pic">
-                                {{#if listing.model.coverPhoto}}
-                                    <a class="slide-img"
-                                       style="background-image: url({{listing.model.coverPhoto.imageUrl}})"></a>
-                                {{else}}
-                                    <a class="slide-img" style="background-image: url(images/tour_box_1.jpg)"></a>
-                                {{/if}}
-                              </div>
-                              <div class="apt-info">
-                                  <p class="apt-title">
-                                    {{house.compound}},building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
-                                  </p>
-                                {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
-                              </div>
-                              <div class="op fr">
-                                {{#if house.listStep}}
-                                  {{#link-to 'house.manage' house.id}}
-                                      <button class="op-btn btn-to-list">
-                                        {{format-step house.listStep}} to list
-                                      </button>
-                                  {{/link-to}}
-                                {{else}}
-                                    <div class="list-status">
-                                      {{select-2
-                                      content=listingStatusMapping
-                                      value=listing.model.status
-                                      optionValuePath="id"
-                                      searchEnabled=false
-                                      }}
-                                    </div>
-                                {{/if}}
-                              </div>
-                          </div>
-                          <div class="tenant-list">
-                            {{#each listing.model.tenants as |tenant|}}
-                                <div class="single-tenant">
-                                    <div class="left-op">
-                                        <img src="/images/static/Menu2x.png">
-                                    </div>
-                                    <div class="user">
-                                        <img class="user-header" src="/images/static/LISA_100.jpg"/>
-                                        <img class="flag" src="/images/static/flag-demo.png"/>
-                                      {{tenant.name}}
-                                    </div>
-                                    <div class="tenant-info">
-                                        <p>
-                                          {{#if house.showName}}
-                                            {{house.compound}}, building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
-                                          {{else}}
-                                              New apartment without detailed address info
-                                          {{/if}}
-                                        </p>
-
-                                        <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}} Next ¥ 14.04.2015</p>
-
-                                        <p class="phone-num">{{tenant.phone}}</p>
-                                    </div>
-                                    <div class="fr">
-                                        <button class="btn-edit op-btn" {{action "editTenant" tenant listing.model house}}>Edit</button>
-                                    </div>
-                                    <div class="remove" {{action "removeTenant" tenant}}>
-                                        <img src="/images/static/remove.png"/>
-                                    </div>
-                                </div>
-                            {{/each}}
-                          </div>
-                      </div>
-                  {{/each}}
-                {{/each}}
-                  <div class="list-footer clearfix">
-                      <div class="pagination fr">
-                        {{em-pagination-pager current=page count=totalPage}}
-                      </div>
-                  </div>
-              {{else}}
-                {{#each model as |house|}}
-                    <div class="single-apt {{unless house.isExpand 'collapsed'}}">
-                        <div class="apt-header">
-                            <p>
-                              {{#if house.showName}}
-                                {{house.compound}}, building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
-                              {{else}}
-                                  New apartment without detailed address info
-                              {{/if}}
-                              {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
-                            </p>
-                            <span class="triangle fr"></span>
-                        </div>
+            {{#unless nameFilter}}
+                <div class="apt-room-list">
+                  {{#if (eq type 'entire')}}
+                    {{#each model as |house|}}
                       {{#each house.listings itemController="house.listing" as |listing index|}}
-                          <div>
+                          <div class="single-apt single-room">
                               <div class="apt-container">
-                                  <div class="left-tag">
-                                      <div class="left-tag">
-                                          <div class="center-tag">
-                                              <span class="seq {{if listing.isAvailable 'available'}} margin-bottom-5">{{room-index index}}</span>
-                                              <span class="tenant"></span>
-                                          </div>
-                                      </div>
-                                  </div>
                                   <div class="apt-pic">
                                     {{#if listing.model.coverPhoto}}
                                         <a class="slide-img"
@@ -168,12 +77,20 @@
                                     {{/if}}
                                   </div>
                                   <div class="apt-info">
-                                    {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}Manage
-                                        listing {{/link-to}}
+                                      <p class="apt-title">
+                                        {{house.compound}},building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
+                                      </p>
+                                      <div class="list-manage">
+                                        {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
+                                      </div>
+                                      <div class="tenant-manage">
+                                          <a><span class="txt">Manage tenant</span> <span class="triangle"></span></a>
+                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
+                                      </div>
                                   </div>
                                   <div class="op fr">
-                                    {{#if listing.model.listStep}}
-                                      {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}
+                                    {{#if house.listStep}}
+                                      {{#link-to 'house.manage' house.id}}
                                           <button class="op-btn btn-to-list">
                                             {{format-step house.listStep}} to list
                                           </button>
@@ -191,10 +108,11 @@
                                   </div>
                               </div>
                               <div class="tenant-list">
+                                  <span class="triangle"></span>
                                 {{#each listing.model.tenants as |tenant|}}
                                     <div class="single-tenant">
-                                        <div class="left-op">
-                                            <img src="/images/static/Menu2x.png">
+                                        <div class="tenant-status">
+                                            <p class="pending">Pending</p>
                                         </div>
                                         <div class="user">
                                             <img class="user-header" src="/images/static/LISA_100.jpg"/>
@@ -202,20 +120,12 @@
                                           {{tenant.name}}
                                         </div>
                                         <div class="tenant-info">
-                                            <p>
-                                              {{#if house.showName}}
-                                                {{house.compound}}, building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
-                                              {{else}}
-                                                  New apartment without detailed address info
-                                              {{/if}}
-                                            </p>
-
-                                            <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}} Next ¥ 14.04.2015</p>
+                                            <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}}</p>
 
                                             <p class="phone-num">{{tenant.phone}}</p>
                                         </div>
                                         <div class="fr">
-                                            <button class="btn-edit op-btn" {{action "editTenant" tenant}}>Edit</button>
+                                            <button class="btn-edit op-btn" {{action "editTenant" tenant listing.model house}}>Edit</button>
                                         </div>
                                         <div class="remove" {{action "removeTenant" tenant}}>
                                             <img src="/images/static/remove.png"/>
@@ -225,22 +135,163 @@
                               </div>
                           </div>
                       {{/each}}
-                    </div>
-                {{/each}}
-                  <div class="list-footer clearfix">
-                      <div class="pagination fr">
-                        {{em-pagination-pager current=page count=totalPage}}
+                    {{/each}}
+                      <div class="list-footer clearfix">
+                          <div class="pagination fr">
+                            {{em-pagination-pager current=page count=totalPage}}
+                          </div>
                       </div>
-                  </div>
-              {{/if}}
-            </div>
+                  {{else}}
+                    {{#each model as |house|}}
+                        <div class="single-apt {{unless house.isExpand 'collapsed'}}">
+                            <div class="apt-header">
+                                <p>
+                                  {{#if house.showName}}
+                                    {{house.compound}}, building {{house.building}} → Floor {{house.floor}}, {{house.doorplate}}
+                                  {{else}}
+                                      New apartment without detailed address info
+                                  {{/if}}
+                                  {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
+                                </p>
+                                <span class="triangle fr"></span>
+                            </div>
+                          {{#each house.listings itemController="house.listing" as |listing index|}}
+                              <div>
+                                  <div class="apt-container">
+                                      <div class="left-tag">
+                                          <div class="left-tag">
+                                              <div class="center-tag">
+                                                  <span class="seq {{if listing.isAvailable 'available'}} margin-bottom-5">{{room-index index}}</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="apt-pic">
+                                        {{#if listing.model.coverPhoto}}
+                                            <a class="slide-img"
+                                               style="background-image: url({{listing.model.coverPhoto.imageUrl}})"></a>
+                                        {{else}}
+                                            <a class="slide-img" style="background-image: url(images/tour_box_1.jpg)"></a>
+                                        {{/if}}
+                                      </div>
+                                      <div class="list-manage">
+                                        {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}Manage
+                                            listing {{/link-to}}
+                                      </div>
+                                      <div class="tenant-manage">
+                                          <a><span class="txt">Manage tenant</span> <span class="triangle"></span></a>
+                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
+                                      </div>
+                                      <div class="op fr">
+                                        {{#if listing.model.listStep}}
+                                          {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}
+                                              <button class="op-btn btn-to-list">
+                                                {{format-step house.listStep}} to list
+                                              </button>
+                                          {{/link-to}}
+                                        {{else}}
+                                            <div class="list-status">
+                                              {{select-2
+                                              content=listingStatusMapping
+                                              value=listing.model.status
+                                              optionValuePath="id"
+                                              searchEnabled=false
+                                              }}
+                                            </div>
+                                        {{/if}}
+                                      </div>
+                                  </div>
+                                  <div class="tenant-list">
+                                    {{#each listing.model.tenants as |tenant|}}
+                                        <div class="single-tenant">
+                                            <div class="tenant-status">
+                                                <p class="current">Current</p>
+                                            </div>
+                                            <div class="user">
+                                                <img class="user-header" src="/images/static/LISA_100.jpg"/>
+                                                <img class="flag" src="/images/static/flag-demo.png"/>
+                                              {{tenant.name}}
+                                            </div>
+                                            <div class="tenant-info">
+                                                <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}} </p>
+
+                                                <p class="phone-num">{{tenant.phone}}</p>
+                                            </div>
+                                            <div class="fr">
+                                                <button class="btn-edit op-btn" {{action "editTenant" tenant}}>Edit</button>
+                                            </div>
+                                            <div class="remove" {{action "removeTenant" tenant}}>
+                                                <img src="/images/static/remove.png"/>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                  </div>
+                              </div>
+                          {{/each}}
+                        </div>
+                    {{/each}}
+                      <div class="list-footer clearfix">
+                          <div class="pagination fr">
+                            {{em-pagination-pager current=page count=totalPage}}
+                          </div>
+                      </div>
+                  {{/if}}
+                </div>
+            {{else}}
+                <div class="apt-room-list with-border">
+                  {{#each filteredTenants as |tenant|}}
+                    <div class="single-tenant">
+                        <div class="user">
+                            <img class="user-header" src="/images/static/LISA_100.jpg" />
+                            <img class="flag" src="/images/static/flag-demo.png" />
+                            VINCE <span class="highlight">VI</span>NNIE
+                        </div>
+                        <div class="tenant-info">
+                            <p class="date-info">03.11.2014 — 03.12.2015</p>
+                            <a>Hongkou → Rainbow City → B.4 → A. 145</a>
+                        </div>
+                        <div class="fr">
+                            <button class="btn-edit op-btn">Edit</button>
+                        </div>
+                    </div>
+                  {{/each}}
+                    <div class="single-tenant">
+                        <div class="user">
+                            <img class="user-header" src="/images/static/LISA_100.jpg" />
+                            <img class="flag" src="/images/static/flag-demo.png" />
+                            VINCE <span class="highlight">VI</span>NNIE{{filteredTenants.length}}
+                        </div>
+                        <div class="tenant-info">
+                            <p class="date-info">03.11.2014 — 03.12.2015</p>
+                            <a>Hongkou → Rainbow City → B.4 → A. 145</a>
+                        </div>
+                        <div class="fr">
+                            <button class="btn-edit op-btn">Edit</button>
+                        </div>
+                    </div>
+                    <div class="single-tenant">
+                        <div class="user">
+                            <img class="user-header" src="/images/static/LISA_100.jpg" />
+                            <img class="flag" src="/images/static/flag-demo.png" />
+                            VINCE <span class="highlight">VI</span>NNIE
+                        </div>
+                        <div class="tenant-info">
+                            <p class="date-info">03.11.2014 — 03.12.2015</p>
+                            <a>Hongkou → Rainbow City → B.4 → A. 145</a>
+                        </div>
+                        <div class="fr">
+                            <button class="btn-edit op-btn">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            {{/unless}}
+
         </div>
     </div>
 </div>
 
 
 <!-- edit-tenant-profile box -->
-<div class="dialog-box basic-listing-room edit-tenant-profile">
+<div class="dialog-box">
     <div class="box-header">
         <div class="sub-header">
             <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
@@ -365,5 +416,320 @@
                 <button class="btn-save" {{action "saveTenant" currentTenant}}>Save</button>
             </div>
         </div>
+    </div>
+</div>
+
+
+<!-- edit-tenant-profile box -->
+<div class="dialog-box basic-listing-room edit-tenant-profile">
+    <div class="box-header">
+        <div class="sub-header">
+            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
+            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+        </div>
+        <div class="sub-nav">
+            <ul>
+                <a href="#personal_info">
+                    <li class="active"><span>Personal Info</span></li>
+                </a>
+                <a href="#contract">
+                    <li><span>Contract</span></li>
+                </a>
+                <a href="#payment_record">
+                    <li><span>Payment record</span></li>
+                </a>
+            </ul>
+            <div class="fr user-status">
+                <select>
+                    <option value="0">Status</option>
+                    <option value="0">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="user-form">
+            <div id="personal_info" class="form-block clearfix">
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>First Name</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                    <div class="col-2 no-margin-right">
+                        <div class="for-label">
+                            <p>Last Name</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-1">
+                        <div class="for-label">
+                            <p>ID number</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Gender</p>
+                        </div>
+                        <div class="for-input">
+                            <div class="sex-select btn-group">
+                                <button class="col-2 active">Guy</button>
+                                <button class="col-2">Girl</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-1">
+                        <div class="for-label">
+                            <p>Email</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Phone number</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Occupation</p>
+                        </div>
+                        <div class="for-input">
+                            <select>
+                                <option value="0">Select...</option>
+                                <option value="0">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Nationality</p>
+                        </div>
+                        <div class="for-input">
+                            <select>
+                                <option value="0">Select...</option>
+                                <option value="0">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div id="contract" class="form-block clearfix">
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Starting Date</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                    <div class="col-2 no-margin-right">
+                        <div class="for-label">
+                            <p>Ending Date</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Payment Cycle</p>
+                        </div>
+                        <div class="for-input">
+                            <select>
+                                <option value="0">Select...</option>
+                                <option value="0">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Rent in advance</p>
+                        </div>
+                        <div class="for-input">
+                            <select>
+                                <option value="0">Select...</option>
+                                <option value="0">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Price</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                    <div class="col-2 no-margin-right">
+                        <div class="for-label">
+                            <p>Fee</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Deposit</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div id="payment_record" class="form-block clearfix history">
+                <div class="form-group clearfix">
+                    <div class="col-6 col-6-1">
+                        <br/>
+                    </div>
+                    <div class="col-6">
+                        <span>Submission date</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Actual Sub. date</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Price</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Fee</span>
+                    </div>
+                    <div class="col-6">
+                        <span>Note</span>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-6 col-6-1">
+                        <p>Phase 1</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-6 col-6-1">
+                        <p>Phase 1</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-6 col-6-1">
+                        <p>Phase 1</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-6 col-6-1">
+                        <p>Phase 1</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-footer fr">
+        <button class="op-btn btn-checkout">Check-Out Today</button>
+        <button class="op-btn btn-save">Save</button>
     </div>
 </div>

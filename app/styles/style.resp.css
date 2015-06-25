@@ -126,6 +126,28 @@
     .main-container .msg-container .msg-list .single-msg .msg-detail {
         width: calc(100% - 380px);
     }
+
+    .main-container .dialog-container {
+        width: 585px;
+    }
+
+    .main-container .dialog-container .right-block {
+        display: none;
+        margin-left: 0;
+    }
+
+    .main-container .main-wrapper.payment-page {
+        max-width: 745px;
+    }
+
+    .payment-page .payment-block {
+        width: 445px;
+    }
+
+    .payment-page .room-info {
+        margin-left: 20px;
+        width: 280px;
+    }
 }
 
 @media screen and  (max-width: 768px) {
@@ -163,16 +185,17 @@
     }
 
     .nav-index-top, .nav-index-top.bg-white {
-        background-color: #00636F;
+        background-color: #2c9ab7;
         position: fixed;
         top: 0;
         border-bottom: none;
+        height: 68px;
     }
 
     .nav-index-top .wrapper .resp-nav-left {
         width: 68px;
         height: 68px;
-        background-color: #37828B;
+        background-color: #2c9ab7;
         position: absolute;
         left: 0;
         top: 0;
@@ -249,7 +272,7 @@
 
     .resp-left-menu .wrapper ul a:hover li,
     .resp-left-menu .wrapper ul a li.active {
-        color: #FBB000;
+        color: #f05368;
     }
 
     .resp-left-menu .wrapper .menu-container {
@@ -287,7 +310,7 @@
 
     .main-container .main-wrapper .left-detail-block .resp-detail-title {
         width: 100%;
-        background-color: #FFBE00;
+        background-color: #f05368;
         text-align: center;
         padding: 20px 0;
         border-bottom: 1px #C38900 solid;
@@ -316,6 +339,7 @@
         border-bottom: 1px #e1e1e1 solid;
         border-right: none;
         height: 100px;
+        overflow: hidden;
     }
 
     .main-container .main-wrapper .right-detail-block .room-mate .col-4 .order-num {
@@ -408,7 +432,7 @@
     }
 
     .main-container .main-wrapper .left-detail-block .resp-intro-header p .contact-name {
-        color: #37828B;
+        color: #2c9ab7;
     }
 
     .main-container .main-wrapper .left-detail-block .resp-intro-header img {
@@ -442,8 +466,12 @@
         display: none;
     }
 
+    .main-container .sub-nav-bar .wrapper {
+        padding: 0 5px;
+    }
+
     .main-container .sub-nav-bar .wrapper ul li {
-        margin-right: 20px;
+        margin-right: 10px;
     }
 
     .main-container .msg-container .msg-header .msg-filter {
@@ -489,5 +517,49 @@
 
     .main-container .msg-container .msg-list .single-msg .msg-status {
         display: none;
+    }
+
+    .main-container .dialog-container {
+        width: calc(100% - 20px);
+        max-width: 585px;
+    }
+
+    .main-container .dialog-container .left-block {
+        width: 100%;
+    }
+
+    .main-container .dialog-container .msg-list .msg-block .dialog {
+        width: calc(100% - 5px);
+    }
+
+    .main-container .dialog-container .send-block .inquiry-block {
+        padding-right: 100px;
+    }
+
+    .main-container .msg-container .msg-header {
+        padding: 0 20px;
+    }
+
+    .main-container .main-wrapper.payment-page {
+        max-width: 100%;
+    }
+
+    .main-container .main-wrapper.payment-page {
+        margin: 88px auto 20px;
+        padding: 0 20px;
+    }
+
+    .payment-page .payment-block {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .payment-page .payment-block .payment-way .form-row {
+        width: 100%;
+    }
+
+    .payment-page .room-info {
+        margin-left: 0;
+        width: 100%;
     }
 }
