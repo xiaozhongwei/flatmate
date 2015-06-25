@@ -1,0 +1,362 @@
+<div class="white_bg">
+    <div class="container margin_60" style="padding-top:30px;">
+        <div class="row">
+            <aside class="col-lg-3 col-md-3">
+                <!--<div class="widget">
+                    <div id="tour_guide">
+                        <p style="margin-bottom: 10px;">
+                            {{#if session.user.logo.downloadFilePath}}
+                                <img {{bind-attr src=session.user.logo.downloadFilePath}} alt="" style="width: 170px;" class="img-circle styled"/>
+                            {{else}}
+                                <img src="/images/user_unknown.png" alt="" style="width:170px;" class="img-circle styled">
+                            {{/if}}
+                        </p>
+                        <h5 style="margin:5px 0;font-weight:bold">{{session.user.fullName}}</h5>
+                        <p>Member Since May 2012</p>
+                    </div>
+                </div>
+                <hr>-->
+                <div class="other_tours ">
+                    <ul>
+                      {{#each statistics as |statistic| }}
+                          <li><a href="javascript:;" id="{{if (eq status statistic.type) 'active'}}" {{action "queryMessage" statistic.type}} >
+                              {{statistic.type}}<span class="other_tours_price">{{statistic.count}}</span></a>
+                          </li>
+                      {{/each}}
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="col-md-9 ">
+                <ul class="list-material message-list" style="border:1px solid rgb(225,225,225)">
+
+                    {{#each model as |message index| }}
+                    <li class="has-action-left has-action-right" style="{{if index 'border-top: 1px solid rgb(225,225,225);'}} margin-left: 20px; margin-right: 20px; padding-bottom: 10px;">
+                    {{#link-to 'inbox.detail' message.id class="visible" }}
+                        <div class="list-action-left">
+                          {{#if message.speakerPhoto}}
+                              <img src="{{message.speakerPhoto}}" class="face-radius" title="{{message.speakerName}}">
+                          {{else}}
+                              <img src="/images/user_unknown.png" class="face-radius" title="{{message.speakerName}}">
+                          {{/if}}
+                        </div>
+                        <div class="list-content" style="margin-left:100px;">
+                            <span class="title" style="color: rgb(51,51,51);font-size: 15px; font-weight: bold;"><strong>{{message.speakerName}}</strong></span>
+                            <span class="caption" style=" color: rgba(0, 0, 0, 0.3);font-weight: bold;">{{ago message.lastUpdateTime}}</span>
+                        </div>
+                        <div class="list-action-right" style="width: 67%;top: 24px;color: rgb(51,51,51);text-align:left;height: inherit;">
+                            <span class="title" style="display:block;font-size: 15px;font-weight: bold;">Want: {{message.listingTitle}} </span>
+                            <!--<span class="caption" style="display:block;font-size: 14px;font-weight: bold;color: #f7941d;">Room A </span>-->
+                            <span class="caption" style="display:block;font-size: 14px;color: rgba(0, 0, 0, 0.3);font-weight: bold;">{{message.lastContent}}</span>
+                        </div>
+                        <!--<div class="list-action-right1">-->
+                        <!--<span class="top">Jan 10, 2015</span>-->
+                        <!--<i class=" icon_set_1_icon-76 bottom"></i>-->
+                        <!--</div>-->
+                    {{/link-to}}
+                    </li>
+                  {{/each}}
+                    <!--<li class="has-action-left has-action-right">
+                      {{#link-to 'inbox.detail' class="visible" }}
+                          <div class="list-action-left">
+                              <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                          </div>
+                          <div class="list-content">
+                              <span class="title">Pari Subramanium</span>
+                              <span class="caption">Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.</span>
+                          </div>
+                          <div class="list-action-right">
+                              <span class="top">15 min</span>
+                              <i class="icon-record bottom" style="color:green"></i>
+                          </div>
+                      {{/link-to}}
+                    </li>
+                    <li class="has-action-left has-action-right selected">
+                      {{#link-to 'inbox.detail' class="visible" }}
+                          <div class="list-action-left">
+                              <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                          </div>
+                          <div class="list-content">
+                              <span class="title">Joshua Harris</span>
+                              <span class="caption">Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms.</span>
+                          </div>
+                          <div class="list-action-right">
+                              <span class="top">Jan 10, 2015</span>
+                              <i class=" icon_set_1_icon-76 bottom"></i>
+                          </div>
+                      {{/link-to}}
+                    </li>
+                    <li class="has-action-left has-action-right selected">
+                      {{#link-to 'inbox.detail' class="visible" }}
+                          <div class="list-action-left">
+                              <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                          </div>
+                          <div class="list-content">
+                              <span class="title">Lisa Cooper</span>
+                              <span class="caption">Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</span>
+                          </div>
+                          <div class="list-action-right">
+                              <span class="top">Jan 5, 2015</span>
+                              <i class=" icon_set_1_icon-76 bottom"></i>
+                          </div>
+                      {{/link-to}}
+                    </li>
+                    <li class="has-action-left has-action-right selected">
+                        <a href="#" class="visible" data-message-id="2">
+                            <div class="list-action-left">
+                                <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                            </div>
+                            <div class="list-content">
+                                <span class="title">Matthew Harris</span>
+                                <span class="caption">Globally incubate standards compliant channels before scalable benefits. </span>
+                            </div>
+                            <div class="list-action-right">
+                                <span class="top">Jan 4, 2015</span>
+                                <i class=" icon_set_1_icon-76 bottom"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="has-action-left has-action-right selected">
+                        <a href="#" class="visible" data-message-id="3">
+                            <div class="list-action-left">
+                                <img src="/images/amaze_300x300.jpg" class="face-radius" alt="">
+                            </div>
+                            <div class="list-content">
+                                <span class="title">Diana Nguyen</span>
+                                <span class="caption">Happy new yeaar!!</span>
+                            </div>
+                            <div class="list-action-right">
+                                <span class="top">Jan 1, 2015</span>
+                                <i class=" icon_set_1_icon-76 bottom"></i>
+                            </div>
+                        </a>
+                    </li>-->
+                </ul>
+                <div class="text-right">
+                  {{pagination-pager current=page count=totalPage}}
+                </div>
+            </div><!-- End col-md-9-->
+        </div><!-- End row-->
+    </div><!-- End container -->
+</div>
+<style>
+    .list-content{
+        width:150px;
+    }
+    .selected .list-content {
+        border-bottom-color: transparent;
+    }
+    .list-content .title {
+        color: #3e50b4;
+    }
+    .list-action-left {
+        left: 20px;
+    }
+    .message-list .selected a {
+        background: rgb(247,247,247) !important;
+    }
+    .list-action-left img {
+        width: 50px;
+        height: 50px;
+    }
+    .list-content {
+        margin-left: 90px;
+    }
+    .list-content .title {
+        font-size: inherit;
+    }
+    .list-content .detail2 {
+        color: rgba(0, 0, 0, 0.8);
+        border-bottom-color: #f0f0f0;
+    }
+    .list-action-right {
+        right: 30px;
+        width: 150px;
+        color: rgba(0, 0, 0, 0.3);
+    }
+    .list-material {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        background: #fff;
+    }
+    .face-radius {
+        border-radius: 50%;
+    }
+    .list-material > li {
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+    }
+    .list-material > li a.visible {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.87);
+        display: block;
+        padding: 0 0 0 16px;
+        -webkit-transition: 0.3s -webkit-transform cubic-bezier(0.17, 0.67, 0.6, 1.3);
+        transition: 0.3s transform cubic-bezier(0.17, 0.67, 0.6, 1.3);
+        background: #fff;
+    }
+    .list-material > li a.hidden {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #f0f0f0;
+        box-shadow: inset 2px 0px 5px rgba(0, 0, 0, 0.1);
+        width: 60px;
+        height: 100%;
+        color: rgba(0, 0, 0, 0.87);
+        -webkit-transition: 0.3s all cubic-bezier(0.17, 0.67, 0.6, 1.3);
+        transition: 0.3s all cubic-bezier(0.17, 0.67, 0.6, 1.3);
+    }
+    .list-material > li a.hidden i {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .list-material > li .list-content {
+        position: relative;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 25px 16px 25px 0;
+        /*border-bottom: 1px solid rgb(225,225,225);*/
+    }
+
+    .list-material > li:first-child .list-content {
+        border-bottom: none;
+    }
+
+    .list-material > li .list-content .title {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .list-material > li .list-content .caption {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.8);
+    }
+    .list-material > li .list-content .title,
+    .list-material > li .list-content .caption {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .list-material > li .list-action-left {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        padding: 0 16px;
+        width: 72px;
+        border-radius: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .list-material > li .list-action-left img {
+        width: 60px;
+        height: 60px;
+    }
+    .list-material > li .list-action-left .icon {
+        position: relative;
+        left: 0;
+        top: 2px;
+        width: 1em;
+        font-size: 30px;
+        line-height: 1;
+        width: auto;
+        height: auto;
+        display: block;
+        margin: 0;
+        background-size: initial;
+        text-align: center;
+    }
+    .list-material > li .list-action-left .icon-circle {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        background: #f0f0f0;
+        padding: 5px;
+        font-size: 20px;
+    }
+    .list-material > li .list-action-right {
+        position: absolute;
+        top: 0%;
+        right: 16px;
+        padding: 0;
+        width: 150px;
+        height: 100%;
+        text-align: right;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.3);
+    }
+    .list-material > li .list-action-right i {
+        font-size: 20px;
+    }
+    .list-material > li .list-action-right .top {
+        position: absolute;
+        top: 19px;
+        right: 0;
+    }
+    .list-material > li .list-action-right .center {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .list-material > li .list-action-right .bottom {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+    }
+    .list-material > li:last-child .list-content {
+        border-bottom-color: transparent;
+    }
+    .list-material > li.has-action-left .list-content {
+        margin-left: 85px;
+    }
+    .list-material > li.has-action-right .list-content {
+        margin-right: 80px;
+    }
+    .list-material > li.has-long-story .list-action-left {
+        top: 23px;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    .list-material > li.has-long-story .caption {
+        white-space: inherit;
+    }
+    .list-material > li.divider {
+        font-size: 14px;
+        padding: 10px 16px 10px 16px;
+        margin-top: 10px;
+    }
+    .list-material > li.divider.subheader {
+        padding-left: 72px;
+    }
+    .list-material > li.divider.with-border {
+        border-top: 1px solid #f0f0f0;
+    }
+    .list-material.has-hidden > li:hover .hidden {
+        visibility: visible !important;
+    }
+    .list-material.has-hidden > li:hover a.visible {
+        -webkit-transform: translate3d(-60px, 0, 0);
+        transform: translate3d(-60px, 0, 0);
+    }
+    .list-material.borderless .list-content {
+        border-bottom-color: transparent;
+    }
+</style>
