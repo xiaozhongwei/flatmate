@@ -83,8 +83,10 @@
                                       <div class="list-manage">
                                         {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
                                       </div>
-                                      <div class="tenant-manage">
-                                          <a><span class="txt">Manage tenant</span> <span class="triangle"></span></a>
+                                      <div class="tenant-manage {{if listing.model.showTenants 'active'}}">
+                                          <a {{action "showTenants" listing.model}}>
+                                              <span class="txt">Manage tenant</span> <span class="triangle"></span>
+                                          </a>
                                           <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
                                       </div>
                                   </div>
@@ -107,7 +109,7 @@
                                     {{/if}}
                                   </div>
                               </div>
-                              <div class="tenant-list">
+                              <div class="tenant-list" style="display: {{if listing.model.showTenants 'block' 'none'}}">
                                   <span class="triangle"></span>
                                 {{#each listing.model.tenants as |tenant|}}
                                     <div class="single-tenant">
@@ -177,8 +179,10 @@
                                         {{#link-to 'house.manage' house.id (query-params activeId=listing.model.id)}}Manage
                                             listing {{/link-to}}
                                       </div>
-                                      <div class="tenant-manage">
-                                          <a><span class="txt">Manage tenant</span> <span class="triangle"></span></a>
+                                      <div class="tenant-manage {{if listing.model.showTenants 'active'}}">
+                                          <a {{action "showTenants" listing.model}}>
+                                              <span class="txt">Manage tenant</span> <span class="triangle"></span>
+                                          </a>
                                           <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
                                       </div>
                                       <div class="op fr">
@@ -200,7 +204,7 @@
                                         {{/if}}
                                       </div>
                                   </div>
-                                  <div class="tenant-list">
+                                  <div class="tenant-list" style="display: {{if listing.model.showTenants 'block' 'none'}}">
                                     {{#each listing.model.tenants as |tenant|}}
                                         <div class="single-tenant">
                                             <div class="tenant-status">

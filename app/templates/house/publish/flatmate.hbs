@@ -74,10 +74,11 @@
                           searchEnabled=false
                           }}
                         </div>
-
-                        <button class="btn-list-room fr" disabled>List the room</button>
-                        <button class="btn-list-room fr" {{action "editRoom" flatmate}}>List the room</button>
-
+                      {{#if model.isFlatmateFinished}}
+                          <button class="btn-list-room fr" {{action "editRoom" flatmate}}>3 steps to list</button>
+                      {{else}}
+                          <button class="btn-list-room fr" disabled>3 steps to list</button>
+                      {{/if}}
                         <div class="remove" {{action "deleteFlatmate" flatmate}}>
                             <img src="/images/static/remove.png"/>
                         </div>

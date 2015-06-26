@@ -25,20 +25,20 @@ export default Ember.View.extend({
       }
     });
 
-    $('.tenant-manage a').click(function () {
-      if ($(this).parents('.tenant-manage').hasClass('active')){
-        $(this).parents('.tenant-manage').removeClass('active');
-      }else{
-        $(this).parents('.tenant-manage').addClass('active');
-      }
-
-      var _tenant_list = $(this).parents('.apt-container').siblings('.tenant-list');
-      if (_tenant_list.css('display') == 'none') {
-        _tenant_list.css('display', 'block');
-      }else{
-        _tenant_list.css('display', 'none');
-      }
-    });
+    //$('.tenant-manage a').click(function () {
+    //  if ($(this).parents('.tenant-manage').hasClass('active')){
+    //    $(this).parents('.tenant-manage').removeClass('active');
+    //  }else{
+    //    $(this).parents('.tenant-manage').addClass('active');
+    //  }
+    //
+    //  var _tenant_list = $(this).parents('.apt-container').siblings('.tenant-list');
+    //  if (_tenant_list.css('display') == 'none') {
+    //    _tenant_list.css('display', 'block');
+    //  }else{
+    //    _tenant_list.css('display', 'none');
+    //  }
+    //});
 
     //$('.tenant-list .btn-edit').click(function () {
     //  $('.edit-tenant-profile').css('display', 'block');

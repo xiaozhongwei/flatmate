@@ -31,6 +31,9 @@ export default Ember.Controller.extend(Ember.Evented,{
 
   }.observes("model.status"),
   actions: {
+    showTenants: function(listing){
+      listing.toggleProperty("showTenants");
+    },
     removeTenant: function(tenant){
       this.get("model.tenants").removeObject(tenant);
     }
