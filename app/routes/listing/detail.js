@@ -12,30 +12,35 @@ export default Ember.Route.extend({
 
     var payCycleMapping = [];
 
-    if(!Ember.isEmpty(model.get('perMonthPrice'))){
-      controller.set("currentPayCycle", "perMonth");
-      controller.set("currentPrice", model.get('perMonthPrice'));
+    if(!Ember.isEmpty(model.get('payments'))){
+      model.get("payments").forEach(function(payment){
+        var text =  payment.get("cycle") + " month";
+        if(payment.get("cycle") > 1){
+          text =  payment.get("cycle") + " months";
+        }
+        payCycleMapping.push({id: payment.get("cycle"), text: text});
+      });
 
-      payCycleMapping.push({id: 1, text: "1 month"});
-    }
-    if(!Ember.isEmpty(model.get('perThreeMonthPrice'))){
-      controller.set("currentPayCycle", "perThreeMonth");
-      controller.set("currentPrice", model.get('perThreeMonthPrice'));
+      controller.set("currentPayCycle", model.get('payments.lastObject.cycle'));
+      controller.set("currentPrice", model.get('payments.lastObject.price'));
 
-      payCycleMapping.push({id: 3, text: "3 months"});
     }
-    if(!Ember.isEmpty(model.get('perSixMonthPrice'))){
-      controller.set("currentPayCycle", "perSixMonth");
-      controller.set("currentPrice", model.get('perSixMonthPrice'));
 
-      payCycleMapping.push({id: 6, text: "6 months"});
-    }
-    if(!Ember.isEmpty(model.get('perYearPrice'))){
-      controller.set("currentPayCycle", "perYear");
-      controller.set("currentPrice", model.get('perYearPrice'));
-
-      payCycleMapping.push({id: 1, text: "12 months"});
-    }
+    //if(!Ember.isEmpty(model.get('perMonthPrice'))){
+    //
+    //  payCycleMapping.push({id: 1, text: "1 month"});
+    //}
+    //if(!Ember.isEmpty(model.get('perThreeMonthPrice'))){
+    //  payCycleMapping.push({id: 3, text: "3 months"});
+    //}
+    //if(!Ember.isEmpty(model.get('perSixMonthPrice'))){
+    //
+    //  payCycleMapping.push({id: 6, text: "6 months"});
+    //}
+    //if(!Ember.isEmpty(model.get('perYearPrice'))){
+    //
+    //  payCycleMapping.push({id: 1, text: "12 months"});
+    //}
 
     controller.set("payCycleMapping", payCycleMapping);
 

@@ -25,33 +25,51 @@
               <label class="title">Payment</label>
               <div class="payment clearfix">
                   <div class="col">
-                      <p class="title"><span class="radius-number-1 {{unless listing.perMonthPrice 'radius-number-gary'}}">1</span></p>
-                      {{input type="text" autocomplete="off" value=listing.perMonthPrice}}
-                  </div>
-                  <div class="col">
-                      <p class="title"><span class="radius-number-1 {{unless listing.perThreeMonthPrice 'radius-number-gary'}}">3</span></p>
-                      {{input class="form-control" type="text" autocomplete="off" value=listing.perThreeMonthPrice}}
-                  </div>
-                  <div class="col">
-                      <p class="title"><span class="radius-number-1 {{unless listing.perSixMonthPrice 'radius-number-gary'}}">6</span></p>
-                      {{input class="form-control" type="text" autocomplete="off" value=listing.perSixMonthPrice}}
-                  </div>
-                  <div class="col">
-                      <p class="title"><span class="radius-number-1 {{unless listing.perYearPrice 'radius-number-gary'}}">12</span></p>
-                      {{input class="form-control" type="text" autocomplete="off" value=listing.perYearPrice}}
-                  </div>
-              </div>
-
-              <div class="payment clearfix">
-                  <div class="col">
                       <p class="title">Deposit</p>
-                      {{input type="text" autocomplete="off" value=listing.deposit}}
+                    {{input type="text" autocomplete="off" value=listing.deposit}}
                   </div>
                   <div class="col">
                       <p class="title">Service Fee</p>
-                      {{input type="text" autocomplete="off" value=listing.serviceFee}}
+                    {{input type="text" autocomplete="off" value=listing.serviceFee}}
                   </div>
               </div>
+            {{#each listing.payments as |payment pIndex|}}
+              {{#unless pIndex}}
+                  <div class="payment clearfix">
+                      <div class="col">
+                          <p class="title">Payment cycle</p>
+                        {{select-2
+                        content=paymentMapping
+                        value=payment.cycle
+                        optionValuePath="id"
+                        }}
+                      </div>
+                      <div class="col">
+                          <p class="title">Price</p>
+                        {{input value=payment.price}}
+                      </div>
+                      <div class="op">
+                          <img class="add-payment" src="/images/static/Add.png" {{action "addPayment" listing}} />
+                      </div>
+                  </div>
+              {{else}}
+                  <div class="payment more clearfix">
+                      <div class="col">
+                        {{select-2
+                        content=paymentMapping
+                        value=payment.cycle
+                        optionValuePath="id"
+                        }}
+                      </div>
+                      <div class="col">
+                        {{input value=payment.price}}
+                      </div>
+                      <div class="op">
+                          <img class="remove" src="/images/static/remove.png" {{action "removePayment" listing payment}} />
+                      </div>
+                  </div>
+              {{/unless}}
+            {{/each}}
           </div>
           <div class="group-row with-title">
               <label class="title">Features</label>

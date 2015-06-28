@@ -30,7 +30,7 @@
                       <li class="{{if (eq activeType 'apt') 'active'}} {{if model.house.isApartmentFinished 'finished' 'unfinished'}}">Apartment</li>
                   </a>
                   {{#unless model.house.bedroomEditable}}
-                  <a href="javascript:;" {{action "changeActive" "flatmate"}}>
+                  <a href="javascript:;" {{action "changeActive" "flatmate"}} style="display: none">
                       <li class="{{if (eq activeType 'flatmate') 'active'}} {{if model.house.isFlatmateFinished 'finished' 'unfinished'}}">Flatmates <sup>{{model.house.bedrooms}}</sup></li>
                   </a>
                   {{/unless}}
@@ -97,17 +97,17 @@
                 {{#if (eq step 1)}}
                     {{render 'house.manage.apartment-overview' model.house}}
                     <div class="area-footer clearfix margin-top-25">
-                        <button class="op-btn btn-next fr" {{action "changeStep" 2}}>Next</button>
+                        <button class="op-btn btn-next fr" {{action "changeStep" 3}}>Next</button>
                     </div>
                 {{/if}}
                 {{#if (eq step 2)}}
                   {{render 'house.manage.apartment-photo' model.house}}
-                  <div class="area-footer clearfix margin-top-25">
-                      <button class="op-btn btn-next fr" {{action "changeStep" 3}}>Next</button>
-                  </div>
                 {{/if}}
                 {{#if (eq step 3)}}
                   {{render 'house.manage.map' model.house}}
+                  <div class="area-footer clearfix margin-top-25">
+                      <button class="op-btn btn-next fr" {{action "changeStep" 2}}>Next</button>
+                  </div>
                 {{/if}}
               {{/if}}
               {{#if (eq activeType 'flatmate')}}

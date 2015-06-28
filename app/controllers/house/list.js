@@ -79,6 +79,24 @@ export default Ember.Controller.extend(Ember.Evented,{
       this.set('currentHouse', house);
       this.trigger('openTenantBox');
     },
+    editProfile: function(tenant,listing, house){
+      this.set('currentTenant', tenant);
+      this.set('currentListing', listing);
+      this.set('currentHouse', house);
+      this.trigger('openProfileBox');
+    },
+    editContract: function(tenant,listing, house){
+      this.set('currentTenant', tenant);
+      this.set('currentListing', listing);
+      this.set('currentHouse', house);
+      this.trigger('openContractBox');
+    },
+    editPayment: function(tenant,listing, house){
+      this.set('currentTenant', tenant);
+      this.set('currentListing', listing);
+      this.set('currentHouse', house);
+      this.trigger('openPaymentBox');
+    },
     cancel: function(tenant){
       tenant.rollback();
       this.get("controllers.application").send("closeModalBox");

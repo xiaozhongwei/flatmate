@@ -8,7 +8,7 @@ module.exports = function(app) {
         {
           id: 1,
           "listingId": "4",
-          "name": "liu",
+          "firstName": "liu",
           idNumber: "421221",
           "country": "UK",
           "occupation": "Student",
@@ -28,7 +28,7 @@ module.exports = function(app) {
         {
           id: 2,
           "listingId": "4",
-          "name": "VIN",
+          "firstName": "VIN",
           idNumber: "421221",
           "country": "UK",
           "occupation": "Student",

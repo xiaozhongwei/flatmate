@@ -11,8 +11,12 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     occupation: { presence: true }
   },
 
+  status: DS.attr(),                              //状态
+
   index: DS.attr(),
-  name: DS.attr(),                                //名称
+  //name: DS.attr(),                                //名称
+  firstName: DS.attr(),
+  lastName: DS.attr(),
   idNumber: DS.attr(),                            //身份证号
   //status: DS.attr('number', {defaultValue: 1}), //状态
   houseId: DS.attr(),
@@ -27,9 +31,17 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   checkoutDate: DS.attr(),                        //checkout日期
 
   paymentCycle: DS.attr(),                        //付款周期
-  deposit: DS.attr(),                             //押金
   price: DS.attr(),                               //价格
+  deposit: DS.attr(),                             //押金
+  fee: DS.attr(),                                 //服务费
   advanceDay: DS.attr(),                          //提前天数
 
-  records: DS.hasMany('listing/transactionRecord')//付款记录
+  records: DS.hasMany('listing/transactionRecord'),//付款记录
+
+  name: Ember.computed("firstName","lastName", function(){
+    if(Ember.isEmpty(this.get('firstName')) && Ember.isEmpty(this.get('lastName')))
+      return 'Unknown';
+
+    return (this.get('firstName') || '') + ' ' + (this.get('lastName') || '');
+  })
 });

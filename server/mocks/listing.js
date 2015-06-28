@@ -161,6 +161,16 @@ module.exports = function(app) {
         //"perMonthPrice": 3000,
         "perThreeMonthPrice": 2800,
         "perSixMonthPrice": 2500,
+        payments: [
+          {
+            "cycle": 3,
+            "price": 2800
+          },
+          {
+            "cycle": 6,
+            "price": 2500
+          }
+        ],
         "deposit": 0.0,
         "features": ["Balcony","PrivateBath","DeskOrWardrobe"],
         "photos": [

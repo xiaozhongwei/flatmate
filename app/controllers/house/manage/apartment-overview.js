@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import PaymentMapping from 'flatmate/transforms/payment-cycle';
 import AreaMapping from 'flatmate/transforms/area';
 import CompoundMapping from 'flatmate/transforms/compound';
 import StationMapping from 'flatmate/transforms/metro-station';
@@ -32,6 +33,17 @@ export default Ember.Controller.extend({
   //
   //  }
   //}.observes('model.bedrooms'),
+  actions: {
+    addPayment: function(listing){
+      listing.get('payments').createFragment({
+        cycle: undefined,
+        price: undefined
+      });
+    },
+    removePayment: function(listing, payment){
+      listing.get('payments').removeFragment(payment);
+    }
+  },
 
   willDestroy: function(){
     if(this.get("model.isDirty") || this.get("model.listings.firstObject.isDirty")){
@@ -39,6 +51,7 @@ export default Ember.Controller.extend({
     }
   },
 
+  paymentMapping: PaymentMapping.create({}).get("mapping"),
   areaMapping: AreaMapping.create({}).get("mapping"),
   compoundMapping: CompoundMapping.create({}).get("mapping"),
   stationMapping: StationMapping.create({}).get("mapping"),

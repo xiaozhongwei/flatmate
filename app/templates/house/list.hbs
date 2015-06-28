@@ -64,10 +64,17 @@
             {{#unless nameFilter}}
                 <div class="apt-room-list">
                   {{#if (eq type 'entire')}}
-                    {{#each model as |house|}}
-                      {{#each house.listings itemController="house.listing" as |listing index|}}
+                    {{#each model as |house index|}}
+                      {{#each house.listings itemController="house.listing" as |listing|}}
                           <div class="single-apt single-room">
                               <div class="apt-container">
+                                  <div class="left-tag">
+                                      <div class="left-tag">
+                                          <div class="center-tag">
+                                              <span class="seq margin-bottom-5 {{if listing.model.isAvailable 'available'}}">{{list-index index 1}}</span>
+                                          </div>
+                                      </div>
+                                  </div>
                                   <div class="apt-pic">
                                     {{#if listing.model.coverPhoto}}
                                         <a class="slide-img"
@@ -113,22 +120,25 @@
                                   <span class="triangle"></span>
                                 {{#each listing.model.tenants as |tenant|}}
                                     <div class="single-tenant">
-                                        <div class="tenant-status">
-                                            <p class="pending">Pending</p>
-                                        </div>
                                         <div class="user">
                                             <img class="user-header" src="/images/static/LISA_100.jpg"/>
                                             <img class="flag" src="/images/static/flag-demo.png"/>
-                                          {{tenant.name}}
+                                            <div class="user-info">
+                                                <p class="username">{{tenant.name}}</p>
+                                                <p class="current">current</p>
+                                            </div>
                                         </div>
                                         <div class="tenant-info">
                                             <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}}</p>
 
                                             <p class="phone-num">{{tenant.phone}}</p>
                                         </div>
-                                        <div class="fr">
-                                            <button class="btn-edit op-btn" {{action "editTenant" tenant listing.model house}}>Edit</button>
+                                        <div class="fr tenant-op">
+                                            <span class="op-circle edit-personal-info"><img src="/images/static/add-tenant.png" /></span>
+                                            <span class="op-circle edit-contract"><img src="/images/static/add-tenant.png" /></span>
+                                            <span class="op-circle edit-payment-circle"><img src="/images/static/add-tenant.png" /></span>
                                         </div>
+
                                         <div class="remove" {{action "removeTenant" tenant}}>
                                             <img src="/images/static/remove.png"/>
                                         </div>
@@ -163,7 +173,7 @@
                                       <div class="left-tag">
                                           <div class="left-tag">
                                               <div class="center-tag">
-                                                  <span class="seq {{if listing.isAvailable 'available'}} margin-bottom-5">{{room-index index}}</span>
+                                                  <span class="seq {{if listing.model.isAvailable 'available'}} margin-bottom-5">{{room-index index}}</span>
                                               </div>
                                           </div>
                                       </div>
@@ -207,21 +217,29 @@
                                   <div class="tenant-list" style="display: {{if listing.model.showTenants 'block' 'none'}}">
                                     {{#each listing.model.tenants as |tenant|}}
                                         <div class="single-tenant">
-                                            <div class="tenant-status">
-                                                <p class="current">Current</p>
-                                            </div>
                                             <div class="user">
                                                 <img class="user-header" src="/images/static/LISA_100.jpg"/>
                                                 <img class="flag" src="/images/static/flag-demo.png"/>
-                                              {{tenant.name}}
+                                                <div class="user-info">
+                                                    <p class="username">{{tenant.name}}</p>
+                                                    <p class="current">current</p>
+                                                </div>
                                             </div>
                                             <div class="tenant-info">
                                                 <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}} </p>
 
                                                 <p class="phone-num">{{tenant.phone}}</p>
                                             </div>
-                                            <div class="fr">
-                                                <button class="btn-edit op-btn" {{action "editTenant" tenant}}>Edit</button>
+                                            <div class="fr tenant-op">
+                                                <span class="op-circle edit-personal-info">
+                                                    <img src="/images/static/add-tenant.png" {{action "editProfile" tenant listing.model house}} />
+                                                </span>
+                                                <span class="op-circle edit-contract">
+                                                    <img src="/images/static/add-tenant.png" {{action "editContract" tenant listing.model house}} />
+                                                </span>
+                                                <span class="op-circle edit-payment-circle">
+                                                    <img src="/images/static/add-tenant.png" {{action "editPayment" tenant listing.model house}} />
+                                                </span>
                                             </div>
                                             <div class="remove" {{action "removeTenant" tenant}}>
                                                 <img src="/images/static/remove.png"/>
@@ -247,45 +265,22 @@
                         <div class="user">
                             <img class="user-header" src="/images/static/LISA_100.jpg" />
                             <img class="flag" src="/images/static/flag-demo.png" />
-                            VINCE <span class="highlight">VI</span>NNIE
+                            <div class="user-info">
+                                <p class="username">vince <span class="highlight">vi</span>nnie</p>
+                                <p class="current">current</p>
+                            </div>
                         </div>
                         <div class="tenant-info">
                             <p class="date-info">03.11.2014 — 03.12.2015</p>
                             <a>Hongkou → Rainbow City → B.4 → A. 145</a>
                         </div>
-                        <div class="fr">
-                            <button class="btn-edit op-btn">Edit</button>
+                        <div class="fr tenant-op">
+                            <span class="op-circle edit-personal-info"><img src="/images/static/add-tenant.png"></span>
+                            <span class="op-circle edit-contract"><img src="/images/static/add-tenant.png"></span>
+                            <span class="op-circle edit-payment-circle"><img src="/images/static/add-tenant.png"></span>
                         </div>
                     </div>
                   {{/each}}
-                    <div class="single-tenant">
-                        <div class="user">
-                            <img class="user-header" src="/images/static/LISA_100.jpg" />
-                            <img class="flag" src="/images/static/flag-demo.png" />
-                            VINCE <span class="highlight">VI</span>NNIE{{filteredTenants.length}}
-                        </div>
-                        <div class="tenant-info">
-                            <p class="date-info">03.11.2014 — 03.12.2015</p>
-                            <a>Hongkou → Rainbow City → B.4 → A. 145</a>
-                        </div>
-                        <div class="fr">
-                            <button class="btn-edit op-btn">Edit</button>
-                        </div>
-                    </div>
-                    <div class="single-tenant">
-                        <div class="user">
-                            <img class="user-header" src="/images/static/LISA_100.jpg" />
-                            <img class="flag" src="/images/static/flag-demo.png" />
-                            VINCE <span class="highlight">VI</span>NNIE
-                        </div>
-                        <div class="tenant-info">
-                            <p class="date-info">03.11.2014 — 03.12.2015</p>
-                            <a>Hongkou → Rainbow City → B.4 → A. 145</a>
-                        </div>
-                        <div class="fr">
-                            <button class="btn-edit op-btn">Edit</button>
-                        </div>
-                    </div>
                 </div>
             {{/unless}}
 
@@ -424,32 +419,12 @@
 </div>
 
 
-<!-- edit-tenant-profile box -->
-<div class="dialog-box basic-listing-room edit-tenant-profile">
+<!-- personal-info-box -->
+<div class="dialog-box basic-listing-room personal-info-box">
     <div class="box-header">
         <div class="sub-header">
             <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
             <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
-        </div>
-        <div class="sub-nav">
-            <ul>
-                <a href="#personal_info">
-                    <li class="active"><span>Personal Info</span></li>
-                </a>
-                <a href="#contract">
-                    <li><span>Contract</span></li>
-                </a>
-                <a href="#payment_record">
-                    <li><span>Payment record</span></li>
-                </a>
-            </ul>
-            <div class="fr user-status">
-                <select>
-                    <option value="0">Status</option>
-                    <option value="0">Male</option>
-                    <option value="0">Female</option>
-                </select>
-            </div>
         </div>
     </div>
     <div class="box-content">
@@ -545,8 +520,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-footer fr">
+                    <button class="op-btn btn-save">Save</button>
+                </div>
             </div>
-            <hr />
+
+        </div>
+    </div>
+</div>
+<!-- contract-box -->
+<div class="dialog-box basic-listing-room contract-box" >
+    <div class="box-header">
+        <div class="sub-header">
+            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
+            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="user-form">
             <div id="contract" class="form-block clearfix">
                 <div class="form-group clearfix">
                     <div class="col-2">
@@ -626,114 +617,188 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-footer fr">
+                    <button class="op-btn btn-save">Save</button>
+                </div>
             </div>
-            <hr/>
-            <div id="payment_record" class="form-block clearfix history">
-                <div class="form-group clearfix">
-                    <div class="col-6 col-6-1">
-                        <br/>
+
+        </div>
+    </div>
+</div>
+<!-- payment-circle-box -->
+<div class="dialog-box basic-listing-room payment-circle-box">
+    <div class="box-header">
+        <div class="sub-header">
+            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
+            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="user-form">
+            <div id="payment-circle" class="form-block clearfix">
+                <div class="form-group form-header clearfix">
+                    <div class="col-6 col-one">
+                        <span>Next Payment</span>
                     </div>
-                    <div class="col-6">
-                        <span>Submission date</span>
+                    <div class="col-6 col-two">
+                        <span>Remaining</span>
                     </div>
-                    <div class="col-6">
-                        <span>Actual Sub. date</span>
+                    <div class="col-6 col-three">
+                        <span>Pay Date</span>
                     </div>
-                    <div class="col-6">
-                        <span>Price</span>
+                    <div class="col-6 col-four">
+                        <span>Record (RMB)</span>
                     </div>
-                    <div class="col-6">
-                        <span>Fee</span>
+                    <div class="col-6 col-five">
+                        <span>Status</span>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 col-six">
                         <span>Note</span>
                     </div>
                 </div>
-                <div class="form-group clearfix">
-                    <div class="col-6 col-6-1">
-                        <p>Phase 1</p>
+                <div class="form-group">
+                    <div class="inner-group clearfix">
+                        <div class="col-6 col-one">
+                            <p>2015/06/12</p>
+                        </div>
+                        <div class="col-6 col-two">
+                            <p>&yen; 5000</p>
+                        </div>
+                        <div class="col-6 col-three">
+                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
+                        </div>
+                        <div class="col-6 col-four">
+                            <span class="money-tag">&yen;</span>
+                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
+                        </div>
+                        <div class="col-6 col-five">
+                            <button class="op-btn btn-confirm" disabled>已付</button>
+                        </div>
+                        <div class="col-6 col-six">
+                            <input type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-seven">
+                            <div class="add-payment-record op">
+                                <img src="../static/images/Add.png"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                </div>
-                <div class="form-group clearfix">
-                    <div class="col-6 col-6-1">
-                        <p>Phase 1</p>
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                </div>
-                <div class="form-group clearfix">
-                    <div class="col-6 col-6-1">
-                        <p>Phase 1</p>
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
+                    <div class="inner-group clearfix">
+                        <div class="col-6 col-one">
+                            <br/>
+                        </div>
+                        <div class="col-6 col-two">
+                            <br/>
+                        </div>
+                        <div class="col-6 col-three">
+                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
+                        </div>
+                        <div class="col-6 col-four">
+                            <span class="money-tag">&yen;</span>
+                            <input class="fee-input" type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-five">
+                            <button class="op-btn btn-confirm" disabled>已付</button>
+                        </div>
+                        <div class="col-6 col-six">
+                            <input type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-seven">
+                            <div class="remove op">
+                                <img src="../static/images/remove.png" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group clearfix">
-                    <div class="col-6 col-6-1">
-                        <p>Phase 1</p>
+                <div class="form-group">
+                    <div class="inner-group clearfix">
+                        <div class="col-6 col-one">
+                            <p>2015/06/12</p>
+                        </div>
+                        <div class="col-6 col-two">
+                            <p>&yen; 5000</p>
+                        </div>
+                        <div class="col-6 col-three">
+                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
+                        </div>
+                        <div class="col-6 col-four">
+                            <span class="money-tag">&yen;</span>
+                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
+                        </div>
+                        <div class="col-6 col-five">
+                            <button class="op-btn btn-confirm" disabled>已付</button>
+                        </div>
+                        <div class="col-6 col-six">
+                            <input type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-seven">
+                            <div class="add-payment-record op">
+                                <img src="../static/images/Add.png"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group">
+                    <div class="inner-group clearfix">
+                        <div class="col-6 col-one">
+                            <p>2015/06/12</p>
+                        </div>
+                        <div class="col-6 col-two">
+                            <p>&yen; 5000</p>
+                        </div>
+                        <div class="col-6 col-three">
+                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
+                        </div>
+                        <div class="col-6 col-four">
+                            <span class="money-tag">&yen;</span>
+                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
+                        </div>
+                        <div class="col-6 col-five">
+                            <button class="op-btn btn-confirm" disabled>已付</button>
+                        </div>
+                        <div class="col-6 col-six">
+                            <input type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-seven">
+                            <div class="add-payment-record op">
+                                <img src="../static/images/Add.png"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
+                </div>
+                <div class="form-group">
+                    <div class="inner-group clearfix">
+                        <div class="col-6 col-one">
+                            <p>2015/06/12</p>
+                        </div>
+                        <div class="col-6 col-two">
+                            <p>&yen; 5000</p>
+                        </div>
+                        <div class="col-6 col-three">
+                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
+                        </div>
+                        <div class="col-6 col-four">
+                            <span class="money-tag">&yen;</span>
+                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
+                        </div>
+                        <div class="col-6 col-five">
+                            <button class="op-btn btn-confirm" disabled>已付</button>
+                        </div>
+                        <div class="col-6 col-six">
+                            <input type="text" placeholder="..."/>
+                        </div>
+                        <div class="col-6 col-seven">
+                            <div class="add-payment-record op">
+                                <img src="../static/images/Add.png"/>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
-                    <div class="col-6">
-                        <input type="text" placeholder="..." />
-                    </div>
+                </div>
+                <div class="form-footer fr">
+                    <button class="op-btn btn-save">Save</button>
                 </div>
             </div>
+
         </div>
-    </div>
-    <div class="form-footer fr">
-        <button class="op-btn btn-checkout">Check-Out Today</button>
-        <button class="op-btn btn-save">Save</button>
     </div>
 </div>

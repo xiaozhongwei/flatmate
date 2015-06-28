@@ -54,11 +54,34 @@ export default Ember.View.extend({
     });
 
     this.get('controller').on('openTenantBox', this, this.show_tenant_box);
+
+    this.get('controller').on('openProfileBox', this, this.show_profile_box);
+    this.get('controller').on('openContractBox', this, this.show_contract_box);
+    this.get('controller').on('openPaymentBox', this, this.show_payment_box);
   },
 
   show_tenant_box: function(){
     $('.edit-tenant-profile').css('display', 'block');
     $('.overlay-full-screen').css('display', 'block');
     $('body').addClass('slideout-2');
+  },
+
+  show_profile_box: function(){
+    $('.personal-info-box').css('display', 'block');
+    $('.overlay-full-screen').css('display', 'block');
+    $('body').addClass('slideout-2');
+  },
+
+  show_contract_box: function(){
+    $('.contract-box').css('display', 'block');
+    $('.overlay-full-screen').css('display', 'block');
+    $('body').addClass('slideout-2');
+  },
+
+  show_payment_box: function(){
+    $('.payment-circle-box').css('display', 'block');
+    $('.overlay-full-screen').css('display', 'block');
+    $('body').addClass('slideout-2');
   }
+
 });

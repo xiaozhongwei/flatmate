@@ -21,10 +21,14 @@ export default DS.Model.extend(EmberValidations.Mixin,{
 
   title: DS.attr(),
   description: DS.attr(),
+
   perMonthPrice: DS.attr(),                   // 每月一付月租价格
   perThreeMonthPrice: DS.attr(),              // 每三月一付月租价格
   perSixMonthPrice: DS.attr(),                // 每六月一付月租价格
   perYearPrice: DS.attr(),                    // 每年一付月租价格
+
+  payments: DS.hasManyFragments('listing/payment'),
+
   deposit: DS.attr(),                         // 押金
   serviceFee: DS.attr(),                      // 服务费
   features: DS.attr(),
@@ -45,31 +49,43 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   tenants: DS.hasMany('listing/tenant', {async: true}),
   similarListings: DS.hasMany('listing', {async: true}),    //相似房源
 
-  lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
+  lowestPrice: Ember.computed('payments', function () {
     var lowestPrice = 0;
-    if(!Ember.isEmpty(this.get('perYearPrice'))){
-      if(lowestPrice == 0 || (this.get('perYearPrice')< lowestPrice)){
-        lowestPrice = this.get('perYearPrice')
-      }
-    }
-    if(!Ember.isEmpty(this.get('perSixMonthPrice'))){
-      if(lowestPrice == 0 || this.get('perSixMonthPrice')< lowestPrice){
-        lowestPrice = this.get('perSixMonthPrice')
-      }
-    }
-    if(!Ember.isEmpty(this.get('perThreeMonthPrice'))){
-      if(lowestPrice == 0 || this.get('perThreeMonthPrice')< lowestPrice){
-        lowestPrice = this.get('perThreeMonthPrice')
-      }
-    }
-    if(!Ember.isEmpty(this.get('perMonthPrice'))){
-      if(lowestPrice == 0 || this.get('perMonthPrice')< lowestPrice){
-        lowestPrice = this.get('perMonthPrice')
-      }
+    if(!Ember.isEmpty(this.get('payments'))){
+      this.get('payments').forEach(function(payment){
+        if(lowestPrice == 0 || payment.get('price') < lowestPrice)
+          lowestPrice = payment.get('price');
+      });
     }
 
     return lowestPrice;
   }),
+
+  //lowestPrice: Ember.computed('perMonthPrice', 'perThreeMonthPrice', 'perSixMonthPrice', 'perYearPrice', function () {
+  //  var lowestPrice = 0;
+  //  if(!Ember.isEmpty(this.get('perYearPrice'))){
+  //    if(lowestPrice == 0 || (this.get('perYearPrice')< lowestPrice)){
+  //      lowestPrice = this.get('perYearPrice')
+  //    }
+  //  }
+  //  if(!Ember.isEmpty(this.get('perSixMonthPrice'))){
+  //    if(lowestPrice == 0 || this.get('perSixMonthPrice')< lowestPrice){
+  //      lowestPrice = this.get('perSixMonthPrice')
+  //    }
+  //  }
+  //  if(!Ember.isEmpty(this.get('perThreeMonthPrice'))){
+  //    if(lowestPrice == 0 || this.get('perThreeMonthPrice')< lowestPrice){
+  //      lowestPrice = this.get('perThreeMonthPrice')
+  //    }
+  //  }
+  //  if(!Ember.isEmpty(this.get('perMonthPrice'))){
+  //    if(lowestPrice == 0 || this.get('perMonthPrice')< lowestPrice){
+  //      lowestPrice = this.get('perMonthPrice')
+  //    }
+  //  }
+  //
+  //  return lowestPrice;
+  //}),
 
   published: Ember.computed('status', function(){
     return this.get('status') === 1;

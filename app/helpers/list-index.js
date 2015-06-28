@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function roomIndex(params/*, hash*/) {
+export function listIndex(params/*, hash*/) {
   //if(params == 0){
   //  return "A";
   //}
@@ -23,7 +23,9 @@ export function roomIndex(params/*, hash*/) {
   //  return "G";
   //}
   //return params;
-  return String.fromCharCode(65 + parseInt(params));
+  //return String.fromCharCode(65 + parseInt(params));
+
+  return parseInt(params[0]) + parseInt(params[1]);
 }
 
-export default Ember.HTMLBars.makeBoundHelper(roomIndex);
+export default Ember.HTMLBars.makeBoundHelper(listIndex);

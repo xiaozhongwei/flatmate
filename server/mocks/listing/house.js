@@ -178,6 +178,16 @@ module.exports = function(app) {
             index: 1,
             title: "舒适向南单间",
             photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
+            payments: [
+              {
+                "cycle": 3,
+                "price": 2800
+              },
+              {
+                "cycle": 6,
+                "price": 2500
+              }
+            ],
             status: 0,
             "links":{
               "tenants":"/api/listing/tenants?listingId=1"
@@ -186,6 +196,16 @@ module.exports = function(app) {
             id: "2",
             index: 3,
             status: 0,
+            payments: [
+              {
+                "cycle": 3,
+                "price": 2800
+              },
+              {
+                "cycle": 6,
+                "price": 2500
+              }
+            ],
             "links":{
               "tenants":"/api/listing/tenants?listingId=3"
             }
@@ -193,6 +213,16 @@ module.exports = function(app) {
             id: "3",
             index: 3,
             status: 0,
+            payments: [
+              {
+                "cycle": 3,
+                "price": 2800
+              },
+              {
+                "cycle": 6,
+                "price": 2500
+              }
+            ],
             "links":{
               "tenants":"/api/listing/tenants?listingId=3"
             }
@@ -200,6 +230,16 @@ module.exports = function(app) {
             id: "4",
             index: 4,
             status: 0,
+            payments: [
+              {
+                "cycle": 3,
+                "price": 2800
+              },
+              {
+                "cycle": 6,
+                "price": 2500
+              }
+            ],
             "links":{
               "tenants":"/api/listing/tenants?listingId=3"
             }
@@ -252,6 +292,16 @@ module.exports = function(app) {
             id: "1",
             index: 1,
             title: "舒适向南单间",
+            payments: [
+              {
+                "cycle": 3,
+                "price": 2800
+              },
+              {
+                "cycle": 6,
+                "price": 2500
+              }
+            ],
             photos: [{id: "11", index:1, imageUrl:"images/post-5.jpg"}],
             status: 0,
             "links":{

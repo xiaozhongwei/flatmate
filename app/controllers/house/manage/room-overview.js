@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import PaymentMapping from 'flatmate/transforms/payment-cycle';
 import RoomStatusMapping from 'flatmate/transforms/room-status';
 import CountryMapping from 'flatmate/transforms/country';
 import OccupationMapping from 'flatmate/transforms/occupation';
@@ -20,7 +21,15 @@ export default Ember.Controller.extend({
           flatmate.save();
         }
       }
-
+    },
+    addPayment: function(listing){
+      listing.get('payments').createFragment({
+        cycle: undefined,
+        price: undefined
+      });
+    },
+    removePayment: function(listing, payment){
+      listing.get('payments').removeFragment(payment);
     }
   },
   willDestroy: function(){
@@ -36,6 +45,8 @@ export default Ember.Controller.extend({
       this.get("model").save();
     }
   },
+
+  paymentMapping: PaymentMapping.create({}).get("mapping"),
   roomStatusMapping: RoomStatusMapping.create({}).get("mapping"),
   countryMapping: CountryMapping.create({}).get("mapping"),
   occupationMapping: OccupationMapping.create({}).get("mapping"),

@@ -73,7 +73,6 @@ export default Ember.Controller.extend(Ember.Evented,{
         this.set("currentPayCycle", cycle);
         this.set("currentPrice",price);
       }
-
     },
     updateWishlist: function(listing){
       if(Ember.isEmpty(listing.get('wishlist')))

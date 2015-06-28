@@ -42,10 +42,9 @@
 
                 <div class="order-time none-display-768">
                     <span class="fl">I pay per</span>
-                    <span class="month-selector margin-left-10 {{unless model.perMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perMonth') 'active'}}" {{action "changePrice" "perMonth" model.perMonthPrice}}>1</span>
-                    <span class="month-selector {{unless model.perThreeMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perThreeMonth') 'active'}}" {{action "changePrice" "perThreeMonth" model.perThreeMonthPrice}}>3</span>
-                    <span class="month-selector {{unless model.perSixMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perSixMonth') 'active'}}" {{action "changePrice" "perSixMonth" model.perSixMonthPrice}}>6</span>
-                    <span class="month-selector {{unless model.perYearPrice 'disabled'}} {{if (eq currentPayCycle 'perYear') 'active'}}" {{action "changePrice" "perYear" model.perYearPrice}}>12</span>
+                  {{#each model.payments as |payment pIndex|}}
+                      <span class="month-selector {{unless pIndex 'margin-left-10'}} {{if (eq currentPayCycle payment.cycle) 'active'}}" {{action "changePrice" payment.cycle payment.price}}>{{payment.cycle}}</span>
+                  {{/each}}
                     <span class="fr">Month</span>
                 </div>
 
@@ -351,10 +350,9 @@
 
                 <div class="order-time">
                     <span class="fl">I pay per</span>
-                    <span class="month-selector margin-left-10 {{unless model.perMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perMonth') 'active'}}" {{action "changePrice" "perMonth" model.perMonthPrice}}>1</span>
-                    <span class="month-selector {{unless model.perThreeMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perThreeMonth') 'active'}}" {{action "changePrice" "perThreeMonth" model.perThreeMonthPrice}}>3</span>
-                    <span class="month-selector {{unless model.perSixMonthPrice 'disabled'}} {{if (eq currentPayCycle 'perSixMonth') 'active'}}" {{action "changePrice" "perSixMonth" model.perSixMonthPrice}}>6</span>
-                    <span class="month-selector {{unless model.perYearPrice 'disabled'}} {{if (eq currentPayCycle 'perYear') 'active'}}" {{action "changePrice" "perYear" model.perYearPrice}}>12</span>
+                  {{#each model.payments as |payment pIndex|}}
+                      <span class="month-selector {{unless pIndex 'margin-left-10'}} {{if (eq currentPayCycle payment.cycle) 'active'}}" {{action "changePrice" payment.cycle payment.price}}>{{payment.cycle}}</span>
+                  {{/each}}
                     <span class="fr">Month</span>
                 </div>
             </div>
