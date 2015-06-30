@@ -119,6 +119,16 @@ export default Ember.Controller.extend(Ember.Evented,{
         this.get("controllers.application").send("closeModalBox");
         Notify.info('save tenant success');
       });
+    },
+    addTransactionRecord: function(paymentRecord){
+      var currentDate = moment(new Date()).format('YYYY-MM-DD');
+      var transactionRecord = this.store.createRecord('listing/transactionRecord',{
+        transactionDate: currentDate
+      });
+      paymentRecord.get('transactionRecords').pushObject(transactionRecord);
+    },
+    removeTransactionRecord: function(transactionRecord, paymentRecord){
+      paymentRecord.get('transactionRecords').removeObject(transactionRecord);
     }
   },
 

@@ -714,11 +714,11 @@
                               <div class="col-6 col-seven">
                                 {{#unless index}}
                                     <div class="add-payment-record op">
-                                        <img src="/images/static/Add.png"/>
+                                        <img src="/images/static/Add.png" {{action "addTransactionRecord" paymentRecord}} />
                                     </div>
                                 {{else}}
                                     <div class="remove op">
-                                        <img src="/images/static/remove.png"/>
+                                        <img src="/images/static/remove.png" {{action "removeTransactionRecord" transactionRecord paymentRecord}} />
                                     </div>
                                 {{/unless}}
                               </div>
@@ -730,7 +730,7 @@
                 <div class="form-footer">
                     <div class="fr">
                         <button class="op-btn btn-checkout">Checkout Today</button>
-                        <button class="op-btn btn-save">Save</button>
+                        <button class="op-btn btn-save" {{action "saveTenant" currentTenant}}>Save</button>
                     </div>
                 </div>
             </div>
