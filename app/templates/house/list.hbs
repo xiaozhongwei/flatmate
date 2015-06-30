@@ -137,7 +137,7 @@
                                                 {{unknown-generator tenant.contractStartDate}} — {{unknown-generator tenant.contractEndDate}}
                                             </p>
 
-                                            <p class="phone-num">{{tenant.phone}}</p>
+                                            <p class="phone-num">{{unknown-generator tenant.phone}}</p>
                                         </div>
                                         <div class="fr tenant-op">
                                             <span class="op-circle edit-personal-info">
@@ -624,7 +624,7 @@
                             <p>Fee</p>
                         </div>
                         <div class="for-input">
-                          {{input placeholder="Price" value=currentTenant.serviceFee}}
+                          {{input placeholder="Fee" value=currentTenant.serviceFee}}
                         </div>
                     </div>
                 </div>
@@ -647,12 +647,12 @@
         </div>
     </div>
 </div>
+
 <!-- payment-circle-box -->
 <div class="dialog-box basic-listing-room payment-circle-box">
     <div class="box-header">
         <div class="sub-header">
-            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
-            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42 <span class="seq available">A</span></p>
         </div>
     </div>
     <div class="box-content">
@@ -669,7 +669,7 @@
                         <span>Pay Date</span>
                     </div>
                     <div class="col-6 col-four">
-                        <span>Record (RMB)</span>
+                        <span>Record</span>
                     </div>
                     <div class="col-6 col-five">
                         <span>Status</span>
@@ -678,149 +678,62 @@
                         <span>Note</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="inner-group clearfix">
-                        <div class="col-6 col-one">
-                            <p>2015/06/12</p>
-                        </div>
-                        <div class="col-6 col-two">
-                            <p>&yen; 5000</p>
-                        </div>
-                        <div class="col-6 col-three">
-                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
-                        </div>
-                        <div class="col-6 col-four">
-                            <span class="money-tag">&yen;</span>
-                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
-                        </div>
-                        <div class="col-6 col-five">
-                            <button class="op-btn btn-confirm" disabled>已付</button>
-                        </div>
-                        <div class="col-6 col-six">
-                            <input type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-seven">
-                            <div class="add-payment-record op">
-                                <img src="/images/static/Add.png"/>
-                            </div>
-                        </div>
+                <div class="scroll-content">
+                  {{#each currentTenant.paymentRecords as |paymentRecord|}}
+                    <div class="form-group">
+                      {{#each paymentRecord.transactionRecords as |transactionRecord index|}}
+                          <div class="inner-group clearfix">
+                              <div class="col-6 col-one">
+                                  {{#unless index}}
+                                      <p>{{paymentRecord.paymentDate}}</p>
+                                  {{else}}
+                                      <br/>
+                                  {{/unless}}
+                              </div>
+                              <div class="col-6 col-two">
+                                {{#unless index}}
+                                    <p>&yen; {{paymentRecord.balance}}</p>
+                                {{else}}
+                                    <br/>
+                                {{/unless}}
+                              </div>
+                              <div class="col-6 col-three">
+                                {{bootstrap-datepicker value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
+
+                              </div>
+                              <div class="col-6 col-four">
+                                  <span class="money-tag">&yen;</span>
+                                  {{input class="fee-input" placeholder="..." value=transactionRecord.account}}
+                              </div>
+                              <div class="col-6 col-five">
+                                  <button class="op-btn btn-confirm" disabled>已付</button>
+                              </div>
+                              <div class="col-6 col-six">
+                                  {{input  placeholder="..." value=transactionRecord.remark}}
+                              </div>
+                              <div class="col-6 col-seven">
+                                {{#unless index}}
+                                    <div class="add-payment-record op">
+                                        <img src="/images/static/Add.png"/>
+                                    </div>
+                                {{else}}
+                                    <div class="remove op">
+                                        <img src="/images/static/remove.png"/>
+                                    </div>
+                                {{/unless}}
+                              </div>
+                          </div>
+                      {{/each}}
                     </div>
-                    <div class="inner-group clearfix">
-                        <div class="col-6 col-one">
-                            <br/>
-                        </div>
-                        <div class="col-6 col-two">
-                            <br/>
-                        </div>
-                        <div class="col-6 col-three">
-                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
-                        </div>
-                        <div class="col-6 col-four">
-                            <span class="money-tag">&yen;</span>
-                            <input class="fee-input" type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-five">
-                            <button class="op-btn btn-confirm" disabled>已付</button>
-                        </div>
-                        <div class="col-6 col-six">
-                            <input type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-seven">
-                            <div class="remove op">
-                                <img src="/images/static/Add.png" />
-                            </div>
-                        </div>
-                    </div>
+                  {{/each}}
                 </div>
-                <div class="form-group">
-                    <div class="inner-group clearfix">
-                        <div class="col-6 col-one">
-                            <p>2015/06/12</p>
-                        </div>
-                        <div class="col-6 col-two">
-                            <p>&yen; 5000</p>
-                        </div>
-                        <div class="col-6 col-three">
-                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
-                        </div>
-                        <div class="col-6 col-four">
-                            <span class="money-tag">&yen;</span>
-                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
-                        </div>
-                        <div class="col-6 col-five">
-                            <button class="op-btn btn-confirm" disabled>已付</button>
-                        </div>
-                        <div class="col-6 col-six">
-                            <input type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-seven">
-                            <div class="add-payment-record op">
-                                <img src="/images/static/Add.png"/>
-                            </div>
-                        </div>
+                <div class="form-footer">
+                    <div class="fr">
+                        <button class="op-btn btn-checkout">Checkout Today</button>
+                        <button class="op-btn btn-save">Save</button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="inner-group clearfix">
-                        <div class="col-6 col-one">
-                            <p>2015/06/12</p>
-                        </div>
-                        <div class="col-6 col-two">
-                            <p>&yen; 5000</p>
-                        </div>
-                        <div class="col-6 col-three">
-                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
-                        </div>
-                        <div class="col-6 col-four">
-                            <span class="money-tag">&yen;</span>
-                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
-                        </div>
-                        <div class="col-6 col-five">
-                            <button class="op-btn btn-confirm" disabled>已付</button>
-                        </div>
-                        <div class="col-6 col-six">
-                            <input type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-seven">
-                            <div class="add-payment-record op">
-                                <img src="/images/static/Add.png"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="inner-group clearfix">
-                        <div class="col-6 col-one">
-                            <p>2015/06/12</p>
-                        </div>
-                        <div class="col-6 col-two">
-                            <p>&yen; 5000</p>
-                        </div>
-                        <div class="col-6 col-three">
-                            <input class="date-input" type="text" placeholder="..." value="2015/06/01"/>
-                        </div>
-                        <div class="col-6 col-four">
-                            <span class="money-tag">&yen;</span>
-                            <input class="fee-input" type="text" placeholder="..." value="1000"/>
-                        </div>
-                        <div class="col-6 col-five">
-                            <button class="op-btn btn-confirm" disabled>已付</button>
-                        </div>
-                        <div class="col-6 col-six">
-                            <input type="text" placeholder="..."/>
-                        </div>
-                        <div class="col-6 col-seven">
-                            <div class="add-payment-record op">
-                                <img src="/images/static/Add.png"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-footer fr">
-                    <button class="op-btn btn-save">Save</button>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

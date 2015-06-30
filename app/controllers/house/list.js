@@ -39,23 +39,23 @@ export default Ember.Controller.extend(Ember.Evented,{
   //    }
   //  }
   //}.observes("currentTenant.paymentCycle").on("change"),
-  dateObserve: function(){
-    if(!Ember.isEmpty(this.get("currentTenant.paymentCycle")) && !Ember.isEmpty(this.get("currentTenant.contractStartDate")) &&
-        !Ember.isEmpty(this.get("currentTenant.contractEndDate"))){
-      this.set("transactionDate", new Date(this.get("currentTenant.contractStartDate")));
-      this.get("currentTenant.records").clear();
-      while(this.get("transactionDate") < new Date(this.get("currentTenant.contractEndDate"))){
-        var transactionRecord = this.store.createRecord("listing/transactionRecord",{
-          transactionDate: moment(new Date(this.get("transactionDate"))).subtract(this.get("currentTenant.advanceDay"),"days").format('YYYY-MM-DD')
-        });
-        this.get("currentTenant.records").pushObject(transactionRecord);
-
-        //this.set("transactionDate",  moment(new Date(this.get("currentTenant.contractStartDate"))).subtract(this.get("currentTenant.advanceDay"), 'days'));
-
-        this.set("transactionDate",  moment(new Date(this.get("transactionDate"))).add(this.get("currentTenant.paymentCycle"), 'months'));
-      }
-    }
-  }.observes("currentTenant.paymentCycle","currentTenant.contractStartDate","currentTenant.contractEndDate","currentTenant.advanceDay").on("change"),
+  //dateObserve: function(){
+  //  if(!Ember.isEmpty(this.get("currentTenant.paymentCycle")) && !Ember.isEmpty(this.get("currentTenant.contractStartDate")) &&
+  //      !Ember.isEmpty(this.get("currentTenant.contractEndDate"))){
+  //    this.set("transactionDate", new Date(this.get("currentTenant.contractStartDate")));
+  //    this.get("currentTenant.records").clear();
+  //    while(this.get("transactionDate") < new Date(this.get("currentTenant.contractEndDate"))){
+  //      var transactionRecord = this.store.createRecord("listing/transactionRecord",{
+  //        transactionDate: moment(new Date(this.get("transactionDate"))).subtract(this.get("currentTenant.advanceDay"),"days").format('YYYY-MM-DD')
+  //      });
+  //      this.get("currentTenant.records").pushObject(transactionRecord);
+  //
+  //      //this.set("transactionDate",  moment(new Date(this.get("currentTenant.contractStartDate"))).subtract(this.get("currentTenant.advanceDay"), 'days'));
+  //
+  //      this.set("transactionDate",  moment(new Date(this.get("transactionDate"))).add(this.get("currentTenant.paymentCycle"), 'months'));
+  //    }
+  //  }
+  //}.observes("currentTenant.paymentCycle","currentTenant.contractStartDate","currentTenant.contractEndDate","currentTenant.advanceDay").on("change"),
   actions: {
     queryHouse: function(status, type){
       this.set("nameFilter", undefined);

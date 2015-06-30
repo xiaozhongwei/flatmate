@@ -41,7 +41,8 @@ export default Ember.Controller.extend(Ember.Evented,{
       });
     },
     removeTenant: function(tenant){
-      this.get("model.tenants").removeObject(tenant);
+      tenant.destroyRecord();
+      //this.get("model.tenants").removeObject(tenant);
     }
   }
 });

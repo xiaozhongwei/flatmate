@@ -31,6 +31,11 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 *:focus, *:visited, *:focus {
     outline: none !important;
 }
@@ -49,6 +54,10 @@ a {
 
 .fr {
     float: right;
+}
+
+.hidden-line {
+    display: none;
 }
 
 .clearfix:after {
@@ -116,6 +125,11 @@ a {
 }
 
 /** select style **/
+.select2-container .select2-choice {
+     height: 38px;
+     border-radius: 0;
+ }
+
 .select2-container {
     width: 100% !important;
 }
@@ -2144,6 +2158,7 @@ a {
     width: 13px;
     left: 11px;
     top: 11px;
+    z-index: 20;
 }
 
 .main-container .op-wrapper .address-form .form-row.icon input[type="text"] {
@@ -2172,10 +2187,9 @@ a {
     float: left;
 }
 
-
 .main-container .op-wrapper .address-form .form-row input[type='text'] {
     font-size: 14px;
-    line-height: 38px;
+    line-height: 14px;
     height: 38px;
     border: 1px #ccc solid;
     margin-bottom: 0;
@@ -2445,7 +2459,7 @@ a {
 
 .show-room-box.dialog-box {
     width: 360px;
-    height: 480px;
+    height: 420px;
 }
 
 .show-room-box.dialog-box .box-content {
@@ -2454,19 +2468,23 @@ a {
 }
 
 .show-room-box.dialog-box .box-content .show-room-form .tell-about-room {
-    width: 140px;
+    width: 200px;
     margin: 0 auto;
 }
 
+.show-room-box.dialog-box .box-content .show-room-form .tell-about-room a {
+    color: #555;
+}
+
 .show-room-box.dialog-box .box-content .show-room-form .tell-about-room .seq {
-    width: 64px;
-    height: 64px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     border: 2px #555 solid;
     margin-right: 12px;
     margin-bottom: 12px;
-    font-size: 42px;
-    line-height: 64px;
+    font-size: 50px;
+    line-height: 90px;
     font-weight: bold;
     float: left;
 }
@@ -2477,8 +2495,14 @@ a {
     border: 2px #f05368 solid;
 }
 
+.show-room-box.dialog-box .box-content .show-room-form .tell-about-room a:hover .seq {
+    border: 4px #999 solid;
+    line-height: 86px;
+}
+
 .show-room-box.dialog-box .box-content .show-room-form .intro {
-    font-size: 20px;
+    font-size: 29px;
+    line-height: 42px;
     font-weight: bold;
     margin: 33px 0 82px;
 }
@@ -3064,7 +3088,6 @@ a {
 
 .main-container .edit-container .listing-left-nav {
     width: 150px;
-    margin-left: 20px;
     float: left;
 }
 
@@ -3075,7 +3098,6 @@ a {
 }
 
 .main-container .edit-container .listing-left-nav .nav-list {
-    background-color: #EEE;
 }
 
 .main-container .edit-container .listing-left-nav .nav-list ul {
@@ -3083,24 +3105,18 @@ a {
 }
 
 .main-container .edit-container .listing-left-nav .nav-list ul li {
-    height: 45px;
-    font-size: 13px;
-    line-height: 45px;
-    padding-left: 10px;
+    height: 36px;
+    font-size: 15px;
     cursor: pointer;
 }
 
 .main-container .edit-container .listing-left-nav .nav-list ul li.active {
-    background-color: #E7E7E7;
     font-weight: bold;
 }
 
+.main-container .edit-container .listing-left-nav .nav-list ul li.unlisted,
 .main-container .edit-container .listing-left-nav .nav-list ul li.listed {
-    color: #61B765;
-}
-
-.main-container .edit-container .listing-left-nav .nav-list ul li.unlisted {
-    color: #981A2A;
+    color: #999;
 }
 
 .main-container .edit-container .listing-left-nav .nav-select {
@@ -3576,18 +3592,34 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .dialog-box.basic-listing-room.payment-circle-box {
     padding-top: 0;
-    height: 500px;
+    height: 580px;
 }
 
 .dialog-box.basic-listing-room.payment-circle-box .box-content {
-    overflow-y: scroll;
-    height: 460px;
     padding-top: 8px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .dialog-box.basic-listing-room.payment-circle-box .box-content .user-form .form-group.form-header {
     padding-bottom: 8px;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
 
+.dialog-box.basic-listing-room.payment-circle-box .box-content .scroll-content {
+    overflow-y: scroll;
+    height: 425px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.dialog-box.basic-listing-room.payment-circle-box .form-footer {
+    padding-right: 30px;
+    border-top: 1px #ccc solid;
+    width: 100%;
+    padding-top: 14px;
 }
 
 .dialog-box.basic-listing-room .box-header {
@@ -3636,6 +3668,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     font-size: 13px;
     line-height: 25px;
     margin-right: 10px;
+    margin-top: 8px;
 }
 
 .dialog-box.basic-listing-room .box-header .sub-header p .seq.available {
