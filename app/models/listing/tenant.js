@@ -11,10 +11,13 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     occupation: { presence: true }
   },
 
+  listing: DS.belongsTo('listing', {async: true}),//所属listing
+  //house: DS.belongsTo('listing/house'),         //所属house
+
   status: DS.attr(),                              //状态
 
   index: DS.attr(),
-  //name: DS.attr(),                                //名称
+  //name: DS.attr(),                              //名称
   firstName: DS.attr(),
   lastName: DS.attr(),
   idNumber: DS.attr(),                            //身份证号
@@ -33,7 +36,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   paymentCycle: DS.attr(),                        //付款周期
   price: DS.attr(),                               //价格
   deposit: DS.attr(),                             //押金
-  fee: DS.attr(),                                 //服务费
+  serviceFee: DS.attr(),                                 //服务费
   advanceDay: DS.attr(),                          //提前天数
 
   records: DS.hasMany('listing/transactionRecord'),//付款记录

@@ -34,6 +34,12 @@ export default Ember.Controller.extend(Ember.Evented,{
     showTenants: function(listing){
       listing.toggleProperty("showTenants");
     },
+    addTenant: function(listing){
+      var newTenant = this.store.createRecord('listing/tenant',{listing: listing});
+      newTenant.save().then(tenant => {
+        listing.get('tenants').pushObject(tenant);
+      });
+    },
     removeTenant: function(tenant){
       this.get("model.tenants").removeObject(tenant);
     }

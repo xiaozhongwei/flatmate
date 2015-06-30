@@ -120,7 +120,7 @@ a {
     width: 100% !important;
 }
 
-.select2-container--default .select2-selection--single {
+.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
     border: 1px #ccc solid !important;
     border-radius: 0 !important;
 }
@@ -160,6 +160,22 @@ a {
 
 .select2-container--default .select2-search--dropdown .select2-search__field {
     border: 1px #ccc solid !important;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+    border: none !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+    height: 38px !important;
+    line-height: 28px;
+    font-size: 14px;
+    padding-left: 7px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    margin-top: 7px !important;
+    line-height: 20px !important;
 }
 
 /** select style **/
@@ -421,7 +437,6 @@ a {
     cursor: pointer;
     background-color: #f05368;
     color: #fff;
-    cursor: pointer;
 }
 
 .main-container .main-slide .slide-info .btn-slide-rent p {
@@ -2087,14 +2102,20 @@ a {
     width: 100%;
     height: 220px;
     background-color: #ccc;
+    border: 1px #ccc solid;
+}
+
+.main-container .op-wrapper .op-form .address-map .map-flow {
+    width: 100%;
+    height: 100%;
 }
 
 .main-container .op-wrapper .op-form .address-book {
-    height: 170px;
     background-color: #fff;
-    padding: 20px 20px 0;
+    padding: 30px;
     position: relative;
     border: 1px #E7E7E7 solid;
+    margin-top: -1px;
 }
 
 .main-container .op-wrapper .op-form .address-book p {
@@ -2108,11 +2129,58 @@ a {
     margin-bottom: 14px;
 }
 
-.main-container .op-wrapper .op-form .address-book span {
+.main-container .op-wrapper .address-form {
+    padding-right: 130px;
+    padding-left: 10px;
+}
+
+.main-container .op-wrapper .address-form .form-row {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.main-container .op-wrapper .address-form .form-row.icon img {
     position: absolute;
-    bottom: 10px;
-    cursor: pointer;
-    color: #9A1E2B;
+    width: 13px;
+    left: 11px;
+    top: 11px;
+}
+
+.main-container .op-wrapper .address-form .form-row.icon input[type="text"] {
+    padding-left: 32px;
+}
+
+.main-container .op-wrapper .address-form .form-row .col-3 {
+    width: 32%;
+    float: left;
+    margin-right: 2%;
+}
+
+.main-container .op-wrapper .address-form .form-row .col-6 {
+    width: 66%;
+    float: left;
+}
+
+.main-container .op-wrapper .address-form .form-row .col-area {
+    width: 20%;
+    margin-right: 2%;
+    float: left;
+}
+
+.main-container .op-wrapper .address-form .form-row .col-address {
+    width: 78%;
+    float: left;
+}
+
+
+.main-container .op-wrapper .address-form .form-row input[type='text'] {
+    font-size: 14px;
+    line-height: 38px;
+    height: 38px;
+    border: 1px #ccc solid;
+    margin-bottom: 0;
+    width: 100%;
+    padding: 0 10px;
 }
 
 .main-container .add-photo {
@@ -2189,10 +2257,6 @@ a {
     margin-top: 21px;
 }
 
-.main-container .flatmate-list .single-flatmate:hover .remove {
-    display: block;
-}
-
 .main-container .flatmate-list .single-flatmate .remove {
     cursor: pointer;
     position: absolute;
@@ -2202,11 +2266,16 @@ a {
     width: 60px;
     text-align: center;
     line-height: 80px;
-    display: none;
 }
 
 .main-container .flatmate-list .single-flatmate .remove img {
-    width: 10px;
+    width: 14px;
+    margin: 36px auto 0;
+    display: none;
+}
+
+.main-container .flatmate-list .single-flatmate:hover .remove img {
+    display: block;
 }
 
 .main-container .flatmate-list .single-flatmate.available {
@@ -2469,7 +2538,7 @@ a {
 
 .main-container .edit-container .left-nav {
     width: 135px;
-    height: calc(100% - 108px);
+    height: calc(100% - 86px);
     position: absolute;
 }
 
@@ -2505,7 +2574,7 @@ a {
     width: 100%;
     height: 45px;
     padding-left: 16px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 45px;
 }
 
@@ -2521,11 +2590,35 @@ a {
     background-position: 112px;
 }
 
+.main-container .edit-container.edit-apt .left-nav {
+    width: 200px;
+}
+
+.main-container .edit-container.edit-apt .left-nav ul li.finished {
+    background-position: 168px;
+}
+
+.main-container .edit-container.edit-apt .left-nav ul li.unfinished {
+    background-position: 168px;
+}
+
+.main-container .edit-container.edit-apt .left-nav-first ul li.active {
+    background-color: #f6f6f6;
+}
+
+.main-container .edit-container.edit-apt .edit-area {
+    margin-left: 225px;
+}
+
 .main-container .edit-container .left-nav-first ul li.active {
     background-color: #fff;
 }
 
 .main-container .edit-container .left-nav-first ul li.active.unavailable {
+    background-color: #fff;
+}
+
+.main-container .edit-container .left-nav-first.single-column ul li.active.unavailable {
     background-color: #f6f6f6;
 }
 
@@ -2781,16 +2874,16 @@ a {
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row .payment .op .add-payment {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
-    margin-top: 22px;
+    margin-top: 25px;
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row .payment .op .remove {
-    width: 16px;
-    height: 16px;
-    margin: 12px 0 0 10px;
+    width: 12px;
+    height: 12px;
+    margin: 12px 0 0 8px;
     cursor: pointer;
 }
 
@@ -3046,14 +3139,27 @@ a {
     padding-bottom: 6px;
 }
 
-.main-container .edit-container .listing-area .header input[type='search'] {
-    height: 42px;
+.main-container .edit-container .listing-area .header .search {
     width: 275px;
-    border: 1px #ccc solid;
-    padding: 0 10px;
-    margin-top: 19px;
+    position: relative;
     float: left;
     margin-right: 26px;
+    margin-top: 19px;
+}
+
+.main-container .edit-container .listing-area .header input[type='search'] {
+    height: 42px;
+    width: 100%;
+    border: 1px #ccc solid;
+    padding: 0 34px 0 10px
+}
+
+.main-container .edit-container .listing-area .header .search .search-icon {
+    position: absolute;
+    width: 16px;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
 }
 
 .main-container .edit-container .listing-area .apt-room-list {
@@ -3275,7 +3381,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .main-container .edit-container .listing-area .single-apt .apt-container .tenant-manage .btn-add-tenant {
     display: none;
-    width: 28px;
+    width: 25px;
     margin: 6px 0 0 30px;
     cursor: pointer;
 }
@@ -3481,6 +3587,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .dialog-box.basic-listing-room.payment-circle-box .box-content .user-form .form-group.form-header {
     padding-bottom: 8px;
+
 }
 
 .dialog-box.basic-listing-room .box-header {
@@ -3903,11 +4010,11 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .single-tenant .user .user-header {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     float: left;
-    margin-top: 14px;
+    margin-top: 18px;
     line-height: 58px;
     text-align: center;
     overflow: hidden;
@@ -3919,8 +4026,8 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     height: 20px;
     border-radius: 50%;
     position: absolute;
-    left: 36px;
-    top: 10px;
+    left: 34px;
+    top: 14px;
 }
 
 .single-tenant .tenant-info {
@@ -3966,6 +4073,37 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 
 .single-tenant .tenant-op .op-circle img {
     width: 100%;
+}
+
+.single-tenant .add-tenant-op {
+    position: absolute;
+    right: -50px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.single-tenant .add-tenant-op img {
+    width: 36px;
+    height: 36px;
+}
+
+.single-tenant .remove-tenant-op {
+    position: absolute;
+    right: -60px;
+    cursor: pointer;
+    width: 60px;
+    height: 100%;
+}
+
+.single-tenant .remove-tenant-op img {
+    width: 16px;
+    margin: 0 auto;
+    display: none;
+}
+
+.single-tenant:hover .remove-tenant-op img {
+    display: block;
+    margin-top: 30px;
 }
 
 .single-tenant .btn-edit {
@@ -4926,15 +5064,18 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item.location .circle {
-    width: 26px;
-    height: 26px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     display: inline-block;
-    background-color: #f05368;
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 9px;
+    right: 9px;
     cursor: pointer;
+}
+
+.main-container .search-page .search-container .search-row .search-group .search-item.location .circle img {
+    width: 100%;
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item.location .circle .inner-circle {
@@ -4959,7 +5100,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     border: 2px #2c9ab7 solid;
 }
 
-.main-container .search-page .search-container .search-row .search-group .search-item.home-type {
+.main-container .search-page .search-container .search-row .search-group .search-item.subway-area {
     width: 90px;
 }
 
@@ -4968,7 +5109,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 40px;
     margin-right: 0;
     font-weight: bold;
-    color: #999
+    color: #000;
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item.cost {
@@ -4985,6 +5126,18 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     margin-right: 0;
 }
 
+.main-container .search-page .search-container .search-row .search-group .search-item .icon {
+    position: absolute;
+    width: 14px;
+    z-index: 10;
+    top: 12px;
+    left: 10px;
+}
+
+.main-container .search-page .search-container .search-row .search-group .search-item.subway-area .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 32px;
+}
+
 .main-container .search-page .search-container .search-row .search-group .map-search p {
     line-height: 38px;
     border: 1px #e7e7e7 solid;
@@ -4995,14 +5148,16 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .search-page .search-container .search-row .search-group .map-search .circle {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     display: inline-block;
-    background-color: #555;
     position: absolute;
-    top: 9px;
-    left: 9px;
+    left: 18px;
+}
+
+.main-container .search-page .search-container .search-row .search-group .map-search .circle img {
+    width: 100%;
 }
 
 .main-container .search-page .search-container .search-row .search-group .cond-in {

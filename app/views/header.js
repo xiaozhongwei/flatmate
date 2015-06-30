@@ -170,7 +170,7 @@ export default Ember.View.extend({
   hide_dialog_box: function() {
     $('.dialog-box').css('display', 'none');
     $('.overlay-full-screen').css('display', 'none');
-    $('body').addClass('slideout-2');
+    $('body').removeClass('slideout-2');
     //清空所有输入, 按钮置为disabled
     //$.each($('.dialog-form').find('input'), function (index, value) {
     //  value.value = '';

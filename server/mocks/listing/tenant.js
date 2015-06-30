@@ -7,12 +7,14 @@ module.exports = function(app) {
       'listing/tenants': [
         {
           id: 1,
+          listing: 1,                                     //所属listing
+          status: 'current',                              //状态
           "listingId": "4",
           "firstName": "liu",
           idNumber: "421221",
           "country": "UK",
           "occupation": "Student",
-          "gender": 2,
+          "gender": '2',
 
           email: "444@qq.com",                               //邮箱
           phone: "15892849491",                              //phone
@@ -27,12 +29,14 @@ module.exports = function(app) {
         },
         {
           id: 2,
-          "listingId": "4",
+          listing: 1,                                     //所属listing
+          status: 'current',                              //状态
+          //"listingId": "4",
           "firstName": "VIN",
           idNumber: "421221",
           "country": "UK",
           "occupation": "Student",
-          "gender": 2,
+          "gender": '2',
 
           email: "444@qq.com",                               //邮箱
           phone: "15892849491",                              //phone
@@ -50,6 +54,13 @@ module.exports = function(app) {
   });
 
   listingTenantRouter.post('/', function(req, res) {
+    res.send({
+      'listing/tenant': {
+        id: (new Date()).getTime(),
+        listing: 6,                                     //所属listing
+        status: 'pendding'                              //状态
+      }
+    });
     res.status(201).end();
   });
 

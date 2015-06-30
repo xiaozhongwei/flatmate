@@ -41,7 +41,11 @@
                     <li class="{{if (eq type 'share') 'active'}}" {{action "queryHouse" status "share"}}><span>Rooms</span><sup>{{statistic.shareCount}}</sup></li>
                 </ul>
                 <div class="fr">
-                    {{input type="search" placeholder="Search apt tenants" value=nameFilter}}
+                    <div class="search">
+                        {{input type="search" placeholder="Search apt tenants" value=nameFilter}}
+                        <img class="search-icon" src="/images/static/search.png"/>
+                    </div>
+
                   {{#if nameFilter}}
                       <div class="expand-close expand">
                           <span>Expand All</span>
@@ -94,7 +98,7 @@
                                           <a {{action "showTenants" listing.model}}>
                                               <span class="txt">Manage tenant</span> <span class="triangle"></span>
                                           </a>
-                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
+                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" {{action "addTenant" listing.model}} />
                                       </div>
                                   </div>
                                   <div class="op fr">
@@ -125,18 +129,26 @@
                                             <img class="flag" src="/images/static/flag-demo.png"/>
                                             <div class="user-info">
                                                 <p class="username">{{tenant.name}}</p>
-                                                <p class="current">current</p>
+                                                <p class="current">{{tenant.status}}</p>
                                             </div>
                                         </div>
                                         <div class="tenant-info">
-                                            <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}}</p>
+                                            <p class="date-info">
+                                                {{unknown-generator tenant.contractStartDate}} — {{unknown-generator tenant.contractEndDate}}
+                                            </p>
 
                                             <p class="phone-num">{{tenant.phone}}</p>
                                         </div>
                                         <div class="fr tenant-op">
-                                            <span class="op-circle edit-personal-info"><img src="/images/static/add-tenant.png" /></span>
-                                            <span class="op-circle edit-contract"><img src="/images/static/add-tenant.png" /></span>
-                                            <span class="op-circle edit-payment-circle"><img src="/images/static/add-tenant.png" /></span>
+                                            <span class="op-circle edit-personal-info">
+                                                <img src="/images/static/tenant-info.png" {{action "editProfile" tenant listing.model house}} />
+                                            </span>
+                                            <span class="op-circle edit-contract">
+                                                <img src="/images/static/tenant-contract.png" {{action "editContract" tenant listing.model house}} />
+                                            </span>
+                                            <span class="op-circle edit-payment-circle">
+                                                <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant listing.model house}} />
+                                            </span>
                                         </div>
 
                                         <div class="remove" {{action "removeTenant" tenant}}>
@@ -193,7 +205,7 @@
                                           <a {{action "showTenants" listing.model}}>
                                               <span class="txt">Manage tenant</span> <span class="triangle"></span>
                                           </a>
-                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" />
+                                          <img class="btn-add-tenant" src="/images/static/add-tenant.png" {{action "addTenant" listing.model}} />
                                       </div>
                                       <div class="op fr">
                                         {{#if listing.model.listStep}}
@@ -222,23 +234,25 @@
                                                 <img class="flag" src="/images/static/flag-demo.png"/>
                                                 <div class="user-info">
                                                     <p class="username">{{tenant.name}}</p>
-                                                    <p class="current">current</p>
+                                                    <p class="current">{{tenant.status}}</p>
                                                 </div>
                                             </div>
                                             <div class="tenant-info">
-                                                <p class="date-info">{{tenant.contractStartDate}} — {{tenant.contractEndDate}} </p>
+                                                <p class="date-info">
+                                                  {{unknown-generator tenant.contractStartDate}} — {{unknown-generator tenant.contractEndDate}}
+                                                </p>
 
-                                                <p class="phone-num">{{tenant.phone}}</p>
+                                                <p class="phone-num">{{unknown-generator tenant.phone}}</p>
                                             </div>
                                             <div class="fr tenant-op">
                                                 <span class="op-circle edit-personal-info">
-                                                    <img src="/images/static/add-tenant.png" {{action "editProfile" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-info.png" {{action "editProfile" tenant listing.model house}} />
                                                 </span>
                                                 <span class="op-circle edit-contract">
-                                                    <img src="/images/static/add-tenant.png" {{action "editContract" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-contract.png" {{action "editContract" tenant listing.model house}} />
                                                 </span>
                                                 <span class="op-circle edit-payment-circle">
-                                                    <img src="/images/static/add-tenant.png" {{action "editPayment" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant listing.model house}} />
                                                 </span>
                                             </div>
                                             <div class="remove" {{action "removeTenant" tenant}}>
@@ -275,9 +289,15 @@
                             <a>Hongkou → Rainbow City → B.4 → A. 145</a>
                         </div>
                         <div class="fr tenant-op">
-                            <span class="op-circle edit-personal-info"><img src="/images/static/add-tenant.png"></span>
-                            <span class="op-circle edit-contract"><img src="/images/static/add-tenant.png"></span>
-                            <span class="op-circle edit-payment-circle"><img src="/images/static/add-tenant.png"></span>
+                            <span class="op-circle edit-personal-info">
+                                <img src="/images/static/tenant-info.png" {{action "editProfile" tenant}}>
+                            </span>
+                            <span class="op-circle edit-contract">
+                                <img src="/images/static/tenant-contract.png" {{action "editProfile" tenant}}>
+                            </span>
+                            <span class="op-circle edit-payment-circle">
+                                <img src="/images/static/tenant-pay.png" {{action "editProfile" tenant}}>
+                            </span>
                         </div>
                     </div>
                   {{/each}}
@@ -436,7 +456,7 @@
                             <p>First Name</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                            {{input placeholder="first name" value=currentTenant.firstName}}
                         </div>
                     </div>
                     <div class="col-2 no-margin-right">
@@ -444,7 +464,7 @@
                             <p>Last Name</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                            {{input placeholder="last name" value=currentTenant.lastName}}
                         </div>
                     </div>
                 </div>
@@ -455,7 +475,7 @@
                             <p>ID number</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                            {{input placeholder="ID number" value=currentTenant.idNumber}}
                         </div>
                     </div>
                 </div>
@@ -466,8 +486,8 @@
                         </div>
                         <div class="for-input">
                             <div class="sex-select btn-group">
-                                <button class="col-2 active">Guy</button>
-                                <button class="col-2">Girl</button>
+                                <button class="col-2 {{if (eq currentTenant.gender '1') 'active'}}" {{action "changeGender" currentTenant '1'}}>Guy</button>
+                                <button class="col-2 {{if (eq currentTenant.gender '2') 'active'}}" {{action "changeGender" currentTenant '2'}}>Girl</button>
                             </div>
                         </div>
                     </div>
@@ -478,7 +498,7 @@
                             <p>Email</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                            {{input placeholder="Email" value=currentTenant.email}}
                         </div>
                     </div>
                 </div>
@@ -488,7 +508,7 @@
                             <p>Phone number</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                            {{input placeholder="Phone Number" value=currentTenant.phone}}
                         </div>
                     </div>
                 </div>
@@ -498,11 +518,13 @@
                             <p>Occupation</p>
                         </div>
                         <div class="for-input">
-                            <select>
-                                <option value="0">Select...</option>
-                                <option value="0">Male</option>
-                                <option value="0">Female</option>
-                            </select>
+                          {{select-2
+                          content=occupationMapping
+                          value=currentTenant.occupation
+                          optionValuePath="id"
+                          allowClear=true
+                          placeholder="Choose Occupation"
+                          }}
                         </div>
                     </div>
                 </div>
@@ -512,16 +534,18 @@
                             <p>Nationality</p>
                         </div>
                         <div class="for-input">
-                            <select>
-                                <option value="0">Select...</option>
-                                <option value="0">Male</option>
-                                <option value="0">Female</option>
-                            </select>
+                          {{select-2
+                          content=countryMapping
+                          value=currentTenant.country
+                          optionValuePath="id"
+                          allowClear=true
+                          placeholder="Choose County"
+                          }}
                         </div>
                     </div>
                 </div>
                 <div class="form-footer fr">
-                    <button class="op-btn btn-save">Save</button>
+                    <button class="op-btn btn-save" {{action "saveTenant" currentTenant}}>Save</button>
                 </div>
             </div>
 
@@ -529,7 +553,7 @@
     </div>
 </div>
 <!-- contract-box -->
-<div class="dialog-box basic-listing-room contract-box" >
+<div class="dialog-box basic-listing-room contract-box">
     <div class="box-header">
         <div class="sub-header">
             <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
@@ -545,7 +569,7 @@
                             <p>Starting Date</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{bootstrap-datepicker value=currentTenant.contractStartDate autoclose=true placeholder="Starting date" endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
                         </div>
                     </div>
                     <div class="col-2 no-margin-right">
@@ -553,7 +577,7 @@
                             <p>Ending Date</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{bootstrap-datepicker value=currentTenant.contractEndDate autoclose=true placeholder="Ending date" startDate=currentTenant.contractStartDate format="yyyy-mm-dd"}}
                         </div>
                     </div>
                 </div>
@@ -564,11 +588,13 @@
                             <p>Payment Cycle</p>
                         </div>
                         <div class="for-input">
-                            <select>
-                                <option value="0">Select...</option>
-                                <option value="0">Male</option>
-                                <option value="0">Female</option>
-                            </select>
+                          {{select-2
+                          content=payCycleMapping
+                          value=currentTenant.paymentCycle
+                          optionValuePath="id"
+                          allowClear=true
+                          placeholder="Choose Payment Cycle"
+                          }}
                         </div>
                     </div>
                 </div>
@@ -579,11 +605,7 @@
                             <p>Rent in advance</p>
                         </div>
                         <div class="for-input">
-                            <select>
-                                <option value="0">Select...</option>
-                                <option value="0">Male</option>
-                                <option value="0">Female</option>
-                            </select>
+                          {{input placeholder="Rent in advance" value=currentTenant.advanceDay}}
                         </div>
                     </div>
                 </div>
@@ -594,7 +616,7 @@
                             <p>Price</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{input placeholder="Price" value=currentTenant.price}}
                         </div>
                     </div>
                     <div class="col-2 no-margin-right">
@@ -602,7 +624,7 @@
                             <p>Fee</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{input placeholder="Price" value=currentTenant.serviceFee}}
                         </div>
                     </div>
                 </div>
@@ -613,12 +635,12 @@
                             <p>Deposit</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{input placeholder="Deposit" value=currentTenant.deposit}}
                         </div>
                     </div>
                 </div>
                 <div class="form-footer fr">
-                    <button class="op-btn btn-save">Save</button>
+                    <button class="op-btn btn-save" {{action "saveTenant" currentTenant}}>Save</button>
                 </div>
             </div>
 
@@ -679,7 +701,7 @@
                         </div>
                         <div class="col-6 col-seven">
                             <div class="add-payment-record op">
-                                <img src="../static/images/Add.png"/>
+                                <img src="/images/static/Add.png"/>
                             </div>
                         </div>
                     </div>
@@ -705,7 +727,7 @@
                         </div>
                         <div class="col-6 col-seven">
                             <div class="remove op">
-                                <img src="../static/images/remove.png" />
+                                <img src="/images/static/Add.png" />
                             </div>
                         </div>
                     </div>
@@ -733,7 +755,7 @@
                         </div>
                         <div class="col-6 col-seven">
                             <div class="add-payment-record op">
-                                <img src="../static/images/Add.png"/>
+                                <img src="/images/static/Add.png"/>
                             </div>
                         </div>
                     </div>
@@ -761,7 +783,7 @@
                         </div>
                         <div class="col-6 col-seven">
                             <div class="add-payment-record op">
-                                <img src="../static/images/Add.png"/>
+                                <img src="/images/static/Add.png"/>
                             </div>
                         </div>
                     </div>
@@ -789,7 +811,7 @@
                         </div>
                         <div class="col-6 col-seven">
                             <div class="add-payment-record op">
-                                <img src="../static/images/Add.png"/>
+                                <img src="/images/static/Add.png"/>
                             </div>
                         </div>
                     </div>

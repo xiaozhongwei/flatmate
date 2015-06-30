@@ -22,24 +22,23 @@ export default Ember.Controller.extend(Ember.Evented,{
     this.store.find('listing/tenant',{name: name}).then(tenants => {
       this.set("filteredTenants",tenants);
     });
-
   }.observes('nameFilter'),
-  payCycleObserve: function(){
-    if(!Ember.isEmpty(this.get("currentTenant.paymentCycle"))){
-      if(this.get("currentTenant.paymentCycle")===3){
-        this.set("currentTenant.price", this.get("currentListing.perThreeMonthPrice"));
-      }
-      else if(this.get("currentTenant.paymentCycle")===6){
-        this.set("currentTenant.price", this.get("currentListing.perSixMonthPrice"));
-      }
-      else if(this.get("currentTenant.paymentCycle")===1){
-        this.set("currentTenant.price", this.get("currentListing.perMonthPrice"));
-      }
-      else if(this.get("currentTenant.paymentCycle")===12){
-        this.set("currentTenant.price", this.get("currentListing.perYearPrice"));
-      }
-    }
-  }.observes("currentTenant.paymentCycle").on("change"),
+  //payCycleObserve: function(){
+  //  if(!Ember.isEmpty(this.get("currentTenant.paymentCycle"))){
+  //    if(this.get("currentTenant.paymentCycle")===3){
+  //      this.set("currentTenant.price", this.get("currentListing.perThreeMonthPrice"));
+  //    }
+  //    else if(this.get("currentTenant.paymentCycle")===6){
+  //      this.set("currentTenant.price", this.get("currentListing.perSixMonthPrice"));
+  //    }
+  //    else if(this.get("currentTenant.paymentCycle")===1){
+  //      this.set("currentTenant.price", this.get("currentListing.perMonthPrice"));
+  //    }
+  //    else if(this.get("currentTenant.paymentCycle")===12){
+  //      this.set("currentTenant.price", this.get("currentListing.perYearPrice"));
+  //    }
+  //  }
+  //}.observes("currentTenant.paymentCycle").on("change"),
   dateObserve: function(){
     if(!Ember.isEmpty(this.get("currentTenant.paymentCycle")) && !Ember.isEmpty(this.get("currentTenant.contractStartDate")) &&
         !Ember.isEmpty(this.get("currentTenant.contractEndDate"))){
@@ -100,6 +99,9 @@ export default Ember.Controller.extend(Ember.Evented,{
     cancel: function(tenant){
       tenant.rollback();
       this.get("controllers.application").send("closeModalBox");
+    },
+    changeGender: function(tenant, gender){
+      tenant.set('gender', gender);
     },
     saveTenant: function(tenant){
       var promise = tenant.save();
