@@ -53,34 +53,48 @@ export default Ember.View.extend({
       $(this).addClass('active');
     });
 
-    this.get('controller').on('openTenantBox', this, this.show_tenant_box);
+    // dialog nav
+    $('.dialog-box.basic-listing-room .op-circle').click(function() {
+      if($(this).hasClass('active')){
+        return false;
+      }
+      else{
+        $(this).parents('.dialog-box').fadeOut(200);
+      }
+      //if($(this).hasClass('nav-personal-info')) {
+      //  $(this).parents('.dialog-box').fadeOut(200);
+      //  $('.personal-info-box').fadeIn(300);
+      //}
+      //if($(this).hasClass('nav-contract')) {
+      //  $(this).parents('.dialog-box').fadeOut(200);
+      //  $('.contract-box').fadeIn(300);
+      //}
+      //if($(this).hasClass('nav-payment-circle')) {
+      //  $(this).parents('.dialog-box').fadeOut(200);
+      //  $('.payment-circle-box').fadeIn(300);
+      //}
+    });
 
     this.get('controller').on('openProfileBox', this, this.show_profile_box);
     this.get('controller').on('openContractBox', this, this.show_contract_box);
     this.get('controller').on('openPaymentBox', this, this.show_payment_box);
   },
 
-  show_tenant_box: function(){
-    $('.edit-tenant-profile').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
-    $('body').addClass('slideout-2');
-  },
-
   show_profile_box: function(){
-    $('.personal-info-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
+    $('.personal-info-box').fadeIn(300);
+    $('.overlay-full-screen').fadeIn(150);
     $('body').addClass('slideout-2');
   },
 
   show_contract_box: function(){
-    $('.contract-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
+    $('.contract-box').fadeIn(300);
+    $('.overlay-full-screen').fadeIn(150);
     $('body').addClass('slideout-2');
   },
 
   show_payment_box: function(){
-    $('.payment-circle-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
+    $('.payment-circle-box').fadeIn(300);
+    $('.overlay-full-screen').fadeIn(150);
     $('body').addClass('slideout-2');
   }
 

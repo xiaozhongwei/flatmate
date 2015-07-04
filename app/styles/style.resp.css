@@ -297,7 +297,11 @@
     }
 
     .main-container .main-wrapper .left-detail-block .detail-img {
-        height: 320px;
+        /*height: 320px;*/
+    }
+
+    .ad-gallery .ad-image-wrapper {
+        margin-bottom: 7px !important;
     }
 
     .main-container .main-wrapper .left-detail-block .detail-img .more-pic {
@@ -323,11 +327,11 @@
     }
 
     .main-container .main-wrapper .left-detail-block .resp-detail-title .line-1 {
-        color: #555555;
+        color: #fff;
     }
 
     .main-container .main-wrapper .left-detail-block .resp-detail-title .line-2 {
-        color: #AA7700;
+        color: #fff;
     }
 
     .main-container .main-wrapper .right-detail-block .room-mate {

@@ -55,9 +55,10 @@ export default Ember.Controller.extend(Ember.Evented,{
         var promise = this.get("newAccount").save();
         promise.then(function () {
           var credentials = {
-            identification: _this.get('model.email'),
-            password: _this.get('model.password')
+            identification: _this.get('newAccount.email'),
+            password: _this.get('newAccount.password')
           };
+          //var credentials = _this.getProperties('identification', 'password');
           _this.get('session').authenticate('simple-auth-authenticator:oauth2-password-grant', credentials);
 
           _this.trigger('closeModalBox');

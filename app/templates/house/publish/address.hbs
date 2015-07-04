@@ -1,118 +1,91 @@
-{{#if model.isAddressFinished}}
-    <div class="main-container">
-        <div class="step-bar">
-            <div class="wrapper">
-                <span>Step</span>
-                <img src="/images/static/step-2.png"/>
-                <span>of 4. </span><span class="active"> Tell us about your apartment</span>
-            </div>
-        </div>
-        <div class="op-wrapper">
-            <div class="op-form margin-top-20">
-                <div class="address-map"></div>
-                <div class="address-book">
-                    <p class="title">Address</p>
-
-                    <p>{{model.address}}</p>
-
-                    <p>{{model.area}}</p>
-
-                    <p>
-                      {{#each model.metroStations as |metroStation index|}}
-                        {{#if index}},{{/if}}{{metroStation}}
-                      {{/each}}
-                    </p>
-                    <span id="edit_address" {{action "editAddress"}}>Edit</span>
-                </div>
-                <div class="form-footer clearfix">
-                    <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
-                    <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
-                </div>
-            </div>
+<div class="main-container">
+    <div class="step-bar">
+        <div class="wrapper">
+            <span>Step</span>
+            <img src="/images/static/step-2.png" />
+            <span>of 4. </span><span class="active"> Tell us about your apartment</span>
         </div>
     </div>
-{{else}}
-    <div class="main-container">
-        <div class="step-bar">
-            <div class="wrapper">
-                <span>Step</span>
-                <img src="/images/static/step-2.png"/>
-                <span>of 4. </span><span class="active"> Tell us about your apartment</span>
+    <div class="op-wrapper">
+        <div class="op-form margin-top-20">
+            <div class="address-map">
+                <div class="map-flow" id="address_map"></div>
             </div>
-        </div>
-        <div class="op-wrapper">
-            <div class="op-form margin-top-20">
-                <div class="none-address">
-                    <button id="btn_add_address" class="op-btn btn-add-address" {{action "editAddress"}}>Add address</button>
-                </div>
-                <div class="form-footer clearfix">
-                    <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
-                    <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
-{{/if}}
-
-
-
-<div class="address-box dialog-box">
-    <div class="box-content">
-        <div class="address-form dialog-form">
-            <div class="address-map"></div>
-            <div class="form-row">
-              {{input type="text" autocomplete="off" placeholder="input the Address" value=newAddress.address}}
-            </div>
-            <div class="form-row">
-              {{select-2
-              content=areaMapping
-              value=newAddress.area
-              optionValuePath="id"
-              placeholder="Choose the Area"
-              }}
-            </div>
-            <div class="form-row">
-              {{select-2
-              content=compoundMapping
-              value=newAddress.compound
-              optionValuePath="id"
-              placeholder="Choose the Compound"
-              }}
-            </div>
-            <div class="form-row">
-              {{select-2
-              content=stationMapping
-              value=newAddress.metroStations
-              optionValuePath="id"
-              multiple=true
-              placeholder="Choose the Metro"
-              }}
-            </div>
-            <div class="form-row clearfix">
-                <div class="col">
-                  {{select-2
-                  content=buildingMapping
-                  value=newAddress.building
-                  optionValuePath="id"
-                  placeholder="Choose the Building"
-                  }}
-                </div>
-                <div class="col">
-                  {{select-2
-                  content=floorMapping
-                  value=newAddress.floor
-                  optionValuePath="id"
-                  placeholder="Choose the Floor"
-                  }}
-                </div>
-                <div class="col no-margin-right">
-                  {{input type="text" autocomplete="off" placeholder="input the doorplate" value=newAddress.doorplate}}
+            <div class="address-book">
+                <div class="address-form">
+                    <div class="form-row icon">
+                        <img src="/images/static/icon-location.png" />
+                        {{input id="place_search" placeholder="input the Compound" value=model.compound}}
+                    </div>
+                  {{#if model.compound}}
+                      <div class="form-row clearfix" id="line-2">
+                          <div class="col-area">
+                            {{select-2
+                            content=areaMapping
+                            value=model.area
+                            optionValuePath="id"
+                            placeholder="Choose the Area"
+                            }}
+                          </div>
+                          <div class="col-address no-border-right">
+                            {{input placeholder="input the Address" value=model.address}}
+                          </div>
+                      </div>
+                      <div class="form-row" id="line-3">
+                        {{select-2
+                        content=stationMapping
+                        value=model.metroStations
+                        optionValuePath="id"
+                        multiple=true
+                        class="subway-select"
+                        id="subway_select"
+                        placeholder="Choose the Metro"
+                        }}
+                      </div>
+                  {{/if}}
+                    <div class="form-row clearfix no-margin-bottom">
+                        <div class="col-3">
+                          {{select-2
+                          content=buildingMapping
+                          value=model.building
+                          optionValuePath="id"
+                          placeholder="Building #"
+                          }}
+                        </div>
+                        <div class="col-3">
+                          {{select-2
+                          content=floorMapping
+                          value=model.floor
+                          optionValuePath="id"
+                          placeholder="Floor #"
+                          }}
+                        </div>
+                        <div class="col-3 no-margin-right">
+                          {{input class="room-num" placeholder="Room #" value=model.doorplate}}
+                            <div class="lock">
+                                <img src="/images/static/lock.png"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-footer">
-                <button type="submit" class="btn-next fr" {{action "saveAddress"}}>Next</button>
+            <div class="form-footer clearfix">
+                <button class="op-btn btn-cancel fl" {{action "back" model}}>Back</button>
+                <button class="op-btn btn-next fr" {{action "save" model}}>Next</button>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .autocomplete-suggestions {
+        text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+
+        /* core styles should not be changed */
+        position: absolute; display: none; z-index: 9999; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+    }
+    .autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; font-size: 1.02em; color: #333; }
+    .autocomplete-suggestion b { font-weight: normal; color: #1f8dd6; }
+    .autocomplete-suggestion.selected { background: #f0f0f0; }
+
+</style>

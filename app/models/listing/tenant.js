@@ -46,5 +46,19 @@ export default DS.Model.extend(EmberValidations.Mixin,{
       return 'Unknown';
 
     return (this.get('firstName') || '') + ' ' + (this.get('lastName') || '');
+  }),
+  refundEnable:Ember.computed("paymentRecords.@each.type", function(){
+    var enable = true;
+
+    if(!Ember.isEmpty(this.get('paymentRecords'))){
+      this.get("paymentRecords").forEach(function(paymentRecord){
+        if(enable && paymentRecord.get('type') === 'refund'){
+          enable = false;
+        }
+      })
+    }
+
+    return enable;
   })
+
 });

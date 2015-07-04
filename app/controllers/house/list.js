@@ -67,33 +67,21 @@ export default Ember.Controller.extend(Ember.Evented,{
       this.transitionToRoute({queryParams});
     },
     toggleHouse: function(house){
-      house.toggleProperty('isExpand')
+      house.toggleProperty('isExpand');
     },
     manageHouse: function(house){
       this.transitionToRoute('house.manage', house.get('id'));
     },
-    editTenant: function(tenant,listing, house){
+    editProfile: function(tenant){
       this.set('currentTenant', tenant);
-      this.set('currentListing', listing);
-      this.set('currentHouse', house);
-      this.trigger('openTenantBox');
-    },
-    editProfile: function(tenant,listing, house){
-      this.set('currentTenant', tenant);
-      this.set('currentListing', listing);
-      this.set('currentHouse', house);
       this.trigger('openProfileBox');
     },
-    editContract: function(tenant,listing, house){
+    editContract: function(tenant){
       this.set('currentTenant', tenant);
-      this.set('currentListing', listing);
-      this.set('currentHouse', house);
       this.trigger('openContractBox');
     },
-    editPayment: function(tenant,listing, house){
+    editPayment: function(tenant){
       this.set('currentTenant', tenant);
-      this.set('currentListing', listing);
-      this.set('currentHouse', house);
       this.trigger('openPaymentBox');
     },
     cancel: function(tenant){
@@ -112,13 +100,26 @@ export default Ember.Controller.extend(Ember.Evented,{
       });
     },
     checkoutTenant: function(tenant){
-      tenant.set("checkoutDate",new Date());
-      var promise = tenant.save();
-      promise.then(res => {
-        //this.get('modal').hide();
-        this.get("controllers.application").send("closeModalBox");
-        Notify.info('save tenant success');
+      var currentDate = moment(new Date()).format('YYYY-MM-DD');
+      var transactionRecord = this.store.createRecord('listing/transactionRecord',{
+        transactionDate: currentDate
       });
+
+      var paymentRecord = this.store.createRecord('listing/paymentRecord',{
+        paymentDate: tenant.get("contractEndDate"),account: tenant.get("deposit"), type: 'refund'
+      });
+
+      paymentRecord.get('transactionRecords').pushObject(transactionRecord);
+
+      tenant.get("paymentRecords").pushObject(paymentRecord);
+
+      //tenant.set("checkoutDate",new Date());
+      //var promise = tenant.save();
+      //promise.then(res => {
+      //  //this.get('modal').hide();
+      //  this.get("controllers.application").send("closeModalBox");
+      //  Notify.info('save tenant success');
+      //});
     },
     addTransactionRecord: function(paymentRecord){
       var currentDate = moment(new Date()).format('YYYY-MM-DD');
@@ -129,6 +130,10 @@ export default Ember.Controller.extend(Ember.Evented,{
     },
     removeTransactionRecord: function(transactionRecord, paymentRecord){
       paymentRecord.get('transactionRecords').removeObject(transactionRecord);
+
+      if(paymentRecord.get('type') === 'refund'){
+        this.get("currentTenant").get("paymentRecords").removeObject(paymentRecord);
+    }
     }
   },
 

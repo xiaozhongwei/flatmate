@@ -141,13 +141,13 @@
                                         </div>
                                         <div class="fr tenant-op">
                                             <span class="op-circle edit-personal-info">
-                                                <img src="/images/static/tenant-info.png" {{action "editProfile" tenant listing.model house}} />
+                                                <img src="/images/static/tenant-info.png" {{action "editProfile" tenant}} />
                                             </span>
                                             <span class="op-circle edit-contract">
-                                                <img src="/images/static/tenant-contract.png" {{action "editContract" tenant listing.model house}} />
+                                                <img src="/images/static/tenant-contract.png" {{action "editContract" tenant}} />
                                             </span>
                                             <span class="op-circle edit-payment-circle">
-                                                <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant listing.model house}} />
+                                                <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant}} />
                                             </span>
                                         </div>
 
@@ -246,13 +246,13 @@
                                             </div>
                                             <div class="fr tenant-op">
                                                 <span class="op-circle edit-personal-info">
-                                                    <img src="/images/static/tenant-info.png" {{action "editProfile" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-info.png" {{action "editProfile" tenant}} />
                                                 </span>
                                                 <span class="op-circle edit-contract">
-                                                    <img src="/images/static/tenant-contract.png" {{action "editContract" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-contract.png" {{action "editContract" tenant}} />
                                                 </span>
                                                 <span class="op-circle edit-payment-circle">
-                                                    <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant listing.model house}} />
+                                                    <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant}} />
                                                 </span>
                                             </div>
                                             <div class="remove" {{action "removeTenant" tenant}}>
@@ -293,10 +293,10 @@
                                 <img src="/images/static/tenant-info.png" {{action "editProfile" tenant}}>
                             </span>
                             <span class="op-circle edit-contract">
-                                <img src="/images/static/tenant-contract.png" {{action "editProfile" tenant}}>
+                                <img src="/images/static/tenant-contract.png" {{action "editContract" tenant}}>
                             </span>
                             <span class="op-circle edit-payment-circle">
-                                <img src="/images/static/tenant-pay.png" {{action "editProfile" tenant}}>
+                                <img src="/images/static/tenant-pay.png" {{action "editPayment" tenant}}>
                             </span>
                         </div>
                     </div>
@@ -308,143 +308,22 @@
     </div>
 </div>
 
-
-<!-- edit-tenant-profile box -->
-<div class="dialog-box">
-    <div class="box-header">
-        <div class="sub-header">
-            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
-            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
-        </div>
-    </div>
-    <div class="box-content">
-        <div class="user-info clearfix">
-            <img class="user-header" src="/images/static/LISA_100.jpg" />
-            <img class="flag" src="/images/static/flag-demo.png" />
-            <div class="username">
-                <span>X Y</span>
-            </div>
-        </div>
-        <div class="user-form">
-            <div class="clearfix">
-                <div class="form-group col-2">
-                    <p>Name</p>
-                    {{input placeholder="tenant name" value=currentTenant.name}}
-                </div>
-                <div class="form-group col-2 no-margin-right">
-                    <p>ID number</p>
-                    {{input placeholder="ID number" value=currentTenant.idNumber}}
-                </div>
-                <div class="form-group col-2">
-                    <p>County</p>
-                    {{select-2
-                    content=countryMapping
-                    value=currentTenant.country
-                    optionValuePath="id"
-                    allowClear=true
-                    placeholder="Choose County"
-                    }}
-                </div>
-                <div class="form-group col-2 no-margin-right">
-                    <p>Occupation</p>
-                    {{select-2
-                    content=occupationMapping
-                    value=currentTenant.occupation
-                    optionValuePath="id"
-                    allowClear=true
-                    placeholder="Choose Occupation"
-                    }}
-                </div>
-                <div class="form-group col-2">
-                    <p>Email</p>
-                    {{input placeholder="Email" value=currentTenant.email}}
-                </div>
-                <div class="form-group col-2 no-margin-right">
-                    <p>Phone number</p>
-                    {{input placeholder="Phone Number" value=currentTenant.phone}}
-                </div>
-            </div>
-            <hr />
-            <div class="clearfix">
-                <div class="form-group col-date">
-                    <p>Contract duration</p>
-                    {{bootstrap-datepicker value=currentTenant.contractStartDate autoclose=true placeholder="Starting date" endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
-                </div>
-                <div class="form-group col-date">
-                    <p> </p>
-                    {{bootstrap-datepicker value=currentTenant.contractEndDate autoclose=true placeholder="Ending date" startDate=currentTenant.contractStartDate format="yyyy-mm-dd"}}
-                </div>
-                <div class="form-group col-4 no-margin-right">
-                    <p>Check-out date</p>
-                    {{bootstrap-datepicker value=currentTenant.checkoutDate autoclose=true placeholder="Check-out date" startDate=currentTenant.contractStartDate endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
-                </div>
-                <div class="form-group col-4">
-                    <p>Payment cycle</p>
-                    {{select-2
-                    content=payCycleMapping
-                    value=currentTenant.paymentCycle
-                    optionValuePath="id"
-                    allowClear=true
-                    placeholder="Choose Payment Cycle"
-                    }}
-                </div>
-                <div class="form-group col-4">
-                    <p>Price</p>
-                  {{input placeholder="Price" value=currentTenant.price}}
-                </div>
-                <div class="form-group col-4">
-                    <p>Deposit</p>
-                    {{input placeholder="Deposit" value=currentTenant.deposit}}
-                </div>
-                <div class="form-group col-4 no-margin-right">
-                    <p>Rent in advance</p>
-                    {{input placeholder="Rent in advance" value=currentTenant.advanceDay}}
-                </div>
-            </div>
-            <hr/>
-            <div class="clearfix history">
-                <p class="title">Transaction history</p>
-                <div class="form-row success">
-                    <div class="history-date">
-                        05.08.2014
-                    </div>
-                    <input type="text" value="3000"/>
-                </div>
-                <div class="form-row success">
-                    <div class="history-date">
-                        05.08.2014
-                    </div>
-                    <input type="text" value="3000"/>
-                </div>
-                <div class="form-row">
-                    <div class="history-date">
-                        05.08.2014
-                    </div>
-                    <input type="text" />
-                </div>
-                <div class="form-row">
-                    <div class="history-date">
-                        05.08.2014
-                    </div>
-                    <input type="text"/>
-                </div>
-            </div>
-            <div class="form-footer">
-                <button class="btn-cancel fl" {{action "cancel" currentTenant}}>Cancel</button>
-                <button class="btn-checkout" {{action "checkoutTenant" currentTenant}}>Check-Out Today</button>
-                <button class="btn-save" {{action "saveTenant" currentTenant}}>Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- personal-info-box -->
 <div class="dialog-box basic-listing-room personal-info-box">
     <div class="box-header">
         <div class="sub-header">
             <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
-            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+            <p class="fr dialog-switch">
+                <span class="op-circle nav-personal-info active">
+                    <img src="/images/static/tenant-info.png" {{action "editProfile" currentTenant}} />
+                </span>
+                <span class="op-circle nav-contract">
+                    <img src="/images/static/tenant-contract.png" {{action "editContract" currentTenant}} />
+                </span>
+                <span class="op-circle nav-payment-circle">
+                    <img src="/images/static/tenant-pay.png" {{action "editPayment" currentTenant}} />
+                </span>
+            </p>
         </div>
     </div>
     <div class="box-content">
@@ -557,7 +436,17 @@
     <div class="box-header">
         <div class="sub-header">
             <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
-            <p class="fr"><span class="seq available">A</span>Garden Room in French Concession</p>
+            <p class="fr dialog-switch">
+                <span class="op-circle nav-personal-info">
+                    <img src="/images/static/tenant-info.png" {{action "editProfile" currentTenant}} />
+                </span>
+                <span class="op-circle nav-contract active">
+                    <img src="/images/static/tenant-contract.png" {{action "editContract" currentTenant}} />
+                </span>
+                <span class="op-circle nav-payment-circle">
+                    <img src="/images/static/tenant-pay.png" {{action "editPayment" currentTenant}} />
+                </span>
+            </p>
         </div>
     </div>
     <div class="box-content">
@@ -652,13 +541,27 @@
 <div class="dialog-box basic-listing-room payment-circle-box">
     <div class="box-header">
         <div class="sub-header">
-            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42 <span class="seq available">A</span></p>
+            <p class="fl">Jing'An → LaoXiMen, 204 → Apt. 42</p>
+            <p class="fr dialog-switch">
+                <span class="op-circle nav-personal-info">
+                    <img src="/images/static/tenant-info.png" {{action "editProfile" currentTenant}} />
+                </span>
+                <span class="op-circle nav-contract">
+                    <img src="/images/static/tenant-contract.png" {{action "editContract" currentTenant}} />
+                </span>
+                <span class="op-circle nav-payment-circle active">
+                    <img src="/images/static/tenant-pay.png" {{action "editPayment" currentTenant}} />
+                </span>
+            </p>
         </div>
     </div>
     <div class="box-content">
         <div class="user-form">
             <div id="payment-circle" class="form-block clearfix">
                 <div class="form-group form-header clearfix">
+                    <div class="col-6 col-zero">
+                        <br/>
+                    </div>
                     <div class="col-6 col-one">
                         <span>Next Payment</span>
                     </div>
@@ -679,57 +582,103 @@
                     </div>
                 </div>
                 <div class="scroll-content">
-                  {{#each currentTenant.paymentRecords as |paymentRecord|}}
-                    <div class="form-group">
-                      {{#each paymentRecord.transactionRecords as |transactionRecord index|}}
-                          <div class="inner-group clearfix">
-                              <div class="col-6 col-one">
-                                  {{#unless index}}
-                                      <p>{{paymentRecord.paymentDate}}</p>
-                                  {{else}}
-                                      <br/>
-                                  {{/unless}}
+                  {{#each currentTenant.paymentRecords as |paymentRecord pIndex|}}
+                    {{#unless (eq paymentRecord.type 'refund')}}
+                        <div class="form-group">
+                          {{#each paymentRecord.transactionRecords as |transactionRecord index|}}
+                              <div class="inner-group clearfix">
+                                  <div class="col-6 col-zero">
+                                    {{#unless index}}
+                                        <span class="seq">{{pIndex}}</span>
+                                    {{else}}
+                                        <br/>
+                                    {{/unless}}
+                                  </div>
+                                  <div class="col-6 col-one">
+                                    {{#unless index}}
+                                        <p>{{paymentRecord.paymentDate}}</p>
+                                    {{else}}
+                                        <br/>
+                                    {{/unless}}
+                                  </div>
+                                  <div class="col-6 col-two">
+                                    {{#unless index}}
+                                        <p>&yen; {{paymentRecord.balance}}</p>
+                                    {{else}}
+                                        <br/>
+                                    {{/unless}}
+                                  </div>
+                                  <div class="col-6 col-three">
+                                    {{bootstrap-datepicker value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
+                                  </div>
+                                  <div class="col-6 col-four">
+                                      <span class="money-tag">&yen;</span>
+                                    {{input class="fee-input" placeholder="..." value=transactionRecord.account}}
+                                  </div>
+                                  <div class="col-6 col-five">
+                                      <button class="op-btn btn-confirm" disabled>已付</button>
+                                  </div>
+                                  <div class="col-6 col-six">
+                                    {{input  placeholder="..." value=transactionRecord.remark}}
+                                  </div>
+                                  <div class="col-6 col-seven">
+                                    {{#unless index}}
+                                        <div class="add-payment-record op">
+                                            <img src="/images/static/Add.png" {{action "addTransactionRecord" paymentRecord}} />
+                                        </div>
+                                    {{else}}
+                                        <div class="remove op">
+                                            <img src="/images/static/remove.png" {{action "removeTransactionRecord" transactionRecord paymentRecord}} />
+                                        </div>
+                                    {{/unless}}
+                                  </div>
                               </div>
-                              <div class="col-6 col-two">
-                                {{#unless index}}
+                          {{/each}}
+                        </div>
+                    {{else}}
+                        <div class="form-group refund-group no-border-bottom">
+                          {{#each paymentRecord.transactionRecords as |transactionRecord index|}}
+                            <div class="inner-group clearfix">
+                                <div class="col-6 col-zero">
+                                    <span class="seq available"></span>
+                                </div>
+                                <div class="col-6 col-one">
+                                    <p>{{paymentRecord.paymentDate}}</p>
+                                </div>
+                                <div class="col-6 col-two">
                                     <p>&yen; {{paymentRecord.balance}}</p>
-                                {{else}}
-                                    <br/>
-                                {{/unless}}
-                              </div>
-                              <div class="col-6 col-three">
-                                {{bootstrap-datepicker value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
-
-                              </div>
-                              <div class="col-6 col-four">
-                                  <span class="money-tag">&yen;</span>
-                                  {{input class="fee-input" placeholder="..." value=transactionRecord.account}}
-                              </div>
-                              <div class="col-6 col-five">
-                                  <button class="op-btn btn-confirm" disabled>已付</button>
-                              </div>
-                              <div class="col-6 col-six">
-                                  {{input  placeholder="..." value=transactionRecord.remark}}
-                              </div>
-                              <div class="col-6 col-seven">
-                                {{#unless index}}
-                                    <div class="add-payment-record op">
-                                        <img src="/images/static/Add.png" {{action "addTransactionRecord" paymentRecord}} />
-                                    </div>
-                                {{else}}
+                                </div>
+                                <div class="col-6 col-three">
+                                  {{bootstrap-datepicker class="date-input" value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
+                                </div>
+                                <div class="col-6 col-four">
+                                    <span class="money-tag">-&yen;</span>
+                                  {{input class="fee-input refund-fee" placeholder="..." value=transactionRecord.account}}
+                                </div>
+                                <div class="col-6 col-five">
+                                    <button class="op-btn btn-refund">退款</button>
+                                </div>
+                                <div class="col-6 col-six">
+                                    {{input  placeholder="..." value=transactionRecord.remark}}
+                                </div>
+                                <div class="col-6 col-seven">
                                     <div class="remove op">
                                         <img src="/images/static/remove.png" {{action "removeTransactionRecord" transactionRecord paymentRecord}} />
                                     </div>
-                                {{/unless}}
-                              </div>
-                          </div>
-                      {{/each}}
-                    </div>
+                                </div>
+                            </div>
+                          {{/each}}
+                        </div>
+                    {{/unless}}
                   {{/each}}
                 </div>
                 <div class="form-footer">
                     <div class="fr">
-                        <button class="op-btn btn-checkout">Checkout Today</button>
+                        {{#if currentTenant.refundEnable}}
+                            <button class="op-btn btn-checkout"  {{action "checkoutTenant" currentTenant}}>Check-out / Refund</button>
+                        {{else}}
+                            <button class="op-btn btn-checkout" disabled >Check-out / Refund</button>
+                        {{/if}}
                         <button class="op-btn btn-save" {{action "saveTenant" currentTenant}}>Save</button>
                     </div>
                 </div>

@@ -36,8 +36,9 @@ export default Ember.Controller.extend(Ember.Evented,{
     },
     addTenant: function(listing){
       var newTenant = this.store.createRecord('listing/tenant',{listing: listing});
+
       newTenant.save().then(tenant => {
-        listing.get('tenants').pushObject(tenant);
+        listing.get('tenants').unshiftObject(tenant);
       });
     },
     removeTenant: function(tenant){

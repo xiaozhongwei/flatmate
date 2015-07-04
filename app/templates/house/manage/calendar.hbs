@@ -1,7 +1,40 @@
-<div class="add-tenant add-block">
+<div class="add-tenant add-block" {{action "addTenant" model}}>
     <img src="/images/static/Add.png">
     <p>Add a tenant if the room is now occupied</p>
 </div>
+
+{{#each model.tenants as |tenant index| }}
+    <div class="single-tenant margin-top-15">
+        <div class="user">
+            <img class="user-header" src="/images/static/LISA_100.jpg" />
+            <img class="flag" src="/images/static/flag-demo.png" />
+            <div class="user-info">
+                <p class="username">{{tenant.country}}, {{tenant.occupation}}</p>
+                <p class="pending">{{tenant.status}}</p>
+            </div>
+        </div>
+        <div class="tenant-info">
+            <p class="date-info">
+              {{unknown-generator tenant.contractStartDate}} — {{unknown-generator tenant.contractEndDate}}
+            </p>
+        </div>
+        <div class="fr">
+            <button class="btn-edit op-btn" {{action "editTenant" tenant}}>Edit</button>
+            <div class="tips">
+                <span class="icon-tips">?</span>
+                <div class="reminder">
+                    <p class="title">恭喜! 你的页面准备好了.</p>
+                    <p>will appear in serch results 30 days in advance</p>
+                    <span class="triangle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="remove-tenant-op">
+            <img src="/images/static/remove.png" {{action "removeTenant" tenant}}>
+        </div>
+    </div>
+{{/each}}
+
 <div class="alert-block margin-top-25">
   {{#if session.user.logo.downloadFilePath}}
       <img class="user-header"
@@ -16,3 +49,71 @@
   {{bootstrap-datepicker-inline value=availableDate}}
 </div>
 
+
+<!-- edit room tenant box -->
+<div class="dialog-box basic-listing-room edit-tenant-time-box">
+    <div class="box-header">
+        <div class="sub-header">
+            <p>Fill in tenant basic info and calendar date to continue</p>
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="user-form">
+            <div id="personal_info" class="form-block clearfix">
+                <div class="form-group flatmate-list clearfix">
+                    <div class="single-flatmate rented danger no-border-bottom">
+                        <div class="user-header">
+                            <img src="/images/static/LISA_100.jpg" />
+                        </div>
+                        <div class="select-block country">
+                          {{select-2
+                          content=countryMapping
+                          value=currentTenant.country
+                          optionValuePath="id"
+                          placeholder="Choose County"
+                          }}
+                        </div>
+                        <div class="select-block job">
+                          {{select-2
+                          content=occupationMapping
+                          value=currentTenant.occupation
+                          optionValuePath="id"
+                          placeholder="Choose Occupation"
+                          }}
+                        </div>
+                        <div class="sex-select btn-group">
+                            <button class="col-2 {{if (eq currentTenant.gender '1') 'active'}}" {{action "changeGender" currentTenant '1'}}>Guy</button>
+                            <button class="col-2 {{if (eq currentTenant.gender '2') 'active'}}" {{action "changeGender" currentTenant '2'}}>Girl</button>
+                        </div>
+                        <div class="remove">
+                            <img src="/images/static/remove.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-2">
+                        <div class="for-label">
+                            <p>Starting Date</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                    <div class="col-2 no-margin-right">
+                        <div class="for-label">
+                            <p>Ending Date</p>
+                        </div>
+                        <div class="for-input">
+                            <input type="text" placeholder="..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer fr">
+                    <button class="op-btn btn-cancel">Cancel</button>
+                    <button class="op-btn btn-save" style="background-color: #2c9ab7">Save</button>
+                    <button class="op-btn btn-save" style="background-color: #2c9ab7">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

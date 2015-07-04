@@ -38,7 +38,7 @@ module.exports = function(app) {
                   id: 111,
                   transactionDate: "2015-06-21",              //交易日期
                   account: "6000",                      //金额
-                  remark: "暂付六千"                        //备注
+                  remark: "押金"                        //备注
                 },
                 {
                   id: 112,
