@@ -14,8 +14,8 @@
               </div>
               <div class="loc-info">
                   <p class="subarea-name">{{listing.house.compound}} - Room {{room-index listing.index}}</p>
-                  <p><span></span>{{listing.house.area}} — {{listing.house.address}}</p>
-                  <p><span></span>
+                  <p><span><img src="/images/static/icon-location.png"/></span>{{listing.house.area}} — {{listing.house.address}}</p>
+                  <p><span><img src="/images/static/icon-subway.png"/></span>
                     {{#each listing.house.subwayLines as |subwayLine index|}}
                       {{#if index}},{{/if}}{{subwayLine}}
                     {{/each}}
