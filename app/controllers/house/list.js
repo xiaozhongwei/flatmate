@@ -17,11 +17,15 @@ export default Ember.Controller.extend(Ember.Evented,{
   type: 'entire',
   area: undefined,
   roomStatus: undefined, //是否空置
-  filterTenants: function() {
+  searchTenant: function(){
     var name = this.get('nameFilter');
     this.store.find('listing/tenant',{name: name}).then(tenants => {
       this.set("filteredTenants",tenants);
     });
+  },
+  filterTenants: function() {
+    if(!Ember.isEmpty(this.get('nameFilter')))
+      Ember.run.debounce(this, this.searchTenant, 300);
   }.observes('nameFilter'),
   //payCycleObserve: function(){
   //  if(!Ember.isEmpty(this.get("currentTenant.paymentCycle"))){
