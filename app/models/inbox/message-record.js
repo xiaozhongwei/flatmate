@@ -21,7 +21,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   receiverName: DS.attr(),
   receiverPhoto: DS.attr(),
 
-  checkinDate: DS.attr(),
+  checkinDate: DS.attr('formatDate'),
   livingMonth: DS.attr(),
   guestNumber: DS.attr(),
   payCycleMapping: DS.attr(),
