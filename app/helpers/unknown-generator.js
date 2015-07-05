@@ -5,6 +5,10 @@ export function unknownGenerator(params/*, hash*/) {
     return "Unknown";
   }
 
+  if(params[0] instanceof Date){
+    return  moment(params[0]).format('YYYY-MM-DD');
+  }
+
   return params[0];
 }
 

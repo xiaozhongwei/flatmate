@@ -7,8 +7,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   area: DS.attr(),
   address: DS.attr(),
-  xCoordinate: DS.attr(),
-  yCoordinate: DS.attr(),
+  longitude: DS.attr(),     //经度
+  latitude: DS.attr(),      //纬度
   metroStations: DS.attr()
-
 });

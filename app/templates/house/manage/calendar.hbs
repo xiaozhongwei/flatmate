@@ -10,7 +10,7 @@
             <img class="flag" src="/images/static/flag-demo.png" />
             <div class="user-info">
                 <p class="username">{{tenant.country}}, {{tenant.occupation}}</p>
-                <p class="pending">{{tenant.status}}</p>
+                <p class="pending">{{tenant.status.name}}</p>
             </div>
         </div>
         <div class="tenant-info">
@@ -43,12 +43,12 @@
       <img class="user-header"
            src="images/user_unknown.png" title={{session.user.firstName}}>
   {{/if}}
-    <p>Starting day of you listing?</p>
-</div>
-<div class="calendar-block margin-top-25">
-  {{bootstrap-datepicker-inline value=availableDate}}
+    <p>Calendar of this listing</p>
 </div>
 
+<div class="calendar-block margin-top-25">
+    {{full-calendar}}
+</div>
 
 <!-- edit room tenant box -->
 <div class="dialog-box basic-listing-room edit-tenant-time-box">
@@ -61,7 +61,7 @@
         <div class="user-form">
             <div id="personal_info" class="form-block clearfix">
                 <div class="form-group flatmate-list clearfix">
-                    <div class="single-flatmate rented danger no-border-bottom">
+                    <div class="single-flatmate rented {{if currentTenant.isFinished 'occupied' 'danger'}} no-border-bottom">
                         <div class="user-header">
                             <img src="/images/static/LISA_100.jpg" />
                         </div>
@@ -96,7 +96,7 @@
                             <p>Starting Date</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{bootstrap-datepicker value=currentTenant.contractStartDate autoclose=true placeholder="Starting date" endDate=currentTenant.contractEndDate format="yyyy-mm-dd"}}
                         </div>
                     </div>
                     <div class="col-2 no-margin-right">
@@ -104,14 +104,18 @@
                             <p>Ending Date</p>
                         </div>
                         <div class="for-input">
-                            <input type="text" placeholder="..." />
+                          {{bootstrap-datepicker value=currentTenant.contractEndDate autoclose=true placeholder="Ending date" startDate=currentTenant.contractStartDate format="yyyy-mm-dd"}}
                         </div>
                     </div>
                 </div>
                 <div class="form-footer fr">
                     <button class="op-btn btn-cancel">Cancel</button>
                     <button class="op-btn btn-save" style="background-color: #2c9ab7">Save</button>
-                    <button class="op-btn btn-save" style="background-color: #2c9ab7">Save</button>
+                    {{#if currentTenant.isValid}}
+                        <button class="op-btn btn-save" style="background-color: #2c9ab7" {{action "saveTenant" currentTenant model}}>Save</button>
+                    {{else}}
+                        <button class="op-btn btn-save" disabled>Save</button>
+                    {{/if}}
                 </div>
             </div>
         </div>

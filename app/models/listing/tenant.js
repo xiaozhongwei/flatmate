@@ -8,29 +8,31 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     country: { presence: true },
     gender: { presence: true },
-    occupation: { presence: true }
+    occupation: { presence: true },
+    contractStartDate: { presence: true },
+    contractEndDate: { presence: true }
   },
 
-  listing: DS.belongsTo('listing', {async: true}),  //所属listing
+  //listing: DS.belongsTo('listing', {async: true}),  //所属listing
   //house: DS.belongsTo('listing/house'),           //所属house
 
-  status: DS.attr(),                                //状态
+  status: DS.attr('tenantStatus'),                                //状态-pending:待入住 current:正在入住 checkout:已退房
 
   index: DS.attr(),
   //name: DS.attr(),                                //名称
   firstName: DS.attr(),
   lastName: DS.attr(),
   idNumber: DS.attr(),                              //身份证号
-  //status: DS.attr('number', {defaultValue: 1}),   //状态
-  houseId: DS.attr(),
+  //houseId: DS.attr(),
   listingId: DS.attr(),                             //关联的房源信息
   country: DS.attr(),                               //国家
   gender: DS.attr('', {/*defaultValue: '1'*/}),     //性别
   occupation: DS.attr(),                            //职业
   email: DS.attr(),                                 //邮箱
   phone: DS.attr(),                                 //phone
-  contractStartDate: DS.attr(),                     //合同开始日期
-  contractEndDate: DS.attr(),                       //合同结束日期
+  contractId: DS.attr(),                            //合同id
+  contractStartDate: DS.attr('formatDate'),       //合同开始日期
+  contractEndDate: DS.attr('formatDate'),         //合同结束日期
   checkoutDate: DS.attr(),                          //checkout日期
 
   paymentCycle: DS.attr(),                          //付款周期
@@ -38,7 +40,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   deposit: DS.attr(),                               //押金
   serviceFee: DS.attr(),                            //服务费
   advanceDay: DS.attr(),                            //提前天数
-
+  paymentId: DS.attr(),
   paymentRecords: DS.hasMany('listing/paymentRecord'), //付款记录
 
   name: Ember.computed("firstName","lastName", function(){
@@ -59,6 +61,9 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     }
 
     return enable;
+  }),
+  isFinished: Ember.computed('country', 'gender', 'occupation', function () {
+    return (!Ember.isEmpty(this.get('country'))) && (!Ember.isEmpty(this.get('gender'))) && (!Ember.isEmpty(this.get('occupation')))
   })
 
 });

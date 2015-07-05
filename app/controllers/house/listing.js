@@ -35,7 +35,7 @@ export default Ember.Controller.extend(Ember.Evented,{
       listing.toggleProperty("showTenants");
     },
     addTenant: function(listing){
-      var newTenant = this.store.createRecord('listing/tenant',{listing: listing});
+      var newTenant = this.store.createRecord('listing/tenant',{listingId: listing.get('id')});
 
       newTenant.save().then(tenant => {
         listing.get('tenants').unshiftObject(tenant);

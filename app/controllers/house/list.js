@@ -126,7 +126,7 @@ export default Ember.Controller.extend(Ember.Evented,{
       //});
     },
     addTransactionRecord: function(paymentRecord){
-      var currentDate = moment(new Date()).format('YYYY-MM-DD');
+      var currentDate = new Date();
       var transactionRecord = this.store.createRecord('listing/transactionRecord',{
         transactionDate: currentDate
       });

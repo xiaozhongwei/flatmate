@@ -20,12 +20,7 @@
                   {{#if model.compound}}
                       <div class="form-row clearfix" id="line-2">
                           <div class="col-area">
-                            {{select-2
-                            content=areaMapping
-                            value=model.area
-                            optionValuePath="id"
-                            placeholder="Choose the Area"
-                            }}
+                            {{input placeholder="input the Area" value=model.area}}
                           </div>
                           <div class="col-address no-border-right">
                             {{input placeholder="input the Address" value=model.address}}

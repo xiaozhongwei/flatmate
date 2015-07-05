@@ -4,21 +4,22 @@ import OccupationMapping from 'flatmate/transforms/occupation';
 import PayCycleMapping from 'flatmate/transforms/payment-cycle';
 
 export default Ember.Controller.extend(Ember.Evented,{
+  needs: ['application'],
   availableDate: null,
-  init:function(){
-    this._super.apply(this, arguments);
-
-    if(!Ember.isEmpty(this.get("model.availableDate"))){
-      this.set("availableDate",new Date(this.get("model.availableDate")));
-    }
-  },
-  availableDateObverse: function(){
-    var formatDate = moment(this.get("availableDate")).format('YYYY-MM-DD');
-    this.get("model").set("availableDate",formatDate);
-  }.observes('availableDate'),
+  //init:function(){
+  //  this._super.apply(this, arguments);
+  //
+  //  if(!Ember.isEmpty(this.get("model.availableDate"))){
+  //    this.set("availableDate",new Date(this.get("model.availableDate")));
+  //  }
+  //},
+  //availableDateObverse: function(){
+  //  var formatDate = moment(this.get("availableDate")).format('YYYY-MM-DD');
+  //  this.get("model").set("availableDate",formatDate);
+  //}.observes('availableDate'),
   actions: {
     addTenant: function(listing){
-      var newTenant = this.store.createRecord('listing/tenant',{listing: listing});
+      var newTenant = this.store.createRecord('listing/tenant',{listingId: listing.get("id")});
       this.set("currentTenant", newTenant);
 
       this.trigger('openTenantBox');
@@ -31,12 +32,14 @@ export default Ember.Controller.extend(Ember.Evented,{
     changeGender: function(tenant, gender){
       tenant.set('gender', gender);
     },
-    saveTenant: function(listing){
-      var newTenant = this.store.createRecord('listing/tenant',{listing: listing});
-
-      newTenant.save().then(tenant => {
-        listing.get('tenants').unshiftObject(tenant);
+    saveTenant: function(tenant,listing){
+      var isNew = tenant.get('isNew');
+      tenant.save().then(tenant => {
+        if(isNew)
+          listing.get('tenants').unshiftObject(tenant);
       });
+
+      this.get("controllers.application").send("closeModalBox");
     },
     removeTenant: function(tenant){
       tenant.destroyRecord();

@@ -129,7 +129,7 @@
                                             <img class="flag" src="/images/static/flag-demo.png"/>
                                             <div class="user-info">
                                                 <p class="username">{{tenant.name}}</p>
-                                                <p class="current">{{tenant.status}}</p>
+                                                <p class="current">{{tenant.status.name}}</p>
                                             </div>
                                         </div>
                                         <div class="tenant-info">
@@ -234,7 +234,7 @@
                                                 <img class="flag" src="/images/static/flag-demo.png"/>
                                                 <div class="user-info">
                                                     <p class="username">{{tenant.name}}</p>
-                                                    <p class="current">{{tenant.status}}</p>
+                                                    <p class="current">{{tenant.status.name}}</p>
                                                 </div>
                                             </div>
                                             <div class="tenant-info">
@@ -280,12 +280,14 @@
                             <img class="user-header" src="/images/static/LISA_100.jpg" />
                             <img class="flag" src="/images/static/flag-demo.png" />
                             <div class="user-info">
-                                <p class="username">vince <span class="highlight">vi</span>nnie</p>
-                                <p class="current">current</p>
+                                <p class="username">{{tenant.name}}</p>
+                                <p class="current">{{tenant.status.name}}</p>
                             </div>
                         </div>
                         <div class="tenant-info">
-                            <p class="date-info">03.11.2014 — 03.12.2015</p>
+                            <p class="date-info">
+                              {{unknown-generator tenant.contractStartDate}} — {{unknown-generator tenant.contractEndDate}}
+                            </p>
                             <a>Hongkou → Rainbow City → B.4 → A. 145</a>
                         </div>
                         <div class="fr tenant-op">
@@ -596,7 +598,7 @@
                                   </div>
                                   <div class="col-6 col-one">
                                     {{#unless index}}
-                                        <p>{{paymentRecord.paymentDate}}</p>
+                                        <p>{{unknown-generator paymentRecord.paymentDate}}</p>
                                     {{else}}
                                         <br/>
                                     {{/unless}}
@@ -643,7 +645,7 @@
                                     <span class="seq available"></span>
                                 </div>
                                 <div class="col-6 col-one">
-                                    <p>{{paymentRecord.paymentDate}}</p>
+                                    <p>{{unknown-generator paymentRecord.paymentDate}}</p>
                                 </div>
                                 <div class="col-6 col-two">
                                     <p>&yen; {{paymentRecord.balance}}</p>

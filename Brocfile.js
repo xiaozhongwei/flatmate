@@ -77,4 +77,8 @@ app.import('bower_components/owl-carousel/owl-carousel/owl.carousel.js');
 //jquery-auto-complete
 app.import('bower_components/jquery-auto-complete/jquery.auto-complete.js');
 
+//full-calendar
+app.import('bower_components/fullcalendar/dist/fullcalendar.css');
+app.import('bower_components/fullcalendar/dist/fullcalendar.js');
+
 module.exports = app.toTree([bootstrap,html5shiv,respond,sliderPro,extraAssets]);
