@@ -10,6 +10,10 @@ export default Ember.Controller.extend(Ember.Evented,{
   needs: ['application'],
   newAddress: Ember.Object.create(),
   actions: {
+    updateAddress: function(compound){
+      this.get("model").setProperties({address: compound.get("address"), area: compound.get('area'),
+        metroStations: compound.get('metroStations')});
+    },
     editAddress: function(){
       //this.set("newAddress", this.get("model"));
       this.get("newAddress").setProperties({address: this.get("model.address"), area: this.get("model.area"),compound: this.get("model.compound"),

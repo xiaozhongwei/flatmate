@@ -611,14 +611,22 @@
                                     {{/unless}}
                                   </div>
                                   <div class="col-6 col-three">
-                                    {{bootstrap-datepicker value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
+                                    {{bootstrap-datepicker class="date-input" value=transactionRecord.transactionDate autoclose=true placeholder="..." format="yyyy-mm-dd"}}
                                   </div>
                                   <div class="col-6 col-four">
                                       <span class="money-tag">&yen;</span>
                                     {{input class="fee-input" placeholder="..." value=transactionRecord.account}}
                                   </div>
                                   <div class="col-6 col-five">
-                                      <button class="op-btn btn-confirm" disabled>已付</button>
+                                      {{#if transactionRecord.isPaid}}
+                                          <button class="op-btn btn-confirm" disabled>已付</button>
+                                      {{else}}
+                                        {{#if transactionRecord.enablePay}}
+                                            <button class="op-btn btn-confirm" {{action 'confirmTransaction' transactionRecord}}>确定</button>
+                                        {{else}}
+                                            <button class="op-btn btn-confirm" disabled>确定</button>
+                                        {{/if}}
+                                      {{/if}}
                                   </div>
                                   <div class="col-6 col-six">
                                     {{input  placeholder="..." value=transactionRecord.remark}}
@@ -658,7 +666,15 @@
                                   {{input class="fee-input refund-fee" placeholder="..." value=transactionRecord.account}}
                                 </div>
                                 <div class="col-6 col-five">
-                                    <button class="op-btn btn-refund">退款</button>
+                                  {{#if transactionRecord.isPaid}}
+                                      <button class="op-btn btn-refund" disabled>已退</button>
+                                  {{else}}
+                                    {{#if transactionRecord.enablePay}}
+                                        <button class="op-btn btn-refund" {{action 'confirmTransaction' transactionRecord}}>退款</button>
+                                    {{else}}
+                                        <button class="op-btn btn-refund" disabled>退款</button>
+                                    {{/if}}
+                                  {{/if}}
                                 </div>
                                 <div class="col-6 col-six">
                                     {{input  placeholder="..." value=transactionRecord.remark}}

@@ -11,12 +11,12 @@ export default DS.Model.extend({
 
   transactionRecords: DS.hasMany('listing/transactionRecord'),
 
-  balance: Ember.computed('account','transactionRecords.@each.account', function(){
+  balance: Ember.computed('account','transactionRecords.@each.account','transactionRecords.@each.status', function(){
     var total = 0;
 
     if(!Ember.isEmpty(this.get('transactionRecords'))){
       this.get("transactionRecords").forEach( record => {
-        if(!Ember.isEmpty(record.get('account'))){
+        if(!Ember.isEmpty(record.get('account')) && record.get('status') === 'paid'){
           total = total + parseFloat(record.get('account'));
         }
       });

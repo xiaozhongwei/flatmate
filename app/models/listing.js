@@ -8,7 +8,8 @@ export default DS.Model.extend(EmberValidations.Mixin,{
   validations: {
     title: { presence: true },
     description: { presence: true },
-    deposit: { presence: true, numericality: { onlyInteger: true}}
+    deposit: { presence: true, numericality: { onlyInteger: true}},
+    serviceFee: {numericality: { allowBlank: true, onlyInteger: true}}
     //,
     //perMonthPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}},
     //perThreeMonthPrice: {numericality: { allowBlank: true, onlyInteger: true/*, greaterThanOrEqualTo: 1000*/}},
@@ -110,12 +111,15 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     return isFinished;
   }),
 
-  isOverviewFinished: Ember.computed('perMonthPrice','perThreeMonthPrice','perSixMonthPrice','perYearPrice','isValid',function(){
+  isOverviewFinished: Ember.computed('isValid','payments.@each.isValid',function(){
     var isFinished = this.get('isValid');
 
-    if(isFinished && Ember.isEmpty(this.get("perMonthPrice")) && Ember.isEmpty(this.get("perThreeMonthPrice")) &&
-      Ember.isEmpty(this.get("perSixMonthPrice")) && Ember.isEmpty(this.get("perYearPrice"))){
-      isFinished = false;
+    if(isFinished && !Ember.isEmpty(this.get("payments"))){
+      this.get('payments').forEach(payment => {
+        if(isFinished && !payment.get('isValid'))
+          isFinished = false;
+      });
+
     }
     return isFinished;
   }),

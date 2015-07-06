@@ -29,19 +29,38 @@ module.exports = function(app) {
           advanceDay: 10,                                    //提前天数
           paymentRecords: [
             {
+              id: 10,
+              paymentDate: "2015-06-21",                    //付款日期
+              account: 2000,                                //金额
+              type: 'deposit',
+              //实际付款记录
+              transactionRecords: [
+                {
+                  id: 101,
+                  status: 'paid',
+                  transactionDate: "2015-06-21",              //交易日期
+                  account: "2000",                            //金额
+                  remark: "押金"                               //备注
+                }
+              ]
+            },
+            {
               id: 11,
               paymentDate: "2015-06-21",                    //付款日期
-              account: 9500,                                //金额
+              account: 7500,                                //金额
+              type: 'rent',
               //实际付款记录
               transactionRecords: [
                 {
                   id: 111,
+                  status: 'paid',
                   transactionDate: "2015-06-21",              //交易日期
                   account: "6000",                      //金额
                   remark: "押金"                        //备注
                 },
                 {
                   id: 112,
+                  status: 'unpaid',
                   transactionDate: "2015-06-21",              //交易日期
                   account: "1500"                          //金额
                 }
@@ -50,7 +69,8 @@ module.exports = function(app) {
             {
               id: 12,
               paymentDate: "2015-09-21",                    //付款日期
-              account: 9500,                                //金额
+              account: 7500,                                //金额
+              type: 'rent',
               //实际付款记录
               transactionRecords: [
                 {
@@ -61,7 +81,8 @@ module.exports = function(app) {
             {
               id: 13,
               paymentDate: "2015-12-21",                    //付款日期
-              account: 9500,                                //金额
+              account: 7500,                                //金额
+              type: 'rent',
               //实际付款记录
               transactionRecords: [
                 {
@@ -72,7 +93,8 @@ module.exports = function(app) {
             {
               id: 14,
               paymentDate: "2016-03-21",                    //付款日期
-              account: 9500,                                //金额
+              account: 7500,                                //金额
+              type: 'rent',
               //实际付款记录
               transactionRecords: [
                 {

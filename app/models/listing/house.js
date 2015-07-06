@@ -86,18 +86,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     var isFinished = !Ember.isEmpty(this.get('listings.firstObject.availableDate'));
     return isFinished;
   }),
-  isOverviewFinished: Ember.computed('rentType','isValid','listings.firstObject.isValid','amenities.length',function(){
-    var isFinished = false;
-    if(this.get('rentType') === "share"){
-      isFinished = this.get('isValid') && (this.get('amenities.length') > 0);
-    }
-    else {
-      isFinished = this.get('isValid') && this.get('listings.firstObject.isValid') &&
-        (this.get('amenities.length') > 0);
-    }
-    return isFinished;
-  }),
-  isDetailFinished: Ember.computed('rentType','bedrooms', 'bathrooms', 'livingRooms', 'size', 'listings.firstObject.isValid','amenities.length',function(){
+  isDetailFinished: Ember.computed('rentType','bedrooms', 'bathrooms', 'livingRooms', 'size', 'listings.firstObject.isOverviewFinished','amenities.length',function(){
     var isFinished = false;
     if(this.get('rentType') === "share"){
       isFinished = (!Ember.isEmpty(this.get('bedrooms')) && !Ember.isEmpty(this.get('bathrooms')) && !Ember.isEmpty(this.get('livingRooms'))
@@ -105,7 +94,7 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     }
     else {
       isFinished = (!Ember.isEmpty(this.get('bedrooms')) && !Ember.isEmpty(this.get('bathrooms')) && !Ember.isEmpty(this.get('livingRooms'))
-      && (!Ember.isEmpty(this.get('size'))) && (this.get('amenities.length') > 0) && this.get('listings.firstObject.isValid'));
+      && (!Ember.isEmpty(this.get('size'))) && (this.get('amenities.length') > 0) && this.get('listings.firstObject.isOverviewFinished'));
     }
     return isFinished;
   }),
@@ -124,23 +113,19 @@ export default DS.Model.extend(EmberValidations.Mixin,{
     return isFinished;
   }),
 
-  isMapFinished: Ember.computed('location', function(){
-    //return Ember.isEmpty(this.get('location'));
-    return true;
-  }),
   // 发布所需步骤
-  listStep: Ember.computed('isCalendarFinished','isOverviewFinished','isPhotoFinished','isMapFinished',function(){
+  listStep: Ember.computed('isCalendarFinished','isDetailFinished','isPhotoFinished','isAddressFinished',function(){
     var steps = 4;
     if(this.get("isCalendarFinished")){
       steps--;
     }
-    if(this.get("isOverviewFinished")){
+    if(this.get("isDetailFinished")){
       steps--;
     }
     if(this.get("isPhotoFinished")){
       steps--;
     }
-    if(this.get("isMapFinished")){
+    if(this.get("isAddressFinished")){
       steps--;
     }
 

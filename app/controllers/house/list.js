@@ -104,9 +104,9 @@ export default Ember.Controller.extend(Ember.Evented,{
       });
     },
     checkoutTenant: function(tenant){
-      var currentDate = moment(new Date()).format('YYYY-MM-DD');
+      var currentDate = new Date();
       var transactionRecord = this.store.createRecord('listing/transactionRecord',{
-        transactionDate: currentDate
+        transactionDate: currentDate,account: tenant.get("deposit")
       });
 
       var paymentRecord = this.store.createRecord('listing/paymentRecord',{
@@ -124,6 +124,9 @@ export default Ember.Controller.extend(Ember.Evented,{
       //  this.get("controllers.application").send("closeModalBox");
       //  Notify.info('save tenant success');
       //});
+    },
+    confirmTransaction: function(transactionRecord){
+      transactionRecord.set('status','paid');
     },
     addTransactionRecord: function(paymentRecord){
       var currentDate = new Date();

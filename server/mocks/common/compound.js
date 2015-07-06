@@ -37,7 +37,7 @@ module.exports = function(app) {
         id: req.params.id,
         name: '瑞虹新城',
         address: '临平路212号',
-        area:'Hongkou',
+        area:'虹口',
         xCoordinate: '',
         yCoordinate: '',
         metroStations: ["Anshan Xincun"]
