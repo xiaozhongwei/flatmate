@@ -15,8 +15,8 @@ export default Ember.Component.extend({
         zoom:15, //设置地图缩放级别
         rotation:0 //设置地图旋转角度
       }),
-      lang:_this.get('lang')//设置地图语言类型，默认：中文简体
+      lang:_this.get('lang')//设置地图语言类型
     });//创建地图实例
 
-  },
+  }
 });
