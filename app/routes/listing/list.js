@@ -31,6 +31,11 @@ export default Ember.Route.extend({
       controller.set('address', undefined);
     }
   },
+  beforeModel: function(transition) {
+    if (!this.get('session.isAuthenticated')) {
+      this.set('session.attemptedTransition', transition);
+    }
+  },
   model: function(params){
     return this.store.find('listing', params);
   },

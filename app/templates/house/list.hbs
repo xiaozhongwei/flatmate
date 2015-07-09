@@ -160,11 +160,6 @@
                           </div>
                       {{/each}}
                     {{/each}}
-                      <div class="list-footer clearfix">
-                          <div class="pagination fr">
-                            {{em-pagination-pager current=page count=totalPage}}
-                          </div>
-                      </div>
                   {{else}}
                     {{#each model as |house|}}
                         <div class="single-apt {{unless house.isExpand 'collapsed'}}">
@@ -177,7 +172,7 @@
                                   {{/if}}
                                   {{#link-to 'house.manage' house.id}}Manage Apt{{/link-to}}
                                 </p>
-                                <span class="triangle fr"></span>
+                                <span class="triangle fr" {{action "toggleHouse" house}}></span>
                             </div>
                           {{#each house.listings itemController="house.listing" as |listing index|}}
                               <div>
@@ -265,12 +260,12 @@
                           {{/each}}
                         </div>
                     {{/each}}
-                      <div class="list-footer clearfix">
-                          <div class="pagination fr">
-                            {{em-pagination-pager current=page count=totalPage}}
-                          </div>
-                      </div>
                   {{/if}}
+                  <div class="list-footer clearfix">
+                      <div class="pagination fr">
+                        {{em-pagination-pager current=page count=totalPage}}
+                      </div>
+                  </div>
                 </div>
             {{else}}
                 <div class="apt-room-list with-border">

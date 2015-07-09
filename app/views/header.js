@@ -229,6 +229,7 @@ export default Ember.View.extend({
   hide_auto_dialog_box: function(){
     $('.auto-dialog-box').fadeOut(200);
     $('.overlay-full-screen').fadeOut(200);
+    $('body').removeClass('slideout-2');
   },
 
   hide_left_menu: function() {

@@ -72,6 +72,14 @@ export default Ember.Controller.extend(Ember.Evented,{
     },
     toggleHouse: function(house){
       house.toggleProperty('isExpand');
+
+      if(!Ember.isEmpty(house.get('listings'))) {
+        house.get('listings').forEach(function (listing) {
+            listing.set("showTenants",false);
+          }
+        )
+      }
+
     },
     manageHouse: function(house){
       this.transitionToRoute('house.manage', house.get('id'));

@@ -14,16 +14,16 @@ export default Ember.View.extend({
       $(this).css('display', 'none');
       $('.expand').css('display', 'block');
     });
-    $('.single-apt .apt-header .triangle').click(function () {
-      var _single_apt = $(this).parents('.single-apt');
-      if (_single_apt.hasClass('collapsed')){
-        _single_apt.removeClass('collapsed');
-      } else {
-        _single_apt.addClass('collapsed');
-        _single_apt.find('.tenant-list').css('display', 'none');
-        _single_apt.find('.tenant-manage').removeClass('active');
-      }
-    });
+    //$('.single-apt .apt-header .triangle').click(function () {
+    //  var _single_apt = $(this).parents('.single-apt');
+    //  if (_single_apt.hasClass('collapsed')){
+    //    _single_apt.removeClass('collapsed');
+    //  } else {
+    //    _single_apt.addClass('collapsed');
+    //    _single_apt.find('.tenant-list').css('display', 'none');
+    //    _single_apt.find('.tenant-manage').removeClass('active');
+    //  }
+    //});
 
     //$('.tenant-manage a').click(function () {
     //  if ($(this).parents('.tenant-manage').hasClass('active')){

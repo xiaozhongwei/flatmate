@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  beforeModel: function(transition) {
+    if (!this.get('session.isAuthenticated')) {
+      this.set('session.attemptedTransition', transition);
+    }
+  },
   model: function(params){
     var listing_id = params['listing_id'];
     return this.store.fetchById('listing', listing_id);
