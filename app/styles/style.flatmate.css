@@ -76,6 +76,10 @@ a {
     margin-bottom: 0 !important;
 }
 
+.no-margin-top {
+    margin-top: 0 !important;
+}
+
 .none-display-max {
     display: none;
 }
@@ -140,7 +144,7 @@ a {
 }
 
 .select2.select2-container.danger.select2-container--default .select2-selection--single {
-    border: 2px #C90808 solid !important;
+    border: 1px #C90808 solid !important;
 }
 
 .select2-container .select2-selection--single {
@@ -281,27 +285,27 @@ a {
 }
 
 .nav-index-top .nav-right .nav-notify {
-    margin-left: 38px;
+    margin: 0 20px 0 28px;
     position: relative;
+    color: #fff;
 }
 
-.nav-index-top .nav-right .nav-notify img {
-    height: 22px;
-    margin-top: 14px;
-    position: relative;
+.nav-index-top.bg-white .nav-right .nav-notify a {
+    color: #555;
+}
+
+.nav-index-top .nav-right .nav-notify a {
+    color: #fff;
+}
+
+.nav-index-top .nav-right .nav-notify p {
+    line-height: 46px;
+    font-weight: bold;
 }
 
 .nav-index-top .nav-right .nav-notify span {
-    position: absolute;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 18px;
-    width: 26px;
-    display: inline-block;
-    text-align: center;
-    top: 15px;
-    left: 0;
-    color: #fff;
+    line-height: 46px;
+    color: #C90808;
 }
 
 .nav-index-top .nav-right .nav-login a {
@@ -1563,41 +1567,6 @@ a {
     display: none;
 }
 
-.dialog-box.login-box {
-    width: 320px;
-    height: 500px;
-}
-
-.login-box .login-tab {
-    height: 60px;
-    width: 100%;
-}
-
-.login-box .login-tab .tab {
-    width: 50%;
-    text-align: center;
-    font-size: 24px;
-    line-height: 60px;
-    font-weight: bold;
-    background-color: #81b1b6;
-    color: #fff;
-    float: left;
-    cursor: pointer;
-}
-
-.login-box .login-tab .tab.active {
-    color: #2c9ab7;
-    background-color: #f7f7f7;
-}
-
-.login-box .login-container {
-    padding: 30px 30px 0;
-}
-
-.login-box .login-container .login-form {
-    display: none;
-}
-
 .dialog-form input[type='text'],
 .dialog-form input[type='password'] {
     height: 38px;
@@ -1611,11 +1580,11 @@ a {
 
 .dialog-form input[type='text'].danger,
 .dialog-form input[type='password'].danger {
-    color: #830B20;
+    color: #C90808;
 }
 
 .dialog-form p.danger {
-    color: #830B20 !important;
+    color: #C90808 !important;
 }
 
 .dialog-box button {
@@ -1630,7 +1599,7 @@ a {
 }
 
 .dialog-box button:disabled {
-    background-color: #E7E7E7;
+    background-color: #bbb;
     cursor: not-allowed;
 }
 
@@ -1655,38 +1624,6 @@ a {
 
 .dialog-box button:disabled:hover {
     opacity: 1;
-}
-
-.login-box .login-container .login-form p {
-    font-size: 13px;
-    color: #555555;
-    line-height: 20px;
-    text-align: center;
-    margin-top: 14px;
-}
-
-.login-box .login-container .login-other-way {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    text-align: center;
-    width: 100%;
-}
-
-.login-box .login-container .login-other-way p {
-    font-size: 14px;
-}
-
-.login-box .login-container .login-other-way .other-ways {
-    margin-top: 11px;
-}
-
-.login-box .login-container .login-other-way .other-ways img {
-    margin-right: 16px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    vertical-align: top;
 }
 
 .dialog-box.forget-box {
@@ -1978,7 +1915,7 @@ a {
 .main-container .op-wrapper .op-form .home-detail .col input[type='text'] {
     width: 148px;
     height: 38px;
-    border: 1px #ccc solid;
+    outline: 1px #ccc solid;
     padding: 0 10px;
 }
 
@@ -1992,7 +1929,7 @@ a {
     margin-top: 35px;
 }
 
-.home-amenities .single-checkbox {
+.single-checkbox {
     width: 160px;
     margin-right: 50px;
     float: left;
@@ -2002,15 +1939,15 @@ a {
     margin-bottom: 14px;
 }
 
-.home-amenities .single-checkbox label {
+.single-checkbox label {
     font-weight: normal;
 }
 
-.home-amenities .single-checkbox input[type="checkbox"] {
+.single-checkbox input[type="checkbox"] {
     display: none;
 }
 
-.home-amenities .single-checkbox input[type="checkbox"] + label span {
+.single-checkbox input[type="checkbox"] + label span {
     display: inline-block;
     width: 23px;
     height: 23px;
@@ -2021,7 +1958,7 @@ a {
     background-size: 22px 22px;
 }
 
-.home-amenities .single-checkbox input[type="checkbox"]:checked + label span {
+.single-checkbox input[type="checkbox"]:checked + label span {
     background: url(/images/static/check-yes.png) left top no-repeat;
 }
 
@@ -2130,7 +2067,7 @@ a {
 }
 
 .dialog-box.address-box .address-form .form-footer .btn-next:disabled {
-    background-color: #e7e7e7;
+    background-color: #bbb;
     cursor: not-allowed;
 }
 
@@ -2412,7 +2349,7 @@ a {
 }
 
 .main-container .btn-list-room:disabled {
-    background-color: #ddd;
+    background-color: #bbb;
     cursor: not-allowed;
 }
 
@@ -2903,11 +2840,11 @@ a {
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row textarea.danger {
-    border: 1px #C90808 solid;
+    outline: 1px #C90808 solid;
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row textarea.danger:focus {
-    border: 1px #C90808 solid !important;
+    outline: 1px #C90808 solid !important;
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row .hint {
@@ -2957,6 +2894,22 @@ a {
     height: 12px;
     margin: 12px 0 0 8px;
     cursor: pointer;
+}
+
+.main-container .edit-container .edit-area .edit-form .group-row .payment .fee-change {
+    position: relative;
+}
+
+.main-container .edit-container .edit-area .edit-form .group-row .payment .fee-change input {
+    padding-right: 25px;
+    text-align: right;
+}
+
+.main-container .edit-container .edit-area .edit-form .group-row .payment .fee-change span {
+    color: #ccc;
+    position: absolute;
+    right: 10px;
+    top: 29px;
 }
 
 .main-container .edit-container .edit-area .edit-form .group-row .home-amenities {
@@ -3234,11 +3187,13 @@ a {
 }
 
 input[type='search']:focus, input[type='text']:focus, input[type='password']:focus, textarea:focus {
-    border: 2px #52bad5 solid !important;
+    outline: 2px #52bad5 solid !important;
+    outline-offset: 0px !important;
 }
 
 input[type='search'].danger, input[type='text'].danger, input[type='password'].danger, textarea.danger {
-    border: 2px #C90808 solid !important;
+    outline: 1px #C90808 solid !important;
+    outline-offset: 0px !important;
 }
 
 .main-container .edit-container .listing-area .apt-room-list .single-tenant .btn-edit {
@@ -3592,11 +3547,13 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 16px;
     height: 16px;
     line-height: 15px;
-    background-color: #fff;
+    background-color: #555;
     border: 1px #555 solid;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
+    color: #fff;
+    font-weight: bold;
 }
 
 .main-container .edit-container .edit-area .single-tenant .tips .reminder {
@@ -3766,6 +3723,10 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     padding-top: 14px;
 }
 
+.dialog-box.basic-listing-room.shield-box {
+    height: 210px;
+}
+
 .dialog-box.basic-listing-room .box-header {
     background-color: transparent;
     height: auto;
@@ -3913,7 +3874,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .dialog-box.basic-listing-room .btn-checkout:disabled {
-    background-color: #E7E7E7;
+    background-color: #bbb;
 }
 
 .dialog-box.basic-listing-room .box-header .room-switch {
@@ -4321,7 +4282,6 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 .single-tenant .remove-tenant-op {
     position: absolute;
     right: -60px;
-    cursor: pointer;
     width: 60px;
     height: 100%;
 }
@@ -4330,6 +4290,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     width: 16px;
     margin: 0 auto;
     display: none;
+    cursor: pointer;
 }
 
 .single-tenant:hover .remove-tenant-op img {
@@ -4398,7 +4359,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 .dialog-box .box-content .btn-no {
     width: 88px;
     background-color: transparent;
-    border: 1px #E7E7E7 solid;
+    border: 1px #ccc solid;
     color: #555;
     margin-top: 24px;
 }
@@ -5340,7 +5301,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item input[type='text']:focus {
-    border: 2px #52bad5 solid;
+    outline: 2px #52bad5 solid;
 }
 
 .main-container .search-page .search-container .search-row .search-group .search-item.subway-area {
@@ -5391,7 +5352,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     cursor: pointer;
     font-weight: bold;
     padding-left: 40px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .main-container .search-page .search-container .search-row .search-group .map-search .circle {
@@ -5420,13 +5381,17 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     color: #fff;
 }
 
+.main-container .search-page .search-container .search-row .search-group .map-search:hover .circle {
+    background-image: url(/images/static/icon-location-white.png);
+}
+
 .main-container .search-page .search-container .search-row .search-group .cond-in {
     margin-right: 0;
 }
 
 .main-container .search-page .search-container .search-row .search-group .cond-in ul {
     list-style: none;
-    margin: 0 20px;
+    margin: 0 36px 0 20px;
 }
 
 .main-container .search-page .search-container .search-row .search-group .cond-in ul li {
@@ -5435,7 +5400,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     float: left;
     line-height: 38px;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .main-container .search-page .search-container .search-row .search-group .cond-in ul li.active {
@@ -6149,7 +6114,7 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 .single-order .operation {
-    width: 120px;
+    width: 118px;
     float: left;
     overflow: hidden;
     font-weight: bold;
@@ -6242,6 +6207,10 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
     color: #fff !important;
 }
 
+.fc-day-grid-event .fc-content {
+    cursor: pointer;
+}
+
 /** calender **/
 /** dashboard **/
 .main-container .order-container {
@@ -6281,3 +6250,388 @@ input[type='search'].danger, input[type='text'].danger, input[type='password'].d
 }
 
 /** dashboard **/
+
+/** about page **/
+.main-container .about-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.main-container .about-container .intro {
+    padding: 40px 200px 80px;
+    text-align: center;
+}
+
+.main-container .about-container .intro .title {
+    margin-bottom: 40px;
+}
+
+.main-container .about-container .intro .title p,
+.main-container .about-container .members .title p {
+    font-size: 46px;
+    line-height: 56px;
+    font-weight: bold;
+}
+
+.main-container .about-container .members {
+    text-align: center;
+    padding: 0 80px 40px;
+}
+
+.main-container .about-container .members .title {
+    padding-top: 20px;
+    border-top: 1px #ccc solid;
+}
+
+.main-container .about-container .members .col-3 {
+    width: 30%;
+    float: left;
+    margin: 20px 5% 20px 0;
+}
+
+.main-container .about-container .members .col-3 img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.main-container .about-container .members .col-3 .info {
+    margin-top: 20px;
+}
+
+.main-container .about-container .members .col-3 .info .name {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+}
+
+.main-container .about-container .members .col-3 .info .hobby {
+    margin-top: 24px;
+}
+
+.main-container .about-container .members .col-3 .info a {
+    color: #2c9ab7;
+}
+
+/** about page **/
+
+/****/
+.dialog-box.add-tenant-confirm-box,
+.dialog-box.remove-tenant-confirm-box {
+    width: 400px;
+    height: 174px;
+}
+
+.dialog-box.add-tenant-confirm-box .box-header,
+.dialog-box.remove-tenant-confirm-box .box-header {
+    background-color: #ccc;
+}
+
+.dialog-box.add-tenant-confirm-box .box-content,
+.dialog-box.remove-tenant-confirm-box .box-content {
+    height: 100px;
+}
+
+.dialog-box.add-tenant-confirm-box .box-content .btn-yes,
+.dialog-box.add-tenant-confirm-box .box-content .btn-no,
+.dialog-box.remove-tenant-confirm-box .box-content .btn-yes,
+.dialog-box.remove-tenant-confirm-box .box-content .btn-no {
+    margin-top: 0;
+}
+
+.dialog-box.add-tenant-confirm-box .box-content .btn-yes,
+.dialog-box.remove-tenant-confirm-box .box-content .btn-yes {
+    background-color: #f05368;
+}
+
+/****/
+
+.auto-dialog-box {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.auto-dialog-box .dialog-table {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.auto-dialog-box .dialog-table .dialog-cell {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.auto-dialog-box .box-content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f7f7f7;
+}
+
+.auto-dialog-box .col-2 {
+    width: 50%;
+    float: left;
+}
+
+.auto-dialog-box .col-3 {
+    width: 33.3333%;
+    float: left;
+}
+
+.auto-dialog-box .col-4 {
+    width: 25%;
+    float: left;
+}
+
+.auto-dialog-box.login-box .box-content {
+    width: 320px;
+    background-color: #fff;
+}
+
+.auto-dialog-box .basic-content {
+    padding: 20px;
+}
+
+.auto-dialog-box .form-row {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.auto-dialog-box .form-row input[type="text"],
+.auto-dialog-box .form-row input[type="password"] {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 7px;
+    padding: 0 10px;
+    color: #555;
+    outline: 1px #ccc solid;
+    border: none;
+}
+
+.auto-dialog-box .form-row .hint {
+    font-size: 12px;
+    line-height: 14px;
+    display: block;
+    margin-top: -2px;
+}
+
+.auto-dialog-box .form-row .hint.danger {
+    color: #C90808;
+}
+
+.auto-dialog-box .form-row input[type='text'].danger,
+.auto-dialog-box .form-row input[type='password'].danger {
+    color: #C90808;
+}
+
+.auto-dialog-box .op-btn {
+    width: 100%;
+    height: 30px;
+    color: #fff;
+    line-height: 28px;
+    font-size: 13px;
+    background-color: #2c9ab7;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auto-dialog-box button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+}
+
+.login-box .login-header {
+    height: 40px;
+    color: #fff;
+    background-color: #81b1b6;
+    text-align: center;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.login-box .login-type-select .col-2 {
+    text-align: center;
+    cursor: pointer;
+}
+
+.login-box .login-type-select .col-2.active {
+    color: #81b1b6;
+    background-color: #fff;
+    cursor: default;
+}
+
+.login-box .col-3.col-text {
+    width: 30%;
+}
+
+.login-box .col-3.col-btn {
+    margin-left: 3.34%;
+}
+
+.login-box .col-3 p {
+    line-height: 30px;
+}
+
+.login-box .col-3 .btn-send-code {
+    width: 95%;
+    float: right;
+    background-color: #fff;
+    color: #555;
+    border: 1px #ccc solid;
+}
+
+.login-box .col-3 .btn-send-code:hover {
+    color: #fff;
+    background-color: #2c9ab7;
+    border: 1px transparent solid;
+}
+
+.login-box .other-ways {
+    padding-top: 20px;
+    margin-top: 18px;
+    border-top: 1px #ccc dashed;
+}
+
+.login-box .other-ways p {
+    float: left;
+}
+
+.login-box .nav-switch {
+    color: #2c9ab7;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.login-box .other-ways .social-ways {
+    margin-top: 20px;
+}
+
+.login-box .other-ways .social-ways .social-icons {
+    width: 70%;
+    margin: 11px auto 0;
+}
+
+.login-box .other-ways .social-ways .social-icons .col-4 {
+    text-align: center;
+}
+
+.login-box .other-ways .social-ways .social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: top;
+}
+
+.login-box .single-checkbox {
+    font-size: 13px;
+}
+
+.login-box .phone-valid {
+    display: none;
+}
+
+.alert-box {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #2c9ab7;
+    display: none;
+    font-size: 13px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+.alert-box .remove {
+    position: absolute;
+    right: 12px;
+    top: 4px;
+}
+
+.alert-box .remove img {
+    width: 12px;
+    cursor: pointer;
+}
+
+.alert-box.reset-success-alert {
+    width: 600px;
+    position: fixed;
+    top: 100px
+}
+
+.main-container .reset-container {
+    width: 320px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.reset-container .basic-content {
+    padding: 20px;
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+
+.reset-container .form-row {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.reset-container .form-row input[type="text"],
+.reset-container .form-row input[type="password"] {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 7px;
+    padding: 0 10px;
+    color: #555;
+    outline: 1px #ccc solid;
+    border: none;
+}
+
+.reset-container .form-row .hint {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.reset-container .form-row .hint.danger {
+    color: #C90808;
+}
+
+.reset-container .form-row input[type='text'].danger,
+.reset-container .form-row input[type='password'].danger {
+    color: #C90808;
+}
+
+.reset-container .op-btn {
+    width: 100%;
+    height: 30px;
+    color: #fff;
+    line-height: 28px;
+    font-size: 13px;
+    background-color: #2c9ab7;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reset-container button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+}

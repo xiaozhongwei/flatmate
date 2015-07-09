@@ -59,39 +59,66 @@ export default Ember.View.extend({
       }
     });
 
+    $('.sign_up_link').click(function () {
+      _this.show_reg_box();
+      _this.hide_left_menu();
+    });
 
+    $('.login_link').click(function () {
+      _this.show_login_box();
+      _this.hide_left_menu();
+    });
 
-    // 登录用户下拉框自动隐藏
-    //$(document).click(function(e){
-    //  if($(e.target).parents(".nav-user").length == 0 ){
-    //    $('.dropdown-user-profile').fadeOut();
-    //  }
+    $('.login-type-select .col-2.phone-reg-tab').click(function () {
+      _this.reg_box_switch('phone');
+    });
+    $('.login-type-select .col-2.mail-reg-tab').click(function () {
+      _this.reg_box_switch('email');
+    });
+
+    $('.login-box .nav-reg').click(function () {
+      $('#reg_box').fadeIn(200);
+      $('#login_box').fadeOut(200);
+    });
+
+    $('.login-box .nav-login').click(function () {
+      $('#login_box').fadeIn(200);
+      $('#reg_box').fadeOut(200);
+    });
+
+    $('.login-box .nav-forget').click(function () {
+      $('#forget_box').fadeIn(200);
+      $('#login_box').fadeOut(200);
+    });
+
+    //$('#forget_box .btn-reset').click(function () {
+    //  //判断是手机号
+    //  $('.login-box .phone-valid').css('display', 'block');
     //});
 
-    $('.sign_up_link').click(function () {
-      _this.login_box_switch('signup');
-      _this.show_login_box();
-      _this.hide_left_menu();
-    });
-    $('.login_link').click(function () {
-      _this.login_box_switch('login');
-      _this.show_login_box();
-      _this.hide_left_menu();
-    });
-    $('#forget_pwd_link').click(function () {
-      _this.show_forget_pwd_box();
-    });
-    // 登录注册tab切换
-    $('.login-box .login-tab .tab.sign-up').click(function () {
-      _this.login_box_switch('signup');
-    });
-    $('.login-box .login-tab .tab.login').click(function () {
-      _this.login_box_switch('login');
+
+    $('.alert-box .remove img').click(function () {
+      $(this).parents('.alert-box').css('display', 'none');
     });
 
-    $('.dialog-form input').keyup(function () {
-      var input_list = $(this).parent('.dialog-form').find('input');
-      var _button = $(this).parent('.dialog-form').find('button');
+    $('.auto-dialog-box').click(function (e) {
+      var _is_contains = false;
+      $.each($('.box-content'), function (index, value) {
+        if ($.contains($(this)[0], e.target)){
+          _is_contains = true;
+        }
+      });
+      if (!_is_contains){
+        $(this).fadeOut(200);
+        $('.overlay-full-screen').css('display', 'none');
+        $('body').removeClass('slideout');
+        _this.body_remove_no_float();
+      }
+    });
+
+    $('.auto-dialog-box input').keyup(function () {
+      var input_list = $(this).parent('.auto-dialog-box').find('input');
+      var _button = $(this).parent('.auto-dialog-box').find('button');
       var is_all_input = true;
       var exist_one_empty = false;
       $.each(input_list, function (index, value) {
@@ -108,26 +135,42 @@ export default Ember.View.extend({
       }
     });
 
-    this.get('controller').on('closeModalBox', this, this.hide_dialog_box);
+    this.get('controller').on('closeModalBox', this, this.hide_auto_dialog_box);
   },
 
   willClearRender: function(){
-    this.get('controller').off('closeModalBox', this, this.hide_dialog_box);
+    this.get('controller').off('closeModalBox', this, this.hide_auto_dialog_box);
   },
 
   // 登录注册框切换
-  login_box_switch: function(op) {
-    if (op == 'login') {
-      $('.login-box .login-tab .tab.login').addClass('active');
-      $('.login-box .login-tab .tab.sign-up').removeClass('active');
-      $('#login_form').css('display', 'block');
-      $('#register_form').css('display', 'none');
+  //login_box_switch: function(op) {
+  //  if (op == 'login') {
+  //    $('.login-box .login-tab .tab.login').addClass('active');
+  //    $('.login-box .login-tab .tab.sign-up').removeClass('active');
+  //    $('#login_form').css('display', 'block');
+  //    $('#register_form').css('display', 'none');
+  //
+  //  } else if (op == 'signup') {
+  //    $('.login-box .login-tab .tab.sign-up').addClass('active');
+  //    $('.login-box .login-tab .tab.login').removeClass('active');
+  //    $('#register_form').css('display', 'block');
+  //    $('#login_form').css('display', 'none');
+  //  }
+  //},
 
-    } else if (op == 'signup') {
-      $('.login-box .login-tab .tab.sign-up').addClass('active');
-      $('.login-box .login-tab .tab.login').removeClass('active');
-      $('#register_form').css('display', 'block');
-      $('#login_form').css('display', 'none');
+  // 登录注册框切换
+  reg_box_switch: function(op) {
+    if (op == 'phone') {
+      $('.login-type-select .col-2.phone-reg-tab').addClass('active');
+      $('.login-type-select .col-2.mail-reg-tab').removeClass('active');
+      $('#phone_reg').css('display', 'block');
+      $('#mail_reg').css('display', 'none');
+
+    } else if (op == 'email') {
+      $('.login-type-select .col-2.mail-reg-tab').addClass('active');
+      $('.login-type-select .col-2.phone-reg-tab').removeClass('active');
+      $('#mail_reg').css('display', 'block');
+      $('#phone_reg').css('display', 'none');
     }
   },
 
@@ -137,10 +180,13 @@ export default Ember.View.extend({
 
   // 打开登录/注册框
   show_login_box: function() {
-    $('.login-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
+    $('#login_box').fadeIn(300);
     $('body').addClass('slideout-2');
+  },
 
+  show_reg_box: function() {
+    $('#reg_box').fadeIn(300);
+    $('body').addClass('slideout-2');
   },
 
   // 注册完成框
@@ -151,20 +197,22 @@ export default Ember.View.extend({
     $('body').addClass('slideout-2');
   },
 
-  // 打开忘记密码框
-  show_forget_pwd_box: function() {
-    $('.login-box').css('display', 'none');
-    $('.forget-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
-    $('body').addClass('slideout-2');
-  },
+  //// 打开忘记密码框
+  //show_forget_pwd_box: function() {
+  //  $('.login-box').css('display', 'none');
+  //  $('.forget-box').css('display', 'block');
+  //  $('.overlay-full-screen').css('display', 'block');
+  //  $('body').addClass('slideout-2');
+  //},
+  //
+  //// 打开重置密码框
+  //show_reset_pwd_box: function() {
+  //  $('.reset-box').css('display', 'block');
+  //  $('.overlay-full-screen').css('display', 'block');
+  //  $('body').addClass('slideout-2');
+  //},
 
-  // 打开重置密码框
-  show_reset_pwd_box: function() {
-    $('.reset-box').css('display', 'block');
-    $('.overlay-full-screen').css('display', 'block');
-    $('body').addClass('slideout-2');
-  },
+
 
   // 关闭所有的框
   hide_dialog_box: function() {
@@ -176,6 +224,11 @@ export default Ember.View.extend({
     //  value.value = '';
     //});
     //$('.dialog-form').find('button').attr('disabled', true);
+  },
+
+  hide_auto_dialog_box: function(){
+    $('.auto-dialog-box').fadeOut(200);
+    $('.overlay-full-screen').fadeOut(200);
   },
 
   hide_left_menu: function() {
